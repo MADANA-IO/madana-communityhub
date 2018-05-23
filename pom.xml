@@ -107,7 +107,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-		</dependency>        
+		</dependency>
+		<dependency>
+			<groupId>de.madana.common</groupId>
+			<artifactId>madana-restclient</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>
