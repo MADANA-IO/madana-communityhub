@@ -24,11 +24,18 @@ public class LoginController
 		MDN_RestClient oClient = new MDN_RestClient();
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
-			if (loginBean.getUserName().equals("chandra") && loginBean.getPassword().equals("chandra123")) 
+			try 
 			{
-				model.addAttribute("msg", loginBean.getUserName());
-				return "success";
-			} else 
+				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
+				{
+					model.addAttribute("msg", loginBean.getUserName());
+					return "success";
+				} else 
+				{
+					model.addAttribute("error", "Invalid Details");
+					return "login";
+				}
+			} catch (Exception e) 
 			{
 				model.addAttribute("error", "Invalid Details");
 				return "login";
