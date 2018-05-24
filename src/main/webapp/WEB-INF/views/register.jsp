@@ -20,28 +20,33 @@
 		<form:form name="submitForm" method="POST">
 
 			<div
-				style="display:block;align: center; margin: 0 auto; background-color: rgba(255, 255, 255, 0.9);width: 350px; height: 350px; text-align: center;">
+				style="display:block;align: center; margin: 0 auto; background-color: rgba(255, 255, 255, 0.9);width: 350px; height: 400px; text-align: center;">
 				<img src="http://www.madana.io/images/logo.png"
 					alt="MADANA Logo"
 					width="250" height="250" style="text-align:center; padding-top:25px;padding-left:100px;
 display:block;">
 <br><br><br>
 				<table>
+				
 					<tr>
-						<td>User Name</td>
-						<td><input type="text" name="userName" /></td>
+						<td>Username</td>
+						<td><input type="text" name="username" /></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="email" /></td>
 					</tr>
 					<tr>
 						<td>Password</td>
 						<td><input type="password" name="password" /></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td><input type="submit" value="Submit" /></td>
+						<td>Enter Password again</td>
+						<td><input type="password" name="matchingPassword" /></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><a href="/register">Signup</a></td>
+						<td><input type="submit" value="Submit" /></td>
 					</tr>
 				</table>
 				<div style="color: red">${error}</div>

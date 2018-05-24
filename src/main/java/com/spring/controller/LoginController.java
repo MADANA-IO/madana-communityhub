@@ -5,8 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import de.madana.common.restclient.MDN_RestClient;
+import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 
 @Controller
 public class LoginController 
@@ -18,6 +20,54 @@ public class LoginController
 		return "login";
 	}
 
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView registerdddPage() 
+	{
+
+		ModelAndView model = new ModelAndView();
+		model.addObject("title", "Spring Security Custom Login Form");
+		model.addObject("message", "This is welcome page!");
+		model.setViewName("register");
+		return model;
+
+	}
+
+
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user) 
+	{
+		MDN_RestClient oClient = new MDN_RestClient();
+		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
+		{
+			if( user.getPassword().equals(user.getMatchingPassword()))
+			{
+				try 
+				{
+					if (oClient.createUser(user.getUsername(), user.getPassword(), user.getEmail())) ;
+					{
+						model.addAttribute("msg", user.getUsername());
+						return "login";
+					} 
+				} catch (Exception e) 
+				{
+					model.addAttribute("error", e.toString());
+					return "register";
+				}
+			}
+			else
+			{
+				model.addAttribute("error", "Passwords not matching");
+				return "register";
+			}
+		} 
+		else 
+		{
+			model.addAttribute("error", "Please enter Details");
+			return "register";
+		}
+	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean) 
 	{
@@ -47,4 +97,5 @@ public class LoginController
 			return "login";
 		}
 	}
+
 }
