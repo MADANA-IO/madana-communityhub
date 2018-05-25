@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +12,11 @@ import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 
 @Controller
+@Scope("session")
 public class LoginController 
 {
+	MDN_RestClient oClient = new MDN_RestClient();
+	String strUserName="ANONYMOUS";
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String init(Model model) 
 	{
@@ -32,13 +36,24 @@ public class LoginController
 		return model;
 
 	}
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	public ModelAndView successPage() 
+	{
 
+		ModelAndView model = new ModelAndView();
+		return model;
 
-
+	}
+	@RequestMapping(value = "/success", method = RequestMethod.POST)
+	public void successAction(Model model)
+	{
+		oClient.deleteUser(strUserName);
+		model.addAttribute("msg", "account deleted");
+	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user) 
 	{
-		MDN_RestClient oClient = new MDN_RestClient();
+		
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
 		{
 			if( user.getPassword().equals(user.getMatchingPassword()))
@@ -71,7 +86,6 @@ public class LoginController
 	@RequestMapping(method = RequestMethod.POST)
 	public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean) 
 	{
-		MDN_RestClient oClient = new MDN_RestClient();
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
 			try 
@@ -79,6 +93,7 @@ public class LoginController
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
 					model.addAttribute("msg", loginBean.getUserName());
+					strUserName=loginBean.getUserName();
 					return "success";
 				} else 
 				{
