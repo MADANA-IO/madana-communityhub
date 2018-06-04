@@ -44,6 +44,22 @@ body{
 	-webkit-filter: blur(5px);
 	z-index: 0;
 }
+.button
+{
+	width: 300px;
+	height: 55px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+
+	font-size: 100px;
+	font-weight: 800;
+	padding: 6px;
+	margin-top: 10px;
+
+}
 
 .grad{
 	position: absolute;
@@ -185,44 +201,8 @@ display:block;">Community</div>
 		</div>
 		<br>
 		<div class="login">
-					<form:form name="submitForm" method="POST">
-
-			<div>
-
-				<table>
-					<tr>
-						<td>Username</td>
-						<td><input type="text" placeholder="username" name="userName" /></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" placeholder="password" name="password" /></td>
-					</tr>
-					<tr>
-						<td><br><br></td>
-						</tr>
-					<tr>
-						<td><br><br></td>
-						<td><input type="submit" value="Login" /></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><br><a href="/register">Create an Account</a> </td>
-					</tr>
-						<tr>
-						<td></td>
-						<td><a href="/resetPassword">Forgot Password</a></td>
-					</tr>
-						<tr>
-						<td><br><br></td>
-						<td>	<div style="color: red">${error}</div></td>
-					</tr>
-					
-				</table>
-			
-
-			</div>
-		</form:form>
+		<a class=button href="/register">Login</a><br><br>
+		<a class=button href="/register">Create an Account</a>
 		</div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
