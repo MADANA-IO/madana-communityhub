@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
+import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 
 @Controller
 @Scope("session")
@@ -26,6 +28,35 @@ public class LoginController
 	public String loadResetPassword(Model model) 
 	{
 		return "resetpassword";
+	}
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+	public String submitResetPassword(Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail) 
+	{
+		
+		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
+		{
+
+				try 
+				{
+					MDN_MailAddress oMail = new MDN_MailAddress();
+					oMail.setMail(mail.getMail());
+					if (oClient.requestNewPassword(oMail)) ;
+					{
+						model.addAttribute("error", "You'll receive an mail in a few moments");
+						return "login";
+					} 
+				} catch (Exception e) 
+				{
+					model.addAttribute("error", e.toString());
+					return "resetpassword";
+				}
+			
+		} 
+		else 
+		{
+			model.addAttribute("error", "Please enter Details");
+			return "resetpassword";
+		}
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String init(Model model) 
