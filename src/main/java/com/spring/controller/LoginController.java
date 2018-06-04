@@ -4,14 +4,17 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.madana.common.datastructures.MDN_MailAddress;
+import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
+import de.madana.webclient.dto.MDN_DTO_SetPassword;
 
 @Controller
 @Scope("session")
@@ -23,6 +26,42 @@ public class LoginController
 	public String loadHomepage(Model model) 
 	{
 		return "index";
+	}
+	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.GET)
+	public String loadResetPassword(Model model,@PathVariable("token") String token) 
+	{
+		return "setpassword";
+	}
+	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.POST)
+	public String submitResetPassword(Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") MDN_DTO_SetPassword oNewPassword) 
+	{
+		
+		if (oNewPassword.getEmail()!= null && oNewPassword.getEmail().length()>3 && oNewPassword.getEmail().contains("@")) 
+		{
+			if( oNewPassword.getPassword().equals(oNewPassword.getMatchingPassword()))
+				try 
+				{
+					MDN_PasswordReset oReset = new MDN_PasswordReset();
+					oReset.setMail(oNewPassword.getEmail());
+					oReset.setPassword(oNewPassword.getPassword());
+					oReset.setToken(token);
+					
+					if (oClient.setNewPassword(oReset)) ;
+					{
+						model.addAttribute("error", "Login with your new password");
+						return "login";
+					} 
+				} catch (Exception e) 
+				{
+					model.addAttribute("error", e.toString());
+					return "redirect:/resetpassword/"+token;
+				}
+			
+		} 
+
+			model.addAttribute("error", "Please enter details");
+			return "resetpassword";
+		
 	}
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
 	public String loadResetPassword(Model model) 
