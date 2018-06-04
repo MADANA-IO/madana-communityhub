@@ -15,7 +15,7 @@ import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 @Scope("session")
 public class LoginController 
 {
-	MDN_RestClient oClient = new MDN_RestClient();
+	MDN_RestClient oClient =  new MDN_RestClient("http://localhost:8080/rest/rest/");
 	String strUserName="ANONYMOUS";
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String init(Model model) 
