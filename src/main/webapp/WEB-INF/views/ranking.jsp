@@ -85,7 +85,18 @@
 <link href="https://www.madana.io/css/style.css" rel="stylesheet">
 <link href="https://www.madana.io/css/patent-page.css" rel="stylesheet">
 <link href="https://www.madana.io/css/responsive.css" rel="stylesheet">
+<style>
+.tddefault {
+	
+	background: #d6e2ec;
+	border: 10px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	
+	margin: -50px;
 
+}
+</style>
 </head>
 <body>
 	<ul id="social_side_links" style="text-align: center;">
@@ -185,7 +196,7 @@
 	<!-- header end -->
 	<div id="banner" align="center" class="section section-intro">
 
-		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px;background-color:#4d7da2;">
+		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px;background-color:rgba(77, 125, 162, 0.2);">
 			<table style= "width:100%">
 				<tr>
 					<td><img
@@ -218,17 +229,19 @@
 					</div>
 				</div>
 				<div class="container section section-about" >
-				<font color="green"><h1>Hello</h1></font>
-				<h2>${msg}</h2>
-				You have successfully logged in.
-				<font color="green"><h2>But there's currently nothing to
-						look at right now, the only thing you can do is...</h2></font>
-				<form action="success" method="post">
-
-					<input type="submit" name="GoDelete" value="Delete Account">
-				</form>
-
-
+<h1>Ranking</h1>
+				<table>
+					<c:forEach items="${users}" var="user"  varStatus="myIndex">
+						<tr class ="tddefault">
+						<td  width="10%"><h2>${myIndex.index +1}. </h2></td>
+							<td  width="40%" align="left" ><img
+						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"
+						alt="MADANA Logo" width="50" height="80"
+						style="text-align: center; display: block;"><strong><c:out value="${user.userName}" /></strong></td>
+							<td   width="40%"><c:out value="${user.lastActive}" /></td>
+						</tr>
+					</c:forEach>
+				</table>
 				</div>
 				</div>
 

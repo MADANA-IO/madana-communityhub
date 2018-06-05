@@ -26,7 +26,33 @@ public class LoginController
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadHomepage(Model model) 
 	{
+		model.addAttribute("msg", strUserName);
 		return "index";
+	}
+	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
+	public String loadBounty(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		return "bounty";
+	}
+	@RequestMapping(value = "/rather", method = RequestMethod.GET)
+	public String loadRather(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		return "rather";
+	}
+	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
+	public String loadRanking(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("users", oClient.getUsers());
+		return "ranking";
+	}
+	@RequestMapping(value = "/achievments", method = RequestMethod.GET)
+	public String loadAchievments(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		return "achievments";
 	}
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.GET)
 	public String loadResetPassword(Model model,@PathVariable("token") String token) 
@@ -98,9 +124,10 @@ public class LoginController
 		}
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String init(Model model) 
+	public String loadLoginpage(Model model) 
 	{
 		model.addAttribute("msg", "Please Enter Your Login Details");
+	
 		return "login";
 	}
 
@@ -117,9 +144,11 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
-	public void successPage(Model model) 
+	public String successPage(Model model) 
 	{
 		model.addAttribute("msg", strUserName);
+
+		return "success";
 
 	}
 	@RequestMapping(value = "/success", method = RequestMethod.POST)
