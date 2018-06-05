@@ -69,7 +69,7 @@ public class LoginController
 		return "resetpassword";
 	}
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public String submitResetPassword(Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail) 
+	public String submitResetPassword(Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail,final RedirectAttributes redirectAttributes) 
 	{
 
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
@@ -81,8 +81,8 @@ public class LoginController
 				oMail.setMail(mail.getMail());
 				if (oClient.requestNewPassword(oMail)) ;
 				{
-					model.addAttribute("error", "You'll receive an mail in a few moments");
-					return "login";
+					 redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
+					return "redirect:/login";
 				} 
 			} catch (Exception e) 
 			{
