@@ -131,7 +131,7 @@ public class LoginController
 		model.addAttribute("msg", "account deleted");
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user) 
+	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
 
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
@@ -142,8 +142,8 @@ public class LoginController
 				{
 					if (oClient.createUser(user.getUsername(), user.getPassword(), user.getEmail())) ;
 					{
-						model.addAttribute("msg", user.getUsername());
-						return "login";
+						redirectAttributes.addFlashAttribute("error", "Account created");
+						return "redirect:/login";
 					} 
 				} catch (Exception e) 
 				{
