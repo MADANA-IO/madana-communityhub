@@ -117,18 +117,27 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
-	public ModelAndView successPage() 
+	public void successPage(Model model) 
 	{
-
-		ModelAndView model = new ModelAndView();
-		return model;
+		model.addAttribute("msg", strUserName);
 
 	}
 	@RequestMapping(value = "/success", method = RequestMethod.POST)
-	public void successAction(Model model)
+	public String successAction(Model model ,final RedirectAttributes redirectAttributes)
 	{
-		oClient.deleteUser(strUserName);
-		model.addAttribute("msg", "account deleted");
+		try
+		{
+			oClient.deleteUser(strUserName);
+			redirectAttributes.addFlashAttribute("error", "Account deleted");
+			return "redirect:/login";
+		}
+		catch(Exception e)
+		{
+			
+		}
+		model.addAttribute("msg", "Account couldn't be deleted");
+		return "success";
+		
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
@@ -163,8 +172,8 @@ public class LoginController
 			return "register";
 		}
 	}
-	@RequestMapping(method = RequestMethod.POST)
-	public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean) 
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
@@ -172,9 +181,9 @@ public class LoginController
 			{
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
-					model.addAttribute("msg", loginBean.getUserName());
 					strUserName=loginBean.getUserName();
-					return "success";
+					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
+					return "redirect:/success";
 				} else 
 				{
 					model.addAttribute("error", "Invalid Details");
