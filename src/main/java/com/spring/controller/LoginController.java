@@ -50,7 +50,7 @@ public class LoginController
 					if (oClient.setNewPassword(oReset)) ;
 					{
 						model.addAttribute("error", "Login with your new password");
-						return "login";
+						return "redirect:/login";
 					} 
 			} catch (Exception e) 
 			{
