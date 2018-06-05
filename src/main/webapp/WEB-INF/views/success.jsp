@@ -171,7 +171,7 @@
 <font color="green"><h1>Hello</h1></font>
 	<h2>${msg}</h2> You have successfully logged in.
 	<font color="green"><h2>But there's currently nothing to look at right now, the only thing you can do is...</h2></font>
-	<form action="login" method="post"> 
+	<form action="success" method="post"> 
   
    <input type="submit" name="GoDelete" value="Delete Account">
 </form>
