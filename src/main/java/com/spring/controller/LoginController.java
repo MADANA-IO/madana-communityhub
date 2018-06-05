@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
@@ -33,35 +34,34 @@ public class LoginController
 		return "setpassword";
 	}
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.POST)
-	public String submitResetPassword(Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") MDN_DTO_SetPassword oNewPassword) 
+	public String submitResetPassword(Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") MDN_DTO_SetPassword oNewPassword,  final RedirectAttributes redirectAttributes) 
 	{
-		
+
 		if (oNewPassword.getEmail()!= null && oNewPassword.getEmail().length()>3 && oNewPassword.getEmail().contains("@")) 
 		{
 			if( oNewPassword.getPassword().equals(oNewPassword.getMatchingPassword()))
 				try 
-				{
+			{
 					MDN_PasswordReset oReset = new MDN_PasswordReset();
 					oReset.setMail(oNewPassword.getEmail());
 					oReset.setPassword(oNewPassword.getPassword());
 					oReset.setToken(token);
-					
+
 					if (oClient.setNewPassword(oReset)) ;
 					{
 						model.addAttribute("error", "Login with your new password");
 						return "login";
 					} 
-				} catch (Exception e) 
-				{
-					model.addAttribute("error", e.toString());
-					return "redirect:/resetpassword/"+token;
-				}
-			
-		} 
+			} catch (Exception e) 
+			{
+				 redirectAttributes.addFlashAttribute("error",  e.toString());
+				return "redirect:/resetpassword/"+token;
+			}
 
-			model.addAttribute("error", "Please enter details");
-			return "resetpassword";
-		
+		} 
+		 redirectAttributes.addFlashAttribute("error",  "Please enter details");
+		return "redirect:/resetpassword/"+token;
+
 	}
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
 	public String loadResetPassword(Model model) 
@@ -71,25 +71,25 @@ public class LoginController
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 	public String submitResetPassword(Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail) 
 	{
-		
+
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
 		{
 
-				try 
+			try 
+			{
+				MDN_MailAddress oMail = new MDN_MailAddress();
+				oMail.setMail(mail.getMail());
+				if (oClient.requestNewPassword(oMail)) ;
 				{
-					MDN_MailAddress oMail = new MDN_MailAddress();
-					oMail.setMail(mail.getMail());
-					if (oClient.requestNewPassword(oMail)) ;
-					{
-						model.addAttribute("error", "You'll receive an mail in a few moments");
-						return "login";
-					} 
-				} catch (Exception e) 
-				{
-					model.addAttribute("error", e.toString());
-					return "resetpassword";
-				}
-			
+					model.addAttribute("error", "You'll receive an mail in a few moments");
+					return "login";
+				} 
+			} catch (Exception e) 
+			{
+				model.addAttribute("error", e.toString());
+				return "resetpassword";
+			}
+
 		} 
 		else 
 		{
@@ -133,7 +133,7 @@ public class LoginController
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user) 
 	{
-		
+
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
 		{
 			if( user.getPassword().equals(user.getMatchingPassword()))

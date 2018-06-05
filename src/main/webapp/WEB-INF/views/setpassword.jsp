@@ -205,7 +205,7 @@ display:block;">Community</div>
 					</tr>
 						<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Register" /></td>
+						<td><input type="submit" value="set new password" /></td>
 					</tr>
 					<tr>
 						<td></td>
