@@ -196,7 +196,7 @@
 	<!-- header end -->
 	<div id="banner" align="center" class="section section-intro">
 
-		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px;background-color:rgba(77, 125, 162, 0.2);">
+		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px; margin-bottom:-30px;background-color:rgba(77, 125, 162, 0.0);">
 			<table style= "width:100%">
 				<tr>
 					<td><img
@@ -232,7 +232,7 @@
 <h1>Ranking</h1>
 				<table>
 					<c:forEach items="${users}" var="user"  varStatus="myIndex">
-						<tr class ="tddefault">
+						<tr class ="tddefault" onclick="window.location='/profile/'<c:out value="${user.userName}" />">
 						<td  width="10%"><h2>${myIndex.index +1}. </h2></td>
 							<td  width="40%" align="left" ><img
 						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"

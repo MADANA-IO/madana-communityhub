@@ -185,7 +185,7 @@
 	<!-- header end -->
 	<div id="banner" align="center" class="section section-intro">
 
-		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px;background-color:#4d7da2;">
+		<div class="container section " align="left" style="padding-left: 20px;padding-top:50px; margin-bottom:-30px;background-color:rgba(77, 125, 162, 0.0);">
 			<table style= "width:100%">
 				<tr>
 					<td><img
