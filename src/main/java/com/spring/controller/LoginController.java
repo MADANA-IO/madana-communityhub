@@ -147,6 +147,7 @@ public class LoginController
 	public String successPage(Model model) 
 	{
 		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oClient.getUser(strUserName));
 
 		return "success";
 

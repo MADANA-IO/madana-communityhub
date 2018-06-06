@@ -237,7 +237,7 @@
 							<td  width="40%" align="left" ><img
 						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"
 						alt="MADANA Logo" width="50" height="80"
-						style="text-align: center; display: block;"><strong><c:out value="${user.userName}" /></strong></td>
+						style="text-align: center; align:center; display: block;"><strong><c:out value="${user.userName}" /></strong></td>
 							<td   width="40%"><c:out value="${user.lastActive}" /></td>
 						</tr>
 					</c:forEach>
@@ -251,7 +251,7 @@
         </div>
     </div> -->
 				<!-- ================ -->
-				<section id="media" class="section-footer">
+				<section id="media" class="section-footer" >
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4" align="center">
