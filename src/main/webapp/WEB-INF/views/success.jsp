@@ -250,7 +250,7 @@ background-color:black;
 			</p>
 			<form action="success" method="post">
 
-				<input type="submit" name="GoDelete" value="Delete Account">
+				<input class="type="submit" name="GoDelete" value="Delete Account">
 			</form>
 </td>
 		<td style="padding-left:50px;" width="50%;">

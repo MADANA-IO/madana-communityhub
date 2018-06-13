@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.madana.common.datastructures.MDN_FacebookPost;
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.restclient.MDN_RestClient;
@@ -32,6 +35,8 @@ public class LoginController
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
 	public String loadBounty(Model model) 
 	{
+		List<MDN_FacebookPost> oFacebook = oClient.getFacebookFeed();
+		model.addAttribute("feed_facebook",oFacebook);
 		model.addAttribute("msg", strUserName);
 		return "bounty";
 	}
