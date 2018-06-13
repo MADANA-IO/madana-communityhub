@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.madana.common.datastructures.MDN_FacebookPost;
+import de.madana.common.datastructures.MDN_SocialPost;
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.restclient.MDN_RestClient;
@@ -35,8 +35,10 @@ public class LoginController
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
 	public String loadBounty(Model model) 
 	{
-		List<MDN_FacebookPost> oFacebook = oClient.getFacebookFeed();
+		List<MDN_SocialPost> oFacebook = oClient.getFacebookFeed();
+		List<MDN_SocialPost> oTwitter = oClient.getTwitterFeed();
 		model.addAttribute("feed_facebook",oFacebook);
+		model.addAttribute("feed_twitter",oTwitter);
 		model.addAttribute("msg", strUserName);
 		return "bounty";
 	}

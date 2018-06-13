@@ -244,34 +244,45 @@
 			<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 				<div class="mdl-tabs__tab-bar">
 					<span class="mdl-badge" data-badge="${fn:length(feed_facebook)}"> <a
-						href="#starks-panel" class="mdl-tabs__tab is-active"></a>Facebook</span> <a
-						href="#lannisters-panel" class="mdl-tabs__tab">Twitter</a> <a
+						href="#facebook-panel" class="mdl-tabs__tab is-active"></a>Facebook</span> 
+							<span class="mdl-badge" data-badge="${fn:length(feed_twitter)}"><a
+						href="#twitter-panel" class="mdl-tabs__tab">Twitter</a></span> <a
 						href="#targaryens-panel" class="mdl-tabs__tab">LinkedIn</a> <a
 						href="#targaryens-panel" class="mdl-tabs__tab">Reddit</a> <a
 						href="#targaryens-panel" class="mdl-tabs__tab">Telegram</a> <a
 						href="#targaryens-panel" class="mdl-tabs__tab">Referal</a>
 				</div>
 
-				<div class="mdl-tabs__panel is-active" id="starks-panel">
+				<div class="mdl-tabs__panel is-active" id="#facebook-panel">
 					<ul class="demo-list-three mdl-list">
 					<c:forEach items="${feed_facebook}" var="facebookpost">
 						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"> <i
-								class=" mdl-list__item-avatar"><img src="${facebookpost.picture}" alt="Italian Trulli"></i> <span>${facebookpost.created}</span> <span class="mdl-list__item-text-body">
+							class="mdl-list__item-primary-content"  style="width:150px;"> <i
+								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${facebookpost.picture}"  style="width:150px;"></i> <span>${facebookpost.created}</span> <span class="mdl-list__item-text-body">
 									${facebookpost.text} </span>
 						</span> <span class="mdl-list__item-secondary-content"> <a
 								class="mdl-list__item-secondary-action" href="#"><i
 									class="material-icons">star</i></a>
 						</span></li>
+						
+						
 					</c:forEach>
 					</ul>
 				</div>
-				<div class="mdl-tabs__panel" id="lannisters-panel">
-					<ul>
-						<li>Tywin</li>
-						<li>Cersei</li>
-						<li>Jamie</li>
-						<li>Tyrion</li>
+				<div class="mdl-tabs__panel" id="#twitter-panel">
+							<ul class="mdl-list">
+				<c:forEach items="${feed_twitter}" var="twitterpost">
+						<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content"  style="width:150px;"> <i
+								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${twitterpost.picture}"  style="width:150px;"></i> <span>${twitterpost.created}</span> <span class="mdl-list__item-text-body">
+									${twitterpost.text} </span>
+						</span> <span class="mdl-list__item-secondary-content"> <a
+								class="mdl-list__item-secondary-action" href="#"><i
+									class="material-icons">star</i></a>
+						</span></li>
+						
+						
+					</c:forEach>
 					</ul>
 				</div>
 				<div class="mdl-tabs__panel" id="targaryens-panel">
