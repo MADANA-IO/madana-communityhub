@@ -261,28 +261,26 @@
 								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${facebookpost.picture}"  style="width:150px;"></i> <span>${facebookpost.created}</span> <span class="mdl-list__item-text-body">
 									${facebookpost.text} </span>
 						</span> <span class="mdl-list__item-secondary-content"> <a
-								class="mdl-list__item-secondary-action" href="#"><i
-									class="material-icons">star</i></a>
+								class="mdl-list__item-secondary-action" target="_blank" href="${facebookpost.link}"><i
+									class="material-icons">share</i></a>
 						</span></li>
 						
 						
 					</c:forEach>
 					</ul>
 				</div>
-				<div class="mdl-tabs__panel" id="#twitter-panel">
-							<ul class="mdl-list">
-				<c:forEach items="${feed_twitter}" var="twitterpost">
+		<div class="mdl-tabs__panel" id="twitter-panel">
+					<ul>
+						<c:forEach items="${feed_twitter}" var="post">
 						<li class="mdl-list__item mdl-list__item--three-line"><span
 							class="mdl-list__item-primary-content"  style="width:150px;"> <i
-								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${twitterpost.picture}"  style="width:150px;"></i> <span>${twitterpost.created}</span> <span class="mdl-list__item-text-body">
-									${twitterpost.text} </span>
+								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${post.picture}"  style="width:150px;"></i> <span>${post.created}</span> <span class="mdl-list__item-text-body">
+									${post.text} </span>
 						</span> <span class="mdl-list__item-secondary-content"> <a
-								class="mdl-list__item-secondary-action" href="#"><i
-									class="material-icons">star</i></a>
+								class="mdl-list__item-secondary-action" target="_blank" href="${post.link}"><i
+									class="material-icons">share</i></a>
 						</span></li>
-						
-						
-					</c:forEach>
+							</c:forEach>
 					</ul>
 				</div>
 				<div class="mdl-tabs__panel" id="targaryens-panel">
