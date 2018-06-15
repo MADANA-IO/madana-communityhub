@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.madana.common.datastructures.MDN_SocialPost;
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
+import de.madana.common.datastructures.MDN_SocialPost;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
@@ -32,6 +33,18 @@ public class LoginController
 		model.addAttribute("msg", strUserName);
 		return "index";
 	}
+	@RequestMapping(value = "/auth/facebook", method = RequestMethod.GET)
+	public String authFacebook(Model model) 
+	{
+		return "redirect:"+ oClient.getFacebookAuthURL();
+	}
+	@RequestMapping(value = "/auth/facebook/callback" , method = RequestMethod.GET)
+	public String setFacebookUserID(@RequestParam("code") String code, Model model) 
+	{
+		oClient.setFacebookUID(code);
+		return "redirect:/success";
+	}
+
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
 	public String loadBounty(Model model) 
 	{
