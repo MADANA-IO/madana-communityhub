@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
+import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_SocialPost;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
@@ -48,10 +49,20 @@ public class LoginController
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
 	public String loadBounty(Model model) 
 	{
-		List<MDN_SocialPost> oFacebook = oClient.getFacebookFeed();
-		List<MDN_SocialPost> oTwitter = oClient.getTwitterFeed();
-		model.addAttribute("feed_facebook",oFacebook);
-		model.addAttribute("feed_twitter",oTwitter);
+
+		 List<MDN_SocialPlatform> oSocialPlatforms = oClient.getSocialPlatforms();
+		 for(int i=0; i < oSocialPlatforms.size(); i++)
+		 {
+			 try
+			 {
+				 oClient.getSocialFeed(oSocialPlatforms.get(i));
+			 }
+			 catch(Exception ex)
+			 {
+				 System.err.println("Error requesting Feed for" +oSocialPlatforms.get(i).getName());
+			 }
+		 }
+		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("msg", strUserName);
 		return "bounty";
 	}

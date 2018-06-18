@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -104,6 +104,7 @@
 	z-index: 1000000;
 	color: #d6e2ec;
 }
+<
 </style>
 </head>
 <body class="background">
@@ -240,55 +241,82 @@
 			</div>
 		</div>
 		<div class="container section-about " style="height: 100%">
-			<h1>Bounty</h1>
+			<h1>Bounty</h1> <br><br><br><br>
+
 			<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 				<div class="mdl-tabs__tab-bar">
-					<span class="mdl-badge" data-badge="${fn:length(feed_facebook)}"> <a
-						href="#facebook-panel" class="mdl-tabs__tab is-active"></a>Facebook</span> 
-							<span class="mdl-badge" data-badge="${fn:length(feed_twitter)}"><a
-						href="#twitter-panel" class="mdl-tabs__tab">Twitter</a></span> <a
-						href="#targaryens-panel" class="mdl-tabs__tab">LinkedIn</a> <a
-						href="#targaryens-panel" class="mdl-tabs__tab">Reddit</a> <a
-						href="#targaryens-panel" class="mdl-tabs__tab">Telegram</a> <a
-						href="#targaryens-panel" class="mdl-tabs__tab">Referal</a>
+					<c:forEach items="${social_platforms}" var="platform">
+						<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
+							style="height: 40px;" src="${platform.icon}"></img> <a
+							href="#${platform.name}-panel" class="mdl-tabs__tab is-active">${platform.name}</a>
+						</span>
+					</c:forEach>
+						
+							<span ><img
+							style="height: 40px;" src="https://image.freepik.com/free-icon/myspace-social-share_318-25327.jpg"></img> <a
+							href="#Referral-panel" class="mdl-tabs__tab">Referral</a>
+						</span>
 				</div>
 
-				<div class="mdl-tabs__panel is-active" id="#facebook-panel">
-					<ul class="demo-list-three mdl-list">
-					<c:forEach items="${feed_facebook}" var="facebookpost">
-						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"  style="width:150px;"> <i
-								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${facebookpost.picture}"  style="width:150px;"></i> <span>${facebookpost.created}</span> <span class="mdl-list__item-text-body">
-									${facebookpost.text} </span>
-						</span> <span class="mdl-list__item-secondary-content"> <a
-								class="mdl-list__item-secondary-action" target="_blank" href="${facebookpost.link}"><i
-									class="material-icons">share</i></a>
-						</span></li>
-						
-						
-					</c:forEach>
-					</ul>
-				</div>
-		<div class="mdl-tabs__panel" id="twitter-panel">
-					<ul>
-						<c:forEach items="${feed_twitter}" var="post">
-						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"  style="width:150px;"> <i
-								class=" mdl-list__item-avatar"  style="width:150px;height:200px;"><img src="${post.picture}"  style="width:150px;"></i> <span>${post.created}</span> <span class="mdl-list__item-text-body">
-									${post.text} </span>
-						</span> <span class="mdl-list__item-secondary-content"> <a
-								class="mdl-list__item-secondary-action" target="_blank" href="${post.link}"><i
-									class="material-icons">share</i></a>
-						</span></li>
-							</c:forEach>
-					</ul>
-				</div>
-				<div class="mdl-tabs__panel" id="targaryens-panel">
-					<ul>
-						<li>Viserys</li>
-						<li>Daenerys</li>
-					</ul>
-				</div>
+				<c:forEach items="${social_platforms}" var="platform">
+					<div class="mdl-tabs__panel" id="${platform.name}-panel"
+						style="padding: 70px; margin-top: 100px; background-color: #f3f3f6">
+						<div class=" mdl-card mdl-shadow--2dp"
+							style="width: 100%; align: center;">
+							<div class="mdl-card__title mdl-card--expand"
+								style="background-color: #4d7da2; height:100px;">
+								<div style="width:50%;">
+									<img style="height: 40px; float: left;" src="${platform.icon}"></img>
+									<h2 class="mdl-card__title-text" style="color: #f3f3f6"">${platform.name}</h2>
+								</div>
+								<div style="width: 50%;">
+									<span style="float:right;"><a
+										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:#b2d1ef"
+										href="${platform.link}"> View Updates </a> <a
+										href="/auth/${platform.name}"><button
+												class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#a0c3e8">
+												Verify Account</button></a></span>
+								</div>
+							</div>
+							<div class="mdl-card__supporting-text">
+							<p>
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</p>
+							</div>
+							<div class="mdl-card__actions mdl-card--border">
+
+							
+									<ul>
+										<c:forEach items="${platform.feed}" var="post">
+											<li class="mdl-list__item mdl-list__item--three-line"
+												style="color: #4d7da2"><span
+												class="mdl-list__item-primary-content" style="width: 150px;">
+													<i class=" mdl-list__item-avatar"
+													style="width: 150px; height: 200px;"><img
+														src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
+													<span class="mdl-list__item-text-body"
+													style="height: 250px; color: #274863">${post.text}
+												</span>
+											</span> <span style="color: #4d7da2"
+												class="mdl-list__item-secondary-content"> <a
+													class="mdl-list__item-secondary-action" target="_blank"
+													href="${post.link}"><i class="material-icons">share</i>
+														Share</a><br> <a class="mdl-list__item-secondary-action"
+													target="_blank" href="${post.link}"><i
+														class="material-icons">thumb_up</i> Like</a>
+
+
+											</span></li>
+											<hr width=50%>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
