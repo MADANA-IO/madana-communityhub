@@ -246,7 +246,7 @@
 			<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 				<div class="mdl-tabs__tab-bar">
 					<c:forEach items="${social_platforms}" var="platform">
-						<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
+						<span class="mdl-badge"  data-badge="${fn:length(platform.feed)}"><img
 							style="height: 40px;" src="${platform.icon}"></img> <a
 							href="#${platform.name}-panel" class="mdl-tabs__tab is-active">${platform.name}</a>
 						</span>

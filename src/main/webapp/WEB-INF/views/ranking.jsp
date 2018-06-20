@@ -26,6 +26,10 @@
 <meta name="page-type" content="...">
 <meta http-equiv="content-language" content="en">
 <meta name="robots" content="index, follow">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css" />
 <!-- Favicon -->
 <link rel="apple-touch-icon" href="apple-touch-icon-152x152.png">
 <link rel="icon" href="favicon-196x196.png">
@@ -86,18 +90,16 @@
 <link href="https://www.madana.io/css/patent-page.css" rel="stylesheet">
 <link href="https://www.madana.io/css/responsive.css" rel="stylesheet">
 <style>
-.background{
-
-
-	background-image: url("http://www.madana.io/images/animations/Animation 3/Animation_3_1.jpg");
-background-repeat: no-repeat;
-    background-size: 100% 200%;
-background-position:center; 
-background-color:black;
+.background {
+	background-image:
+		url("http://www.madana.io/images/animations/Animation 3/Animation_3_1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 200%;
+	background-position: center;
+	background-color: black;
 	z-index: 1000000;
-	color:#d6e2ec;
+	color: #d6e2ec;
 }
-
 </style>
 </head>
 <body class="background">
@@ -196,10 +198,10 @@ background-color:black;
 	</div>
 	</header>
 	<!-- header end -->
-	<div  align="center" class="section">
+	<div align="center" class="section">
 
 		<div class="container section " align="left"
-			style="margin-top:20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px; background-color: rgba(77, 125, 162, 0.1);">
+			style="margin-top: 20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px; background-color: rgba(77, 125, 162, 0.1);">
 			<table style="width: 100%">
 				<tr>
 					<td><img
@@ -233,20 +235,26 @@ background-color:black;
 				</ul>
 			</div>
 		</div>
-		<div class="container section-about " style="height:100%">
-		<h1>Ranking</h1>
-			<table>
-					<c:forEach items="${users}" var="user"  varStatus="myIndex">
-						<tr class ="tddefault" onclick="window.location='/profile/'<c:out value="${user.userName}" />">
-						<td  width="10%"><h2>${myIndex.index +1}. </h2></td>
-							<td  width="40%" align="left" ><img
-						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"
-						alt="MADANA Logo" width="50" height="80"
-						style="text-align: center; align:center; display: block;"><strong><c:out value="${user.userName}" /></strong></td>
-							<td   width="40%"><c:out value="${user.lastActive}" /></td>
-						</tr>
-					</c:forEach>
-				</table>
+		<div class="container section-about " style="height: 100%">
+			<h1>Ranking</h1>
+
+			<table style="width:100%;">
+				<c:forEach items="${users}" var="user" varStatus="myIndex">
+					<tr class="tddefault"
+						onclick="window.location='/profile/'<c:out value="${user.userName}" />">
+						<td width="10%"><h2>${myIndex.index +1}.</h2></td>
+						<td width="10%" align="left"><img
+							src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
+							alt="MADANA Logo" width="50" height="80"
+							style="text-align: center; align: center; display: block;"></td>
+									<td align="left"><h2><c:out
+									value="${user.userName}" /></h2></td>
+						<td align="center" width="50%"><c:out value="${user.lastActive}" /></td>
+						<td align="right" width="30%"><h2> 0 PTS</h2></td>
+						<br>
+					</tr>
+				</c:forEach>
+			</table>
 
 		</div>
 	</div>

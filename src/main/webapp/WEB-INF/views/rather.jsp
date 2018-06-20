@@ -26,6 +26,10 @@
 <meta name="page-type" content="...">
 <meta http-equiv="content-language" content="en">
 <meta name="robots" content="index, follow">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css" />
 <!-- Favicon -->
 <link rel="apple-touch-icon" href="apple-touch-icon-152x152.png">
 <link rel="icon" href="favicon-196x196.png">
@@ -235,8 +239,44 @@ background-color:black;
 		</div>
 		<div class="container section-about " style="height:100%">
 		
-<h1>Rather</h1>
-		</div>
+<h1>Rather</h1><br><br><br><br>
+<h2>Would you rather</h2> <br><br><br><br>
+<div class="row">
+<div class="col-md-6" ><div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:100%;background-color:#4d7da2;color:#b2d1ef;">
+  <div class="mdl-card__title">
+    <h2 style="color:#b2d1ef;">Love MADANA because it's awesome!</h2>
+  </div>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Mauris sagittis pellentesque lacus eleifend lacinia...
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+   <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" style="color:#f3f3f6;">
+  <i class="material-icons">star-border</i>
+</button>
+  </div>
+
+</div></div>
+<div class="col-md-6" ><div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:100%;background-color:#b2d1ef;color:#4d7da2;">
+  <div class="mdl-card__title">
+    <h2 style="color:#4d7da2;">Love MADANA because it's awesome!</h2>
+  </div>
+  <div >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Mauris sagittis pellentesque lacus eleifend lacinia...
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+     <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored " style="color:#f3f3f6;">
+  <i class="material-icons">star-border</i>
+</button>
+
+  </div>
+  </div>
+</div></div>
+</div>
+
+
+	
 	</div>
 
 	<!-- <div id="banner" class="section section-intro">
