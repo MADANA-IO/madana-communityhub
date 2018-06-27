@@ -94,7 +94,7 @@
 	background-image:
 		url("http://www.madana.io/images/animations/Animation 3/Animation_3_1.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 200%;
+	background-size: cover;
 	background-position: center;
 	background-color: black;
 	z-index: 1000000;
@@ -235,27 +235,29 @@
 				</ul>
 			</div>
 		</div>
-		<div class="container section-about " style="height: 100%">
+		<div class="container section-about " style="height: 100%;">
 			<h1>Ranking</h1>
-
-			<table style="width:100%;">
-				<c:forEach items="${users}" var="user" varStatus="myIndex">
-					<tr class="tddefault"
-						onclick="window.location='/profile/'<c:out value="${user.userName}" />">
-						<td width="10%"><h2>${myIndex.index +1}.</h2></td>
-						<td width="10%" align="left"><img
-							src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
-							alt="MADANA Logo" width="50" height="80"
-							style="text-align: center; align: center; display: block;"></td>
-									<td align="left"><h2><c:out
-									value="${user.userName}" /></h2></td>
-						<td align="center" width="50%"><c:out value="${user.lastActive}" /></td>
-						<td align="right" width="30%"><h2> 0 PTS</h2></td>
-						<br>
+			<div style="height: 300px;overflow-y: scroll;">
+			<table
+				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%">
+				<thead>
+					<tr>
+						<th>Rank</th>
+						<th>Username</th>
+						<th>Points</th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach items="${users}" var="user" varStatus="myIndex">
+					<tr>
+						<td >${myIndex.index +1}.</td>
+						<td><c:out value="${user.key}" /></td>
+						<td>${user.value} PTS</td>
+					</tr>
+					</c:forEach>
+				</tbody>
 			</table>
-
+	</div>
 		</div>
 	</div>
 

@@ -76,7 +76,7 @@ public class LoginController
 	public String loadRanking(Model model) 
 	{
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("users", oClient.getUsers());
+		model.addAttribute("users", oClient.getRanking());
 		return "ranking";
 	}
 	@RequestMapping(value = "/achievments", method = RequestMethod.GET)
