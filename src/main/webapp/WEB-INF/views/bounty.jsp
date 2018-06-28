@@ -260,7 +260,7 @@
 
 				<c:forEach items="${social_platforms}" var="platform">
 					<div class="mdl-tabs__panel" id="${platform.name}-panel"
-						style="padding: 70px; margin-top: 100px; background-color: #f3f3f6">
+						style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
 						<div class=" mdl-card mdl-shadow--2dp"
 							style="width: 100%; align: center;">
 							<div class="mdl-card__title mdl-card--expand"
