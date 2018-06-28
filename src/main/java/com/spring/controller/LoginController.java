@@ -39,6 +39,18 @@ public class LoginController
 	{
 		return "redirect:"+ oClient.getFacebookAuthURL();
 	}
+	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
+	public String authTwitter(Model model) 
+	{
+		return "redirect:"+ oClient.getTwitterAuthURL();
+	}
+	@RequestMapping(value = "/auth/twitter/callback" , method = RequestMethod.GET)
+	public String setTwitterUserID(@RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model) 
+	{
+		oClient.setTwitterUID(token,verifier);
+		return "redirect:/success";
+	}
+
 	@RequestMapping(value = "/auth/facebook/callback" , method = RequestMethod.GET)
 	public String setFacebookUserID(@RequestParam("code") String code, Model model) 
 	{
