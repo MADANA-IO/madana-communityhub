@@ -91,45 +91,17 @@
 <link href="https://www.madana.io/css/responsive.css" rel="stylesheet">
 <style>
 .background {
-	background-image:
-		url("http://www.madana.io/images/animations/Animation 3/Animation_3_1.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	background-color: black;
+	background-color: #274863;
 	z-index: 1000000;
-	color: #d6e2ec;
+	color: #b2d1ef;
 }
 </style>
 </head>
 <body class="background">
-	<ul id="social_side_links" style="text-align: center;">
-		<li><a style="background-color: #1dadeb;"
-			href="https://twitter.com/madana_hq" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Twitter'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-twitter"></i>
-		</a></li>
-		<li><a style="background-color: #FF5700;"
-			href="http://reddit.com/r/MADANA" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Reddit'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-reddit"></i>
-		</a></li>
-		<li><a style="background-color: #0088cc;"
-			href="https://t.me/madanaofficial" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Telegram'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-telegram"></i>
-		</a></li>
-		<li><a style="background-color: #000000;"
-			href="https://blog.madana.io" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Medium'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-medium"></i>
-		</a></li>
-		<!-- <li><a style="background-color: #5c3a58;" href="https://linkedin.com" target="_blank"><i style="display:inline-block; margin:0 auto;"  class="fa fa-slack"></i> </a></li> -->
-	</ul>
+	
 	<!-- scrollToTop -->
 	<!-- ================ -->
 	<div class="scrollToTop">
@@ -201,22 +173,21 @@
 	<div align="center" class="section">
 
 		<div class="container section " align="left"
-			style="margin-top: 20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px; background-color: rgba(77, 125, 162, 0.1);">
+			style="margin-top: 20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px;">
 			<table style="width: 100%">
 				<tr>
 					<td><img
-						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"
+						src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
 						alt="MADANA Logo" width="80" height="175"
 						style="text-align: center; display: block;">
-						<h2>${msg}</h2></td>
+						<h2>${msg}<br>5000000000pts</h2></td>
 					<td>
-						<h1>5000000000pts</h1>
 					</td>
 				</tr>
 			</table>
 		</div>
 
-		<div class="container" style="background-color: #274863;">
+		<div class="container" style="background-color: #6e9cc6;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
@@ -237,27 +208,30 @@
 		</div>
 		<div class="container section-about " style="height: 100%;">
 			<h1>Ranking</h1>
-			<div style="height: 300px;overflow-y: scroll;">
-			<table
-				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%">
-				<thead>
-					<tr>
-						<th>Rank</th>
-						<th>Username</th>
-						<th>Points</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${users}" var="user" varStatus="myIndex">
-					<tr>
-						<td >${myIndex.index +1}.</td>
-						<td><c:out value="${user.key}" /></td>
-						<td>${user.value} PTS</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-	</div>
+			<div style="height: 600px; overflow-y: scroll;">
+				<table
+					class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"
+					style="width: 100%">
+					<thead>
+						<tr>
+							<th>Rank</th>
+							<th>Username</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${users}" var="user" varStatus="myIndex">
+							<tr>
+								<td>${myIndex.index +1}.</td>
+								<td><h4>
+										<c:out value="${user.key}" />
+									</h4></td>
+								<td><h2>${user.value}PTS</h2></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 

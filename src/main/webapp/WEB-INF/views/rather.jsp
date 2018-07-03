@@ -90,48 +90,19 @@
 <link href="https://www.madana.io/css/patent-page.css" rel="stylesheet">
 <link href="https://www.madana.io/css/responsive.css" rel="stylesheet">
 <style>
-.background{
-
-
-	background-image: url("http://www.madana.io/images/animations/Animation 3/Animation_3_1.jpg");
-background-repeat: no-repeat;
-    background-size: 100% 200%;
-background-position:center; 
-background-color:black;
+.background {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: #274863;
 	z-index: 1000000;
-	color:#d6e2ec;
+	color: #b2d1ef;
 }
 
 </style>
 </head>
 <body class="background">
-	<ul id="social_side_links" style="text-align: center;">
-		<li><a style="background-color: #1dadeb;"
-			href="https://twitter.com/madana_hq" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Twitter'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-twitter"></i>
-		</a></li>
-		<li><a style="background-color: #FF5700;"
-			href="http://reddit.com/r/MADANA" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Reddit'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-reddit"></i>
-		</a></li>
-		<li><a style="background-color: #0088cc;"
-			href="https://t.me/madanaofficial" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Telegram'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-telegram"></i>
-		</a></li>
-		<li><a style="background-color: #000000;"
-			href="https://blog.madana.io" target="_blank"
-			onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_sidebar', eventLabel: 'Medium'});">
-				<i style="display: inline-block; margin: 0 auto;"
-				class="fa fa-medium"></i>
-		</a></li>
-		<!-- <li><a style="background-color: #5c3a58;" href="https://linkedin.com" target="_blank"><i style="display:inline-block; margin:0 auto;"  class="fa fa-slack"></i> </a></li> -->
-	</ul>
+	
 	<!-- scrollToTop -->
 	<!-- ================ -->
 	<div class="scrollToTop">
@@ -202,23 +173,22 @@ background-color:black;
 	<!-- header end -->
 	<div  align="center" class="section">
 
-		<div class="container section " align="left"
-			style="margin-top:20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px; background-color: rgba(77, 125, 162, 0.1);">
+	<div class="container section " align="left"
+			style="margin-top: 20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px;">
 			<table style="width: 100%">
 				<tr>
 					<td><img
-						src="http://www.madana.io/images/animations/Animation 2/A2_Transform_1_2.png"
+						src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
 						alt="MADANA Logo" width="80" height="175"
 						style="text-align: center; display: block;">
-						<h2>${msg}</h2></td>
+						<h2>${msg}<br>5000000000pts</h2></td>
 					<td>
-						<h1>5000000000pts</h1>
 					</td>
 				</tr>
 			</table>
 		</div>
 
-		<div class="container" style="background-color: #274863;">
+		<div class="container" style="background-color: #6e9cc6;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
