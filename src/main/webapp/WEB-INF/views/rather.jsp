@@ -2,214 +2,110 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-<head>
-<meta charset="utf-8" />
-<!-- <link href=“https://fonts.googleapis.com/css?family=Montserrat” rel=“stylesheet”> -->
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>MADANA -Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Jean-Fabian Wenisch">
-<meta name="publisher" content="MADANA">
-<meta name="copyright" content="MADANA">
-<meta name="description"
-	content="In March 2018, MADANA filed in a patent for its procedure at the DPMA in Germany: “Automated procedure for the protection
-        of electronic data for the purpose of data processing by third parties including transparent and uninterruptible remuneration”.">
-<meta name="keywords"
-	content="MADANA, Madana, Blockchain, Data Privacy, Market for Data Analysis, Datasecurity">
-<meta name="page-topic" content="Wissenschaft">
-<meta name="page-type" content="...">
-<meta http-equiv="content-language" content="en">
-<meta name="robots" content="index, follow">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css" />
-<!-- Favicon -->
-<link rel="apple-touch-icon" href="apple-touch-icon-152x152.png">
-<link rel="icon" href="favicon-196x196.png">
-<link rel="apple-touch-icon-precomposed" sizes="57x57"
-	href="https://www.madana.io/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="https://www.madana.io/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="https://www.madana.io/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="https://www.madana.io/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="60x60"
-	href="https://www.madana.io/apple-touch-icon-60x60.png" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120"
-	href="https://www.madana.io/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="76x76"
-	href="https://www.madana.io/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152"
-	href="https://www.madana.io/apple-touch-icon-152x152.png" />
-<link rel="icon" type="image/png" href="favicon-196x196.png"
-	sizes="196x196" />
-<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-<link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
-<meta name="application-name" content="&nbsp;" />
-<meta name="msapplication-TileColor" content="#FFFFFF" />
-<meta name="msapplication-TileImage"
-	content="https://www.madana.io/mstile-144x144.png" />
-<meta name="msapplication-square70x70logo"
-	content="https://www.madana.io/mstile-70x70.png" />
-<meta name="msapplication-square150x150logo"
-	content="https://www.madana.io/mstile-150x150.png" />
-<meta name="msapplication-wide310x150logo"
-	content="https://www.madana.io/mstile-310x150.png" />
-<meta name="msapplication-square310x310logo"
-	content="https://www.madana.io/mstile-310x310.png" />
-<!--  Open Graph Tags -->
-<meta property="og:title" content="MADANA - Patent Pending">
-<meta property="og:description"
-	content="In March 2018, MADANA filed in a patent for its procedure at the DPMA in Germany: “Automated procedure for the protection
-        of electronic data for the purpose of data processing by third parties including transparent and uninterruptible remuneration”.">
-<meta property="og:image"
-	content="https://www.madana.io/images/patent-pending.png">
-<meta property="og:url" content="https://www.madana.io/patent">
-<meta name="twitter:card" content="summary_large_image">
-<!-- Bootstrap Core CSS -->
-<link href="https://www.madana.io/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Font Awesome CSS -->
-<link
-	href="https://www.madana.io/fonts/font-awesome/css/font-awesome.css"
-	rel="stylesheet">
-<link href="https://www.madana.io/css/font-awesome.min.css"
-	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="https://www.madana.io/css/style.css" rel="stylesheet">
-<link href="https://www.madana.io/css/patent-page.css" rel="stylesheet">
-<link href="https://www.madana.io/css/responsive.css" rel="stylesheet">
-<style>
-.background {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	background-color: #274863;
-	z-index: 1000000;
-	color: #b2d1ef;
-}
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
-</style>
-</head>
-<body class="background">
-	
-	<!-- scrollToTop -->
-	<!-- ================ -->
-	<div class="scrollToTop">
-		<i class="icon-up-open-big"></i>
-	</div>
-	<!-- header start -->
-	<!-- ================ -->
-	<header class="header fixed clearfix navbar navbar-fixed-top">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4">
-				<!-- header-left start -->
-				<!-- ================ -->
-				<div class="header-left clearfix">
-					<!-- logo -->
-					<div class="logo smooth-scroll">
-						<a href="https://www.madana.io#banner"> <img id="logo"
-							src="https://www.madana.io/images/logo.png" alt="MADANA">
-						</a>
-					</div>
-				</div>
-				<!-- header-left end -->
-			</div>
-			<div class="col-xs-8">
-				<!-- header-right start -->
-				<!-- ================ -->
-				<div class="header-right clearfix">
-					<!-- main-navigation start -->
-					<!-- ================ -->
-					<div class="main-navigation animated">
-						<!-- navbar start -->
-						<!-- ================ -->
-						<nav class="navbar navbar-default" role="navigation">
-						<div class="container-fluid">
-							<!-- Toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle"
-									data-toggle="collapse" data-target="#navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span> <span
-										class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-							</div>
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse scrollspy smooth-scroll"
-								id="navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="active"><a href="https://www.madana.io#banner">HOME</a>
-									</li>
-									<li><a href="https://www.madana.io#about">ABOUT</a></li>
-									<li><a href="https://www.madana.io#pax">PAX</a></li>
-									<li><a href="https://www.madana.io#team">TEAM</a></li>
-									<li><a href="https://www.madana.io#media">MEDIA</a></li>
-									<li><a href="https://www.madana.io#faq">FAQ</a></li>
-								</ul>
-							</div>
-						</div>
-						</nav>
-						<!-- navbar end -->
-					</div>
-					<!-- main-navigation end -->
-				</div>
-				<!-- header-right end -->
-			</div>
-		</div>
-	</div>
-	</header>
-	<!-- header end -->
-	<div  align="center" class="section">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
-	<div class="container section " align="left"
-			style="margin-top: 20px; padding-left: 20px; padding-top: 50px; margin-bottom: -30px;">
-			<table style="width: 100%">
-				<tr>
-					<td><img
-						src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
-						alt="MADANA Logo" width="80" height="175"
-						style="text-align: center; display: block;">
-						<h2>${msg}<br>5000000000pts</h2></td>
-					<td>
-					</td>
-				</tr>
-			</table>
-		</div>
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
 
-		<div class="container" style="background-color: #6e9cc6;">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="navbar-collapse collapse" align="center">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="<c:url value="/success" />">Home</a></li>
-					<li><a href="<c:url value="/bounty" />">Bounty</a></li>
-					<li><a href="<c:url value="/rather" />">Rather</a></li>
-					<li><a href="<c:url value="/ranking" />">Ranking</a></li>
-					<li><a href="<c:url value="/achievments" />">Achievments</a></li>
+    <link rel="shortcut icon" href="images/favicon.png">
 
-				</ul>
-			</div>
-		</div>
-		<div class="container section-about " style="height:100%">
-		
-<h1>Rather</h1><br><br><br><br>
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+	<link href=“https://fonts.googleapis.com/css?family=Montserrat” rel=“stylesheet”>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/styles.css"/>
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Home</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">About</li>
+            <li class="mdl-menu__item">Contact</li>
+            <li class="mdl-menu__item">Legal information</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer ">
+        <header class="demo-drawer-header">
+          <img src="http://www.madana.io/images/animations/Animation 2/A2_3.png" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span><h4>${msg}</h4></span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Create account...</li>
+                <li class="mdl-menu__item"><i class="material-icons">lock_open</i>Login...</li>
+                  <li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation">
+          <a class="mdl-navigation__link" href="/home"><i class=" material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="/profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
+          <a class="mdl-navigation__link" href="/bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
+          <a class="mdl-navigation__link" href="/rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
+          <a class="mdl-navigation__link" href="ranking"><i class=" material-icons" role="presentation">group</i>Ranking</a>
+           <div class="mdl-layout-spacer"></div>
+       
+                     <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content content">
+        <div class="mdl-grid demo-content">
+        
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+        <h1>Rather</h1><br><br><br><br>
 <h2>Would you rather</h2> <br><br><br><br>
 <div class="row">
 <div class="col-md-6" ><div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:100%;background-color:#4d7da2;color:#b2d1ef;">
@@ -243,167 +139,11 @@
   </div>
   </div>
 </div></div>
-</div>
-
-
-	
-	</div>
-
-	<!-- <div id="banner" class="section section-intro">
-        <div id="document-embed" class="container">
-            <embed src="files/15649-PT-DE-Patent.pdf" type="application/pdf" width="100%" height="100%" />
+          </div>
+   
         </div>
-    </div> -->
-	<!-- ================ -->
-	<section id="media" class="section-footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4" align="center">
-				<ul align="left">
-					<p>
-						2018 MADANA. <br> All rights reserved.
-					</p>
-				</ul>
-			</div>
-			<div class="col-md-4" align="center">
-				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn" data-toggle="modal"
-					data-target="#myModal">Imprint</button>
-				<!-- Modal -->
-				<div id="myModal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Imprint</h4>
-							</div>
-							<div class="modal-body">
-								<p>
-									<strong>MADANA UG (haftungsbeschränkt)</strong> <br> c/o
-									WeWork Sony Center <br>
-								</p>
-								<p>
-									Kemperplatz 1, Building A <br> 10785 Berlin <br>
-									Germany <br>
-								<p>
-									<i class="fa fa-envelope" aria-hidden="true"> </i>
-									info@madana.io
-								</p>
-								<br>
-								<p>Represented by Christian G. Junger & Dieter Schule</p>
-								<p>
-									Register court: Amtsgericht Charlottenburg <br>Register
-									number: HRB 194081 B
-								</p>
-								<p>USt-ID: DE 316 508 179</p>
-								<br> <br>
-								<p>
-									<strong>Data Privacy Statement</strong> <br> <br>
-									This website uses Google Analytics, a web analytics service
-									provided by Google, Inc. ("Google"). Google Analytics uses
-									"cookies", which are text files placed on your computer to help
-									the website analyse how visitors use the site. The information
-									generated by the cookie about your use of the website
-									(including your IP address) will be transmitted to and stored
-									by Google on servers in the United States . Google will use
-									this information for the purpose of evaluating your use of the
-									website, compiling reports on website activity for website
-									operators and providing other services relating to website
-									activity and internet usage. Google may also transfer this
-									information to third parties where required to do so by law, or
-									where such third parties process the information on Google's
-									behalf. Google will not associate your IP address with any
-									other data held by Google. You may refuse the use of cookies by
-									selecting the appropriate settings on your browser, however
-									please note that if you do this you may not be able to use the
-									full functionality of this website. By using this website, you
-									consent to the processing of data about you by Google in the
-									manner and for the purposes set out above. <br> <br>
-									You can prevent Google’s collection and use of data (cookies
-									and IP address) by downloading and installing the browser
-									plug-in available under
-									https://tools.google.com/dlpage/gaoptout?hl=en. <br> <br>
-									Please note that this website initializes Google Analytics with
-									the setting: anonymizeIp This guarantees anonymized data
-									collection by masking the last part of your IP address. <br>
-									<br> Further information concerning the terms and
-									conditions of use and data privacy can be found at
-									http://www.google.com/analytics/terms/gb.html or at
-									http://www.google.com/intl/en_uk/analytics/privacyoverview.html
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4" align="center">
-				<p>
-					<a target="_blank" href="mailto:info@madana.io"> <i
-						class="fa fa-envelope" aria-hidden="true"></i> info@madana.io
-					</a>
-				</p>
-				<p class="social-links">
-					<a target="_blank" href="https://www.reddit.com/r/MADANA/"> <i
-						class="fa fa-reddit"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Reddit'});"></i>
-					</a> <a target="_blank" href="https://t.me/madanaofficial"> <i
-						class="fa fa-telegram"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Telegram'});"></i>
-					</a> <a target="_blank" href="https://blog.madana.io"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Github'});">
-						<i class="fa fa-medium"></i>
-					</a> <a target="_blank" href="https://twitter.com/madana_hq"> <i
-						class="fa fa-twitter"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Twitter'});"></i>
-					</a> <a target="_blank" href="https://www.facebook.com/madana.io/">
-						<i class="fa fa-facebook"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Facebook'});"></i>
-					</a> <a target="_blank"
-						href="https://www.linkedin.com/company/18227151/"> <i
-						class="fa fa-linkedin"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'LinkedIn'});"></i>
-					</a> <a target="_blank" href="https://www.xing.com/companies/madana">
-						<i class="fa fa-xing"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Xing'});"></i>
-					</a> <a target="_blank"
-						href="https://www.youtube.com/channel/UCPxsLkfAY63FV5kgTceZUNQ">
-						<i class="fa fa-youtube"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Youtube'});"></i>
-					</a> <a target="_blank" href="https://github.com/MADANA-IO"> <i
-						class="fa fa-git-square"
-						onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'button_click_footer', eventLabel: 'Github'});"></i>
-					</a>
-					<!--  
-                            
-                            <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-slack"></i></a>
-                                <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-btc"></i></a>
-                            <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-wechat"></i></a>
-                            <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-telegram"></i></a>
-                                <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-reddit"></i></a>
-                                    <a target="_blank" href="https://github.com/JFWenisch"><i class="fa fa-youtube"></i></a> -->
-				</p>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- section end -->
-	<footer> <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-	<!-- Jquery and Bootstap core js files --> <script
-		type="text/javascript"
-		src="https://www.madana.io/plugins/jquery.min.js"></script> <script
-		type="text/javascript"
-		src="https://www.madana.io/bootstrap/js/bootstrap.min.js"></script> <!-- Backstretch javascript -->
-	<script type="text/javascript"
-		src="https://www.madana.io/plugins/jquery.backstretch.min.js"></script>
-	<!-- Appear javascript --> <script type="text/javascript"
-		src="https://www.madana.io/plugins/jquery.appear.js"></script> <script
-		type="text/javascript" src="https://www.madana.io/js/template.js"></script>
-	</footer>
-</body>
+      </main>
+    </div>
+      <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
 </html>

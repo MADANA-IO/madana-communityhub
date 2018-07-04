@@ -17,6 +17,7 @@ import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_SocialPost;
+import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
@@ -28,6 +29,7 @@ public class LoginController
 {
 	MDN_RestClient oClient =  new MDN_RestClient();
 	String strUserName="ANONYMOUS";
+	MDN_UserProfile oProfile;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadHomepage(Model model) 
 	{
@@ -48,14 +50,14 @@ public class LoginController
 	public String setTwitterUserID(@RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model) 
 	{
 		oClient.setTwitterUID(token,verifier);
-		return "redirect:/success";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/auth/facebook/callback" , method = RequestMethod.GET)
 	public String setFacebookUserID(@RequestParam("code") String code, Model model) 
 	{
 		oClient.setFacebookUID(code);
-		return "redirect:/success";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
@@ -76,12 +78,14 @@ public class LoginController
 		 }
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("msg", strUserName);
+		model.addAttribute("profile", oProfile);
 		return "bounty";
 	}
 	@RequestMapping(value = "/rather", method = RequestMethod.GET)
 	public String loadRather(Model model) 
 	{
 		model.addAttribute("msg", strUserName);
+		model.addAttribute("profile", oProfile);
 		return "rather";
 	}
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
@@ -89,14 +93,10 @@ public class LoginController
 	{
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("users", oClient.getRanking());
+		model.addAttribute("profile", oProfile);
 		return "ranking";
 	}
-	@RequestMapping(value = "/achievments", method = RequestMethod.GET)
-	public String loadAchievments(Model model) 
-	{
-		model.addAttribute("msg", strUserName);
-		return "achievments";
-	}
+
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.GET)
 	public String loadResetPassword(Model model,@PathVariable("token") String token) 
 	{
@@ -186,17 +186,30 @@ public class LoginController
 		return model;
 
 	}
-	@RequestMapping(value = "/success", method = RequestMethod.GET)
-	public String successPage(Model model) 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homePage(Model model) 
 	{
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
+		oProfile =  oClient.getProfile(strUserName);
+		model.addAttribute("profile", oProfile);
 
-		return "success";
+		return "home";
 
 	}
-	@RequestMapping(value = "/success", method = RequestMethod.POST)
-	public String successAction(Model model ,final RedirectAttributes redirectAttributes)
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String profilePage(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oClient.getUser(strUserName));
+		oProfile =  oClient.getProfile(strUserName);
+		model.addAttribute("profile", oProfile);
+
+		return "profile";
+
+	}
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	public String homeAction(Model model ,final RedirectAttributes redirectAttributes)
 	{
 		try
 		{
@@ -209,7 +222,7 @@ public class LoginController
 			
 		}
 		model.addAttribute("msg", "Account couldn't be deleted");
-		return "success";
+		return "home";
 		
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -256,7 +269,7 @@ public class LoginController
 				{
 					strUserName=loginBean.getUserName();
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
-					return "redirect:/success";
+					return "redirect:/home";
 				} else 
 				{
 					model.addAttribute("error", "Invalid Details");
