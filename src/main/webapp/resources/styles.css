@@ -20,7 +20,7 @@
 }
 .demo-header 
 {
-    background-color:#f3f3f6;
+    background-color:#b2d1ef;
     color:#274863;
 }
 html, body {
@@ -40,6 +40,7 @@ font-family: 'Montserrat', Regular;
 .demo-drawer {
   border: none;
     background-color:#f3f3f6;
+    color:#4d7da2;
 }
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
