@@ -51,7 +51,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Rather</span>
+          <span class="mdl-layout-title">Profile</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -91,7 +91,7 @@
           <script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
           
         </header>
-               <nav class="demo-navigation mdl-navigation">
+                <nav class="demo-navigation mdl-navigation">
           <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
           <a class="mdl-navigation__link" href="profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
           <a class="mdl-navigation__link" href="bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
@@ -108,36 +108,93 @@
         <div class="mdl-grid demo-content">
         
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
-        <h1>Rather</h1><br><br><br><br>
-<br><br><br><br>
+      <h1>Welcome!</h1>
+			<table>
 
+				<td width="50%;">
+					<h2>Hello ${msg},</h2> <br>
+				<br>
+					<p>
+						You have successfully logged in. Please have a look at the
+						information we collected from you. Your email is private,
+						everything else can be discovered by everyone. <br>
+						<br> But there's currently nothing to look at right now, the
+						only thing you can do is...
+
+
+					</p>
+					<form action="success" method="post">
+
+						<input type="submit" name="GoDelete" value="Delete Account">
+					</form> <br>
+				<h1>Private Details</h1>
+				<tr class="tddefault">
+					<td width=20%;>Username:</td>
+					<td align="left" width="10%">
+						<h2>
+							<c:out value="${user.userName}" />
+						</h2>
+					</td>
+				</tr>
+				<tr class="tddefault">
+					<td width=20%;>Email:</td>
+					<td width="10%"><h2>
+							<c:out value="${user.mail}" />
+						</h2></td>
+				</tr>
+				<tr class="tddefault">
+					<td width=20%;>Firstname:</td>
+					<td width="10%"><h2>
+							<c:out value="${user.firstName}" />
+						</h2></td>
+				</tr>
+				<tr class="tddefault">
+					<td width=20%;>Lastname:</td>
+					<td width="10%"><h2>
+							<c:out value="${user.lastName}" />
+						</h2></td>
+				</tr>
+				<tr class="tddefault">
+					<td width=20%;>Member since:</td>
+					<td width="10%"><h2>
+							<c:out value="${user.created}" />
+						</h2></td>
+				</tr>
+				<tr class="tddefault">
+					<td width=20%;>Last login:</td>
+					<td width="10%"><h2>
+							<c:out value="${user.lastActive}" />
+						</h2></td>
+				</tr>
+				<tr>
+
+
+				</tr>
+
+				</td>
+
+			</table>
+			<div style="text-align: left">
+				<h1>Achievments</h1>
+				<img
+					src="		https://c-6rtwjumjzx7877x24i6z0u8q9bufd8px2ehqtzikwtsyx2esjy.g00.gamepedia.com/g00/3_c-6twhx78rzx78yinjzshmfnsji.lfrjujinf.htr_/c-6RTWJUMJZX77x24myyux78x3ax2fx2fi6z0u8q9bufd8p.hqtzikwtsy.sjyx2ftwhx78rzx78yinj_lfrjujinfx2fymzrgx2f9x2f9gx2fFhmnjajrjsyx78-mjfijw.uslx2f6547uc-Fhmnjajrjsyx78-mjfijw.uslx3fajwx78ntsx3dk627g63j4ii8ig19ifg3kk9i4j17h042x26n65h.rfwpx3dnrflj_$/$/$/$/$/$/$
+">
+			</div>
+			<div style="text-align: left;width:100%">
+				<h1>History</h1>
+				<ul class="demo-list-three mdl-list" >
+				<c:forEach items="${profile.history}" var="object">
+					<li class="mdl-list__item mdl-list__item--three-line" style="width:100%"><span
+						class="mdl-list__item-primary-content"> <i
+							class="material-icons mdl-list__item-avatar">share</i> <span>Received ${object.benefit} pts for ${object.action} on ${object.platform} (${object.created})
+								</span> <span class="mdl-list__item-text-body"><a href="${object.link}">${object.text}</a> </span>
+					</span> </li>	
+					</c:forEach>
+				</ul>
+				
+			
+			</div>
           </div>
-          <h2>Would you rather</h2> 
-                  <div class="mdl-grid" style="width:100%;"> 
-        	     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop " style="background-color:#4d7da2;color:#b2d1ef;">
-		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Update</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenan convallis.
-  </div>
-
-			</div>
-			   <div class="mdl-layout-spacer"></div>
-			     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop" style="background-color:#b2d1ef;color:#4d7da2;">
-		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Update</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenan convallis.
-  </div>
-
-			</div>
-        </div>
    
         </div>
       </main>

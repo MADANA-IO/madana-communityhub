@@ -88,17 +88,20 @@
                   <li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
             </ul>
           </div>
+          <script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+          
         </header>
         <nav class="demo-navigation mdl-navigation">
-          <a class="mdl-navigation__link" href="/home"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="/profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
-          <a class="mdl-navigation__link" href="/bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
-          <a class="mdl-navigation__link" href="/rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
+          <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
+          <a class="mdl-navigation__link" href="bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
+          <a class="mdl-navigation__link" href="rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
           <a class="mdl-navigation__link" href="ranking"><i class=" material-icons" role="presentation">group</i>Ranking</a>
+           <a class="mdl-navigation__link" href="settings"><i class=" material-icons" role="presentation">settings</i>Settings</a>
            <div class="mdl-layout-spacer"></div>
        
                      <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
+          <a target="_blank" class="mdl-navigation__link" href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
         </nav>
       </div>
       <main class="mdl-layout__content content">

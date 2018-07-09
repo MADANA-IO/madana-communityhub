@@ -1,6 +1,8 @@
 package com.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.datastructures.MDN_SocialPlatform;
-import de.madana.common.datastructures.MDN_SocialPost;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
@@ -91,9 +92,17 @@ public class LoginController
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
 	public String loadRanking(Model model) 
 	{
+		Map<String, String> oUsers = oClient.getRanking();
+		List<String> oRanking =new ArrayList(oUsers.keySet());
+		MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0).substring(1, oRanking.get(0).length()-1));
+		MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1).substring(1, oRanking.get(1).length()-1));
+		MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2).substring(1, oRanking.get(2).length()-1));
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("users", oClient.getRanking());
+		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
+		model.addAttribute("user1", oFirstUser);
+		model.addAttribute("user2", oSecondUser);
+		model.addAttribute("user3", oThirdUser);
 		return "ranking";
 	}
 
@@ -206,6 +215,17 @@ public class LoginController
 		model.addAttribute("profile", oProfile);
 
 		return "profile";
+
+	}
+	@RequestMapping(value = "/settings", method = RequestMethod.GET)
+	public String settingsPage(Model model) 
+	{
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oClient.getUser(strUserName));
+		oProfile =  oClient.getProfile(strUserName);
+		model.addAttribute("profile", oProfile);
+
+		return "settings";
 
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.POST)

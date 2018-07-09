@@ -51,7 +51,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Home</span>
+          <span class="mdl-layout-title">Ranking</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -88,26 +88,68 @@
                   <li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
             </ul>
           </div>
+          <script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+          
         </header>
-        <nav class="demo-navigation mdl-navigation">
-          <a class="mdl-navigation__link" href="/home"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="/profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
-          <a class="mdl-navigation__link" href="/bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
-          <a class="mdl-navigation__link" href="/rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
+               <nav class="demo-navigation mdl-navigation">
+          <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
+          <a class="mdl-navigation__link" href="bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
+          <a class="mdl-navigation__link" href="rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
           <a class="mdl-navigation__link" href="ranking"><i class=" material-icons" role="presentation">group</i>Ranking</a>
+           <a class="mdl-navigation__link" href="settings"><i class=" material-icons" role="presentation">settings</i>Settings</a>
            <div class="mdl-layout-spacer"></div>
        
                      <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
+          <a target="_blank" class="mdl-navigation__link" href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
         </nav>
       </div>
       <main class="mdl-layout__content content">
         <div class="mdl-grid demo-content">
-        
+         <div class="mdl-grid" style="width:100%;" > 
+         <div class="mdl-layout-spacer"></div>
+         	<div
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
+		  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text"><c:out value="${users[0].key}" /></h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenan convallis.
+  </div>
+
+			</div>
+			<div class="mdl-layout-spacer"></div>
+         </div>
+        <div class="mdl-grid" style="width:100%;"> 
+        	     	<div
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
+		  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Update</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenan convallis.
+  </div>
+
+			</div>
+			   <div class="mdl-layout-spacer"></div>
+			     	<div
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
+		  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Update</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenan convallis.
+  </div>
+
+			</div>
+        </div>
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
          	<div style="height: 600px; overflow-y: scroll;">
 				<table
-					class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"
+					class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-descending mdl-shadow--2dp"
 					style="width: 100%">
 					<thead>
 						<tr>
@@ -124,6 +166,12 @@
 										<c:out value="${user.key}" />
 									</h4></td>
 								<td><h2>${user.value}PTS</h2></td>
+								<td>
+								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  	<a href="/profiles/<c:out value='${user.key}' />"><i class="material-icons">launch</i></a>
+</button>
+
+							</td>
 							</tr>
 						</c:forEach>
 					</tbody>

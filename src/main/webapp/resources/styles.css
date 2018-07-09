@@ -16,16 +16,19 @@
 
 .content
 {
-    background: #d6e2ec;
+    background: #6e9cc6;
+    color:#274863;
 }
 .demo-header 
 {
-    background-color:#b2d1ef;
+    background-color:#f3f3f6;
     color:#274863;
 }
 html, body {
 font-family: 'Montserrat', Regular;
+    color:#274863;
 }
+
 .demo-avatar {
   width: 48px;
   height: 48px;
@@ -156,7 +159,7 @@ font-family: 'Montserrat', Regular;
   background-repeat: no-repeat;
 }
 .demo-cards .mdl-card__actions a {
-  color: #00BCD4;
+  color: #a0c3e8;
   text-decoration: none;
 }
 

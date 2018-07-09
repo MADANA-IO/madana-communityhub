@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -54,13 +53,15 @@
 	z-index: 900;
 }
 </style>
+<script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 		<header class="demo-header mdl-layout__header">
 		<div class="mdl-layout__header-row">
-			<span class="mdl-layout-title">Bounty</span>
+			<span class="mdl-layout-title">Settings</span>
 			<div class="mdl-layout-spacer"></div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 				<label class="mdl-button mdl-js-button mdl-button--icon"
@@ -107,8 +108,6 @@
 					<li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
 				</ul>
 			</div>
-			<script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
-			
 			</header>
 			        <nav class="demo-navigation mdl-navigation">
           <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
@@ -126,104 +125,154 @@
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
 
-			<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
-				<h1>Bounty</h1>
-				<br> <br>
-				 <br> <br>
 
-				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-					<div class="mdl-tabs__tab-bar">
-						<c:forEach items="${social_platforms}" var="platform">
-							<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
-								style="height: 40px;" src="${platform.icon}"></img> <a
-								href="#${platform.name}-panel" class="mdl-tabs__tab is-active">${platform.name}</a>
-							</span>
-						</c:forEach>
+			<div class="mdl-card something-else mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h2>
+						Hello ${msg},
+						</h3>
+				</div>
 
-						<span><img style="height: 40px;"
-							src="https://image.freepik.com/free-icon/myspace-social-share_318-25327.jpg"></img>
-							<a href="#Referral-panel" class="mdl-tabs__tab">Referral</a> </span>
+				<div class="mdl-card__supporting-text">
+					You have successfully logged in. Please have a look at the
+					information we collected from you. Your email is private,
+					everything else can be discovered by everyone. <br> <br>
+					But there's currently nothing to look at right now, the only thing
+					you can do is...
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<a
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						<form action="success" method="post">
+<button
+						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Delete Account</button>
+						</form>
+					</a>
+				</div>
+
+			</div>
+
+			<div class="mdl-card  mdl-cell mdl-cell--8-col">
+				<div class="mdl-card__title">
+					<h3>Private Details</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+					<div class="minilogo"></div>
+					<div>
+						<table>
+
+							<td width="50%;">
+							<tr class="tddefault">
+								<td width=20%;>Username:</td>
+								<td align="left" width="10%"><c:out
+										value="${user.userName}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Email:</td>
+								<td width="10%"><c:out value="${user.mail}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Firstname:</td>
+								<td width="10%"><c:out value="${user.firstName}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Lastname:</td>
+								<td width="10%"><c:out value="${user.lastName}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Member since:</td>
+								<td width="10%"><c:out value="${user.created}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Last login:</td>
+								<td width="10%"><c:out value="${user.lastActive}" /></td>
+							</tr>
+							<tr>
+
+
+							</tr>
+
+							</td>
+
+						</table>
 					</div>
-
-					<c:forEach items="${social_platforms}" var="platform">
-						<div class="mdl-tabs__panel" id="${platform.name}-panel"
-							style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-							<div class=" mdl-card mdl-shadow--2dp"
-								style="width: 100%; align: center;">
-								<div class="mdl-card__title mdl-card--expand"
-									style="background-color: #4d7da2; height: 100px;">
-									<div style="width: 50%;">
-										<img style="height: 40px; float: left;" src="${platform.icon}"></img>
-										<h2 class="mdl-card__title-text" style="color: #f3f3f6"">${platform.name}</h2>
-									</div>
-									<div style="width: 50%;">
-										<span style="float: right;"><a
-											class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-											style="color: #b2d1ef" href="${platform.link}"> View
-												Updates </a> <a href="/auth/${platform.name}"><button
-													class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-													style="background-color: #a0c3e8">Verify Account</button></a></span>
-									</div>
-								</div>
-								<div class="mdl-card__supporting-text">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-										et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-										no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-										ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-										nonumy eirmod tempor invidunt ut labore et dolore magna
-										aliquyam erat, sed diam voluptua. At vero eos et accusam et
-										justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-										sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-										ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-										nonumy eirmod tempor invidunt ut labore et dolore magna
-										aliquyam erat, sed diam voluptua. At vero eos et accusam et
-										justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-										sea takimata sanctus est Lorem ipsum dolor sit amet. Duis
-										autem vel eum iriure dolor in hendrerit in vulputate velit
-										esse molestie consequat, vel illum dolore eu feugiat nulla
-										facilisis at vero eros et accumsan et iusto odio dignissim qui
-										blandit praesent luptatum zzril delenit augue duis dolore te
-										feugait nulla facilisi. Lorem ipsum dolor sit amet,</p>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-
-
-									<ul>
-										<c:forEach items="${platform.feed}" var="post">
-											<li class="mdl-list__item mdl-list__item--three-line"
-												style="color: #4d7da2"><span
-												class="mdl-list__item-primary-content" style="width: 150px;">
-													<i class=" mdl-list__item-avatar"
-													style="width: 150px; height: 200px;"><img
-														src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
-													<span class="mdl-list__item-text-body"
-													style="height: 250px; color: #274863">${post.text} </span>
-											</span> <span style="color: #4d7da2"
-												class="mdl-list__item-secondary-content"> <a
-													class="mdl-list__item-secondary-action" target="_blank"
-													href="${post.link}"><i class="material-icons">share</i>
-														Share</a><br> <a class="mdl-list__item-secondary-action"
-													target="_blank" href="${post.link}"><i
-														class="material-icons">thumb_up</i> Like</a>
-
-
-											</span></li>
-											<hr width=50%>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<button
+						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Change Email</button>
+					<button
+						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Change Password</button>
 
 				</div>
 			</div>
-		</div>
+			<div
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
+				<div class="mdl-card__title">
+					<h3>Linked Accounts</h3>
+				</div>
+				<button
+					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
+					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
+					<span class="visuallyhidden">add</span>
+				</button>
+				<div
+					class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
 
-
-	</main>
+				</div>
+				<div
+					class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
+					<div></div>
+					<ul class="demo-list-control mdl-list">
+					
+						<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content"> <i
+								class="material-icons mdl-list__item-avatar">person</i> <span>
+									JFWenisch</span> <span class="mdl-list__item-text-body"> (270213798237) </span>
+						</span> <span class="mdl-list__item-secondary-action"> <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons">cancel</i>
+</button>
+						</span></li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="mdl-card  mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h3>Privacy Settings</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta">
+					<ul class="demo-list-control mdl-list">
+						<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content"> <i
+								class="material-icons mdl-list__item-avatar">history</i> <span>
+									Show activity</span> <span class="mdl-list__item-text-body"> If
+									you disable this setting nobody besides you will be able to see
+									your activity in your profile </span>
+						</span> <span class="mdl-list__item-secondary-action"> <label
+								class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+								for="list-switch-1"> <input type="checkbox"
+									id="list-switch-1" class="mdl-switch__input" checked />
+							</label>
+						</span></li>
+						<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content"> <i
+								class="material-icons mdl-list__item-avatar">star</i> <span>Show
+									achievments</span> <span class="mdl-list__item-text-body"> If
+									you disable this setting nobody besides you will be able to see
+									your achievments in your profile </span>
+						</span> <span class="mdl-list__item-secondary-action"> <label
+								class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+								for="list-switch-1"> <input type="checkbox"
+									id="list-switch-1" class="mdl-switch__input" checked />
+							</label>
+						</span></li>
+					</ul>
+				</div>
+			</div>
+		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
