@@ -246,7 +246,7 @@ public class LoginController
 		
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String submit(Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
+	public String submit(@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
 
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
@@ -255,7 +255,7 @@ public class LoginController
 			{
 				try 
 				{
-					if (oClient.createUser(user.getUsername(), user.getPassword(), user.getEmail())) ;
+					if (oClient.createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
 					{
 						redirectAttributes.addFlashAttribute("error", "Account created");
 						return "redirect:/login";
