@@ -135,14 +135,10 @@
 					<div class="mdl-tabs__tab-bar">
 						<c:forEach items="${social_platforms}" var="platform">
 							<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
-								style="height: 40px;" src="${platform.icon}"></img> <a
-								href="#${platform.name}-panel" class="mdl-tabs__tab is-active">${platform.name}</a>
+								style="height: 40px;vertical-align:middle;float: top;" src="${platform.icon}"></img> <a
+								href="#${platform.name}-panel" style="vertical-align:middle;"class="mdl-tabs__tab">${platform.name}</a>
 							</span>
 						</c:forEach>
-
-						<span><img style="height: 40px;"
-							src="https://image.freepik.com/free-icon/myspace-social-share_318-25327.jpg"></img>
-							<a href="#Referral-panel" class="mdl-tabs__tab">Referral</a> </span>
 					</div>
 
 					<c:forEach items="${social_platforms}" var="platform">
