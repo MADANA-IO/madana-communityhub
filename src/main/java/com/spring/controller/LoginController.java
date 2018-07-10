@@ -79,6 +79,7 @@ public class LoginController
 		 }
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oClient.getUser(strUserName));
 		model.addAttribute("profile", oProfile);
 		return "bounty";
 	}

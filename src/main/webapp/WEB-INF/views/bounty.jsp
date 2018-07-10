@@ -107,111 +107,184 @@
 					<li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
 				</ul>
 			</div>
-			<script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
-			
-			</header>
-			        <nav class="demo-navigation mdl-navigation">
-          <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
-          <a class="mdl-navigation__link" href="bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
-          <a class="mdl-navigation__link" href="rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
-          <a class="mdl-navigation__link" href="ranking"><i class=" material-icons" role="presentation">group</i>Ranking</a>
-           <a class="mdl-navigation__link" href="settings"><i class=" material-icons" role="presentation">settings</i>Settings</a>
-           <div class="mdl-layout-spacer"></div>
-       
-                     <div class="mdl-layout-spacer"></div>
-          <a target="_blank" class="mdl-navigation__link" href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
-        </nav>
+			<script data-jsd-embedded
+				data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80"
+				data-base-url="https://jsd-widget.atlassian.com"
+				src="https://jsd-widget.atlassian.com/assets/embed.js"></script> </header>
+			<nav class="demo-navigation mdl-navigation"> <a
+				class="mdl-navigation__link" href="home"><i
+				class=" material-icons" role="presentation">home</i>Home</a> <a
+				class="mdl-navigation__link" href="profile"><i
+				class=" material-icons" role="presentation">person</i>Profile</a> <a
+				class="mdl-navigation__link" href="bounty"><i
+				class=" material-icons" role="presentation">share</i>Bounty</a> <a
+				class="mdl-navigation__link" href="rather"><i
+				class=" material-icons" role="presentation">poll</i>Rather</a> <a
+				class="mdl-navigation__link" href="ranking"><i
+				class=" material-icons" role="presentation">group</i>Ranking</a> <a
+				class="mdl-navigation__link" href="settings"><i
+				class=" material-icons" role="presentation">settings</i>Settings</a>
+			<div class="mdl-layout-spacer"></div>
+
+			<div class="mdl-layout-spacer"></div>
+			<a target="_blank" class="mdl-navigation__link"
+				href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i
+				class=" material-icons" role="presentation">help_outline</i><span
+				class="">Help</span></a> </nav>
 		</div>
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
 
-			<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+			<div
+				class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
 				<h1>Bounty</h1>
-				<br> <br>
-				 <br> <br>
+				<br> <br> <br> <br>
 
 				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 					<div class="mdl-tabs__tab-bar">
 						<c:forEach items="${social_platforms}" var="platform">
 							<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
-								style="height: 40px;vertical-align:middle;float: top;" src="${platform.icon}"></img> <a
-								href="#${platform.name}-panel" style="vertical-align:middle;"class="mdl-tabs__tab">${platform.name}</a>
+								style="height: 40px; vertical-align: middle; float: top;"
+								src="${platform.icon}"></img> <a href="'#'${platform.name}-panel"
+								style="vertical-align: middle;" class="mdl-tabs__tab">${platform.name}</a>
 							</span>
 						</c:forEach>
 					</div>
 
 					<c:forEach items="${social_platforms}" var="platform">
-						<div class="mdl-tabs__panel" id="${platform.name}-panel"
-							style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-							<div class=" mdl-card mdl-shadow--2dp"
-								style="width: 100%; align: center;">
-								<div class="mdl-card__title mdl-card--expand"
-									style="background-color: #4d7da2; height: 100px;">
-									<div style="width: 50%;">
-										<img style="height: 40px; float: left;" src="${platform.icon}"></img>
-										<h2 class="mdl-card__title-text" style="color: #f3f3f6"">${platform.name}</h2>
+						<c:choose>
+							<c:when test="${platform.isReferralPlatform=='true'}">
+  	<div class="mdl-tabs__panel" id="${platform.name}-panel"
+									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
+									<div class=" mdl-card mdl-shadow--2dp"
+										style="width: 100%; align: center;">
+										<div class="mdl-card__title mdl-card--expand"
+											style="background-color: #4d7da2; height: 100px;">
+											<div style="width: 50%;">
+												<img style="height: 40px; float: left;"
+													src="${platform.icon}"></img>
+												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
+											</div>
+											<div style="width: 50%;">
+									
+											</div>
+										</div>
+										<div class="mdl-card__supporting-text">
+											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Duis autem vel eum iriure dolor in hendrerit in
+												vulputate velit esse molestie consequat, vel illum dolore eu
+												feugiat nulla facilisis at vero eros et accumsan et iusto
+												odio dignissim qui blandit praesent luptatum zzril delenit
+												augue duis dolore te feugait nulla facilisi. Lorem ipsum
+												dolor sit amet,</p>
+										</div>
+										<div class="mdl-card__actions mdl-card--border">
+										<h3>Just copy the link below</h3>
+
+	
+													
+										</div>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
+  <textarea class="mdl-textfield__input" type="text" rows= "4" disabled style=" color:#274863;">${platform.link}?referrer=${user.guid}</textarea>
+</div>
 									</div>
-									<div style="width: 50%;">
-										<span style="float: right;"><a
-											class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-											style="color: #b2d1ef" href="${platform.link}"> View
-												Updates </a> <a href="/auth/${platform.name}"><button
-													class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-													style="background-color: #a0c3e8">Verify Account</button></a></span>
+								</div>
+        <br />
+							</c:when>
+							<c:otherwise>
+
+
+								<div class="mdl-tabs__panel" id="${platform.name}-panel"
+									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
+									<div class=" mdl-card mdl-shadow--2dp"
+										style="width: 100%; align: center;">
+										<div class="mdl-card__title mdl-card--expand"
+											style="background-color: #4d7da2; height: 100px;">
+											<div style="width: 50%;">
+												<img style="height: 40px; float: left;"
+													src="${platform.icon}"></img>
+												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
+											</div>
+											<div style="width: 50%;">
+												<span style="float: right;"><a
+													class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+													style="color: #b2d1ef" href="${platform.link}"> View
+														Updates </a> <a href="/auth/${platform.name}"><button
+															class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+															style="background-color: #a0c3e8">Verify Account</button></a></span>
+											</div>
+										</div>
+										<div class="mdl-card__supporting-text">
+											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua. At vero eos
+												et accusam et justo duo dolores et ea rebum. Stet clita kasd
+												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+												amet. Duis autem vel eum iriure dolor in hendrerit in
+												vulputate velit esse molestie consequat, vel illum dolore eu
+												feugiat nulla facilisis at vero eros et accumsan et iusto
+												odio dignissim qui blandit praesent luptatum zzril delenit
+												augue duis dolore te feugait nulla facilisi. Lorem ipsum
+												dolor sit amet,</p>
+										</div>
+										<div class="mdl-card__actions mdl-card--border">
+
+
+											<ul>
+												<c:forEach items="${platform.feed}" var="post">
+													<li class="mdl-list__item mdl-list__item--three-line"
+														style="color: #4d7da2"><span
+														class="mdl-list__item-primary-content"
+														style="width: 150px;"> <i
+															class=" mdl-list__item-avatar"
+															style="width: 150px; height: 200px;"><img
+																src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
+															<span class="mdl-list__item-text-body"
+															style="height: 250px; color: #274863">${post.text}
+														</span>
+													</span> <span style="color: #4d7da2"
+														class="mdl-list__item-secondary-content"> <a
+															class="mdl-list__item-secondary-action" target="_blank"
+															href="${post.link}"><i class="material-icons">share</i>
+																Share</a><br> <a
+															class="mdl-list__item-secondary-action" target="_blank"
+															href="${post.link}"><i class="material-icons">thumb_up</i>
+																Like</a>
+
+
+													</span></li>
+													<hr width=50%>
+												</c:forEach>
+											</ul>
+										</div>
 									</div>
 								</div>
-								<div class="mdl-card__supporting-text">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-										et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-										no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-										ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-										nonumy eirmod tempor invidunt ut labore et dolore magna
-										aliquyam erat, sed diam voluptua. At vero eos et accusam et
-										justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-										sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-										ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-										nonumy eirmod tempor invidunt ut labore et dolore magna
-										aliquyam erat, sed diam voluptua. At vero eos et accusam et
-										justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-										sea takimata sanctus est Lorem ipsum dolor sit amet. Duis
-										autem vel eum iriure dolor in hendrerit in vulputate velit
-										esse molestie consequat, vel illum dolore eu feugiat nulla
-										facilisis at vero eros et accumsan et iusto odio dignissim qui
-										blandit praesent luptatum zzril delenit augue duis dolore te
-										feugait nulla facilisi. Lorem ipsum dolor sit amet,</p>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-
-
-									<ul>
-										<c:forEach items="${platform.feed}" var="post">
-											<li class="mdl-list__item mdl-list__item--three-line"
-												style="color: #4d7da2"><span
-												class="mdl-list__item-primary-content" style="width: 150px;">
-													<i class=" mdl-list__item-avatar"
-													style="width: 150px; height: 200px;"><img
-														src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
-													<span class="mdl-list__item-text-body"
-													style="height: 250px; color: #274863">${post.text} </span>
-											</span> <span style="color: #4d7da2"
-												class="mdl-list__item-secondary-content"> <a
-													class="mdl-list__item-secondary-action" target="_blank"
-													href="${post.link}"><i class="material-icons">share</i>
-														Share</a><br> <a class="mdl-list__item-secondary-action"
-													target="_blank" href="${post.link}"><i
-														class="material-icons">thumb_up</i> Like</a>
-
-
-											</span></li>
-											<hr width=50%>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
-						</div>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 
 				</div>
@@ -219,7 +292,7 @@
 		</div>
 
 
-	</main>
+		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
