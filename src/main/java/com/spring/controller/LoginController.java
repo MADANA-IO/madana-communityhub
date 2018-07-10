@@ -74,7 +74,7 @@ public class LoginController
 			 }
 			 catch(Exception ex)
 			 {
-				 System.err.println("Error requesting Feed for" +oSocialPlatforms.get(i).getName());
+				 System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
 			 }
 		 }
 		model.addAttribute("social_platforms",oSocialPlatforms);
