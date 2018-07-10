@@ -218,6 +218,15 @@ public class LoginController
 		return "profile";
 
 	}
+	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+	public String userProfilePage(Model model,@PathVariable("username") String strDestUsername) 
+	{
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oClient.getUser(strUserName));
+		oProfile =  oClient.getProfile(strDestUsername);
+		model.addAttribute("profile", oProfile);
+		return "profile";
+	}
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public String settingsPage(Model model) 
 	{

@@ -145,7 +145,7 @@
 						<c:forEach items="${social_platforms}" var="platform">
 							<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
 								style="height: 40px; vertical-align: middle; float: top;"
-								src="${platform.icon}"></img> <a href="'#'${platform.name}-panel"
+								src="${platform.icon}"></img> <a href="#${platform.name}-panel"
 								style="vertical-align: middle;" class="mdl-tabs__tab">${platform.name}</a>
 							</span>
 						</c:forEach>
