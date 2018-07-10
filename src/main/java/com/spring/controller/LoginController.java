@@ -65,18 +65,18 @@ public class LoginController
 	public String loadBounty(Model model) 
 	{
 
-		 List<MDN_SocialPlatform> oSocialPlatforms = oClient.getSocialPlatforms();
-		 for(int i=0; i < oSocialPlatforms.size(); i++)
-		 {
-			 try
-			 {
-				 oClient.getSocialFeed(oSocialPlatforms.get(i));
-			 }
-			 catch(Exception ex)
-			 {
-				 System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
-			 }
-		 }
+		List<MDN_SocialPlatform> oSocialPlatforms = oClient.getSocialPlatforms();
+		for(int i=0; i < oSocialPlatforms.size(); i++)
+		{
+			try
+			{
+				oClient.getSocialFeed(oSocialPlatforms.get(i));
+			}
+			catch(Exception ex)
+			{
+				System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
+			}
+		}
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
@@ -95,15 +95,39 @@ public class LoginController
 	{
 		Map<String, String> oUsers = oClient.getRanking();
 		List<String> oRanking =new ArrayList(oUsers.keySet());
-		MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0).substring(1, oRanking.get(0).length()-1));
-		MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1).substring(1, oRanking.get(1).length()-1));
-		MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2).substring(1, oRanking.get(2).length()-1));
+		try
+		{
+			MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0));
+			model.addAttribute("user1", oFirstUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		try
+		{
+			MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1));
+			model.addAttribute("user2", oSecondUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		try
+		{
+			MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2));
+			model.addAttribute("user3", oThirdUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
-		model.addAttribute("user1", oFirstUser);
-		model.addAttribute("user2", oSecondUser);
-		model.addAttribute("user3", oThirdUser);
+
+
+
 		return "ranking";
 	}
 
@@ -133,12 +157,12 @@ public class LoginController
 					} 
 			} catch (Exception e) 
 			{
-				 redirectAttributes.addFlashAttribute("error",  e.toString());
+				redirectAttributes.addFlashAttribute("error",  e.toString());
 				return "redirect:/resetpassword/"+token;
 			}
 
 		} 
-		 redirectAttributes.addFlashAttribute("error",  "Please enter details");
+		redirectAttributes.addFlashAttribute("error",  "Please enter details");
 		return "redirect:/resetpassword/"+token;
 
 	}
@@ -160,7 +184,7 @@ public class LoginController
 				oMail.setMail(mail.getMail());
 				if (oClient.requestNewPassword(oMail)) ;
 				{
-					 redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
+					redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
 					return "redirect:/login";
 				} 
 			} catch (Exception e) 
@@ -180,7 +204,7 @@ public class LoginController
 	public String loadLoginpage(Model model) 
 	{
 		model.addAttribute("msg", "Please Enter Your Login Details");
-	
+
 		return "login";
 	}
 
@@ -249,11 +273,11 @@ public class LoginController
 		}
 		catch(Exception e)
 		{
-			
+
 		}
 		model.addAttribute("msg", "Account couldn't be deleted");
 		return "home";
-		
+
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submit(@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
