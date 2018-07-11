@@ -138,190 +138,109 @@
 			<div
 				class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
 				<h1>Bounty</h1>
-				<br> <br> <br> <br>
+				<br> <br> <br> <br> Lorem ipsum dolor sit amet,
+				consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+				ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+				eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+				gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+				nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+				erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+				et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+				Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+				sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+				et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+				accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+				no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem
+				vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+				consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
+				et accumsan et iusto odio dignissim qui blandit praesent luptatum
+				zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
+				ipsum dolor sit amet,
 
-				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-					<div class="mdl-tabs__tab-bar">
-						<c:forEach items="${social_platforms}" var="platform">
-							<span class="mdl-badge" data-badge="${fn:length(platform.feed)}"><img
-								style="height: 40px; vertical-align: middle; float: top;"
-								src="${platform.icon}"></img> <a href="#${platform.name}-panel"
-								style="vertical-align: middle;" class="mdl-tabs__tab">${platform.name}</a>
-							</span>
-						</c:forEach>
+			</div>
+			<div	class="mdl-grid  mdl-cell mdl-cell--12-col">
+				<div class="mdl-cell--12-col"><h1>Share the vision</h1></div>
+				<c:forEach items="${social_platforms}" var="platform">
+	
+						<div class="mdl-card something-else mdl-cell mdl-cell--6-col">
+						<div class="mdl-card__title"
+							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 150px;">
+							
+						</div>
+
+						<div class="mdl-card__supporting-text" >
+							<br> <br> But there's currently nothing to look at
+							right now, the only thing you can do is...
+						</div>
+						<div class="mdl-card__actions mdl-card--border mdl-grid "
+							style="background: #f3f3f6;">
+							<span class="mdl-cell--3-col"> <i class="material-icons">thumb_up</i> 0 / 9999 </span> <span class="mdl-cell--3-col"><i class="material-icons">share</i> 0 / 9999 </span>
+						
+							<a
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--6-col" style="align:right">
+								
+								<form action="success" method="post">
+										 <button
+										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+										${platform.name} bounty</button>
+								</form>
+							</a>
+						</div>
+						<div class="mdl-card__menu" >
+								<a href="${platform.link}"><button
+								class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="align:center">
+								<i class="material-icons">open_in_new</i>
+							</button>
+		${platform.name}</a>
+						</div>
+
 					</div>
 
-					<c:forEach items="${social_platforms}" var="platform">
-						<c:choose>
-							<c:when test="${platform.isReferralPlatform=='true'}">
-  	<div class="mdl-tabs__panel" id="${platform.name}-panel"
-									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-									<div class=" mdl-card mdl-shadow--2dp"
-										style="width: 100%; align: center;">
-										<div class="mdl-card__title mdl-card--expand"
-											style="background-color: #4d7da2; height: 100px;">
-											<div style="width: 50%;">
-												<img style="height: 40px; float: left;"
-													src="${platform.icon}"></img>
-												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
-											</div>
-											<div style="width: 50%;">
-									
-											</div>
-										</div>
-										<div class="mdl-card__supporting-text">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Duis autem vel eum iriure dolor in hendrerit in
-												vulputate velit esse molestie consequat, vel illum dolore eu
-												feugiat nulla facilisis at vero eros et accumsan et iusto
-												odio dignissim qui blandit praesent luptatum zzril delenit
-												augue duis dolore te feugait nulla facilisi. Lorem ipsum
-												dolor sit amet,</p>
-										</div>
-										<div class="mdl-card__actions mdl-card--border">
-										<h3>Just copy the link below</h3>
 
-	
-													
-										</div>
-										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-  <textarea class="mdl-textfield__input" type="text" rows= "4" disabled style=" color:#274863;">${platform.link}?referrer=${user.guid}</textarea>
+				</c:forEach>
 </div>
-									</div>
-								</div>
-        <br />
-							</c:when>
-							<c:otherwise>
+				<div	class="mdl-grid  mdl-cell mdl-cell--12-col">
+				<div class="mdl-cell--12-col"><h1>Invite some friends</h1></div>
+				<c:forEach items="${referral_platforms}" var="platform">
+			<div class="mdl-card something-else mdl-cell mdl-cell--4-col">
+						<div class="mdl-card__title"
+							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 100px;">
+							
+						</div>
 
-
-								<div class="mdl-tabs__panel" id="${platform.name}-panel"
-									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-									<div class=" mdl-card mdl-shadow--2dp"
-										style="width: 100%; align: center;">
-										<div class="mdl-card__title mdl-card--expand"
-											style="background-color: #4d7da2; height: 100px;">
-											<div style="width: 50%;">
-												<img style="height: 40px; float: left;"
-													src="${platform.icon}"></img>
-												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
-											</div>
-											<div style="width: 50%;">
-												<span style="float: right;"><a
-													class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-													style="color: #b2d1ef" href="${platform.link}"> View
-														Updates </a> <a href="/auth/${platform.name}"><button
-															class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-															style="background-color: #a0c3e8">Verify Account</button></a></span>
-											</div>
-										</div>
-										<div class="mdl-card__supporting-text">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Duis autem vel eum iriure dolor in hendrerit in
-												vulputate velit esse molestie consequat, vel illum dolore eu
-												feugiat nulla facilisis at vero eros et accumsan et iusto
-												odio dignissim qui blandit praesent luptatum zzril delenit
-												augue duis dolore te feugait nulla facilisi. Lorem ipsum
-												dolor sit amet,</p>
-										</div>
-										<div class="mdl-card__actions mdl-card--border">
-
-
-											<ul>
-												<c:forEach items="${platform.feed}" var="post">
-													<li class="mdl-list__item mdl-list__item--three-line"
-														style="color: #4d7da2"><span
-														class="mdl-list__item-primary-content"
-														style="width: 150px;"> <i
-															class=" mdl-list__item-avatar"
-															style="width: 150px; height: 200px;"><img
-																src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
-															<span class="mdl-list__item-text-body"
-															style="height: 250px; color: #274863">${post.text}
-														</span>
-													</span> <span style="color: #4d7da2"
-														class="mdl-list__item-secondary-content"> <a
-															class="mdl-list__item-secondary-action" target="_blank"
-															href="${post.link}"><i class="material-icons">share</i>
-																Share</a><br> <a
-															class="mdl-list__item-secondary-action" target="_blank"
-															href="${post.link}"><i class="material-icons">thumb_up</i>
-																Like</a>
-
-
-													</span></li>
-													<hr width=50%>
-												</c:forEach>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-
-				</div>
-			</div>
-			<c:forEach items="${social_platforms}" var="platform">
+						<div class="mdl-card__supporting-text" >
+							<br> <br> But there's currently nothing to look at
+							right now, the only thing you can do is...
+						</div>
+						<div class="mdl-card__actions mdl-card--border mdl-grid "
+							style="background: #f3f3f6;">
+							<span class="mdl-cell--3-col"> <i class="material-icons">people</i> 0 </span> 
 						
-									<div class="mdl-card something-else mdl-cell mdl-cell--3-col" style="  background: url('${platform.icon}') center / cover">
-				<div class="mdl-card__title"  style="color:#f3f3f6;">
-					    <h2 class="mdl-card__title-text">${platform.name}</h2>
-				</div>
+							<a
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col" style="align:right">
+								<form action="success" method="post">
+										 <button
+										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+										${platform.name} bounty</button>
+								</form>
+							</a>
+						</div>
+						<div class="mdl-card__menu" >
+								<a href="${platform.link}"><button
+								class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="align:center">
+								<i class="material-icons">open_in_new</i>
+							</button>
+		${platform.name}</a>
+						</div>
 
-				<div class="mdl-card__supporting-text">
-					 <br> <br>
-					But there's currently nothing to look at right now, the only thing
-					you can do is...
-				</div>
-				<div class="mdl-card__actions mdl-card--border"  style="background:#f3f3f6;">
-					<a
-						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-						<form action="success" method="post">
-<button
-						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Delete Account</button>
-						</form>
-					</a>
-				</div>
-				<div class="mdl-card__menu">
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-      <i class="material-icons">share</i>
-    </button>
-  </div>
-
-			</div>
-						</c:forEach>
-		</div>
+					</div>
 
 
+
+				</c:forEach>
+</div>
+			
 		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

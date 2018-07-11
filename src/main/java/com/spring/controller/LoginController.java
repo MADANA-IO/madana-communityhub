@@ -65,19 +65,32 @@ public class LoginController
 	public String loadBounty(Model model) 
 	{
 
-		List<MDN_SocialPlatform> oSocialPlatforms = oClient.getSocialPlatforms();
-//		for(int i=0; i < oSocialPlatforms.size(); i++)
-//		{
-//			try
-//			{
-//				oClient.getSocialFeed(oSocialPlatforms.get(i));
-//			}
-//			catch(Exception ex)
-//			{
-//				System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
-//			}
-//		}
+		List<MDN_SocialPlatform> oPlatforms = oClient.getSocialPlatforms();
+		List<MDN_SocialPlatform> oSocialPlatforms = new ArrayList<MDN_SocialPlatform>();
+		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
+		for(int i=0; i < oPlatforms.size(); i++)
+		{
+			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
+			{
+				oRefferalPlatforms.add(oPlatforms.get(i));
+				
+			}
+			else
+			{
+				try
+				{
+					oClient.getSocialFeed(oPlatforms.get(i));
+					oSocialPlatforms.add(oPlatforms.get(i));
+				}
+				catch(Exception ex)
+				{
+					System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
+				}
+			}
+			
+		}
 		model.addAttribute("social_platforms",oSocialPlatforms);
+		model.addAttribute("referral_platforms",oRefferalPlatforms);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		model.addAttribute("profile", oProfile);
