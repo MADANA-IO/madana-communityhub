@@ -66,17 +66,17 @@ public class LoginController
 	{
 
 		List<MDN_SocialPlatform> oSocialPlatforms = oClient.getSocialPlatforms();
-		for(int i=0; i < oSocialPlatforms.size(); i++)
-		{
-			try
-			{
-				oClient.getSocialFeed(oSocialPlatforms.get(i));
-			}
-			catch(Exception ex)
-			{
-				System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
-			}
-		}
+//		for(int i=0; i < oSocialPlatforms.size(); i++)
+//		{
+//			try
+//			{
+//				oClient.getSocialFeed(oSocialPlatforms.get(i));
+//			}
+//			catch(Exception ex)
+//			{
+//				System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
+//			}
+//		}
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));

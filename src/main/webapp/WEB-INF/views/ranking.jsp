@@ -111,13 +111,16 @@
          	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
 		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><c:out value="${users[0].key}" /></h2>
+    <h2 class="mdl-card__title-text"><c:out value="${user1.userName}" /></h2>
   </div>
   <div class="mdl-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenan convallis.
+${user1.points} PTS
   </div>
-
+			<div class="mdl-card__menu">
+   <a href="profile/<c:out value='${user1.userName}' />" <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+     	 <i class="material-icons">launch</i>
+    </button></a>
+  </div>
 			</div>
 			<div class="mdl-layout-spacer"></div>
          </div>
@@ -168,7 +171,7 @@
 								<td><h2>${user.value}PTS</h2></td>
 								<td>
 								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  	<a href="/profiles/<c:out value='${user.key}' />"><i class="material-icons">launch</i></a>
+  	<a href="profile/<c:out value='${user.key}' />"><i class="material-icons">launch</i></a>
 </button>
 
 							</td>

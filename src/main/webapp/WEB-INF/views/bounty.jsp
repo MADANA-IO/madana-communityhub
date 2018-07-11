@@ -289,6 +289,36 @@
 
 				</div>
 			</div>
+			<c:forEach items="${social_platforms}" var="platform">
+						
+									<div class="mdl-card something-else mdl-cell mdl-cell--3-col" style="  background: url('${platform.icon}') center / cover">
+				<div class="mdl-card__title"  style="color:#f3f3f6;">
+					    <h2 class="mdl-card__title-text">${platform.name}</h2>
+				</div>
+
+				<div class="mdl-card__supporting-text">
+					 <br> <br>
+					But there's currently nothing to look at right now, the only thing
+					you can do is...
+				</div>
+				<div class="mdl-card__actions mdl-card--border"  style="background:#f3f3f6;">
+					<a
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						<form action="success" method="post">
+<button
+						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Delete Account</button>
+						</form>
+					</a>
+				</div>
+				<div class="mdl-card__menu">
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+      <i class="material-icons">share</i>
+    </button>
+  </div>
+
+			</div>
+						</c:forEach>
 		</div>
 
 
