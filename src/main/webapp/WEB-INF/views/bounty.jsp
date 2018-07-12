@@ -159,32 +159,49 @@
 				ipsum dolor sit amet,
 
 			</div>
-			<div	class="mdl-grid  mdl-cell mdl-cell--12-col">
-				<div class="mdl-cell--12-col"><h1>Share the vision</h1></div>
+			<div class="mdl-grid  mdl-cell mdl-cell--12-col">
+				<div class="mdl-cell--12-col">
+					<h1>Share the vision</h1>
+				</div>
 				<c:forEach items="${social_platforms}" var="platform">
-	
-						<div class="mdl-card something-else mdl-cell mdl-cell--6-col">
+
+					<div class="mdl-card something-else mdl-cell mdl-cell--6-col">
 						<div class="mdl-card__title"
 							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 150px;">
-							
+
 						</div>
 
-						<div class="mdl-card__supporting-text" >
+						<div class="mdl-card__supporting-text">
 							<br> <br> But there's currently nothing to look at
 							right now, the only thing you can do is...
 						</div>
 						<div class="mdl-card__actions mdl-card--border mdl-grid "
 							style="background: #f3f3f6;">
-							
-							<c:forEach var="entry" items="${platform.oActions}">
-							<span class="mdl-cell--3-col"> 
-							<i class="material-icons">${entry.key}</i> ${entry.value} / ${fn:length(platform.feed)}
 
-  						</span>
-					</c:forEach>
-						
-							<a
-								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
+							<c:forEach var="entry" items="${platform.oActions}">
+								<span class="mdl-cell--3-col"> <i class="material-icons">${entry.key}</i>
+									${entry.value} / ${fn:length(platform.feed)}
+
+								</span>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${platform.isVerifiedByUser == false}">
+ <a
+										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"			
+										style="align: right">
+
+										<form action="success" method="post">
+											<button
+												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+												Verify ${platform.name} account</button>
+										</form>
+									</a>
+  </c:when>
+
+								<c:otherwise>
+									<a
+										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
 								<c:choose>
   <c:when test="${empty platform.oActions}">
   mdl-cell--12-col
@@ -196,60 +213,67 @@
 </c:choose>
 								
 								
-								 " style="align:right">
-								
-								<form action="success" method="post">
-										 <button
-										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-										${platform.name} bounty</button>
-								</form>
-							</a>
+								 "
+										style="align: right">
+
+										<form action="success" method="post">
+											<button
+												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+												${platform.name} bounty</button>
+										</form>
+									</a>
+								</c:otherwise>
+							</c:choose>
+
 						</div>
-						<div class="mdl-card__menu" >
-								<a href="${platform.link}"><button
-								class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="align:center">
-								<i class="material-icons">open_in_new</i>
-							</button>
-		${platform.name}</a>
+						<div class="mdl-card__menu">
+							<a href="${platform.link}"><button
+									class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+									style="align: center">
+									<i class="material-icons">open_in_new</i>
+								</button> ${platform.name}</a>
 						</div>
 
 					</div>
 
 
 				</c:forEach>
-</div>
-				<div	class="mdl-grid  mdl-cell mdl-cell--12-col">
-				<div class="mdl-cell--12-col"><h1>Invite some friends</h1></div>
+			</div>
+			<div class="mdl-grid  mdl-cell mdl-cell--12-col">
+				<div class="mdl-cell--12-col">
+					<h1>Invite some friends</h1>
+				</div>
 				<c:forEach items="${referral_platforms}" var="platform">
-			<div class="mdl-card something-else mdl-cell mdl-cell--4-col">
+					<div class="mdl-card something-else mdl-cell mdl-cell--4-col">
 						<div class="mdl-card__title"
 							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 100px;">
-							
+
 						</div>
 
-						<div class="mdl-card__supporting-text" >
+						<div class="mdl-card__supporting-text">
 							<br> <br> But there's currently nothing to look at
 							right now, the only thing you can do is...
 						</div>
 						<div class="mdl-card__actions mdl-card--border mdl-grid "
 							style="background: #f3f3f6;">
-							<span class="mdl-cell--3-col"> <i class="material-icons">people</i> 0 </span> 
-						
-							<a
-								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col" style="align:right">
+							<span class="mdl-cell--3-col"> <i class="material-icons">people</i>
+								0
+							</span> <a
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
+								style="align: right">
 								<form action="success" method="post">
-										 <button
+									<button
 										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 										${platform.name} bounty</button>
 								</form>
 							</a>
 						</div>
-						<div class="mdl-card__menu" >
-								<a href="${platform.link}"><button
-								class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="align:center">
-								<i class="material-icons">open_in_new</i>
-							</button>
-		${platform.name}</a>
+						<div class="mdl-card__menu">
+							<a href="${platform.link}"><button
+									class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+									style="align: center">
+									<i class="material-icons">open_in_new</i>
+								</button> ${platform.name}</a>
 						</div>
 
 					</div>
@@ -257,8 +281,7 @@
 
 
 				</c:forEach>
-</div>
-			
+			</div>
 		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

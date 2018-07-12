@@ -19,12 +19,13 @@ import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
+import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
-import de.madana.common.datastructures.MDN_UserSpecificSocialPlatform;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 import de.madana.webclient.dto.MDN_DTO_SetPassword;
+import de.madana.webclient.dto.MDN_UserSpecificSocialPlatform;
 
 @Controller
 @Scope("session")
@@ -70,6 +71,7 @@ public class LoginController
 		List<MDN_SocialPlatform> oPlatforms = oClient.getSocialPlatforms();
 		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
 		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
+		MDN_User oUser = oClient.getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
@@ -89,25 +91,32 @@ public class LoginController
 					oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
 					oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
 					oSocialPlatforms.add(oMyPlatform);
-					for(int j=0; j< oProfile.getHistory().size();j++)
+
+					for(int j=0; j<oUser.getSocialAccounts().size();j++)
 					{
-						if(oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
+						if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
+								oMyPlatform.setIsVerifiedByUser("true");
+					}
+					if(oMyPlatform.getIsVerifiedByUser().equals("true"))
+					{
+						for(int j=0; j< oProfile.getHistory().size();j++)
 						{
-							MDN_SocialHistoryObject oHistoryObject =oProfile.getHistory().get(j);
-							String strActionIconName="share";
-							if(oHistoryObject.getAction().equalsIgnoreCase("like"))
+							if(oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
 							{
-								strActionIconName="thumb_up";
+								MDN_SocialHistoryObject oHistoryObject =oProfile.getHistory().get(j);
+								String strActionIconName="share";
+								if(oHistoryObject.getAction().equalsIgnoreCase("like"))
+								{
+									strActionIconName="thumb_up";
+								}
+								if (oMyPlatform.oActions.get(strActionIconName) == null )
+									oMyPlatform.oActions.put(strActionIconName, "1");
+								else
+								{
+									int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName))+1;
+									oMyPlatform.oActions.put(strActionIconName, String.valueOf(iNewCount));
+								}
 							}
-							if (oMyPlatform.oActions.get(strActionIconName) == null )
-								oMyPlatform.oActions.put(strActionIconName, "1");
-							else
-							{
-								int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName))+1;
-								oMyPlatform.oActions.put(strActionIconName, String.valueOf(iNewCount));
-							}
-							;
-//							oMyPlatform.
 						}
 					}
 				}

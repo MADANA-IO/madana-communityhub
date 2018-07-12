@@ -226,15 +226,18 @@
 					class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
 					<div></div>
 					<ul class="demo-list-control mdl-list">
-					
-						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"> <i
-								class="material-icons mdl-list__item-avatar">person</i> <span>
-									JFWenisch</span> <span class="mdl-list__item-text-body"> (270213798237) </span>
+							<c:forEach var="socialuser" items="${user.socialAccounts}">
+  							<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content">
+							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;">
+							 <span>
+									${socialuser.platform}</span> <span class="mdl-list__item-text-body" style="align:center;padding-left:50px;">             ${socialuser.ident}</span>
 						</span> <span class="mdl-list__item-secondary-action"> <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
   <i class="material-icons">cancel</i>
 </button>
 						</span></li>
+					</c:forEach>
+					
 						
 					</ul>
 				</div>
