@@ -17,8 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
+import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_UserProfile;
+import de.madana.common.datastructures.MDN_UserSpecificSocialPlatform;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
@@ -66,28 +68,55 @@ public class LoginController
 	{
 
 		List<MDN_SocialPlatform> oPlatforms = oClient.getSocialPlatforms();
-		List<MDN_SocialPlatform> oSocialPlatforms = new ArrayList<MDN_SocialPlatform>();
+		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
 		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 			{
 				oRefferalPlatforms.add(oPlatforms.get(i));
-				
+
 			}
 			else
 			{
 				try
 				{
 					oClient.getSocialFeed(oPlatforms.get(i));
-					oSocialPlatforms.add(oPlatforms.get(i));
+					MDN_UserSpecificSocialPlatform oMyPlatform = new MDN_UserSpecificSocialPlatform();
+					oMyPlatform.setName(oPlatforms.get(i).getName());
+					oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
+					oMyPlatform.setLink(oPlatforms.get(i).getLink());
+					oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
+					oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
+					oSocialPlatforms.add(oMyPlatform);
+					for(int j=0; j< oProfile.getHistory().size();j++)
+					{
+						if(oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
+						{
+							MDN_SocialHistoryObject oHistoryObject =oProfile.getHistory().get(j);
+							String strActionIconName="share";
+							if(oHistoryObject.getAction().equalsIgnoreCase("like"))
+							{
+								strActionIconName="thumb_up";
+							}
+							if (oMyPlatform.oActions.get(strActionIconName) == null )
+								oMyPlatform.oActions.put(strActionIconName, "1");
+							else
+							{
+								int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName))+1;
+								oMyPlatform.oActions.put(strActionIconName, String.valueOf(iNewCount));
+							}
+							;
+//							oMyPlatform.
+						}
+					}
 				}
 				catch(Exception ex)
 				{
 					System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
 				}
 			}
-			
+
 		}
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);

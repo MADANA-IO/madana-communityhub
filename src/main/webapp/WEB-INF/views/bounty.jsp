@@ -175,10 +175,28 @@
 						</div>
 						<div class="mdl-card__actions mdl-card--border mdl-grid "
 							style="background: #f3f3f6;">
-							<span class="mdl-cell--3-col"> <i class="material-icons">thumb_up</i> 0 / 9999 </span> <span class="mdl-cell--3-col"><i class="material-icons">share</i> 0 / 9999 </span>
+							
+							<c:forEach var="entry" items="${platform.oActions}">
+							<span class="mdl-cell--3-col"> 
+							<i class="material-icons">${entry.key}</i> ${entry.value} / ${fn:length(platform.feed)}
+
+  						</span>
+					</c:forEach>
 						
 							<a
-								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--6-col" style="align:right">
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
+								<c:choose>
+  <c:when test="${empty platform.oActions}">
+  mdl-cell--12-col
+  </c:when>
+
+  <c:otherwise>
+  mdl-cell--6-col
+  </c:otherwise>
+</c:choose>
+								
+								
+								 " style="align:right">
 								
 								<form action="success" method="post">
 										 <button
