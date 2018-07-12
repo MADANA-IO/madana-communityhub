@@ -34,6 +34,8 @@ public class LoginController
 	MDN_RestClient oClient =  new MDN_RestClient();
 	String strUserName="ANONYMOUS";
 	MDN_UserProfile oProfile;
+	MDN_User oUser;
+	List<MDN_SocialPlatform> oPlatforms;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadHomepage(Model model) 
 	{
@@ -63,15 +65,45 @@ public class LoginController
 		oClient.setFacebookUID(code);
 		return "redirect:/home";
 	}
+	@RequestMapping(value = "/bounty/{platform}", method = RequestMethod.GET)
+	public String loadBountyDetail(Model model,@PathVariable("platform") String platform) 
+	{
+		oUser = oClient.getUser(strUserName);
+		for(int i=0; i < oPlatforms.size(); i++)
+		{
+			if(oPlatforms.get(i).getName().equalsIgnoreCase(platform))
+			{
+				if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
+				{
+					model.addAttribute("platform",oPlatforms.get(i));
+					model.addAttribute("user", oUser);
+					return "bountydetail";
+				}
+				else
+				{
+					for(int j=0; j<oUser.getSocialAccounts().size();j++)
+					{
+						if(oUser.getSocialAccounts().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
+						{
+							model.addAttribute("platform",oPlatforms.get(i));
+							return "bountydetail";
+						}
+					}
+				}
 
+			}
+
+		}
+		return "redirect:/bounty";
+	}
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
 	public String loadBounty(Model model) 
 	{
 
-		List<MDN_SocialPlatform> oPlatforms = oClient.getSocialPlatforms();
+		oPlatforms = oClient.getSocialPlatforms();
 		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
 		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
-		MDN_User oUser = oClient.getUser(strUserName);
+		oUser = oClient.getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
@@ -95,7 +127,7 @@ public class LoginController
 					for(int j=0; j<oUser.getSocialAccounts().size();j++)
 					{
 						if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
-								oMyPlatform.setIsVerifiedByUser("true");
+							oMyPlatform.setIsVerifiedByUser("true");
 					}
 					if(oMyPlatform.getIsVerifiedByUser().equals("true"))
 					{

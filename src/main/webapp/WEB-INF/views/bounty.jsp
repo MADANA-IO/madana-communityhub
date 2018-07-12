@@ -187,9 +187,9 @@
 
 							<c:choose>
 								<c:when test="${platform.isVerifiedByUser == false}">
- <a
-										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"			
-										style="align: right">
+								
+ <a		class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"			
+										style="align: right" href="auth/${fn:toLowerCase(platform.name)}">
 
 										<form action="success" method="post">
 											<button
@@ -214,7 +214,7 @@
 								
 								
 								 "
-										style="align: right">
+										style="align: right" href="bounty/${fn:toLowerCase(platform.name)}">
 
 										<form action="success" method="post">
 											<button
@@ -260,7 +260,7 @@
 								0
 							</span> <a
 								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
-								style="align: right">
+								style="align: right"  href="bounty/${fn:toLowerCase(platform.name)}">
 								<form action="success" method="post">
 									<button
 										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
