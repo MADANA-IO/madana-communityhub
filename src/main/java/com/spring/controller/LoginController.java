@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,7 +34,7 @@ import de.madana.webclient.dto.MDN_UserSpecificSocialPlatform;
 @Scope("session")
 public class LoginController 
 {
-	MDN_RestClient oClient =  new MDN_RestClient();
+
 	String strUserName="ANONYMOUS";
 	MDN_UserProfile oProfile;
 	MDN_User oUser;
@@ -43,32 +46,32 @@ public class LoginController
 		return "index";
 	}
 	@RequestMapping(value = "/auth/facebook", method = RequestMethod.GET)
-	public String authFacebook(Model model) 
+	public String authFacebook(HttpSession session, Model model) 
 	{
-		return "redirect:"+ oClient.getFacebookAuthURL();
+		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFacebookAuthURL();
 	}
 	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
-	public String authTwitter(Model model) 
+	public String authTwitter(HttpSession session,Model model) 
 	{
-		return "redirect:"+ oClient.getTwitterAuthURL();
+		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getTwitterAuthURL();
 	}
 	@RequestMapping(value = "/auth/twitter/callback" , method = RequestMethod.GET)
-	public String setTwitterUserID(@RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model) 
+	public String setTwitterUserID(HttpSession session, @RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model) 
 	{
-		oClient.setTwitterUID(token,verifier);
+		((MDN_RestClient) session.getAttribute("oClient")).setTwitterUID(token,verifier);
 		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/auth/facebook/callback" , method = RequestMethod.GET)
-	public String setFacebookUserID(@RequestParam("code") String code, Model model) 
+	public String setFacebookUserID(HttpSession session, @RequestParam("code") String code, Model model) 
 	{
-		oClient.setFacebookUID(code);
+		((MDN_RestClient) session.getAttribute("oClient")).setFacebookUID(code);
 		return "redirect:/home";
 	}
 	@RequestMapping(value = "/bounty/{platform}", method = RequestMethod.GET)
-	public String loadBountyDetail(Model model,@PathVariable("platform") String platform) 
+	public String loadBountyDetail(HttpSession session, Model model,@PathVariable("platform") String platform) 
 	{
-		oUser = oClient.getUser(strUserName);
+		oUser = ((MDN_RestClient) session.getAttribute("oClient")).getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getName().equalsIgnoreCase(platform))
@@ -97,9 +100,9 @@ public class LoginController
 		return "redirect:/bounty";
 	}
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
-	public String loadBounty(Model model) 
+	public String loadBounty(HttpSession session, Model model) 
 	{
-
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		oPlatforms = oClient.getSocialPlatforms();
 		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
 		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
@@ -167,15 +170,16 @@ public class LoginController
 		return "bounty";
 	}
 	@RequestMapping(value = "/rather", method = RequestMethod.GET)
-	public String loadRather(Model model) 
+	public String loadRather(HttpSession session,Model model) 
 	{
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("profile", oProfile);
 		return "rather";
 	}
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
-	public String loadRanking(Model model) 
+	public String loadRanking(HttpSession session, Model model) 
 	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		Map<String, String> oUsers = oClient.getRanking();
 		List<String> oRanking =new ArrayList(oUsers.keySet());
 		try
@@ -220,7 +224,7 @@ public class LoginController
 		return "setpassword";
 	}
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.POST)
-	public String submitResetPassword(Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") MDN_DTO_SetPassword oNewPassword,  final RedirectAttributes redirectAttributes) 
+	public String submitResetPassword(HttpSession session,Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") MDN_DTO_SetPassword oNewPassword,  final RedirectAttributes redirectAttributes) 
 	{
 
 		if (oNewPassword.getEmail()!= null && oNewPassword.getEmail().length()>3 && oNewPassword.getEmail().contains("@")) 
@@ -233,7 +237,7 @@ public class LoginController
 					oReset.setPassword(oNewPassword.getPassword());
 					oReset.setToken(token);
 
-					if (oClient.setNewPassword(oReset)) ;
+					if (((MDN_RestClient) session.getAttribute("oClient")).setNewPassword(oReset)) ;
 					{
 						model.addAttribute("error", "Login with your new password");
 						return "redirect:/login";
@@ -255,7 +259,7 @@ public class LoginController
 		return "resetpassword";
 	}
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public String submitResetPassword(Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail,final RedirectAttributes redirectAttributes) 
+	public String submitResetPassword(HttpSession session,Model model, @ModelAttribute("MDN_DTO_ResetPassword") MDN_DTO_ResetPassword mail,final RedirectAttributes redirectAttributes) 
 	{
 
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
@@ -265,7 +269,7 @@ public class LoginController
 			{
 				MDN_MailAddress oMail = new MDN_MailAddress();
 				oMail.setMail(mail.getMail());
-				if (oClient.requestNewPassword(oMail)) ;
+				if (((MDN_RestClient) session.getAttribute("oClient")).requestNewPassword(oMail)) ;
 				{
 					redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
 					return "redirect:/login";
@@ -304,8 +308,9 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(Model model) 
+	public String homePage(HttpSession session,Model model) 
 	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
@@ -315,8 +320,9 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(Model model) 
+	public String profilePage(HttpSession session,Model model) 
 	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
@@ -326,8 +332,9 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-	public String userProfilePage(Model model,@PathVariable("username") String strDestUsername) 
+	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) 
 	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strDestUsername);
@@ -335,8 +342,9 @@ public class LoginController
 		return "profile";
 	}
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(Model model) 
+	public String settingsPage(HttpSession session,Model model) 
 	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
@@ -346,11 +354,11 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public String homeAction(Model model ,final RedirectAttributes redirectAttributes)
+	public String homeAction(HttpSession session,Model model ,final RedirectAttributes redirectAttributes)
 	{
 		try
 		{
-			oClient.deleteUser(strUserName);
+			((MDN_RestClient) session.getAttribute("oClient")).deleteUser(strUserName);
 			redirectAttributes.addFlashAttribute("error", "Account deleted");
 			return "redirect:/login";
 		}
@@ -363,7 +371,7 @@ public class LoginController
 
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String submit(@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
+	public String submit(HttpSession session,@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") MDN_DTO_RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
 
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
@@ -372,7 +380,7 @@ public class LoginController
 			{
 				try 
 				{
-					if (oClient.createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
+					if (((MDN_RestClient) session.getAttribute("oClient")).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
 					{
 						redirectAttributes.addFlashAttribute("error", "Account created");
 						return "redirect:/login";
@@ -396,12 +404,14 @@ public class LoginController
 		}
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
+	public String submit(HttpSession session,Model model, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
 			try 
 			{
+				MDN_RestClient oClient =  new MDN_RestClient();
+				session.setAttribute("oClient", oClient);
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
 					strUserName=loginBean.getUserName();

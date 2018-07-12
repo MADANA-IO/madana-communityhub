@@ -92,12 +92,19 @@
           
         </header>
                <nav class="demo-navigation mdl-navigation">
-          <a class="mdl-navigation__link" href="home"><i class=" material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
-          <a class="mdl-navigation__link" href="bounty"><i class=" material-icons" role="presentation">share</i>Bounty</a>
-          <a class="mdl-navigation__link" href="rather"><i class=" material-icons" role="presentation">poll</i>Rather</a>
-          <a class="mdl-navigation__link" href="ranking"><i class=" material-icons" role="presentation">group</i>Ranking</a>
-           <a class="mdl-navigation__link" href="settings"><i class=" material-icons" role="presentation">settings</i>Settings</a>
+<a
+				class="mdl-navigation__link" href="/home"><i
+				class=" material-icons" role="presentation">home</i>Home</a> <a
+				class="mdl-navigation__link" href="/profile"><i
+				class=" material-icons" role="presentation">person</i>Profile</a> <a
+				class="mdl-navigation__link" href="/bounty"><i
+				class=" material-icons" role="presentation">share</i>Bounty</a> <a
+				class="mdl-navigation__link" href="/rather"><i
+				class=" material-icons" role="presentation">poll</i>Rather</a> <a
+				class="mdl-navigation__link" href="/ranking"><i
+				class=" material-icons" role="presentation">group</i>Ranking</a> <a
+				class="mdl-navigation__link" href="/settings"><i
+				class=" material-icons" role="presentation">settings</i>Settings</a>
            <div class="mdl-layout-spacer"></div>
        
                      <div class="mdl-layout-spacer"></div>
