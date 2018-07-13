@@ -22,6 +22,7 @@ import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
+import de.madana.common.datastructures.MDN_SystemHealthObject;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
@@ -311,6 +312,7 @@ public class LoginController
 	public String homePage(HttpSession session,Model model) 
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_SystemHealthObject oHealth = oClient.getSystemHealth();
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
