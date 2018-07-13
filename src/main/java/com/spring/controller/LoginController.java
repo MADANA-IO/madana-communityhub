@@ -312,9 +312,9 @@ public class LoginController
 	public String homePage(HttpSession session,Model model) 
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
-		MDN_SystemHealthObject oHealth = oClient.getSystemHealth();
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
+		model.addAttribute("system",  oClient.getSystemHealth());
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
 
