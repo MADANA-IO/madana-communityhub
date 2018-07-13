@@ -133,9 +133,115 @@
               <use xlink:href="#chart" />
             </svg>
           </div>
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-   
-        </div>
+          <div class=" mdl-grid mdl-cell--4-col">
+          <div class="mdl-card  mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h3>Top Users</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+					<div class="minilogo"></div>
+					<div>
+						<table>
+
+							<td width="50%;">
+							<tr class="tddefault">
+								<td width=20%;><c:out value="${user1.userName}" /></td>
+								<td align="left" width="10%"><c:out value="${user1.points}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;><c:out value="${user2.userName}" /></td>
+								<td width="10%"><c:out value="${user2.points}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;><c:out value="${user3.userName}" /></td>
+								<td width="10%"><c:out value="${user3.points}" /></td>
+							</tr>
+							
+
+							</td>
+
+						</table>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+				
+
+				</div>
+			</div>
+			<div class="mdl-card  mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h3>User Stats</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+					<div>
+						<table>
+
+							
+							<tr class="tddefault">
+								<td width=20%;>Users:</td>
+								<td align="left" width="10%"><c:out
+										value="${system.usercount}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Currently active users:</td>
+								<td width="10%"><c:out value="${system.activeusercount}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td width=20%;>Points collected:</td>
+								<td width="10%"><c:out value="${system.rankingPointsSum}" /></td>
+							</tr>
+
+							<tr>
+
+
+							</tr>
+
+							</td>
+
+						</table>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+
+
+				</div>
+			</div>
+				<div class="mdl-card  mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h3>System Stats</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+					<div>
+						<table>
+
+							
+						
+							<tr class="tddefault">
+								<td >Started:</td>
+								<td width="70%"><c:out value="${system.startup}" /></td>
+							</tr>
+							<tr class="tddefault">
+								<td >Last update:</td>
+								<td width="70%"><c:out value="${system.useractionupdate}" /></td>
+							</tr>
+							<tr>
+
+
+							</tr>
+
+							</td>
+
+						</table>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+
+				</div>
+			</div>
+          </div>
+        	
+			
+
       </main>
     </div>
       <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

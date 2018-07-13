@@ -315,6 +315,35 @@ public class LoginController
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		model.addAttribute("system",  oClient.getSystemHealth());
+		Map<String, String> oUsers = oClient.getRanking();
+		List<String> oRanking =new ArrayList(oUsers.keySet());
+		try
+		{
+			MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0));
+			model.addAttribute("user1", oFirstUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		try
+		{
+			MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1));
+			model.addAttribute("user2", oSecondUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		try
+		{
+			MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2));
+			model.addAttribute("user3", oThirdUser);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
 
