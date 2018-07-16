@@ -182,7 +182,27 @@
 												dolor sit amet,</p>
 										</div>
 										<div class="mdl-card__actions mdl-card--border">
-										<h3>Just copy the link below</h3>
+													<div class="mdl-card  mdl-cell mdl-cell--12-col">
+				<div class="mdl-card__title">
+					<h3>Thanks for inviting  ${fn:length(referrals)} users</h3>
+				</div>
+				<div class="mdl-card__supporting-text meta">
+					<ul class="demo-list-three mdl-list">
+						<c:forEach items="${referrals}" var="object">
+							<li class="mdl-list__item mdl-list__item--three-line"
+								style="width: 100%"><span
+								class="mdl-list__item-primary-content"> <i
+									class="material-icons mdl-list__item-avatar">person</i> <a
+										href="https://community.madana.io/profile/${object.userName}">${object.userName} (${object.points})</a> <span
+									class="mdl-list__item-text-body"> <span> ${object.created} 
+										 </span></span>
+							</span></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+										<h4>Share the link below to get more pts</h4>
+										
 
 	
 													

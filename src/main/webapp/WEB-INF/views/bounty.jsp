@@ -257,7 +257,7 @@
 						<div class="mdl-card__actions mdl-card--border mdl-grid "
 							style="background: #f3f3f6;">
 							<span class="mdl-cell--3-col"> <i class="material-icons">people</i>
-								0
+								 ${fn:length(platform.referrals)}
 							</span> <a
 								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
 								style="align: right"  href="bounty/${fn:toLowerCase(platform.name)}">

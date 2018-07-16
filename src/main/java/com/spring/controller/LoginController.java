@@ -29,6 +29,7 @@ import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 import de.madana.webclient.dto.MDN_DTO_SetPassword;
+import de.madana.webclient.dto.MDN_ReferralSocialPlatform;
 import de.madana.webclient.dto.MDN_UserSpecificSocialPlatform;
 
 @Controller
@@ -79,7 +80,9 @@ public class LoginController
 			{
 				if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 				{
+					List<MDN_UserProfile> oReferred =  ((MDN_RestClient) session.getAttribute("oClient")).getReferredUsers(oPlatforms.get(i).getName(), strUserName);
 					model.addAttribute("platform",oPlatforms.get(i));
+					model.addAttribute("referrals",oReferred);
 					model.addAttribute("user", oUser);
 					return "bountydetail";
 				}
@@ -106,13 +109,27 @@ public class LoginController
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		oPlatforms = oClient.getSocialPlatforms();
 		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
-		List<MDN_SocialPlatform> oRefferalPlatforms = new ArrayList<MDN_SocialPlatform>();
+		List<MDN_ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<MDN_ReferralSocialPlatform>();
 		oUser = oClient.getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 			{
-				oRefferalPlatforms.add(oPlatforms.get(i));
+				MDN_ReferralSocialPlatform oMyPlatform = new MDN_ReferralSocialPlatform();
+				oMyPlatform.setName(oPlatforms.get(i).getName());
+				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
+				oMyPlatform.setLink(oPlatforms.get(i).getLink());
+				oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
+				oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
+				try
+				{
+					oMyPlatform.setReferrals(((MDN_RestClient) session.getAttribute("oClient")).getReferredUsers(oPlatforms.get(i).getName(), strUserName));
+				}
+				catch(Exception e)
+				{
+					System.err.println("Error receiving referrals for " +oPlatforms.get(i).getName());
+				}
+				oRefferalPlatforms.add(oMyPlatform);
 
 			}
 			else
