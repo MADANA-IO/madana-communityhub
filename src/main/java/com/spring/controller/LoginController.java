@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.QueryParam;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -51,6 +53,15 @@ public class LoginController
 	public String authFacebook(HttpSession session, Model model) 
 	{
 		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFacebookAuthURL();
+	}
+	@RequestMapping(value = "/auth/fractal/callback" , method = RequestMethod.GET)
+	public String setFractalID(HttpSession session,@DefaultValue("")@RequestParam("error") String error,
+			@DefaultValue("")@RequestParam("error_description") String errorDescription,
+			@DefaultValue("")@RequestParam("state") String state,
+			@DefaultValue("")@RequestParam("code") String code, Model model) 
+	{
+		System.out.println();
+		return "redirect:/home";
 	}
 	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
 	public String authTwitter(HttpSession session,Model model) 
