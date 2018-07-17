@@ -54,11 +54,13 @@ public class LoginController
 	{
 		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFacebookAuthURL();
 	}
+	@RequestMapping(value = "/auth/fractal", method = RequestMethod.GET)
+	public String authFractal(HttpSession session,Model model) 
+	{
+		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFractalAuthURL();
+	}
 	@RequestMapping(value = "/auth/fractal/callback" , method = RequestMethod.GET)
-	public String setFractalID(HttpSession session,@DefaultValue("")@RequestParam("error") String error,
-			@DefaultValue("")@RequestParam("error_description") String errorDescription,
-			@DefaultValue("")@RequestParam("state") String state,
-			@DefaultValue("")@RequestParam("code") String code, Model model) 
+	public String setFractalID(HttpSession session, Model model) 
 	{
 		System.out.println();
 		return "redirect:/home";
