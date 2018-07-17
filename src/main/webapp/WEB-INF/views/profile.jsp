@@ -137,8 +137,12 @@
 			<div
 				class="mdl-card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
 				<div class="mdl-card__title">
-					<h3>${msg}</h3>
+					<h1>${profile.userName}</h1>
+				
 				</div>
+					<div class="mdl-card__supporting-text meta">
+						<h3>${profile.points} Points</h3>
+					</div>
 				
 
 
