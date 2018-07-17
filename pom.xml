@@ -125,9 +125,14 @@
 			<artifactId>madana-restclient</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		
-		
+
+
+
+		<dependency>
+			<groupId>de.madana.common</groupId>
+			<artifactId>madana-security</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

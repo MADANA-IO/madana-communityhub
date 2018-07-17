@@ -28,6 +28,7 @@ import de.madana.common.datastructures.MDN_SystemHealthObject;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
+import de.madana.security.MDN_RandomString;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 import de.madana.webclient.dto.MDN_DTO_SetPassword;
@@ -57,12 +58,13 @@ public class LoginController
 	@RequestMapping(value = "/auth/fractal", method = RequestMethod.GET)
 	public String authFractal(HttpSession session,Model model) 
 	{
-		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFractalAuthURL();
+		String strRandom=new MDN_RandomString(64).nextString();
+		session.setAttribute("fractal_state", strRandom);
+		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFractalAuthURL()+"&state="+strRandom;
 	}
 	@RequestMapping(value = "/auth/fractal/callback" , method = RequestMethod.GET)
 	public String setFractalID(HttpSession session, Model model) 
 	{
-		System.out.println();
 		return "redirect:/home";
 	}
 	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
