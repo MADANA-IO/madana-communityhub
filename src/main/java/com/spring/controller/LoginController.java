@@ -60,11 +60,14 @@ public class LoginController
 	{
 		String strRandom=new MDN_RandomString(64).nextString();
 		session.setAttribute("fractal_state", strRandom);
-		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFractalAuthURL()+"&state="+strRandom;
+		return "redirect:"+ ((MDN_RestClient) session.getAttribute("oClient")).getFractalAuthURL()+"&state="+strRandom+"&response_type=code";
 	}
 	@RequestMapping(value = "/auth/fractal/callback" , method = RequestMethod.GET)
-	public String setFractalID(HttpSession session, Model model) 
+	public String setFractalID(HttpSession session,@DefaultValue("")@RequestParam("state") String state,
+			@DefaultValue("")@RequestParam("code") String code, Model model) 
 	{
+		if(state.equals(session.getAttribute("fractal_state")))
+			((MDN_RestClient) session.getAttribute("oClient")).setFractalUID(code);
 		return "redirect:/home";
 	}
 	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
