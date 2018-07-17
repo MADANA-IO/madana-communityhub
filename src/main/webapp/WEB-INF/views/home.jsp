@@ -145,15 +145,15 @@
 
 							<td width="50%;">
 							<tr class="tddefault">
-								<td width=20%;><c:out value="${user1.userName}" /></td>
+								<td width=20%;><img src="${user1.image}"><c:out value="${user1.userName}" /></td>
 								<td align="left" width="10%"><c:out value="${user1.points}" /></td>
 							</tr>
 							<tr class="tddefault">
-								<td width=20%;><c:out value="${user2.userName}" /></td>
+								<td width=20%;><img src="${user2.image}"><c:out value="${user2.userName}" /></td>
 								<td width="10%"><c:out value="${user2.points}" /></td>
 							</tr>
 							<tr class="tddefault">
-								<td width=20%;><c:out value="${user3.userName}" /></td>
+								<td width=20%;><img src="${user3.image}"><c:out value="${user3.userName}" /></td>
 								<td width="10%"><c:out value="${user3.points}" /></td>
 							</tr>
 							

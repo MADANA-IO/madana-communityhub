@@ -118,7 +118,7 @@
          	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
 		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><c:out value="${user1.userName}" /></h2>
+    <h2 class="mdl-card__title-text"><img src="${user1.image}"><c:out value="${user1.userName}" /></h2>
   </div>
   <div class="mdl-card__supporting-text">
 ${user1.points} PTS
@@ -134,8 +134,8 @@ ${user1.points} PTS
         <div class="mdl-grid" style="width:100%;"> 
         	     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
-		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><c:out value="${user2.userName}" /></h2>
+		  <div class="mdl-card__title mdl-card--expand" >
+    <h2 class="mdl-card__title-text" ><img src="${user2.image}"><c:out value="${user2.userName}" /></h2>
   </div>
   <div class="mdl-card__supporting-text">
     ${user2.points} PTS
@@ -150,7 +150,7 @@ ${user1.points} PTS
 			     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
 		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><c:out value="${user3.userName}" /></h2>
+    <h1 class="mdl-card__title-text"><img src="${user3.image}"><c:out value="${user3.userName}" /></h1>
   </div>
   <div class="mdl-card__supporting-text">
    ${user3.points} PTS

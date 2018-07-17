@@ -137,7 +137,7 @@
 			<div
 				class="mdl-card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
 				<div class="mdl-card__title">
-					<h1>${profile.userName}</h1>
+					<h1><img src="${profile.image}">${profile.userName}</h1>
 				
 				</div>
 					<div class="mdl-card__supporting-text meta">
