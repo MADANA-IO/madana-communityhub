@@ -139,7 +139,8 @@
 					<h3>Top Users</h3>
 				</div>
 				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-					<div class="minilogo"></div>
+					<!-- Deletable Contact Chip -->
+
 					<div>
 						<table>
 

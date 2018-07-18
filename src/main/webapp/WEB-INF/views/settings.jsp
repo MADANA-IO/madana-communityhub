@@ -135,19 +135,76 @@
 
 			<div class="mdl-card something-else mdl-cell mdl-cell--12-col">
 				<div class="mdl-card__title">
-					<h2>
-						Hello ${msg},
-						</h3>
+					<img src="${user.image}"><h2>
+						${user.userName}
+						</h2>
 				</div>
 
 				<div class="mdl-card__supporting-text">
-					You have successfully logged in. Please have a look at the
+					You have successfully logged in. <br>
+					Please have a look at the
 					information we collected from you. Your email is private,
 					everything else can be discovered by everyone. <br> <br>
-					But there's currently nothing to look at right now, the only thing
-					you can do is...
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
+			<button id="show-dialog" type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change avatar</button>
+  <dialog class="mdl-dialog"  style="width:500px">
+    <h4 class="mdl-dialog__title">Change Avatar</h4>
+    <div class="mdl-dialog__content"  style="width:500px">
+    <div class="mdl-grid" id="avatars">
+    <c:forEach var="avatar" items="${avatars}">
+    <div class="mdl-card  mdl-cell mdl-cell--3-col" >
+				<div class="mdl-card__title">
+				</div>
+				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+
+					<div >
+						<img src="${avatar.image}">
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+				<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="${avatar.id}">
+  <input type="radio" id="${avatar.id}" class="mdl-radio__button" name="options" value="1" checked>
+  <span class="mdl-radio__label">${avatar.id}</span>
+</label>
+
+				</div>
+			</div>
+   		</c:forEach>
+      <p>
+        Allowing us to collect data will let us get you the information you want faster.
+      </p>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button close">Set Avatar</button>
+    </div>
+  </dialog>
+  <script>
+    var dialog = document.querySelector('dialog');
+    var showDialogButton = document.querySelector('#show-dialog');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function() {
+      dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() 
+    		{
+    	var avatars = document.getElementById('avatars');
+    	var btn = avatars.getElementsByClassName('is-checked')[0];
+    	if (btn) {
+    		var checkedElement = btn.getAttribute('for');
+    		window.location.href = "settings/avatar/"+checkedElement;
+    		
+    	} else {
+    		
+    	}
+    	
+      dialog.close();
+    });
+
+  </script>
 					<a
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 						<form action="success" method="post">

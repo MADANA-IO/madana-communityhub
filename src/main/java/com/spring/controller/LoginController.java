@@ -27,6 +27,7 @@ import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_SystemHealthObject;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
+import de.madana.common.datastructures.MDN_UserProfileImage;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.security.MDN_RandomString;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
@@ -407,6 +408,17 @@ public class LoginController
 		model.addAttribute("profile", oProfile);
 		return "profile";
 	}
+	@RequestMapping(value = "/settings/avatar/{avatarid}", method = RequestMethod.GET)
+	public String setAvatar(HttpSession session,Model model,@PathVariable("avatarid") String strAvatarID) 
+	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_UserProfileImage oImage = new MDN_UserProfileImage();
+		oImage.setId(strAvatarID);
+		oImage.setImage(strAvatarID);
+		oClient.setAvatar(strUserName, oImage);
+		return "redirect:/settings";
+	}
+	
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public String settingsPage(HttpSession session,Model model) 
 	{
@@ -415,6 +427,7 @@ public class LoginController
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
+		model.addAttribute("avatars", oClient.getAvailableAvatars(strUserName));
 
 		return "settings";
 
