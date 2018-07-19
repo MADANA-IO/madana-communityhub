@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -52,47 +53,64 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
-</style>
-<script data-jsd-embedded data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+.mdnheader
+{
+  background-color: #f3f3f6;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  color:#4d7da2;
+  font-family:Montserrat;
 
+}
+.content
+{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
+color: #f3f3f6;
+font-family: Raleway;
+  font-size: 26px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+}
+.mdnnav
+{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
+
+}
+.content h1, h2, h3
+{
+font-family:Montserrat;
+}
+.transparent
+{
+color:#274863;
+background-color: #ffffff;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+}
+</style>
+ <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<header class="demo-header mdl-layout__header">
-		<div class="mdl-layout__header-row">
-			<span class="mdl-layout-title">Settings</span>
-			<div class="mdl-layout-spacer"></div>
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-				<label class="mdl-button mdl-js-button mdl-button--icon"
-					for="search"> <i class="material-icons">search</i>
-				</label>
-				<div class="mdl-textfield__expandable-holder">
-					<input class="mdl-textfield__input" type="text" id="search">
-					<label class="mdl-textfield__label" for="search">Enter your
-						query...</label>
-				</div>
-			</div>
-			<button
-				class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-				id="hdrbtn">
-				<i class="material-icons">more_vert</i>
-			</button>
-			<ul
-				class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
-				for="hdrbtn">
-				<li class="mdl-menu__item">About</li>
-				<li class="mdl-menu__item">Contact</li>
-				<li class="mdl-menu__item">Legal information</li>
-			</ul>
-		</div>
-		</header>
-		<div class="demo-drawer mdl-layout__drawer ">
-			<header class="demo-drawer-header"> <img
-				src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
-				class="demo-avatar">
+  <header class="mdl-layout__header mdl-layout__header--transparent ">
+    <div class="mdl-layout__header-row mdnheader" >
+      <!-- Title -->
+      
+      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
+					alt="MADANA Logo"
+					width="50" height="50" > Community Hub</span>
+    
+    </div>
+  </header>
+		<div class="demo-drawer mdl-layout__drawer mdnnav">
+		<header class="demo-drawer-header"> <img
+				src="${profile.image}"
+				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
-				<span><h4>${msg}</h4></span>
+				<span><h3>${profile.userName}</h3></span>
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -108,32 +126,32 @@
 					<li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
 				</ul>
 			</div>
-			</header>
-			        <nav class="demo-navigation mdl-navigation">
-<a
-				class="mdl-navigation__link" href="/home"><i
+			<script data-jsd-embedded
+				data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80"
+				data-base-url="https://jsd-widget.atlassian.com"
+				src="https://jsd-widget.atlassian.com/assets/embed.js"></script> </header>
+			<nav class="demo-navigation mdl-navigation mdnnav"> <a
+				class="mdl-navigation__link" href="home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
-				class="mdl-navigation__link" href="/profile"><i
+				class="mdl-navigation__link" href="profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
-				class="mdl-navigation__link" href="/bounty"><i
-				class=" material-icons" role="presentation">share</i>Bounty</a> <a
-				class="mdl-navigation__link" href="/rather"><i
-				class=" material-icons" role="presentation">poll</i>Rather</a> <a
-				class="mdl-navigation__link" href="/ranking"><i
+				class="mdl-navigation__link" href="ranking"><i
 				class=" material-icons" role="presentation">group</i>Ranking</a> <a
-				class="mdl-navigation__link" href="/settings"><i
+				class="mdl-navigation__link" href="settings"><i
 				class=" material-icons" role="presentation">settings</i>Settings</a>
-           <div class="mdl-layout-spacer"></div>
-       
-                     <div class="mdl-layout-spacer"></div>
-          <a target="_blank" class="mdl-navigation__link" href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i class=" material-icons" role="presentation">help_outline</i><span class="">Help</span></a>
-        </nav>
+			<div class="mdl-layout-spacer"></div>
+
+			<div class="mdl-layout-spacer"></div>
+			<a target="_blank" class="mdl-navigation__link"
+				href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i
+				class=" material-icons" role="presentation">help_outline</i><span
+				class="">Help</span></a> </nav>
 		</div>
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
 
 
-			<div class="mdl-card something-else mdl-cell mdl-cell--12-col">
+			<div class="mdl-card something-else mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
 					<img src="${user.image}"><h2>
 						${user.userName}
@@ -156,7 +174,7 @@
     <div class="mdl-card  mdl-cell mdl-cell--3-col" >
 				<div class="mdl-card__title">
 				</div>
-				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+				<div class="mdl-card__supporting-text meta">
 
 					<div >
 						<img src="${avatar.image}">
@@ -217,11 +235,11 @@
 
 			</div>
 
-			<div class="mdl-card  mdl-cell mdl-cell--8-col">
+			<div class="mdl-card  mdl-cell mdl-cell--8-col transparent">
 				<div class="mdl-card__title">
 					<h3>Private Details</h3>
 				</div>
-				<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+				<div class="mdl-card__supporting-text meta ">
 					<div class="minilogo"></div>
 					<div>
 						<table>
@@ -273,7 +291,7 @@
 				</div>
 			</div>
 			<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
+				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
 				<div class="mdl-card__title">
 					<h3>Linked Accounts</h3>
 				</div>
@@ -283,11 +301,11 @@
 					<span class="visuallyhidden">add</span>
 				</button>
 				<div
-					class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
+					class="mdl-card__media">
 
 				</div>
 				<div
-					class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
+					class="mdl-card__supporting-text meta meta--fill ">
 					<div></div>
 					<ul class="demo-list-control mdl-list">
 							<c:forEach var="socialuser" items="${user.socialAccounts}">
@@ -306,8 +324,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="mdl-card  mdl-cell mdl-cell--12-col">
-				<div class="mdl-card__title">
+			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+				<div class="mdl-card__title ">
 					<h3>Privacy Settings</h3>
 				</div>
 				<div class="mdl-card__supporting-text meta">

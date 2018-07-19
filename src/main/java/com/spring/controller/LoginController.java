@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.DefaultValue;
-import javax.ws.rs.QueryParam;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,12 +22,12 @@ import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
-import de.madana.common.datastructures.MDN_SystemHealthObject;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.datastructures.MDN_UserProfileImage;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.security.MDN_RandomString;
+import de.madana.webclient.MDN_BackendHandler;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 import de.madana.webclient.dto.MDN_DTO_SetPassword;
@@ -46,7 +44,7 @@ public class LoginController
 	MDN_User oUser;
 	List<MDN_SocialPlatform> oPlatforms;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loadHomepage(Model model) 
+	public String loadHomepage(HttpSession session,Model model) 
 	{
 		model.addAttribute("msg", strUserName);
 		return "index";
@@ -120,99 +118,9 @@ public class LoginController
 			}
 
 		}
-		return "redirect:/bounty";
+		return "redirect:/home";
 	}
-	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
-	public String loadBounty(HttpSession session, Model model) 
-	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
-		oPlatforms = oClient.getSocialPlatforms();
-		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
-		List<MDN_ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<MDN_ReferralSocialPlatform>();
-		oUser = oClient.getUser(strUserName);
-		for(int i=0; i < oPlatforms.size(); i++)
-		{
-			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
-			{
-				MDN_ReferralSocialPlatform oMyPlatform = new MDN_ReferralSocialPlatform();
-				oMyPlatform.setName(oPlatforms.get(i).getName());
-				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
-				oMyPlatform.setLink(oPlatforms.get(i).getLink());
-				oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
-				oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
-				try
-				{
-					oMyPlatform.setReferrals(((MDN_RestClient) session.getAttribute("oClient")).getReferredUsers(oPlatforms.get(i).getName(), strUserName));
-				}
-				catch(Exception e)
-				{
-					System.err.println("Error receiving referrals for " +oPlatforms.get(i).getName());
-				}
-				oRefferalPlatforms.add(oMyPlatform);
-
-			}
-			else
-			{
-				try
-				{
-					oClient.getSocialFeed(oPlatforms.get(i));
-					MDN_UserSpecificSocialPlatform oMyPlatform = new MDN_UserSpecificSocialPlatform();
-					oMyPlatform.setName(oPlatforms.get(i).getName());
-					oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
-					oMyPlatform.setLink(oPlatforms.get(i).getLink());
-					oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
-					oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
-					oSocialPlatforms.add(oMyPlatform);
-
-					for(int j=0; j<oUser.getSocialAccounts().size();j++)
-					{
-						if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
-							oMyPlatform.setIsVerifiedByUser("true");
-					}
-					if(oMyPlatform.getIsVerifiedByUser().equals("true"))
-					{
-						for(int j=0; j< oProfile.getHistory().size();j++)
-						{
-							if(oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
-							{
-								MDN_SocialHistoryObject oHistoryObject =oProfile.getHistory().get(j);
-								String strActionIconName="share";
-								if(oHistoryObject.getAction().equalsIgnoreCase("like"))
-								{
-									strActionIconName="thumb_up";
-								}
-								if (oMyPlatform.oActions.get(strActionIconName) == null )
-									oMyPlatform.oActions.put(strActionIconName, "1");
-								else
-								{
-									int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName))+1;
-									oMyPlatform.oActions.put(strActionIconName, String.valueOf(iNewCount));
-								}
-							}
-						}
-					}
-				}
-				catch(Exception ex)
-				{
-					System.err.println("Error requesting Feed for " +oSocialPlatforms.get(i).getName());
-				}
-			}
-
-		}
-		model.addAttribute("social_platforms",oSocialPlatforms);
-		model.addAttribute("referral_platforms",oRefferalPlatforms);
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oClient.getUser(strUserName));
-		model.addAttribute("profile", oProfile);
-		return "bounty";
-	}
-	@RequestMapping(value = "/rather", method = RequestMethod.GET)
-	public String loadRather(HttpSession session,Model model) 
-	{
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("profile", oProfile);
-		return "rather";
-	}
+	
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
 	public String loadRanking(HttpSession session, Model model) 
 	{
@@ -348,9 +256,14 @@ public class LoginController
 	public String homePage(HttpSession session,Model model) 
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oClient.getUser(strUserName));
-		model.addAttribute("system",  oClient.getSystemHealth());
+		oPlatforms = oClient.getSocialPlatforms();
+		oUser = oClient.getUser(strUserName);
+		oProfile= oClient.getProfile(strUserName);
+		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = MDN_BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+		List<MDN_ReferralSocialPlatform> oRefferalPlatforms = MDN_BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
+
+		
+	
 		Map<String, String> oUsers = oClient.getRanking();
 		List<String> oRanking =new ArrayList(oUsers.keySet());
 		try
@@ -380,9 +293,16 @@ public class LoginController
 		{
 			e.printStackTrace();
 		}
-		oProfile =  oClient.getProfile(strUserName);
-		model.addAttribute("profile", oProfile);
-
+		
+		model.addAttribute("social_platforms",oSocialPlatforms);
+		model.addAttribute("referral_platforms",oRefferalPlatforms);
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oUser);
+		model.addAttribute("profile", oProfile);	
+		session.setAttribute("profile", oProfile);
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oUser);
+		model.addAttribute("system",  oClient.getSystemHealth());
 		return "home";
 
 	}

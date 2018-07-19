@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
     <html lang="en" >
@@ -56,7 +58,7 @@ body{
 
 	font-size: 100px;
 	font-weight: 800;
-	padding: 6px;
+	padding: 50px;
 	margin-top: 10px;
 
 }
@@ -77,8 +79,9 @@ body{
 .header{
 	position: absolute;
 	top: calc(50% - 75px);
-	left: calc(50% - 255px);
+	left: calc(50% - 300px);
 	z-index: 2;
+
 }
 
 .header div{
@@ -95,20 +98,30 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 75px);
+	top: calc(50% - 150px);
 	left: calc(50% - 50px);
 	height: 150px;
-	width: 350px;
-	padding: 10px;
+	width: 600px;
 	z-index: 2;
 }
 
+.registerbutton{
+	color:white;
+	background: linear-gradient(to left, #4d7da2, #6e9cc6);
+}
+.loginbutton
+{
+	color:#4d7da2;
+}
 .login a{
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
+	width:200px;
 	text-align:center;
+
+
 }
 
 .login input[type=text]{
@@ -194,15 +207,16 @@ body{
 		<div class="grad"></div>
 		<div class="header">
 			<div>
-                <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="175" height="175" style="text-align:center; 
-display:block;">Community</div>
+                <img src="http://www.madana.io/images/logo.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;">Community Hub</p></div>
 		</div>
 		<br>
 		<div class="login">
-		<a class=button href="/login">Login</a><br><br>
-		<a class=button href="/register">Create an Account</a>
+		<h1>Welcome!</h1>
+		<p>The Community Hub will be the future home of our community. Here you will be able to get the newest information about the progress and development of MADANA, engage actively in community campaigns and express your opinion on relevant topics in a fun and ludic way.</p>
+		<p>For every interaction with certain community hub features, you will receive community points (CP). These points indicate your engagement in the community hub and for MADANA. These points influence your ranking on which basis MADANA decides how big the reward from community campaigns for you will be. The higher your rank, the better the reward will be. </p>
+		
+				<br><br><span><a class="button loginbutton" href="/login" style="">Login</a> 	<a class="button registerbutton" href="/register">Get started</a></span>
+	
 		</div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

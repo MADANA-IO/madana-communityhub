@@ -53,45 +53,64 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
+.mdnheader
+{
+  background-color: #f3f3f6;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  color:#4d7da2;
+  font-family:Montserrat;
+
+}
+.content
+{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
+color: #f3f3f6;
+font-family: Raleway;
+  font-size: 26px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+}
+.mdnnav
+{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
+
+}
+.content h1, h2, h3
+{
+font-family:Montserrat;
+}
+.transparent
+{
+color:#274863;
+background-color: #ffffff;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+}
 </style>
+ <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<header class="demo-header mdl-layout__header">
-		<div class="mdl-layout__header-row">
-			<span class="mdl-layout-title">Bounty</span>
-			<div class="mdl-layout-spacer"></div>
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-				<label class="mdl-button mdl-js-button mdl-button--icon"
-					for="search"> <i class="material-icons">search</i>
-				</label>
-				<div class="mdl-textfield__expandable-holder">
-					<input class="mdl-textfield__input" type="text" id="search">
-					<label class="mdl-textfield__label" for="search">Enter your
-						query...</label>
-				</div>
-			</div>
-			<button
-				class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-				id="hdrbtn">
-				<i class="material-icons">more_vert</i>
-			</button>
-			<ul
-				class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
-				for="hdrbtn">
-				<li class="mdl-menu__item">About</li>
-				<li class="mdl-menu__item">Contact</li>
-				<li class="mdl-menu__item">Legal information</li>
-			</ul>
-		</div>
-		</header>
-		<div class="demo-drawer mdl-layout__drawer ">
+  <header class="mdl-layout__header mdl-layout__header--transparent ">
+    <div class="mdl-layout__header-row mdnheader" >
+      <!-- Title -->
+      
+      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
+					alt="MADANA Logo"
+					width="50" height="50" > Community Hub</span>
+    
+    </div>
+  </header>
+		<div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
-				src="http://www.madana.io/images/animations/Animation 2/A2_3.png"
-				class="demo-avatar">
+				src="${profile.image}"
+				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
-				<span><h4>${msg}</h4></span>
+				<span><h3>${profile.userName}</h3></span>
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -111,18 +130,14 @@
 				data-key="8c642375-cfe7-4f3c-9c7c-9b8ea797da80"
 				data-base-url="https://jsd-widget.atlassian.com"
 				src="https://jsd-widget.atlassian.com/assets/embed.js"></script> </header>
-			<nav class="demo-navigation mdl-navigation"> <a
-				class="mdl-navigation__link" href="/home"><i
+			<nav class="demo-navigation mdl-navigation mdnnav"> <a
+				class="mdl-navigation__link" href="home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
-				class="mdl-navigation__link" href="/profile"><i
+				class="mdl-navigation__link" href="profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
-				class="mdl-navigation__link" href="/bounty"><i
-				class=" material-icons" role="presentation">share</i>Bounty</a> <a
-				class="mdl-navigation__link" href="/rather"><i
-				class=" material-icons" role="presentation">poll</i>Rather</a> <a
-				class="mdl-navigation__link" href="/ranking"><i
+				class="mdl-navigation__link" href="ranking"><i
 				class=" material-icons" role="presentation">group</i>Ranking</a> <a
-				class="mdl-navigation__link" href="/settings"><i
+				class="mdl-navigation__link" href="settings"><i
 				class=" material-icons" role="presentation">settings</i>Settings</a>
 			<div class="mdl-layout-spacer"></div>
 
