@@ -164,7 +164,7 @@ background-color: #ffffff;
 	
                 <div class="mdl-grid mdl-cell mdl-cell--12-col"> 
                 			<div class="mdl-cell--12-col">
-					<h1>Rather</h1>
+					 <h2><i class="material-icons md-36">poll</i> Rather</h2>
 					<p>Play our daily community quiz and see how you compare to other community members in various privacy situations and MADANA trivia. Collect community points by sharing them with your friends.</p>
 					</div>
 					  <div class="mdl-grid mdl-cell mdl-cell--12-col transparent"> 
@@ -198,7 +198,7 @@ background-color: #ffffff;
 			
 			<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
 			<div class="mdl-cell--12-col">
-				<h1>Share the vision</h1>
+				<h2><i class="material-icons md-36">share</i> Share the vision</h2>
 				<p>Link your social media account to the community hub and
 					collect community points by following MADANA and sharing relevant
 					posts. Check the integrated feed for possible opportunities</p>
@@ -262,7 +262,7 @@ background-color: #ffffff;
 										<form action="success" method="post">
 											<button
 												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-												${platform.name} bounty</button>
+												<i class="material-icons">arrow_forward</i> ${platform.name} bounty</button>
 										</form>
 									</a>
 								</c:otherwise>
@@ -284,7 +284,7 @@ background-color: #ffffff;
 			</div>
 			<div class="mdl-grid  mdl-cell mdl-cell--12-col">
 				<div class="mdl-cell--12-col">
-					<h1>Invite some friends</h1>
+						 <h2><i class="material-icons md-36">person_add</i> Invite some friends</h2>
 					<p>Invite your friends with your referral links and introduce them to MADANA. For every new friend, you can boost your community points counter considerably.</p>
 				</div>
 				<c:forEach items="${referral_platforms}" var="platform">
@@ -300,7 +300,7 @@ background-color: #ffffff;
 						</div>
 						<div class="mdl-card__actions mdl-card--border mdl-grid "
 							style="background: #f3f3f6;">
-							<span class="mdl-cell--3-col"> <i class="material-icons">people</i>
+							<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
 								${fn:length(platform.referrals)}
 							</span> <a
 								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
@@ -309,7 +309,7 @@ background-color: #ffffff;
 								<form action="success" method="post">
 									<button
 										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-										${platform.name} bounty</button>
+										<i class="material-icons">arrow_forward</i> ${platform.name} bounty</button>
 								</form>
 							</a>
 						</div>
@@ -331,7 +331,7 @@ background-color: #ffffff;
 			<div class=" mdl-grid mdl-cell--4-col">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>Top Users</h3>
+						<h3><i class="material-icons">whatshot</i> Top Users</h3>
 					</div>
 					<div
 						class="mdl-card__supporting-text   ">
@@ -344,6 +344,8 @@ background-color: #ffffff;
 							basis on which MADANA decides how big the reward from community
 							campaigns will be for you. The higher your rank, the better the
 							reward will be.</p>
+							<br>
+							<hr>
 							<table>
 
 								<tr class="tddefault">
@@ -368,18 +370,14 @@ background-color: #ffffff;
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-						
-<a href="${platform.link}"><button
-									class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-									style="align: center">
-									<i class="material-icons">open_in_new</i>
-								</button> ${platform.name}</a>
+						<br>
+<a href="/ranking"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">people</i> See all users</button></a>
 
 					</div>
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>User Stats</h3>
+						<h3><i class="material-icons">timeline</i> User Stats</h3>
 					</div>
 					<div
 						class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -411,11 +409,13 @@ background-color: #ffffff;
 							</table>
 						</div>
 					</div>
-					<div class="mdl-card__actions mdl-card--border "></div>
+					<div class="mdl-card__actions mdl-card--border ">
+					<img src="http://img.sc.chinaz.com/upload/2015/12/11//2015121109134858.jpg" width="90%" height="300"  style="padding:10px;">
+					</div>
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>System Stats</h3>
+						<h3><i class="material-icons">build</i> System Stats</h3>
 					</div>
 					<div
 						class="mdl-card__supporting-text meta">
@@ -442,7 +442,16 @@ background-color: #ffffff;
 							</table>
 						</div>
 					</div>
-					<div class="mdl-card__actions mdl-card--border"></div>
+					<div class="mdl-card__actions mdl-card--border">
+					<br>
+					<div>
+					<a href="/ranking"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">developer_board</i> See Update news</button></a>
+					</div>
+					<br>
+					<div><a href="https://madana.atlassian.net/servicedesk/customer/portal/4/create/38"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">bug_report</i> Report a bug</button></a>
+					</div>
+					
+					</div>
 				</div>
 			</div>
 		</main>
