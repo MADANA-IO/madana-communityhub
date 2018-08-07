@@ -39,6 +39,7 @@ public class MDN_BackendHandler
 				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
 				oMyPlatform.setLink(oPlatforms.get(i).getLink());
 				oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
+				oMyPlatform.setIsDisabled(oPlatforms.get(i).getIsDisabled());
 				oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
 				try
 				{
@@ -68,6 +69,7 @@ public class MDN_BackendHandler
 				oMyPlatform.setLink(oPlatforms.get(i).getLink());
 				oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
 				oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
+				oMyPlatform.setIsDisabled(oPlatforms.get(i).getIsDisabled());
 				oSocialPlatforms.add(oMyPlatform);
 
 				for(int j=0; j<oUser.getSocialAccounts().size();j++)
