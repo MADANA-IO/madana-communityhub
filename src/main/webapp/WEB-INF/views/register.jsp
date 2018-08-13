@@ -4,22 +4,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
     <html lang="en" >
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://www.madana.io/css/style.css">
-<link rel="stylesheet" href="http://www.madana.io/css/bootstrap.css">
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
-<title>Spring Login Form</title>
+<title>MADANA Community Hub</title>
   <meta charset="UTF-8">
-  <title>Random Login Form</title>
   
   
   
       <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
 
 body{
 	margin: 0;
@@ -39,7 +37,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(http://www.madana.io/images/background/animation_1_bg.jpg);
+	background-image: url(http://www.madana.io/assets/img/hero-grid.jpg);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -176,12 +174,9 @@ body{
 
   <div class="body"></div>
 		<div class="grad"></div>
-		<div class="header">
+	<div class="header">
 			<div>
-                <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="175" height="175" style="text-align:center; 
-display:block;">Community</div>
+                <img src="http://www.madana.io/assets/img/logo-madana.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;"><h4>Community Hub</h4></p></div>
 		</div>
 		<br>
 		<div class="login">

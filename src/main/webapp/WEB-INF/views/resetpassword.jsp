@@ -3,23 +3,18 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-    <html lang="en" >
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://www.madana.io/css/style.css">
-<link rel="stylesheet" href="http://www.madana.io/css/bootstrap.css">
-
-<title>Spring Login Form</title>
+<title>MADANA Community Hub</title>
   <meta charset="UTF-8">
-  <title>Random Login Form</title>
   
   
   
       <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
 
 body{
 	margin: 0;
@@ -39,13 +34,13 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(http://www.madana.io/images/background/animation_1_bg.jpg);
+	background-image: url(http://www.madana.io/assets/img/hero-grid.jpg);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
 }
 
-.grad{
+.grad {
 	position: absolute;
 	top: -20px;
 	left: -20px;
@@ -53,19 +48,21 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0
+		, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
+	/* Chrome,Safari4+ */
 	z-index: 1;
 	opacity: 0.7;
 }
 
-.header{
+.header {
 	position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 255px);
 	z-index: 2;
 }
 
-.header div{
+.header div {
 	float: left;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
@@ -73,11 +70,11 @@ body{
 	font-weight: 200;
 }
 
-.header div span{
+.header div span {
 	color: #5379fa !important;
 }
 
-.login{
+.login {
 	position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 50px);
@@ -87,19 +84,19 @@ body{
 	z-index: 2;
 }
 
-.login a{
+.login a {
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
-	text-align:center;
+	text-align: center;
 }
 
-.login input[type=text]{
+.login input[type=text] {
 	width: 250px;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 1px solid rgba(255, 255, 255, 0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
@@ -108,11 +105,11 @@ body{
 	padding: 4px;
 }
 
-.login input[type=password]{
+.login input[type=password] {
 	width: 250px;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 1px solid rgba(255, 255, 255, 0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
@@ -122,7 +119,7 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=submit]{
+.login input[type=submit] {
 	width: 260px;
 	height: 35px;
 	background: #fff;
@@ -137,54 +134,59 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=submit]:hover{
+.login input[type=submit]:hover {
 	opacity: 0.8;
 }
 
-.login input[type=submit]:active{
+.login input[type=submit]:active {
 	opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.login input[type=text]:focus {
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.login input[type=password]:focus{
+.login input[type=password]:focus {
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.login input[type=submit]:focus{
+.login input[type=submit]:focus {
 	outline: none;
 }
 
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
+::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.6);
 }
 
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
+::-moz-input-placeholder {
+	color: rgba(255, 255, 255, 0.6);
 }
-    </style>
+</style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 
 <body>
 
-  <div class="body"></div>
-		<div class="grad"></div>
-		<div class="header">
-			<div>
-                <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="175" height="175" style="text-align:center; 
-display:block;">Community</div>
+	<div class="body"></div>
+	<div class="grad"></div>
+	<div class="header">
+		<div>
+			<img src="http://www.madana.io/assets/img/logo-madana.png"
+				alt="MADANA Logo" width="175" height="175"
+				style="text-align: center; display: block;">
+			<p style="text-align: center; font-size: 20px;"><h4>Community Hub</h4>
+			</p>
 		</div>
-		<br>
-		<div class="login">
+		</div>
+	
+				<br>
+		
+			<div class="login">
 					<form:form name="submitForm" method="POST">
 
 			<div>
@@ -192,7 +194,8 @@ display:block;">Community</div>
 				<table>
 					<tr>
 						<td>mail</td>
-						<td><input type="text" placeholder="please enter your mail address" name="mail" /></td>
+						<td><input type="text"
+							placeholder="please enter your mail address" name="mail" /></td>
 					</tr>
 					<tr>
 						<td><br><br></td>
@@ -217,7 +220,8 @@ display:block;">Community</div>
 			</div>
 		</form:form>
 		</div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script
+		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   
 

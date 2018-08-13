@@ -9,19 +9,13 @@
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://www.madana.io/css/style.css">
-<link rel="stylesheet" href="http://www.madana.io/css/bootstrap.css">
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
-<title>Spring Login Form</title>
+
+<title>MADANA Community Hub</title>
   <meta charset="UTF-8">
-  <title>Random Login Form</title>
-  
-  
-  
-      <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+ <style>
+
 
 body{
 	margin: 0;
@@ -41,7 +35,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(http://www.madana.io/images/background/animation_1_bg.jpg);
+	background-image: url(http://www.madana.io/assets/img/hero-grid.jpg);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -98,7 +92,7 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 150px);
+	top: calc(20%);
 	left: calc(50% - 50px);
 	height: 150px;
 	width: 600px;
@@ -196,31 +190,32 @@ body{
    color: rgba(255,255,255,0.6);
 }
     </style>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 
 <body>
-
+<section id="pax" class="light-grey">
   <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
 			<div>
-                <img src="http://www.madana.io/images/logo.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;">Community Hub</p></div>
+                <img src="http://www.madana.io/assets/img/logo-madana.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;"><h4>Community Hub</h4></p></div>
 		</div>
 		<br>
-		<div class="login">
+		<div class="login" style="font-size: 20px;">
 		<h1>Welcome!</h1>
 		<p>The Community Hub will be the future home of our community. Here you will be able to get the newest information about the progress and development of MADANA, engage actively in community campaigns and express your opinion on relevant topics in a fun and ludic way.</p>
 		<p>For every interaction with certain community hub features, you will receive community points (CP). These points indicate your engagement in the community hub and for MADANA. These points influence your ranking on which basis MADANA decides how big the reward from community campaigns for you will be. The higher your rank, the better the reward will be. </p>
 		
-				<br><br><span><a class="button loginbutton" href="/login" style="">Login</a> 	<a class="button registerbutton" href="/register">Get started</a></span>
+			<span><a class="button loginbutton" href="/login" style="">Login</a> 	<a class="button registerbutton" href="/register">Get started</a></span>
 	
+		
+		
 		</div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-  
+  </section>
 
 </body>
 

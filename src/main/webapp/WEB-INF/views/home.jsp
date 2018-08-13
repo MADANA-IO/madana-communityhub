@@ -7,11 +7,12 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Material Design Lite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>MADANA Community Hub</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -41,8 +42,18 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/materials.css" />
+
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+
+
+
+
 <style>
 #view-source {
 	position: fixed;
@@ -53,65 +64,34 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
-.mdnheader
-{
-  background-color: #f3f3f6;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-  color:#4d7da2;
-  font-family:Montserrat;
-
-}
-.content
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-color: #f3f3f6;
-font-family: Raleway;
-  font-size: 26px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: normal;
-}
-.mdnnav
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-
-}
-.content h1, h2, h3
-{
-font-family:Montserrat;
-}
-.transparent
-{
-color:#274863;
-background-color: #ffffff;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-}
 </style>
- <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Raleway'
+	rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-layout__header--transparent ">
-    <div class="mdl-layout__header-row mdnheader" >
-      <!-- Title -->
-      
-      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="50" height="50" > Community Hub</span>
-    
-    </div>
-  </header>
+		<header class="mdl-layout__header mdl-layout__header--transparent ">
+		<div class="mdl-layout__header-row mdnheader">
+			<!-- Title -->
+
+			<span class="mdl-layout-title"> <img
+				src="http://www.madana.io/assets/img/logo-madana.png"
+				alt="MADANA Logo" width="50" height="50"> Community Hub
+			</span>
+
+		</div>
+		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
-				src="${profile.image}"
-				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
+				src="${profile.image}" width="75" height="75">
+			<br>
+			<span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
 				<span><h3>${profile.userName}</h3></span>
-				
+
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -151,17 +131,24 @@ background-color: #ffffff;
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid">
 
-			<div
-				class=" mdl-cell mdl-cell--12-col mdl-grid">
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
 				<h1>Welcome to the Community Hub</h1>
-			<p>The Community Hub will be the future home of our community. Here you will be able to get the newest information about the progress and development of MADANA, engage actively in community campaigns and express your opinion on relevant topics in a fun and ludic way. For every interaction with certain community hub features, you will receive community points (CP). These points indicate your engagement in the community hub and for MADANA. These points influence your ranking on which basis MADANA decides how big the reward from community campaigns for you will be. The higher your rank, the better the reward will be. 
-		
-
+				<p>The Community Hub will be the future home of our community.
+					Here you will be able to get the newest information about the
+					progress and development of MADANA, engage actively in community
+					campaigns and express your opinion on relevant topics in a fun and
+					ludic way. For every interaction with certain community hub
+					features, you will receive community points (CP). These points
+					indicate your engagement in the community hub and for MADANA. These
+					points influence your ranking on which basis MADANA decides how big
+					the reward from community campaigns for you will be. The higher
+					your rank, the better the reward will be.
 			</div>
 
-  
-<div class ="mdl-grid mdl-cell mdl-cell--8-col">
-	
+
+			<div class="mdl-grid mdl-cell mdl-cell--8-col">
+				<div class="mdl-grid mdl-cell mdl-cell--12-col"></div>
+				<!--  
                 <div class="mdl-grid mdl-cell mdl-cell--12-col"> 
                 			<div class="mdl-cell--12-col">
 					 <h2><i class="material-icons md-36">poll</i> Rather</h2>
@@ -194,56 +181,74 @@ background-color: #ffffff;
   </div>
 </div>
 			</div>
-			</div>
-			
-			<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
-			<div class="mdl-cell--12-col">
-				<h2><i class="material-icons md-36">share</i> Share the vision</h2>
-				<p>Link your social media account to the community hub and
-					collect community points by following MADANA and sharing relevant
-					posts. Check the integrated feed for possible opportunities</p>
-			</div>
-				<c:forEach items="${social_platforms}" var="platform">
+			</div>-->
 
-					<div class="mdl-card something-else mdl-cell mdl-cell--6-col transparent">
-						<div class="mdl-card__title"
-							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 150px;">
+				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
+					<div class="mdl-cell--12-col">
+						<h2>
+							<i class="material-icons md-36">share</i> Share the vision
+						</h2>
+						<p>Link your social media account to the community hub and
+							collect community points by following MADANA and sharing relevant
+							posts. Check the integrated feed for possible opportunities</p>
+					</div>
+					<c:forEach items="${social_platforms}" var="platform">
 
-						</div>
+						<div
+							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent">
+							<div class="mdl-card__title"
+								style="height:400px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:150px,cover ;">
 
-						<div class="mdl-card__supporting-text">
-							<br> <br> But there's currently nothing to look at
-							right now, the only thing you can do is...
-						</div>
-						<div class="mdl-card__actions mdl-card--border mdl-grid "
-							style="background: #f3f3f6;">
+							</div>
 
-							<c:forEach var="entry" items="${platform.oActions}">
-								<span class="mdl-cell--3-col"> <i class="material-icons">${entry.key}</i>
-									${entry.value} / ${fn:length(platform.feed)}
+							<div class="mdl-card__supporting-text">
+								<br> <br> But there's currently nothing to look at
+								right now, the only thing you can do is...
+							</div>
+							<div class="mdl-card__actions mdl-card--border mdl-grid "
+								style="background: #f3f3f6;height:20%;">
 
-								</span>
-							</c:forEach>
+								<c:forEach var="entry" items="${platform.oActions}">
+									<span class="mdl-cell--3-col"> <i class="material-icons">${entry.key}</i>
+										${entry.value} / ${fn:length(platform.feed)}
 
-							<c:choose>
-								<c:when test="${platform.isVerifiedByUser == false}">
+									</span>
+								</c:forEach>
 
-									<a
-										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"
-										style="align: right"
-										href="auth/${fn:toLowerCase(platform.name)}">
+							<c:if test="${platform.isDisabled == true}">
+								<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;">
+									<i class="material-icons">info</i> Currently Disabled
+								</button>
+  
+  	</c:if>
+  		<c:if test="${platform.isDisabled == false}">
+								<c:choose>
 
-										<form action="success" method="post">
-											<button
-												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-												Verify ${platform.name} account</button>
-										</form>
-									</a>
-								</c:when>
+								
 
-								<c:otherwise>
-									<a
-										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
+								
+							
+									<c:when test="${platform.isVerifiedByUser == false}">
+
+										<a
+											class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"
+											style="align: right" style="width: 100%;"
+											href="auth/${fn:toLowerCase(platform.name)}">
+
+											<form action="success" method="post">
+												<button
+													class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+													Verify ${platform.name} account</button>
+											</form>
+										</a>
+									</c:when>
+
+									<c:otherwise>
+										<a
+											class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
 								<c:choose>
   <c:when test="${empty platform.oActions}">
   mdl-cell--12-col
@@ -256,112 +261,137 @@ background-color: #ffffff;
 								
 								
 								 "
-										style="align: right"
-										href="bounty/${fn:toLowerCase(platform.name)}">
+											style="align: right"
+											href="bounty/${fn:toLowerCase(platform.name)}">
 
-										<form action="success" method="post">
-											<button
-												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-												<i class="material-icons">arrow_forward</i> ${platform.name} bounty</button>
-										</form>
-									</a>
-								</c:otherwise>
-							</c:choose>
+											<form action="success" method="post">
+												<button
+													class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+													<i class="material-icons">arrow_forward</i>
+													${platform.name} bounty
+												</button>
+											</form>
+										</a>
+									</c:otherwise>
+								
+								</c:choose>
+	  	</c:if>
+							</div>
+							<div class="mdl-card__menu">
+								<a href="${platform.link}"><button
+										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+										style="align: center">
+										<i class="material-icons">open_in_new</i>
+									</button> ${platform.name}</a>
+							</div>
 
 						</div>
-						<div class="mdl-card__menu">
-							<a href="${platform.link}"><button
-									class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-									style="align: center">
-									<i class="material-icons">open_in_new</i>
-								</button> ${platform.name}</a>
-						</div>
-
-					</div>
 
 
-				</c:forEach>
-			</div>
-			<div class="mdl-grid  mdl-cell mdl-cell--12-col">
-				<div class="mdl-cell--12-col">
-						 <h2><i class="material-icons md-36">person_add</i> Invite some friends</h2>
-					<p>Invite your friends with your referral links and introduce them to MADANA. For every new friend, you can boost your community points counter considerably.</p>
+					</c:forEach>
 				</div>
-				<c:forEach items="${referral_platforms}" var="platform">
-					<div class="mdl-card something-else mdl-cell mdl-cell--4-col transparent">
-						<div class="mdl-card__title"
-							style="height:200px;  background: url('${platform.icon}') center;   background-repeat: no-repeat;  background-size: 100px;">
-
-						</div>
-
-						<div class="mdl-card__supporting-text">
-							<br> <br> But there's currently nothing to look at
-							right now, the only thing you can do is...
-						</div>
-						<div class="mdl-card__actions mdl-card--border mdl-grid "
-							style="background: #f3f3f6;">
-							<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
-								${fn:length(platform.referrals)}
-							</span> <a
-								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
-								style="align: right"
-								href="bounty/${fn:toLowerCase(platform.name)}">
-								<form action="success" method="post">
-									<button
-										class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-										<i class="material-icons">arrow_forward</i> ${platform.name} bounty</button>
-								</form>
-							</a>
-						</div>
-						<div class="mdl-card__menu">
-							<a href="${platform.link}"><button
-									class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-									style="align: center">
-									<i class="material-icons">open_in_new</i>
-								</button> ${platform.name}</a>
-						</div>
-
+				<div class="mdl-grid  mdl-cell mdl-cell--12-col">
+					<div class="mdl-cell--12-col">
+						<h2>
+							<i class="material-icons md-36">person_add</i> Invite some
+							friends
+						</h2>
+						<p>Invite your friends with your referral links and introduce
+							them to MADANA. For every new friend, you can boost your
+							community points counter considerably.</p>
 					</div>
+					<c:forEach items="${referral_platforms}" var="platform">
+						<div
+							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent">
+							<div class="mdl-card__title"
+								style="height:400px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:150px,cover ;">
+
+
+							</div>
+
+							<div class="mdl-card__supporting-text">
+								<br> <br> But there's currently nothing to look at
+								right now, the only thing you can do is...
+							</div>
+							<div class="mdl-card__actions mdl-card--border mdl-grid "
+								style="background: #f3f3f6;height:20%;">
+								<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
+									${fn:length(platform.referrals)}
+								</span> 
+														<c:if test="${platform.isDisabled == true}">
+								<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;">
+									<i class="material-icons">info</i> Currently Disabled
+								</button>
+  
+  	</c:if>
+  		<c:if test="${platform.isDisabled == false}">
+								<a
+									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
+									style="align: right"
+									href="bounty/${fn:toLowerCase(platform.name)}">
+									<form action="success" method="post">
+										<button
+											class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 100%;">
+											<i class="material-icons">arrow_forward</i> ${platform.name}
+											bounty
+										</button>
+									</form>
+								</a>
+								  	</c:if>
+							</div>
+							<div class="mdl-card__menu">
+								<a href="${platform.link}"><button
+										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+										style="align: center">
+										<i class="material-icons">open_in_new</i>
+									</button> ${platform.name}</a>
+							</div>
+
+						</div>
 
 
 
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
-		</div>
 			<div class=" mdl-grid mdl-cell--4-col">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3><i class="material-icons">whatshot</i> Top Users</h3>
+						<h3>
+							<i class="material-icons">whatshot</i> Top Users
+						</h3>
 					</div>
-					<div
-						class="mdl-card__supporting-text   ">
+					<div class="mdl-card__supporting-text   ">
 						<!-- Deletable Contact Chip -->
 
 						<div>
-						<p>In the ranking section, you can see which ranking position
-							you hold compared to other community members. The more community
-							points you have the higher your rank will be. The ranking is the
-							basis on which MADANA decides how big the reward from community
-							campaigns will be for you. The higher your rank, the better the
-							reward will be.</p>
+							<p>In the ranking section, you can see which ranking position
+								you hold compared to other community members. The more community
+								points you have the higher your rank will be. The ranking is the
+								basis on which MADANA decides how big the reward from community
+								campaigns will be for you. The higher your rank, the better the
+								reward will be.</p>
 							<br>
 							<hr>
 							<table>
 
 								<tr class="tddefault">
-									<td width=20%;><img src="${user1.image}">
-									<c:out value="${user1.userName}" /></td>
+									<td width=20%;><img src="${user1.image}" width="75"
+										height="75"> <c:out value="${user1.userName}" /></td>
 									<td align="left" width="10%"><c:out
 											value="${user1.points}" /> CP</td>
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;><img src="${user2.image}">
-									<c:out value="${user2.userName}" /></td>
+									<td width=20%;><img src="${user2.image}" width="75"
+										height="75"> <c:out value="${user2.userName}" /></td>
 									<td width="10%"><c:out value="${user2.points}" /> CP</td>
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;><img src="${user3.image}">
-									<c:out value="${user3.userName}" /></td>
+									<td width=20%;><img src="${user3.image}" width="75"
+										height="75"> <c:out value="${user3.userName}" /></td>
 									<td width="10%"><c:out value="${user3.points}" /> CP</td>
 								</tr>
 
@@ -370,14 +400,20 @@ background-color: #ffffff;
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-						<br>
-<a href="/ranking"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">people</i> See all users</button></a>
+						<br> <a href="/ranking"><button id="show-dialog"
+								type="button"
+								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+								style="width: 100%;">
+								<i class="material-icons">people</i> See all users
+							</button></a>
 
 					</div>
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3><i class="material-icons">timeline</i> User Stats</h3>
+						<h3>
+							<i class="material-icons">timeline</i> User Stats
+						</h3>
 					</div>
 					<div
 						class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -404,21 +440,24 @@ background-color: #ffffff;
 
 								</tr>
 
-						
+
 
 							</table>
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border ">
-					<img src="http://img.sc.chinaz.com/upload/2015/12/11//2015121109134858.jpg" width="90%" height="300"  style="padding:10px;">
+						<img
+							src="http://img.sc.chinaz.com/upload/2015/12/11//2015121109134858.jpg"
+							width="90%" height="300" style="padding: 10px;">
 					</div>
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3><i class="material-icons">build</i> System Stats</h3>
+						<h3>
+							<i class="material-icons">build</i> System Stats
+						</h3>
 					</div>
-					<div
-						class="mdl-card__supporting-text meta">
+					<div class="mdl-card__supporting-text meta">
 						<div>
 							<table>
 
@@ -443,14 +482,25 @@ background-color: #ffffff;
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-					<br>
-					<div>
-					<a href="/ranking"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">developer_board</i> See Update news</button></a>
-					</div>
-					<br>
-					<div><a href="https://madana.atlassian.net/servicedesk/customer/portal/4/create/38"><button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="width:100%;"> <i class="material-icons">bug_report</i> Report a bug</button></a>
-					</div>
-					
+						<br>
+						<div>
+							<a href="/ranking"><button id="show-dialog" type="button"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+									style="width: 100%;">
+									<i class="material-icons">developer_board</i> See Update news
+								</button></a>
+						</div>
+						<br>
+						<div>
+							<a
+								href="https://madana.atlassian.net/servicedesk/customer/portal/4/create/38"><button
+									id="show-dialog" type="button"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+									style="width: 100%;">
+									<i class="material-icons">bug_report</i> Report a bug
+								</button></a>
+						</div>
+
 					</div>
 				</div>
 			</div>

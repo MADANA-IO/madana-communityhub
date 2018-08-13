@@ -11,7 +11,7 @@
 	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Material Design Lite</title>
+<title>MADANA Community Hub</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -28,20 +28,24 @@
 	content="images/touch/ms-touch-icon-144x144-precomposed.png">
 <meta name="msapplication-TileColor" content="#3372DF">
 
-<link rel="shortcut icon" href="images/favicon.png">
 
 <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-
 <link href=“https://fonts.googleapis.com/css?family=Montserrat”
 	rel=“stylesheet”>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-<link rel="stylesheet"
+	<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
+		
+			<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/materials.css" />
+	
+
+	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/styles.css" />
 <style>
 #view-source {
@@ -52,41 +56,6 @@
 	margin-right: 40px;
 	margin-bottom: 40px;
 	z-index: 900;
-}
-.mdnheader
-{
-  background-color: #f3f3f6;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-  color:#4d7da2;
-  font-family:Montserrat;
-
-}
-.content
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-color: #f3f3f6;
-font-family: Raleway;
-  font-size: 26px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: normal;
-}
-.mdnnav
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-
-}
-.content h1, h2, h3
-{
-font-family:Montserrat;
-}
-.transparent
-{
-color:#274863;
-background-color: #ffffff;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
 }
 </style>
  <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
