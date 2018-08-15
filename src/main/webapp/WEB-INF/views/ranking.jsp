@@ -58,6 +58,8 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
+
+}
 </style>
  <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -123,12 +125,19 @@
          <div class="mdl-layout-spacer"></div>
          	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand ">
-    <h2 class="mdl-card__title-text"><img src="${user1.image}" width="100" height="100"><c:out value="${user1.userName}" /></h2>
+		  <div class="mdl-card__title mdl-card--expand " style="background-color:#D9A441;">
+  
+    <img src="${user1.image}" width="150" height="150" style="margin-right:25px;">
+    <div>
+    <h2 ><c:out value="${user1.userName}" /></h2>
+      <h3>${user1.points} CP</h3>
+    </div>
+
+
+   
+
   </div>
-  <div class="mdl-card__supporting-text">
-${user1.points} CP
-  </div>
+
 			<div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
      	 <i class="material-icons">launch</i>
@@ -140,11 +149,13 @@ ${user1.points} CP
         <div class="mdl-grid" style="width:100%;"> 
         	     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand" >
-    <h2 class="mdl-card__title-text" ><img src="${user2.image}" width="100" height="100"><c:out value="${user2.userName}" /></h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    ${user2.points} CP
+		  <div class="mdl-card__title mdl-card--expand" style="background-color:#CCC2C2";">
+     
+    <img src="${user2.image}" width="150" height="150" style="margin-right:25px;">
+    <div>
+    <h2 ><c:out value="${user2.userName}" /></h2>
+      <h3>${user2.points} CP</h3>
+    </div> 
   </div>
 <div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user2.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -155,12 +166,13 @@ ${user1.points} CP
 			   <div class="mdl-layout-spacer"></div>
 			     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><img src="${user3.image}" width="100" height="100"><c:out value="${user3.userName}" /></h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-   ${user3.points} CP
-  </div>
+		  <div class="mdl-card__title mdl-card--expand" style="background-color:#965A38;">
+     <img src="${user3.image}" width="150" height="150" style="margin-right:25px;">
+    <div>
+    <h2 ><c:out value="${user3.userName}" /></h2>
+      <h3>${user3.points} CP</h3>
+    </div> 
+   </div>
 <div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
      	 <i class="material-icons">launch</i>
