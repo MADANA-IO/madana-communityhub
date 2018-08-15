@@ -7,11 +7,12 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Material Design Lite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>MADANA Community Hub</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -41,8 +42,18 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/materials.css" />
+
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+
+
+
+
 <style>
 #view-source {
 	position: fixed;
@@ -53,64 +64,34 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
-.mdnheader
-{
-  background-color: #f3f3f6;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-  color:#4d7da2;
-  font-family:Montserrat;
-
-}
-.content
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-color: #f3f3f6;
-font-family: Raleway;
-  font-size: 26px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: normal;
-}
-.mdnnav
-{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
-
-}
-.content h1, h2, h3
-{
-font-family:Montserrat;
-}
-.transparent
-{
-color:#274863;
-background-color: #ffffff;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-}
 </style>
- <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Raleway'
+	rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-layout__header--transparent ">
-    <div class="mdl-layout__header-row mdnheader" >
-      <!-- Title -->
-      
-      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="50" height="50" > Community Hub</span>
-    
-    </div>
-  </header>
+		<header class="mdl-layout__header mdl-layout__header--transparent ">
+		<div class="mdl-layout__header-row mdnheader">
+			<!-- Title -->
+
+			<span class="mdl-layout-title"> <img
+				src="http://www.madana.io/assets/img/logo-madana.png"
+				alt="MADANA Logo" width="50" height="50"> Community Hub
+			</span>
+
+		</div>
+		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
-				src="${profile.image}"
-				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
+				src="${profile.image}" width="75" height="75">
+			<br>
+			<span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
 				<span><h3>${profile.userName}</h3></span>
+
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -149,170 +130,152 @@ background-color: #ffffff;
 		</div>
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
+			
+				<div class="mdl-cell mdl-cell--12-col ">
+				    <!-- Tabs -->
+   <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar mdnheader" style="color:#f3f3f6;">
+      <a href="#starks-panel" class="mdl-tabs__tab is-active"><i class="material-icons">info</i>Unseen(${fn:length(noaction)})</a>
+      <a href="#lannisters-panel" class="mdl-tabs__tab"><i class="material-icons">done</i>Interacted(${fn:length(inprogress)})</a>
+      <a href="#targaryens-panel" class="mdl-tabs__tab"><i class="material-icons">done_all</i>Completed(${fn:length(completed)})</a>
+  </div>
+  
+  <div class="mdl-tabs__panel is-active" id="starks-panel">
+  	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
+<c:forEach items="${noaction}" var="post">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+					<div class="mdl-card__title">
+					</div>
+					<div class="mdl-card__supporting-text   ">
+						<!-- Deletable Contact Chip -->
 
-			<div
-				class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
-				<h1>Bounty</h1>
-
-
-
-						<c:choose>
-							<c:when test="${platform.isReferralPlatform=='true'}">
-  	<div class="mdl-tabs__panel" id="${platform.name}-panel"
-									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-									<div class=" mdl-card mdl-shadow--2dp"
-										style="width: 100%; align: center;">
-										<div class="mdl-card__title mdl-card--expand"
-											style="background-color: #4d7da2; height: 100px;">
-											<div style="width: 50%;">
-												<img style="height: 40px; float: left;"
-													src="${platform.icon}"></img>
-												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
-											</div>
-											<div style="width: 50%;">
-									
-											</div>
-										</div>
-										<div class="mdl-card__supporting-text">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Duis autem vel eum iriure dolor in hendrerit in
-												vulputate velit esse molestie consequat, vel illum dolore eu
-												feugiat nulla facilisis at vero eros et accumsan et iusto
-												odio dignissim qui blandit praesent luptatum zzril delenit
-												augue duis dolore te feugait nulla facilisi. Lorem ipsum
-												dolor sit amet,</p>
-										</div>
-										<div class="mdl-card__actions mdl-card--border">
-													<div class="mdl-card  mdl-cell mdl-cell--12-col">
-				<div class="mdl-card__title">
-					<h3>Thanks for inviting  ${fn:length(referrals)} users</h3>
-				</div>
-				<div class="mdl-card__supporting-text meta">
-					<ul class="demo-list-three mdl-list">
-						<c:forEach items="${referrals}" var="object">
-							<li class="mdl-list__item mdl-list__item--three-line"
-								style="width: 100%"><span
-								class="mdl-list__item-primary-content"> <i
-									class="material-icons mdl-list__item-avatar">person</i> <a
-										href="https://community.madana.io/profile/${object.userName}">${object.userName} (${object.points})</a> <span
-									class="mdl-list__item-text-body"> <span> ${object.created} 
-										 </span></span>
-							</span></li>
-						</c:forEach>
-					</ul>
-				</div>
-			</div>
-										<h4>Share the link below to get more pts</h4>
-										
-
+						<div >	${post.embeddCode}
 	
-													
-										</div>
-										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-  <textarea class="mdl-textfield__input" type="text" rows= "4" disabled style=" color:#274863;">${platform.link}?referrer=${user.guid}</textarea>
-</div>
-									</div>
-								</div>
-        <br />
-							</c:when>
-							<c:otherwise>
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%; font-size: 60%;text-align: left;">
+									<i class="material-icons">info</i> Earn 200 CPT for a Retweet
+								</button>
+									<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">info</i> Earn 100 CPT for a Like
+								</button>
 
+					</div>
+				</div>
 
-								<div class="mdl-tabs__panel" id="${platform.name}-panel"
-									style="padding: 70px; margin-top: 100px; background-color: #f3f3f6;">
-									<div class=" mdl-card mdl-shadow--2dp"
-										style="width: 100%; align: center;">
-										<div class="mdl-card__title mdl-card--expand"
-											style="background-color: #4d7da2; height: 100px;">
-											<div style="width: 50%;">
-												<img style="height: 40px; float: left;"
-													src="${platform.icon}"></img>
-												<h2 class="mdl-card__title-text" style="color: #f3f3f6">${platform.name}</h2>
-											</div>
-											<div style="width: 50%;">
-												<span style="float: right;"><a
-													class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-													style="color: #b2d1ef" href="${platform.link}"> View
-														Updates </a> <a href="/auth/${platform.name}"><button
-															class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-															style="background-color: #a0c3e8">Verify Account</button></a></span>
-											</div>
-										</div>
-										<div class="mdl-card__supporting-text">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua. At vero eos
-												et accusam et justo duo dolores et ea rebum. Stet clita kasd
-												gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-												amet. Duis autem vel eum iriure dolor in hendrerit in
-												vulputate velit esse molestie consequat, vel illum dolore eu
-												feugiat nulla facilisis at vero eros et accumsan et iusto
-												odio dignissim qui blandit praesent luptatum zzril delenit
-												augue duis dolore te feugait nulla facilisi. Lorem ipsum
-												dolor sit amet,</p>
-										</div>
-										<div class="mdl-card__actions mdl-card--border">
-
-
-											<ul>
-												<c:forEach items="${platform.feed}" var="post">
-													<li class="mdl-list__item mdl-list__item--three-line"
-														style="color: #4d7da2"><span
-														class="mdl-list__item-primary-content"
-														style="width: 150px;"> <i
-															class=" mdl-list__item-avatar"
-															style="width: 150px; height: 200px;"><img
-																src="${post.picture}" style="width: 150px;"></i> <span>${post.created}</span>
-															<span class="mdl-list__item-text-body"
-															style="height: 250px; color: #274863">${post.text}
-														</span>
-													</span> <span style="color: #4d7da2"
-														class="mdl-list__item-secondary-content"> <a
-															class="mdl-list__item-secondary-action" target="_blank"
-															href="${post.link}"><i class="material-icons">share</i>
-																Share</a><br> <a
-															class="mdl-list__item-secondary-action" target="_blank"
-															href="${post.link}"><i class="material-icons">thumb_up</i>
-																Like</a>
-
-
-													</span></li>
-													<hr width=50%>
 												</c:forEach>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
+												</div>
+  </div>
+  <div class="mdl-tabs__panel" id="lannisters-panel">
+  	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
+<c:forEach items="${inprogress}" var="post">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+					<div class="mdl-card__title">
+					</div>
+					<div class="mdl-card__supporting-text   ">
+						<!-- Deletable Contact Chip -->
 
+						<div>	${post.embeddCode}
+	
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+					<c:set var="actions">${post.completedActions}</c:set>
+					<c:if test = "${fn:contains(actions, 'like')}">
+    
+						<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">info</i> Earn 200 CPT for a Retweet
+								</button>
+									<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">done</i> Received 100 CPT for a Like
+								</button>
+								  </c:if>
+								  	<c:if test = "${fn:contains(actions, 'share')}">
+									<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">info</i> Earn 100 CPT for a Like
+								</button>
+								<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">done</i> Received 200 CPT for a Retweet
+								</button>
+								  </c:if>
 
+					</div>
+				</div>
+
+												</c:forEach>
+												</div>
+  </div>
+  <div class="mdl-tabs__panel" id="targaryens-panel">
+  	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
+<c:forEach items="${completed}" var="post">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+					<div class="mdl-card__title">
+					</div>
+					<div class="mdl-card__supporting-text   ">
+						<!-- Deletable Contact Chip -->
+
+						<div>	${post.embeddCode}
+	
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">done</i> Received 200 CPT for a Retweet
+								</button>
+									<button
+									 type="button"
+									class="mdl-button mdl-js-button "
+									style="width: 100%;font-size: 60%;text-align: left;">
+									<i class="material-icons">done</i> Received 100 CPT for a Like
+								</button>
+
+					</div>
+				</div>
+
+												</c:forEach>
+												</div>
+  </div>
+</div>
 		
-			</div>
+					<div class="mdl-grid mdl-cell--12-col">
+					  <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content">
+	
+</div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+						
+					</div>
+					</div>
+					
+
 		</div>
 
 

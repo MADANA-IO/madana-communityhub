@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_MailAddress;
 import de.madana.common.datastructures.MDN_PasswordReset;
+import de.madana.common.datastructures.MDN_PersonalSocialPost;
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_User;
@@ -110,8 +112,39 @@ public class LoginController
 						if(oUser.getSocialAccounts().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
 						{
 							model.addAttribute("platform",oPlatforms.get(i));
+							List<MDN_PersonalSocialPost> oNoActions = new ArrayList<MDN_PersonalSocialPost>();
+							List<MDN_PersonalSocialPost> oInProgress = new ArrayList<MDN_PersonalSocialPost>();
+							List<MDN_PersonalSocialPost> oCompleted = new ArrayList<MDN_PersonalSocialPost>();
+							List<MDN_PersonalSocialPost> oPosts =((MDN_RestClient) session.getAttribute("oClient")).getPersonalizedTwitterFeed(strUserName);
+							Collections.sort(oPosts);
+							for(int k=0; k < oPosts.size(); k++)
+							{
+								oPosts.get(k).setEmbeddCode( ((MDN_RestClient) session.getAttribute("oClient")).getTwitterEmbeddCode(oPosts.get(k).getLink()));
+								if(oPosts.get(k).isCompleted())
+									{
+							
+									oCompleted.add(oPosts.get(k));
+									}
+								else
+								{
+									if(oPosts.get(k).getCompletedActions().size()>0)
+									{
+										
+										oInProgress.add(oPosts.get(k));
+									}
+									else
+									{
+									
+										oNoActions.add(oPosts.get(k));
+									}
+								}
+							}
+							model.addAttribute("noaction",oNoActions);
+							model.addAttribute("inprogress",oInProgress);
+							model.addAttribute("completed",oCompleted);
 							return "bountydetail";
 						}
+					
 					}
 				}
 
