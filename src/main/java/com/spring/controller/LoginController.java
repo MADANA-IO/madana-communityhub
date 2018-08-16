@@ -339,6 +339,17 @@ public class LoginController
 		return "home";
 
 	}
+	@RequestMapping(value = "/help", method = RequestMethod.GET)
+	public String helpPage(HttpSession session,Model model) 
+	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("profile", oProfile);
+		model.addAttribute("user", oProfile);
+
+		return "help";
+
+	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profilePage(HttpSession session,Model model) 
 	{
@@ -350,6 +361,7 @@ public class LoginController
 		Collections.sort(oList);
 		oProfile.setHistory(oList);
 		model.addAttribute("profile", oProfile);
+		model.addAttribute("user", oProfile);
 
 		return "profile";
 

@@ -124,7 +124,7 @@
 
 			<div class="mdl-layout-spacer"></div>
 			<a target="_blank" class="mdl-navigation__link"
-				href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i
+				href="help"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">Help</span></a> </nav>
 		</div>
