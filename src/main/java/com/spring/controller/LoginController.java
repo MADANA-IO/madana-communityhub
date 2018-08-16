@@ -346,6 +346,9 @@ public class LoginController
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
+		List<MDN_SocialHistoryObject> oList = oProfile.getHistory();
+		Collections.sort(oList);
+		oProfile.setHistory(oList);
 		model.addAttribute("profile", oProfile);
 
 		return "profile";
@@ -356,8 +359,11 @@ public class LoginController
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oClient.getUser(strUserName));
+		model.addAttribute("user", oClient.getProfile(strUserName));
 		oProfile =  oClient.getProfile(strDestUsername);
+		List<MDN_SocialHistoryObject> oList = oProfile.getHistory();
+		Collections.sort(oList);
+		oProfile.setHistory(oList);
 		model.addAttribute("profile", oProfile);
 		return "profile";
 	}

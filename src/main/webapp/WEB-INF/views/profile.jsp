@@ -7,10 +7,11 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
 <title>MADANA Community Hub</title>
 
 <!-- Add to homescreen for Chrome on Android -->
@@ -28,25 +29,31 @@
 	content="images/touch/ms-touch-icon-144x144-precomposed.png">
 <meta name="msapplication-TileColor" content="#3372DF">
 
+<link rel="shortcut icon" href="images/favicon.png">
 
 <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
+
 <link href=“https://fonts.googleapis.com/css?family=Montserrat”
 	rel=“stylesheet”>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-	<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
-		
-			<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/materials.css" />
-	
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
-	<link rel="stylesheet"
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/materials.css" />
+
+
+<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+
+
+
+
 <style>
 #view-source {
 	position: fixed;
@@ -58,28 +65,33 @@
 	z-index: 900;
 }
 </style>
- <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Raleway'
+	rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-layout__header--transparent ">
-    <div class="mdl-layout__header-row mdnheader" >
-      <!-- Title -->
-      
-      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="50" height="50" > Community Hub</span>
-    
-    </div>
-  </header>
+		<header class="mdl-layout__header mdl-layout__header--transparent ">
+		<div class="mdl-layout__header-row mdnheader">
+			<!-- Title -->
+
+			<span class="mdl-layout-title"> <img
+				src="http://www.madana.io/assets/img/logo-madana.png"
+				alt="MADANA Logo" width="50" height="50"> Community Hub
+			</span>
+
+		</div>
+		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
-		<header class="demo-drawer-header"> <img
-				src="${profile.image}"
-				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
+			<header class="demo-drawer-header"> <img
+				src="${user.image}" width="75" height="75">
+			<br>
+			<span>${user.points} CP</span>
 			<div class="demo-avatar-dropdown">
-				<span><h3>${profile.userName}</h3></span>
+				<span><h3>${user.userName}</h3></span>
+
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -104,7 +116,7 @@
 				class=" material-icons" role="presentation">home</i>Home</a> <a
 				class="mdl-navigation__link" href="profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
-				class="mdl-navigation__link" href=ranking><i
+				class="mdl-navigation__link" href="ranking"><i
 				class=" material-icons" role="presentation">group</i>Ranking</a> <a
 				class="mdl-navigation__link" href="settings"><i
 				class=" material-icons" role="presentation">settings</i>Settings</a>
@@ -150,7 +162,7 @@
 				<div class="mdl-card__title">
 					<h3>Actions</h3>
 				</div>
-				<div class="mdl-card__supporting-text meta">
+				<div class="mdl-card__supporting-text meta" style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${profile.history}" var="object">
 							<li class="mdl-list__item mdl-list__item--three-line"
