@@ -383,16 +383,27 @@
 										height="75"> <c:out value="${user1.userName}" /></td>
 									<td align="left" width="10%"><c:out
 											value="${user1.points}" /> CP</td>
+											<td align="right" width="10%">   <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+     	 <i class="material-icons">launch</i>
+    </button></a></td>
 								</tr>
 								<tr class="tddefault">
 									<td width=20%;><img src="${user2.image}" width="75"
 										height="75"> <c:out value="${user2.userName}" /></td>
 									<td width="10%"><c:out value="${user2.points}" /> CP</td>
+																<td align="right" width="10%">   <a href="/profile/<c:out value="${user2.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+     	 <i class="material-icons">launch</i>
+    </button></a></td>
+						
 								</tr>
 								<tr class="tddefault">
 									<td width=20%;><img src="${user3.image}" width="75"
 										height="75"> <c:out value="${user3.userName}" /></td>
 									<td width="10%"><c:out value="${user3.points}" /> CP</td>
+																<td align="right" width="10%">   <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+     	 <i class="material-icons">launch</i>
+    </button></a></td>
+						
 								</tr>
 
 
