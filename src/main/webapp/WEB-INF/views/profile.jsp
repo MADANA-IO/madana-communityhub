@@ -164,16 +164,20 @@
 				</div>
 				<div class="mdl-card__supporting-text meta" style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
-						<c:forEach items="${profile.history}" var="object">
+						<c:forEach items="${history}" var="object">
 							<li class="mdl-list__item mdl-list__item--three-line"
 								style="width: 100%"><span
-								class="mdl-list__item-primary-content"> <i
-									class="material-icons mdl-list__item-avatar">share</i> <span>Received
+								class="mdl-list__item-primary-content"><span>  <a
+										href="${object.link}">${object.text}</a></span> <span></span> <span
+									class="mdl-list__item-text-body"><img src="${object.platformIcon}" height="50" width="50">${object.actionIcon} Received
 										${object.benefit} pts for ${object.action} on
-										${object.platform} (${object.created}) </span> <span
-									class="mdl-list__item-text-body"><a
-										href="${object.link}">${object.text}</a> </span>
-							</span></li>
+										${object.platform}  </span>
+										
+							</span>
+							   <span class="mdl-list__item-secondary-content">
+${object.created}
+    </span>
+    </li>
 						</c:forEach>
 					</ul>
 				</div>

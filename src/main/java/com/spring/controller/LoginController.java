@@ -30,6 +30,7 @@ import de.madana.common.datastructures.MDN_UserProfileImage;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.security.MDN_RandomString;
 import de.madana.webclient.MDN_BackendHandler;
+import de.madana.webclient.MDN_VisualSocialHistoryObject;
 import de.madana.webclient.dto.MDN_DTO_RegisterUser;
 import de.madana.webclient.dto.MDN_DTO_ResetPassword;
 import de.madana.webclient.dto.MDN_DTO_SetPassword;
@@ -357,9 +358,28 @@ public class LoginController
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
+		List<MDN_VisualSocialHistoryObject> oNewList = new ArrayList<MDN_VisualSocialHistoryObject>();
 		List<MDN_SocialHistoryObject> oList = oProfile.getHistory();
-		Collections.sort(oList);
-		oProfile.setHistory(oList);
+		for(int i=0; i< oList.size();i ++)
+		{
+			MDN_VisualSocialHistoryObject oObject = new MDN_VisualSocialHistoryObject(oList.get(i));
+			for(int j=0; j < oPlatforms.size(); j++)
+			{
+				if(oObject.getPlatform().equalsIgnoreCase(oPlatforms.get(j).getName()))
+					oObject.setPlatformIcon(oPlatforms.get(j).getIcon());
+			}
+			if(oObject.getAction().equalsIgnoreCase("like"))
+				oObject.setActionIcon("<i class=\"material-icons\">thumb_up</i>");
+			else if(oObject.getAction().equalsIgnoreCase("share"))
+				oObject.setActionIcon("<i class=\"material-icons\">share</i>");
+			if(oObject.getAction().equalsIgnoreCase("referral"))
+				oObject.setActionIcon("<i class=\"material-icons\">person_add</i>");
+		
+			
+			oNewList.add(oObject);
+		}
+		Collections.sort(oNewList);
+		model.addAttribute("history", oNewList);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("user", oProfile);
 
