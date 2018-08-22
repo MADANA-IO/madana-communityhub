@@ -178,6 +178,7 @@
 ${object.created}
     </span>
     </li>
+    <hr>
 						</c:forEach>
 					</ul>
 				</div>
