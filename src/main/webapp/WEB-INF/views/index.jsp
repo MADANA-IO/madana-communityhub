@@ -191,10 +191,22 @@ body{
 }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+	  <noscript id="loading-config">
+      { 
+        "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
+        "options": { 
+          "typeSpeed": 50, 
+          "backSpeed": 50, 
+          "backDelay": 1000, 
+          "loop": true 
+        }
+      }
+    </noscript>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+    
 </head>
-
 <body>
+
 <section id="pax" class="light-grey">
   <div class="body"></div>
 		<div class="grad"></div>
@@ -216,7 +228,8 @@ body{
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   </section>
-
+  <loading-screen id="loading-screen" />
+  <!-- your footer scripts go here -->  
 </body>
 
 </html>

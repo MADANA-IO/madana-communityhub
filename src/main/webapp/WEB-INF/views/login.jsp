@@ -166,7 +166,19 @@ body{
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+	  <noscript id="loading-config">
+      { 
+        "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
+        "options": { 
+          "typeSpeed": 50, 
+          "backSpeed": 50, 
+          "backDelay": 1000, 
+          "loop": true 
+        }
+      }
+    </noscript>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+    
 </head>
 
 <body>
@@ -198,7 +210,7 @@ body{
 						</tr>
 					<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Login" /></td>
+						<td><input type="submit" value="Login" onclick="document.forceLoading();" /></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -222,6 +234,8 @@ body{
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   </section>
+    <loading-screen id="loading-screen" />
+
 
 </body>
 

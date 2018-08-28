@@ -69,6 +69,19 @@
 	rel='stylesheet' type='text/css'>
 <link href=' http://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
+	  <noscript id="loading-config">
+      { 
+        "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
+        "options": { 
+          "typeSpeed": 50, 
+          "backSpeed": 50, 
+          "backDelay": 1000, 
+          "loop": true 
+        }
+      }
+    </noscript>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+    
 </head>
 <body>
 	<div
@@ -235,7 +248,7 @@
 
 										<a
 											class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"
-											style="align: right" style="width: 100%;"
+											style="align: right"  onclick="document.forceLoading();" style="width: 100%;"
 											href="auth/${fn:toLowerCase(platform.name)}">
 
 											<form action="success" method="post">
@@ -261,7 +274,7 @@
 								
 								
 								 "
-											style="align: right"
+											style="align: right" onclick="document.forceLoading();" 
 											href="bounty/${fn:toLowerCase(platform.name)}">
 
 											<form action="success" method="post">
@@ -330,7 +343,7 @@
   		<c:if test="${platform.isDisabled == false}">
 								<a
 									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
-									style="align: right"
+									style="align: right" onclick="document.forceLoading();" 
 									href="bounty/${fn:toLowerCase(platform.name)}">
 									<form action="success" method="post">
 										<button
@@ -343,7 +356,7 @@
 								  	</c:if>
 							</div>
 							<div class="mdl-card__menu">
-								<a href="${platform.link}"><button
+								<a href="${platform.link}" onclick="document.forceLoading();" ><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">
 										<i class="material-icons">open_in_new</i>
@@ -518,5 +531,8 @@
 		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	  <loading-screen id="loading-screen" />
+  <!-- your footer scripts go here -->  
+	
 </body>
 </html>
