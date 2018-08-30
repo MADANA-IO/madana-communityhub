@@ -7,11 +7,12 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Material Design Lite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>MADANA Community Hub</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -34,20 +35,25 @@
 <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
+
 <link href=“https://fonts.googleapis.com/css?family=Montserrat”
 	rel=“stylesheet”>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-	<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
-		
-			<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/materials.css" />
-	
+<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
 
-	<link rel="stylesheet"
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/materials.css" />
+
+
+<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+
+
+
+
 <style>
 #view-source {
 	position: fixed;
@@ -59,9 +65,11 @@
 	z-index: 900;
 }
 </style>
- <link href=' http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-  	  <noscript id="loading-config">
+<link href=' http://fonts.googleapis.com/css?family=Raleway'
+	rel='stylesheet' type='text/css'>
+<link href=' http://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet' type='text/css'>
+	  <noscript id="loading-config">
       { 
         "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
         "options": { 
@@ -78,22 +86,25 @@
 <body>
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-layout__header--transparent ">
-    <div class="mdl-layout__header-row mdnheader" >
-      <!-- Title -->
-      
-      <span class="mdl-layout-title"> <img src="http://www.madana.io/images/logo.png"
-					alt="MADANA Logo"
-					width="50" height="50" > Community Hub</span>
-    
-    </div>
-  </header>
+		<header class="mdl-layout__header mdl-layout__header--transparent ">
+		<div class="mdl-layout__header-row mdnheader">
+			<!-- Title -->
+
+			<span class="mdl-layout-title"> <img
+				src="http://www.madana.io/assets/img/logo-madana.png"
+				alt="MADANA Logo" width="50" height="50"> Community Hub
+			</span>
+
+		</div>
+		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
-		<header class="demo-drawer-header"> <img
-				src="${profile.image}"
-				style="width:100px; height:100px;"><br><span>${profile.points} CP</span>
+			<header class="demo-drawer-header"> <img
+				src="${profile.image}" width="75" height="75">
+			<br>
+			<span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
 				<span><h3>${profile.userName}</h3></span>
+
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -126,7 +137,7 @@
 
 			<div class="mdl-layout-spacer"></div>
 			<a target="_blank" class="mdl-navigation__link"
-				href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i
+				href="help"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">Help</span></a> </nav>
 		</div>

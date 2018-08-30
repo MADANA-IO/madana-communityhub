@@ -69,19 +69,13 @@
 	rel='stylesheet' type='text/css'>
 <link href=' http://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
-		  <noscript id="loading-config">
-      { 
-        "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
-        "options": { 
-          "typeSpeed": 50, 
-          "backSpeed": 50, 
-          "backDelay": 1000, 
-          "loop": true 
-        }
-      }
-    </noscript>
-      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
-    
+<noscript id="loading-config">{ "phrases": ["Guiding the bits
+	in your direction", "Spinning the cube", "Moving the satellite into
+	position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":
+	1000, "loop": true } }</noscript>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+
 </head>
 <body>
 	<div
@@ -99,8 +93,7 @@
 		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
-				src="${profile.image}" width="75" height="75">
-			<br>
+				src="${profile.image}" width="75" height="75"> <br>
 			<span>${profile.points} CP</span>
 			<div class="demo-avatar-dropdown">
 				<span><h3>${profile.userName}</h3></span>
@@ -141,115 +134,53 @@
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">Help</span></a> </nav>
 		</div>
-      <main class="mdl-layout__content content">
-        <div class="mdl-grid demo-content">
-         <div class="mdl-grid" style="width:100%;" > 
-         <div class="mdl-layout-spacer"></div>
-         	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand ">
-  
-    <img src="${user1.image}" width="150" height="150" style="margin-right:25px;">
-    <div>
-    <h2 ><c:out value="${user1.userName}" /></h2>
-      <h3>${user1.points} CP</h3>
-    </div>
+		<main class="mdl-layout__content content">
+		<div class="mdl-grid demo-content">
+
+			<div class="mdl-cell mdl-cell--12-col ">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card__title">
+						<h3>Thanks for inviting ${fn:length(referrals)} users</h3>
+					</div>
+					<div class="mdl-card__supporting-text   ">
+						<!-- Deletable Contact Chip -->
+						<ul class="demo-list-three mdl-list">
+							<c:forEach items="${referrals}" var="object">
+								<li class="mdl-list__item mdl-list__item--three-line"
+									style="width: 100%"><span
+									class="mdl-list__item-primary-content"> <i
+										class="material-icons mdl-list__item-avatar">person</i> <a
+										href="https://communityhub.madana.io/profile/${object.userName}">${object.userName}
+											(${object.points})</a> <span class="mdl-list__item-text-body">
+											<span> ${object.created} </span>
+									</span>
+								</span></li>
+							</c:forEach>
+						</ul>
+
+						<div></div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<h4>Share the link below to get more pts. For every user who
+							signs up you will be rewarded with 2000 CP</h4>
+						<textarea class="mdl-textfield__input" type="text" rows="4"
+							disabled style="color: #274863;">${platform.link}?referrer=${user.guid}</textarea>
+
+					</div>
+				</div>
 
 
-   
 
-  </div>
-    <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#D9A441;">
-		
+
+			</div>
 		</div>
+	</div>
 
-			<div class="mdl-card__menu">
-   <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">launch</i>
-    </button></a>
-  </div>
-			</div>
-			<div class="mdl-layout-spacer"></div>
-         </div>
-        <div class="mdl-grid" style="width:100%;"> 
-        	     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand">
-     
-    <img src="${user2.image}" width="150" height="150" style="margin-right:25px;">
-    <div>
-    <h2 ><c:out value="${user2.userName}" /></h2>
-      <h3>${user2.points} CP</h3>
-    </div> 
-  </div>
-   <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#CCC2C2;">
-		
-		</div>
-<div class="mdl-card__menu">
-   <a href="/profile/<c:out value="${user2.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">launch</i>
-    </button></a>
-  </div>
-			</div>
-			   <div class="mdl-layout-spacer"></div>
-			     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop transparent">
-		  <div class="mdl-card__title mdl-card--expand">
-     <img src="${user3.image}" width="150" height="150" style="margin-right:25px;">
-    <div>
-    <h2 ><c:out value="${user3.userName}" /></h2>
-      <h3>${user3.points} CP</h3>
-    </div> 
-   </div>
-   <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#965A38;">
-		
-		</div>
-<div class="mdl-card__menu">
-   <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">launch</i>
-    </button></a>
-  </div>
-  	
-			</div>
-        </div>
-          <div class="mdl-cell mdl-cell--12-col transparent">
-         	<div style="height: 600px; overflow-y: scroll;">
-				<table
-					class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-descending  transparent"
-					style="width: 100%">
-					<thead>
-						<tr>
-							<th>Rank</th>
-							<th>Username</th>
-							<th>Points</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${users}" var="user" varStatus="myIndex">
-							<tr>
-								<td><h4>${myIndex.index +1}.</h4></td>
-								<td><h4>
-										<c:out value="${user.key}" />
-									</h4></td>
-								<td><h4>${user.value} CP</h4></td>
-								<td >
-								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  	<a href="profile/<c:out value='${user.key}' />"><i class="material-icons">launch</i></a>
-</button>
+	</main>
+	</div>
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<loading-screen id="loading-screen" />
+	<!-- your footer scripts go here -->
 
-							</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-          </div>
-   
-        </div>
-      </main>
-    </div>
-      <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-       <loading-screen id="loading-screen" />
-  </body>
+</body>
 </html>

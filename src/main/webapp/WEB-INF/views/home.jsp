@@ -328,9 +328,7 @@
 							</div>
 							<div class="mdl-card__actions mdl-card--border mdl-grid "
 								style="background: #f3f3f6;height:20%;">
-								<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
-									${fn:length(platform.referrals)}
-								</span> 
+								
 														<c:if test="${platform.isDisabled == true}">
 								<button
 									 type="button"
@@ -341,6 +339,9 @@
   
   	</c:if>
   		<c:if test="${platform.isDisabled == false}">
+  		<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
+									${fn:length(platform.referrals)}
+								</span> 
 								<a
 									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
 									style="align: right" onclick="document.forceLoading();" 
