@@ -106,7 +106,7 @@ public class LoginController
 					model.addAttribute("platform",oPlatforms.get(i));
 					model.addAttribute("referrals",oReferred);
 					model.addAttribute("user", oUser);
-					return "bountydetail";
+					return "referralbountydetail";
 				}
 				else
 				{
