@@ -69,19 +69,13 @@
 	rel='stylesheet' type='text/css'>
 <link href=' http://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
-		  <noscript id="loading-config">
-      { 
-        "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], 
-        "options": { 
-          "typeSpeed": 50, 
-          "backSpeed": 50, 
-          "backDelay": 1000, 
-          "loop": true 
-        }
-      }
-    </noscript>
-      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
-    
+<noscript id="loading-config">{ "phrases": ["Guiding the bits
+	in your direction", "Spinning the cube", "Moving the satellite into
+	position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":
+	1000, "loop": true } }</noscript>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+
 </head>
 <body>
 	<div
@@ -98,9 +92,8 @@
 		</div>
 		</header>
 		<div class="demo-drawer mdl-layout__drawer mdnnav">
-			<header class="demo-drawer-header"> <img
-				src="${user.image}" width="75" height="75">
-			<br>
+			<header class="demo-drawer-header"> <img src="${user.image}"
+				width="75" height="75"> <br>
 			<span>${user.points} CP</span>
 			<div class="demo-avatar-dropdown">
 				<span><h3>${user.userName}</h3></span>
@@ -144,54 +137,83 @@
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
 
-			<div
-				class="mdl-card mdl-cell mdl-cell--12-col transparent">
+			<div class="mdl-card mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
-					<h1><img src="${profile.image}">${profile.userName}</h1>
-				
+					<h1>
+						<img src="${profile.image}" height="200" width="200">${profile.userName}</h1>
+
 				</div>
-					<div class="mdl-card__supporting-text meta">
-						<h3>${profile.points} CP</h3>
-					</div>
-				
+				<div class="mdl-card__supporting-text meta">
+					<h3>${profile.points}CP</h3>
+				</div>
+
 
 
 			</div>
-			<div
-				class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-<div class="mdl-card__title">
-				  <h3>Achievements</h3>
-         
-				</div>
-   <p>After reaching a certain milestone, you can unlock achievements. For every achievement you unlock, you will receive bonus community points. You can see which achievements are still unlocked in your profile section. Some achievements are special and you can miss out on them, so pay attention!</p>
-       
-					<img style="width:100%;"
-						src="		https://c-6rtwjumjzx7877x24i6z0u8q9bufd8px2ehqtzikwtsyx2esjy.g00.gamepedia.com/g00/3_c-6twhx78rzx78yinjzshmfnsji.lfrjujinf.htr_/c-6RTWJUMJZX77x24myyux78x3ax2fx2fi6z0u8q9bufd8p.hqtzikwtsy.sjyx2ftwhx78rzx78yinj_lfrjujinfx2fymzrgx2f9x2f9gx2fFhmnjajrjsyx78-mjfijw.uslx2f6547uc-Fhmnjajrjsyx78-mjfijw.uslx3fajwx78ntsx3dk627g63j4ii8ig19ifg3kk9i4j17h042x26n65h.rfwpx3dnrflj_$/$/$/$/$/$/$
-">
-				
+			<div class=" mdl-cell--12-col">
+			
+					<h3>Achievements</h3>
+
+
+				<p>After reaching a certain milestone, you can unlock
+					achievements. For every achievement you unlock, you will receive
+					bonus community points. You can see which achievements are still
+					unlocked in your profile section. Some achievements are special and
+					you can miss out on them, so pay attention!</p>
+
+						<c:forEach items="${profile.achievments}" var="achievmentgroup">
+				<div class="mdl-grid mdl-cell mdl-cell--12-col">
+						<div class="mdl-cell--12-col "><h3>${achievmentgroup.name}</h3>	</div>
+					
+					
+					<c:forEach items="${achievmentgroup.achievments}" var="achievment">
+
+						<div
+							class="mdl-card something-else mdl-cell mdl-cell--2-col transparent" style="opacity: 0.3;">
+							<div class="mdl-card__title"
+								style="height:200px;  background-image: url('${achievment.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px,cover ;">
+
+							</div>
+
+							<div class="mdl-card__supporting-text">
+								<h4>${achievment.name}</h4>
+							</div>
+							<div class="mdl-card__actions mdl-card--border mdl-grid ">
+										${achievment.description}
+
+							</div>
+							<div class="mdl-card__menu" style="color:#f3f3f6;">
+								${achievment.reward} CP
+							</div>
+
+						</div>
+					</c:forEach>
+			
+</div>
+			</c:forEach>
 
 			</div>
+
+
 			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
 					<h3>Actions</h3>
 				</div>
-				<div class="mdl-card__supporting-text meta" style="height: 600px; overflow-y: scroll;">
+				<div class="mdl-card__supporting-text meta"
+					style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
 							<li class="mdl-list__item mdl-list__item--three-line"
 								style="width: 100%"><span
-								class="mdl-list__item-primary-content"><span>  <a
+								class="mdl-list__item-primary-content"><span> <a
 										href="${object.link}">${object.text}</a></span> <span></span> <span
-									class="mdl-list__item-text-body"><img src="${object.platformIcon}" height="50" width="50">${object.actionIcon} Received
-										${object.benefit} pts for ${object.action} on
-										${object.platform}  </span>
-										
-							</span>
-							   <span class="mdl-list__item-secondary-content">
-${object.created}
-    </span>
-    </li>
-    <hr>
+									class="mdl-list__item-text-body"><img
+										src="${object.platformIcon}" height="50" width="50">${object.actionIcon}
+										Received ${object.benefit} pts for ${object.action} on
+										${object.platform} </span> </span> <span
+								class="mdl-list__item-secondary-content">
+									${object.created} </span></li>
+							<hr>
 						</c:forEach>
 					</ul>
 				</div>
@@ -200,6 +222,6 @@ ${object.created}
 		</main>
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		  <loading-screen id="loading-screen" />
+	<loading-screen id="loading-screen" />
 </body>
 </html>
