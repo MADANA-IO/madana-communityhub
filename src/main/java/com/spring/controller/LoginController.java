@@ -393,9 +393,10 @@ public class LoginController
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oClient.getProfile(strUserName));
+		MDN_UserProfile oDestUserProfile = oClient.getProfile(strDestUsername);
+		
 		List<MDN_VisualSocialHistoryObject> oNewList = new ArrayList<MDN_VisualSocialHistoryObject>();
-		List<MDN_SocialHistoryObject> oList = oProfile.getHistory();
+		List<MDN_SocialHistoryObject> oList = oDestUserProfile.getHistory();
 		for(int i=0; i< oList.size();i ++)
 		{
 			MDN_VisualSocialHistoryObject oObject = new MDN_VisualSocialHistoryObject(oList.get(i));
@@ -416,7 +417,8 @@ public class LoginController
 		}
 		Collections.sort(oNewList);
 		model.addAttribute("history", oNewList);
-		model.addAttribute("profile", oProfile);
+		model.addAttribute("user", oProfile);
+		model.addAttribute("profile", oDestUserProfile);
 		return "profile";
 	}
 	@RequestMapping(value = "/settings/avatar/{avatarid}", method = RequestMethod.GET)
