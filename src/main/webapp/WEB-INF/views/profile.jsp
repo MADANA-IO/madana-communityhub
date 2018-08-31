@@ -172,7 +172,7 @@
 
 							<div
 								class="mdl-card something-else mdl-cell transparent"
-								 style="opacity: 0.3; margin:5px;width:19%;" id="${achievment.name}">
+								 style="<c:if test="${achievment.completed == false}">opacity: 0.3;</c:if> margin:5px;width:19%;" id="${achievment.name}">
 
 								<div class="mdl-card__title"
 									style="height:150px;  background-image: url('${achievment.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
@@ -195,7 +195,7 @@ ${achievment.description}
 						<c:forEach items="${achievmentgroup.achievments}" var="achievment">
 
 							<div
-								class="mdl-cell transparent" style="height: 5px;background-color: green; margin:5px;width:19%;">
+								class="mdl-cell transparent" style="height: 5px;<c:if test="${achievment.completed == true}">background-color: green;</c:if><c:if test="${achievment.completed == false}">background-color: gray;</c:if> margin:5px;width:19%;">
 							
 
 							</div>
