@@ -154,40 +154,40 @@
 					unlocked in your profile section. Some achievements are special and
 					you can miss out on them, so pay attention!</p>
 
-				<c:forEach items="${profile.achievments}" var="achievmentgroup">
+				<c:forEach items="${profile.achievements}" var="achievementgroup">
 					<div class="mdl-grid mdl-cell mdl-cell--12-col">
 						<div class="mdl-cell--12-col ">
-							<h3>${achievmentgroup.name}</h3>
+							<h3>${achievementgroup.name}</h3>
 						</div>
 
 
-						<c:forEach items="${achievmentgroup.achievments}" var="achievment">
+						<c:forEach items="${achievementgroup.achievements}" var="achievement">
 
 							<div class="mdl-card something-else mdl-cell transparent"
-								style="<c:if test="${achievment.completed == false}">opacity: 0.3;</c:if> margin:5px;width:19%;"
-								id="${achievment.name}">
+								style="<c:if test="${achievement.completed == false}">opacity: 0.3;</c:if> margin:5px;width:19%;"
+								id="${achievement.name}">
 
 								<div class="mdl-card__title"
-									style="height:150px;  background-image: url('${achievment.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
+									style="height:150px;  background-image: url('${achievement.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
 
 								</div>
 
 								<div class="mdl-card__supporting-text">
-									<b>${achievment.name}</b>
+									<b>${achievement.name}</b>
 								</div>
 								<!-- <div class="mdl-card__actions mdl-card--border mdl-grid ">
-									${achievment.description}</div> -->
+									${achievement.description}</div> -->
 								<div class="mdl-card__menu" style="color: #f3f3f6;">
-									${achievment.reward} CP</div>
+									${achievement.reward} CP</div>
 
 							</div>
 							<div class="mdl-tooltip mdl-tooltip--large"
-								for="${achievment.name}">${achievment.description}</div>
+								for="${achievement.name}">${achievement.description}</div>
 						</c:forEach>
-						<c:forEach items="${achievmentgroup.achievments}" var="achievment">
+						<c:forEach items="${achievementgroup.achievements}" var="achievement">
 
 							<div class="mdl-cell transparent"
-								style="height: 5px;<c:if test="${achievment.completed == true}">background-color: green;</c:if><c:if test="${achievment.completed == false}">background-color: gray;</c:if> margin:5px;width:19%;">
+								style="height: 5px;<c:if test="${achievement.completed == true}">background-color: green;</c:if><c:if test="${achievement.completed == false}">background-color: gray;</c:if> margin:5px;width:19%;">
 
 
 							</div>
