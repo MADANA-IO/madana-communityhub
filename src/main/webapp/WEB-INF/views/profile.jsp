@@ -107,9 +107,6 @@
 				<ul
 					class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 					for="accbtn">
-					<li class="mdl-menu__item"><i class="material-icons">add</i>Create
-						account...</li>
-					<li class="mdl-menu__item"><i class="material-icons">lock_open</i>Login...</li>
 					<li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
 				</ul>
 			</div>
@@ -118,21 +115,21 @@
 				data-base-url="https://jsd-widget.atlassian.com"
 				src="https://jsd-widget.atlassian.com/assets/embed.js"></script> </header>
 			<nav class="demo-navigation mdl-navigation mdnnav"> <a
-				class="mdl-navigation__link" href="home"><i
+				class="mdl-navigation__link" href=/"home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
-				class="mdl-navigation__link" href="profile"><i
+				class="mdl-navigation__link" href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
-				class="mdl-navigation__link" href="ranking"><i
+				class="mdl-navigation__link" href="/ranking"><i
 				class=" material-icons" role="presentation">group</i>Ranking</a> <a
-				class="mdl-navigation__link" href="settings"><i
+				class="mdl-navigation__link" href="/settings"><i
 				class=" material-icons" role="presentation">settings</i>Settings</a>
 			<div class="mdl-layout-spacer"></div>
 
 			<div class="mdl-layout-spacer"></div>
 			<a target="_blank" class="mdl-navigation__link"
-				href="https://madana.atlassian.net/servicedesk/customer/portal/4"><i
+				href="http://faq.madana.io"><i
 				class=" material-icons" role="presentation">help_outline</i><span
-				class="">Help</span></a> </nav>
+				class="">FAQ</span></a> </nav>
 		</div>
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
