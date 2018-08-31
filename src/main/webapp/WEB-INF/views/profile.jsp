@@ -151,8 +151,8 @@
 
 			</div>
 			<div class=" mdl-cell--12-col">
-			
-					<h3>Achievements</h3>
+
+				<h3>Achievements</h3>
 
 
 				<p>After reaching a certain milestone, you can unlock
@@ -161,45 +161,57 @@
 					unlocked in your profile section. Some achievements are special and
 					you can miss out on them, so pay attention!</p>
 
-						<c:forEach items="${profile.achievments}" var="achievmentgroup">
-				<div class="mdl-grid mdl-cell mdl-cell--12-col">
-						<div class="mdl-cell--12-col "><h3>${achievmentgroup.name}</h3>	</div>
-					
-					
-					<c:forEach items="${achievmentgroup.achievments}" var="achievment">
-
-						<div
-							class="mdl-card something-else mdl-cell mdl-cell--2-col transparent" style="opacity: 0.3;">
-							<div class="mdl-card__title"
-								style="height:200px;  background-image: url('${achievment.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px,cover ;">
-
-							</div>
-
-							<div class="mdl-card__supporting-text">
-								<h4>${achievment.name}</h4>
-							</div>
-							<div class="mdl-card__actions mdl-card--border mdl-grid ">
-										${achievment.description}
-
-							</div>
-							<div class="mdl-card__menu" style="color:#f3f3f6;">
-								${achievment.reward} CP
-							</div>
-
+				<c:forEach items="${profile.achievments}" var="achievmentgroup">
+					<div class="mdl-grid mdl-cell mdl-cell--12-col">
+						<div class="mdl-cell--12-col ">
+							<h3>${achievmentgroup.name}</h3>
 						</div>
-					</c:forEach>
-			
-</div>
-			</c:forEach>
+
+
+						<c:forEach items="${achievmentgroup.achievments}" var="achievment">
+
+							<div
+								class="mdl-card something-else mdl-cell transparent"
+								 style="opacity: 0.3; margin:5px;width:19%;" id="${achievment.name}">
+
+								<div class="mdl-card__title"
+									style="height:150px;  background-image: url('${achievment.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
+	
+								</div>
+
+								<div class="mdl-card__supporting-text">
+									<b>${achievment.name}</b>
+								</div>
+							<!-- <div class="mdl-card__actions mdl-card--border mdl-grid ">
+									${achievment.description}</div> -->	
+								<div class="mdl-card__menu" style="color: #f3f3f6;">
+									${achievment.reward} CP</div>
+
+							</div>
+															     <div class="mdl-tooltip mdl-tooltip--large" for="${achievment.name}">
+${achievment.description}
+   </div>
+						</c:forEach>
+						<c:forEach items="${achievmentgroup.achievments}" var="achievment">
+
+							<div
+								class="mdl-cell transparent" style="height: 5px;background-color: green; margin:5px;width:19%;">
+							
+
+							</div>
+						</c:forEach>
+
+					</div>
+				</c:forEach>
 
 			</div>
 
+<div class="mdl-grid mdl-cell mdl-cell--12-col transparent">
 
-			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-				<div class="mdl-card__title">
-					<h3>Actions</h3>
+<div class="mdl-cell mdl-cell--12-col">
+					<h3>Action History</h3>
 				</div>
-				<div class="mdl-card__supporting-text meta"
+	<div class="mdl-cell mdl-cell--12-col"
 					style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
@@ -217,7 +229,8 @@
 						</c:forEach>
 					</ul>
 				</div>
-			</div>
+	
+				</div>
 		</div>
 		</main>
 	</div>

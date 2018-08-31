@@ -500,7 +500,8 @@ public class LoginController
 		{
 			try 
 			{
-				MDN_RestClient oClient = (MDN_RestClient) session.getAttribute("oClient");
+				MDN_RestClient oClient =  new MDN_RestClient();
+				session.setAttribute("oClient", oClient);
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
 					strUserName=loginBean.getUserName();
@@ -513,7 +514,7 @@ public class LoginController
 				}
 			} catch (Exception e) 
 			{
-				model.addAttribute("error", "Invalid Details");
+				model.addAttribute("error",e.getMessage());
 				return "login";
 			}
 		} 
