@@ -174,6 +174,11 @@
 
 								<div class="mdl-card__supporting-text">
 									<b>${achievement.name}</b>
+										<div
+								style="height: 5px;<c:if test="${achievement.completed == true}">background-color: green;</c:if><c:if test="${achievement.completed == false}">background-color: gray;</c:if> width:100%;">
+
+
+							</div>
 								</div>
 								<!-- <div class="mdl-card__actions mdl-card--border mdl-grid ">
 									${achievement.description}</div> -->
@@ -184,14 +189,10 @@
 							<div class="mdl-tooltip mdl-tooltip--large"
 								for="${achievement.name}">${achievement.description}</div>
 						</c:forEach>
-						<c:forEach items="${achievementgroup.achievements}" var="achievement">
-
-							<div class="mdl-cell transparent"
-								style="height: 5px;<c:if test="${achievement.completed == true}">background-color: green;</c:if><c:if test="${achievement.completed == false}">background-color: gray;</c:if> margin:5px;width:19%;">
 
 
-							</div>
-						</c:forEach>
+						
+					
 
 					</div>
 				</c:forEach>
