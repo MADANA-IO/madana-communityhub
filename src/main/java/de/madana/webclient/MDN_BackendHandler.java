@@ -74,8 +74,15 @@ public class MDN_BackendHandler
 
 				for(int j=0; j<oUser.getSocialAccounts().size();j++)
 				{
-					if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
+					try
+					{
+						if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
 						oMyPlatform.setIsVerifiedByUser("true");
+					}
+					catch(Exception ex)
+					{
+						oMyPlatform.setIsVerifiedByUser("false");
+					}
 				}
 				if(oMyPlatform.getIsVerifiedByUser().equals("true"))
 				{
