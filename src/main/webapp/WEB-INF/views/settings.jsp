@@ -333,9 +333,9 @@
 						<li class="mdl-list__item mdl-list__item--three-line"><span
 							class="mdl-list__item-primary-content"> <i
 								class="material-icons mdl-list__item-avatar">star</i> <span>Show
-									achievments</span> <span class="mdl-list__item-text-body"> If
+									achievements</span> <span class="mdl-list__item-text-body"> If
 									you disable this setting nobody besides you will be able to see
-									your achievments in your profile </span>
+									your achievements in your profile </span>
 						</span> <span class="mdl-list__item-secondary-action"> <label
 								class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
 								for="list-switch-1"> <input type="checkbox"
