@@ -527,6 +527,10 @@
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	  <loading-screen id="loading-screen" />
+	  <script src="http://code.jquery.com/jquery-latest.js"></script>
+	  <script type="text/javascript" src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
+
+	  
   <!-- your footer scripts go here -->  
 	
 </body>
