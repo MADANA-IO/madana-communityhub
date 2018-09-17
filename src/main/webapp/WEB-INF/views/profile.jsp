@@ -115,7 +115,7 @@
 				data-base-url="https://jsd-widget.atlassian.com"
 				src="https://jsd-widget.atlassian.com/assets/embed.js"></script> </header>
 			<nav class="demo-navigation mdl-navigation mdnnav"> <a
-				class="mdl-navigation__link" href=/"home"><i
+				class="mdl-navigation__link" href="/home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
 				class="mdl-navigation__link" href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a

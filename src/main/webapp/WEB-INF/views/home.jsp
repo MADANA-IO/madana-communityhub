@@ -81,6 +81,11 @@
       }
     </noscript>
       <script type="text/javascript" src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"/></script>
+    <script type="text/javascript" src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
+ 
+  
+
     
 </head>
 <body>
@@ -119,7 +124,7 @@
 			</div>
 	</header>
 			<nav class="demo-navigation mdl-navigation mdnnav"> <a
-				class="mdl-navigation__link" href=/"home"><i
+				class="mdl-navigation__link" href="/home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
 				class="mdl-navigation__link" href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
@@ -511,15 +516,17 @@
 						</div>
 						<br>
 						<div>
-							<a
-								href="https://madana.atlassian.net/servicedesk/customer/portal/4/create/38"><button
-									id="show-dialog" type="button"
+
+	
+							<button
+									id="feedback-button" type="button"
 									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
 									style="width: 100%;">
 									<i class="material-icons">bug_report</i> Report a bug
-								</button></a>
-						</div>
+								</button>
 
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -527,9 +534,8 @@
 	</div>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	  <loading-screen id="loading-screen" />
-	  <script src="http://code.jquery.com/jquery-latest.js"></script>
-	  <script type="text/javascript" src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
-
+	
+	
 	  
   <!-- your footer scripts go here -->  
 	
