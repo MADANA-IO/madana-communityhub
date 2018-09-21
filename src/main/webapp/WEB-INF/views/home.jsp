@@ -135,7 +135,7 @@
 			<div class="mdl-layout-spacer"></div>
 
 			<div class="mdl-layout-spacer"></div>
-			<a target="_blank" class="mdl-navigation__link"
+			<a  class="mdl-navigation__link"
 				href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> </nav>
