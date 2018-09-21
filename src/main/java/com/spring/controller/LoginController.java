@@ -465,6 +465,14 @@ public class LoginController
 		return "settings";
 
 	}
+	@RequestMapping(value = "/faq", method = RequestMethod.GET)
+	public String faqPage(HttpSession session,Model model) 
+	{
+		
+		model.addAttribute("url", "https://intranet.madana.io/confluence/display/MADANA/MADANA+FAQ");
+		return "externalframe";
+
+	}
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String homeAction(HttpSession session,Model model ,final RedirectAttributes redirectAttributes)
 	{

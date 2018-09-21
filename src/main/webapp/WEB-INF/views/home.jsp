@@ -136,7 +136,7 @@
 
 			<div class="mdl-layout-spacer"></div>
 			<a target="_blank" class="mdl-navigation__link"
-				href="http://faq.madana.io"><i
+				href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> </nav>
 		</div>
