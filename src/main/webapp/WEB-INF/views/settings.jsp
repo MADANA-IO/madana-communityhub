@@ -30,8 +30,11 @@
 				<div class="mdl-card__actions mdl-card--border">
 			<button id="show-dialog" type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change avatar</button>
   <dialog class="mdl-dialog"  style="width:500px">
-    <h4 class="mdl-dialog__title">Change Avatar</h4>
-    <div class="mdl-dialog__content"  style="width:500px">
+    <h4 class="mdl-dialog__title" style="text-align:center">Change Avatar</h4>
+         <p style="font-size:8px; padding-top:5px;text-align:center">
+         Avatars provided by "Eucalyp Studio" under CC0 on iconfinder.com .
+      </p>
+    <div class="mdl-dialog__content"  style="height: 400px; overflow-y: scroll;">
     <div class="mdl-grid" id="avatars">
     <c:forEach var="avatar" items="${avatars}">
     <div class="mdl-card  mdl-cell mdl-cell--3-col" >
@@ -52,13 +55,11 @@
 				</div>
 			</div>
    		</c:forEach>
-      <p>
-        Allowing us to collect data will let us get you the information you want faster.
-      </p>
+ 
       </div>
     </div>
     <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button close">Set Avatar</button>
+      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close">Set Avatar</button>
     </div>
   </dialog>
   <script>
@@ -97,8 +98,8 @@
 				</div>
 
 			</div>
-
-			<div class="mdl-card  mdl-cell mdl-cell--8-col transparent">
+<div class="mdl-grid mdl-cell mdl-cell--8-col transparent">
+			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
 					<h3>Private Details</h3>
 				</div>
@@ -153,41 +154,7 @@
 
 				</div>
 			</div>
-			<div
-				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
-				<div class="mdl-card__title">
-					<h3>Linked Accounts</h3>
-				</div>
-				<button
-					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
-					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
-					<span class="visuallyhidden">add</span>
-				</button>
-				<div
-					class="mdl-card__media">
-
-				</div>
-				<div
-					class="mdl-card__supporting-text meta meta--fill ">
-					<div></div>
-					<ul class="demo-list-control mdl-list">
-							<c:forEach var="socialuser" items="${user.socialAccounts}">
-  							<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content">
-							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;">
-							 <span>
-									${socialuser.platform}</span> <span class="mdl-list__item-text-body" style="align:center;padding-left:50px;">             ${socialuser.ident}</span>
-						</span> <span class="mdl-list__item-secondary-action"> <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  <i class="material-icons">cancel</i>
-</button>
-						</span></li>
-					</c:forEach>
-					
-						
-					</ul>
-				</div>
-			</div>
-			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title ">
 					<h3>Privacy Settings</h3>
 				</div>
@@ -220,6 +187,42 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			<div
+				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
+				<div class="mdl-card__title">
+					<h3>Linked Accounts</h3>
+				</div>
+				<button
+					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
+					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
+					<span class="visuallyhidden">add</span>
+				</button>
+				<div
+					class="mdl-card__media">
+
+				</div>
+				<div
+					class="mdl-card__supporting-text meta meta--fill "  >
+					<div></div>
+					<ul class="demo-list-control mdl-list">
+							<c:forEach var="socialuser" items="${user.socialAccounts}">
+  							<li class="mdl-list__item mdl-list__item--three-line"><span
+							class="mdl-list__item-primary-content">
+							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;">
+							 <span>
+									${socialuser.platform}</span> <span class="mdl-list__item-text-body" style="align:center;padding-left:50px;">             ${socialuser.ident}</span>
+						</span> <span class="mdl-list__item-secondary-action"> <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons">cancel</i>
+</button>
+						</span></li>
+					</c:forEach>
+					
+						
+					</ul>
+				</div>
+			</div>
+	
 		</main>
 	</div>
 

@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
-				src="${profile.image}" width="100" height="100"> 
+				src="${profile.image}" width="75" height="75"> 
 			<span style="padding-top:10px;padding-bottom:5px;font-size: 1.0vw;">${profile.points} CP</span>
 			<div class="demo-avatar-dropdown" style="width:100%;">
 				<span><h3 style="font-size: 1.3vw;">${profile.userName}</h3></span>
