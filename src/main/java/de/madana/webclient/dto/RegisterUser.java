@@ -18,39 +18,38 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient;
+package de.madana.webclient.dto;
 
-import de.madana.common.datastructures.MDN_SocialHistoryObject;
-
-public class MDN_VisualSocialHistoryObject extends MDN_SocialHistoryObject
+public class RegisterUser
 {
-	String platformIcon;
-	public String getPlatformIcon() {
-		return platformIcon;
+    private String password;
+    private String matchingPassword;
+    private String username;
+    private String email;
+	public String getPassword() {
+		return password;
 	}
-
-	public void setPlatformIcon(String platformIcon) {
-		this.platformIcon = platformIcon;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public String getActionIcon() {
-		return actionIcon;
+	public String getMatchingPassword() {
+		return matchingPassword;
 	}
-
-	public void setActionIcon(String actionIcon) {
-		this.actionIcon = actionIcon;
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
 	}
-
-	String actionIcon;
-
-	public MDN_VisualSocialHistoryObject(MDN_SocialHistoryObject oObject)
-	{
-		this.setAction(oObject.getAction());
-		this.setBenefit(oObject.getBenefit());
-		this.setCreated(oObject.getCreated());
-		this.setLink(oObject.getLink());
-		this.setPlatform(oObject.getObjectid());
-		this.setPlatform(oObject.getPlatform());
-		this.setText(oObject.getText());
+	public String getUsername() {
+		return username;
 	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+     
+
 }

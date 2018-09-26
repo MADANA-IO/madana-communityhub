@@ -18,31 +18,17 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.dto;
+package de.madana.webclient.bean;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import de.madana.common.datastructures.MDN_SocialPlatform;
-
-public class MDN_UserSpecificSocialPlatform extends MDN_SocialPlatform
+public class ResetPasswordBean 
 {
-	public Map<String, String> oActions = new HashMap<String, String>();
-	public String isVerifiedByUser = "false";
+	private String mail;
 
-	public String getIsVerifiedByUser() {
-		return isVerifiedByUser;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setIsVerifiedByUser(String isVerifiedByUser) {
-		this.isVerifiedByUser = isVerifiedByUser;
-	}
-
-	public Map<String, String> getoActions() {
-		return oActions;
-	}
-
-	public void setoActions(Map<String, String> oActions) {
-		this.oActions = oActions;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 }

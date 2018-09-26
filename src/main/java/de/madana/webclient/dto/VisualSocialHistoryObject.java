@@ -20,20 +20,37 @@
  ******************************************************************************/
 package de.madana.webclient.dto;
 
-import java.util.List;
+import de.madana.common.datastructures.MDN_SocialHistoryObject;
 
-import de.madana.common.datastructures.MDN_SocialPlatform;
-import de.madana.common.datastructures.MDN_UserProfile;
-
-public class MDN_ReferralSocialPlatform extends MDN_SocialPlatform
+public class VisualSocialHistoryObject extends MDN_SocialHistoryObject
 {
-	List<MDN_UserProfile> referrals;
-
-	public List<MDN_UserProfile> getReferrals() {
-		return referrals;
+	String platformIcon;
+	public String getPlatformIcon() {
+		return platformIcon;
 	}
 
-	public void setReferrals(List<MDN_UserProfile> referrals) {
-		this.referrals = referrals;
+	public void setPlatformIcon(String platformIcon) {
+		this.platformIcon = platformIcon;
+	}
+
+	public String getActionIcon() {
+		return actionIcon;
+	}
+
+	public void setActionIcon(String actionIcon) {
+		this.actionIcon = actionIcon;
+	}
+
+	String actionIcon;
+
+	public VisualSocialHistoryObject(MDN_SocialHistoryObject oObject)
+	{
+		this.setAction(oObject.getAction());
+		this.setBenefit(oObject.getBenefit());
+		this.setCreated(oObject.getCreated());
+		this.setLink(oObject.getLink());
+		this.setPlatform(oObject.getObjectid());
+		this.setPlatform(oObject.getPlatform());
+		this.setText(oObject.getText());
 	}
 }

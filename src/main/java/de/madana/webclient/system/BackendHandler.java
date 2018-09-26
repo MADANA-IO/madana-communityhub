@@ -18,7 +18,7 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient;
+package de.madana.webclient.system;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,33 +28,33 @@ import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
-import de.madana.webclient.dto.MDN_ReferralSocialPlatform;
-import de.madana.webclient.dto.MDN_UserSpecificSocialPlatform;
+import de.madana.webclient.dto.ReferralSocialPlatform;
+import de.madana.webclient.dto.UserSpecificSocialPlatform;
 
-public class MDN_BackendHandler
+public class BackendHandler
 {
-	public static MDN_BackendHandler instance;
+	public static BackendHandler instance;
 	
-	private MDN_BackendHandler()
+	private BackendHandler()
 	{
 		
 	}
-	public static MDN_BackendHandler getInstance()
+	public static BackendHandler getInstance()
 	{
 		if (instance == null) 
 		{
-			instance = new MDN_BackendHandler();
+			instance = new BackendHandler();
 		}
 		return instance;
 	}
-	public List<MDN_ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms, MDN_RestClient oClient, String strUserName)
+	public List<ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms, MDN_RestClient oClient, String strUserName)
 	{
-		List<MDN_ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<MDN_ReferralSocialPlatform>();
+		List<ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<ReferralSocialPlatform>();
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 			{
-				MDN_ReferralSocialPlatform oMyPlatform = new MDN_ReferralSocialPlatform();
+				ReferralSocialPlatform oMyPlatform = new ReferralSocialPlatform();
 				oMyPlatform.setName(oPlatforms.get(i).getName());
 				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
 				oMyPlatform.setLink(oPlatforms.get(i).getLink());
@@ -75,15 +75,15 @@ public class MDN_BackendHandler
 		}
 		return oRefferalPlatforms;
 	}
-	public List<MDN_UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile )
+	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile )
 	{
-		List<MDN_UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<MDN_UserSpecificSocialPlatform>();
+		List<UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<UserSpecificSocialPlatform>();
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(!oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 			{
 				oClient.getSocialFeed(oPlatforms.get(i));
-				MDN_UserSpecificSocialPlatform oMyPlatform = new MDN_UserSpecificSocialPlatform();
+				UserSpecificSocialPlatform oMyPlatform = new UserSpecificSocialPlatform();
 				oMyPlatform.setName(oPlatforms.get(i).getName());
 				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
 				oMyPlatform.setLink(oPlatforms.get(i).getLink());

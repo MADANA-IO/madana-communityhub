@@ -20,15 +20,29 @@
  ******************************************************************************/
 package de.madana.webclient.dto;
 
-public class MDN_DTO_ResetPassword 
-{
-	private String mail;
+import java.util.HashMap;
+import java.util.Map;
 
-	public String getMail() {
-		return mail;
+import de.madana.common.datastructures.MDN_SocialPlatform;
+
+public class UserSpecificSocialPlatform extends MDN_SocialPlatform
+{
+	public Map<String, String> oActions = new HashMap<String, String>();
+	public String isVerifiedByUser = "false";
+
+	public String getIsVerifiedByUser() {
+		return isVerifiedByUser;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setIsVerifiedByUser(String isVerifiedByUser) {
+		this.isVerifiedByUser = isVerifiedByUser;
+	}
+
+	public Map<String, String> getoActions() {
+		return oActions;
+	}
+
+	public void setoActions(Map<String, String> oActions) {
+		this.oActions = oActions;
 	}
 }
