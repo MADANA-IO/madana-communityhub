@@ -174,7 +174,7 @@
 						<input type="checkbox" id="${setting.id}" class="mdl-switch__input" 	<c:if test="${setting.value == 'true'}">checked</c:if> />
 							</label>
 						</span></li>
-					</c:forEach>
+					</c:forEach> 
 						
 					</ul>
 
@@ -183,10 +183,11 @@
 						<c:forEach var="setting" items="${user.settings}">
 
 			
-						document.addEventListener("DOMContentLoaded", function (event) {
-						    var _selector = document.querySelector('input[id="${setting.id}"]');
-						    _selector.addEventListener('change', function (event) {
-						        if (_selector.checked) 
+						document.addEventListener("DOMContentLoaded", function (event) 
+								{
+							var _selector = document.querySelector('label[id="label${setting.id}"]');
+						    _selector.addEventListener('click', function (event) {
+						        if ($(_selector).is('.is-checked'))
 						        {
 						        	document.forceLoading();
 						        	window.location.href = "settings/${setting.id}?value=false";
@@ -194,7 +195,7 @@
 						        else 
 						        {
 						        	document.forceLoading();
-						        	window.location.href = "settings/${setting.id}?value=false";
+						        	window.location.href = "settings/${setting.id}?value=true";
 						        }
 						    });
 						});

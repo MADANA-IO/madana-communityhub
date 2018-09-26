@@ -269,27 +269,33 @@ public class MenuController
 		model.addAttribute("msg", session.getAttribute("username").toString());
 		MDN_UserProfile oDestUserProfile = oClient.getProfile(strDestUsername);
 
-		List<VisualSocialHistoryObject> oNewList = new ArrayList<VisualSocialHistoryObject>();
+		List<VisualSocialHistoryObject> oNewList = null; 
 		List<MDN_SocialHistoryObject> oList = oDestUserProfile.getHistory();
-		for(int i=0; i< oList.size();i ++)
+		if(oList!=null)
 		{
-			VisualSocialHistoryObject oObject = new VisualSocialHistoryObject(oList.get(i));
-			for(int j=0; j < oPlatforms.size(); j++)
+			oNewList =  new ArrayList<VisualSocialHistoryObject>();
+			for(int i=0; i< oList.size();i ++)
 			{
-				if(oObject.getPlatform().equalsIgnoreCase(oPlatforms.get(j).getName()))
-					oObject.setPlatformIcon(oPlatforms.get(j).getIcon());
+				
+				VisualSocialHistoryObject oObject = new VisualSocialHistoryObject(oList.get(i));
+				for(int j=0; j < oPlatforms.size(); j++)
+				{
+					if(oObject.getPlatform().equalsIgnoreCase(oPlatforms.get(j).getName()))
+						oObject.setPlatformIcon(oPlatforms.get(j).getIcon());
+				}
+				if(oObject.getAction().equalsIgnoreCase("like"))
+					oObject.setActionIcon("<i class=\"material-icons\">thumb_up</i>");
+				else if(oObject.getAction().equalsIgnoreCase("share"))
+					oObject.setActionIcon("<i class=\"material-icons\">share</i>");
+				if(oObject.getAction().equalsIgnoreCase("referral"))
+					oObject.setActionIcon("<i class=\"material-icons\">person_add</i>");
+
+
+				oNewList.add(oObject);
 			}
-			if(oObject.getAction().equalsIgnoreCase("like"))
-				oObject.setActionIcon("<i class=\"material-icons\">thumb_up</i>");
-			else if(oObject.getAction().equalsIgnoreCase("share"))
-				oObject.setActionIcon("<i class=\"material-icons\">share</i>");
-			if(oObject.getAction().equalsIgnoreCase("referral"))
-				oObject.setActionIcon("<i class=\"material-icons\">person_add</i>");
-
-
-			oNewList.add(oObject);
-		}
 		Collections.sort(oNewList);
+		}
+	
 		model.addAttribute("history", oNewList);
 		model.addAttribute("user", oProfile);
 		model.addAttribute("profile", oDestUserProfile);

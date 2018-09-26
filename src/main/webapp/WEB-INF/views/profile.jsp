@@ -32,8 +32,13 @@
 					bonus community points. You can see which achievements are still
 					unlocked in your profile section. Some achievements are special and
 					you can miss out on them, so pay attention!</p>
-
-				<c:forEach items="${profile.achievements}" var="achievementgroup">
+					
+					<c:choose>
+    <c:when test="${empty profile.achievements}">
+<h4> User has decided to hide his achievements</h4>
+    </c:when>
+    <c:otherwise>
+    <c:forEach items="${profile.achievements}" var="achievementgroup">
 					<div class="mdl-grid mdl-cell mdl-cell--12-col">
 						<div class="mdl-cell--12-col ">
 							<h3>${achievementgroup.name}</h3>
@@ -75,13 +80,22 @@
 
 					</div>
 				</c:forEach>
+    </c:otherwise>
+</c:choose>
+
+				
 
 			</div>
 	<h3>Action History</h3>
 		
-
-	
-				<div class="mdl-cell mdl-cell--12-col"
+<c:choose>
+ <c:when test="${empty history}">
+   <div class="mdl-cell mdl-cell--12-col">
+					<h4> User has decided to hide his Action History</h4>
+					</div>
+    </c:when>
+    <c:otherwise>
+        	<div class="mdl-cell mdl-cell--12-col"
 					style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
@@ -99,6 +113,10 @@
 						</c:forEach>
 					</ul>
 				</div>
+    </c:otherwise>
+</c:choose>
+	
+
 
 		</div>
 		</main>
