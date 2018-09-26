@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="components/header.jsp" />
+
 <body>
 	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
@@ -159,33 +160,47 @@
 					<h3>Privacy Settings</h3>
 				</div>
 				<div class="mdl-card__supporting-text meta">
+		
 					<ul class="demo-list-control mdl-list">
-						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"> <i
-								class="material-icons mdl-list__item-avatar">history</i> <span>
-									Show activity</span> <span class="mdl-list__item-text-body"> If
-									you disable this setting nobody besides you will be able to see
-									your activity in your profile </span>
-						</span> <span class="mdl-list__item-secondary-action"> <label
-								class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-								for="list-switch-1"> <input type="checkbox"
-									id="list-switch-1" class="mdl-switch__input" checked />
+						<c:forEach var="setting" items="${user.settings}">
+  							<li class="mdl-list__item mdl-list__item--three-line">
+  							<span class="mdl-list__item-primary-content"> 
+  							<i class="material-icons mdl-list__item-avatar">history</i> 
+  							<span>						${setting.name}</span>
+  							 <span class="mdl-list__item-text-body"> ${setting.description} </span>
+						</span> 
+						<span class="mdl-list__item-secondary-action"> 
+						<label	id="label${setting.id}"class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${setting.id}">
+						<input type="checkbox" id="${setting.id}" class="mdl-switch__input" 	<c:if test="${setting.value == 'true'}">checked</c:if> />
 							</label>
 						</span></li>
-						<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content"> <i
-								class="material-icons mdl-list__item-avatar">star</i> <span>Show
-									achievements</span> <span class="mdl-list__item-text-body"> If
-									you disable this setting nobody besides you will be able to see
-									your achievements in your profile </span>
-						</span> <span class="mdl-list__item-secondary-action"> <label
-								class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-								for="list-switch-1"> <input type="checkbox"
-									id="list-switch-1" class="mdl-switch__input" checked />
-							</label>
-						</span></li>
+					</c:forEach>
+						
 					</ul>
+
 				</div>
+							<script>
+						<c:forEach var="setting" items="${user.settings}">
+
+			
+						document.addEventListener("DOMContentLoaded", function (event) {
+						    var _selector = document.querySelector('input[id="${setting.id}"]');
+						    _selector.addEventListener('change', function (event) {
+						        if (_selector.checked) 
+						        {
+						        	document.forceLoading();
+						        	window.location.href = "settings/${setting.id}?value=false";
+						        } 
+						        else 
+						        {
+						        	document.forceLoading();
+						        	window.location.href = "settings/${setting.id}?value=false";
+						        }
+						    });
+						});
+						</c:forEach>
+</script>
+
 			</div>
 			</div>
 			<div
@@ -226,6 +241,8 @@
 		</main>
 	</div>
 
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
 	<jsp:include page="components/footer.jsp" />	  
 </body>

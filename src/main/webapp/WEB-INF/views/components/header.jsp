@@ -66,10 +66,7 @@
 	rel='stylesheet' type='text/css'>
 <link href=' http://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
-<noscript id="loading-config">{ "phrases": ["Guiding the bits
-	in your direction", "Spinning the cube", "Moving the satellite into
-	position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":
-	1000, "loop": true } }</noscript>
+<noscript id="loading-config">{ "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":	1000, "loop": true } }</noscript>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
 <script type="text/javascript"

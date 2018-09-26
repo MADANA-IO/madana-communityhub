@@ -33,6 +33,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_PersonalSocialPost;
@@ -41,6 +42,7 @@ import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.datastructures.MDN_UserProfileImage;
+import de.madana.common.datastructures.MDN_UserSetting;
 import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.ReferralSocialPlatform;
 import de.madana.webclient.dto.UserSpecificSocialPlatform;
@@ -301,6 +303,16 @@ public class MenuController
 		oImage.setId(strAvatarID);
 		oImage.setImage(strAvatarID);
 		oClient.setAvatar(session.getAttribute("username").toString(), oImage);
+		return "redirect:/settings";
+	}
+	@RequestMapping(value = "/settings/{settingid}", method = RequestMethod.GET)
+	public String setSetting(HttpSession session,Model model,@PathVariable("settingid") String strSettingID, @RequestParam("value") String strValue) 
+	{
+		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_UserSetting oSetting = new MDN_UserSetting();
+		oSetting.setId(strSettingID);
+		oSetting.setValue(strValue);
+		oClient.setUserSetting(session.getAttribute("username").toString(), oSetting);
 		return "redirect:/settings";
 	}
 
