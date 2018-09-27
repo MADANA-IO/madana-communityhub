@@ -209,7 +209,7 @@ public class LoginController
 					session.setAttribute("username",loginBean.getUserName());
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
-						return "redirect:/"+requesturi;
+						return "redirect:"+requesturi;
 					
 					return "redirect:/home";
 				} else 
