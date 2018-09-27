@@ -24,7 +24,7 @@
 			<nav class="demo-navigation mdl-navigation mdnnav"> <a
 				class="mdl-navigation__link" href="/home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
-				class="mdl-navigation__link" href="/home"><i
+				class="mdl-navigation__link" href="/news"><i
 				class=" material-icons" role="presentation">announcement</i>News</a> <a
 				class="mdl-navigation__link" href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
