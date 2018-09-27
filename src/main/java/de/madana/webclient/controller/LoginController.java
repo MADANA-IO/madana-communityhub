@@ -57,6 +57,7 @@ public class LoginController
 
 
 
+
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.GET)
 	public String loadResetPassword(Model model,@PathVariable("token") String token) 
 	{
@@ -179,6 +180,9 @@ public class LoginController
 		if (requesturi != null )
 		{
 			model.addAttribute("requesturi", requesturi );
+		}
+		if(msg!=null)
+		{
 			model.addAttribute("error", msg );
 		}
 		return "login";
@@ -188,7 +192,7 @@ public class LoginController
 	{
 
 		session.invalidate();
-		model.addAttribute("error", "See you soon mate!" );
+		model.addAttribute("msg", "See you soon mate!" );
 
 		return "redirect:/login";
 	}
@@ -210,7 +214,7 @@ public class LoginController
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
 						return "redirect:"+requesturi;
-					
+
 					return "redirect:/home";
 				} else 
 				{
