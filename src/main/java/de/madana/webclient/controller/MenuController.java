@@ -47,7 +47,9 @@ import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.ReferralSocialPlatform;
 import de.madana.webclient.dto.UserSpecificSocialPlatform;
 import de.madana.webclient.dto.VisualSocialHistoryObject;
+import de.madana.webclient.exceptions.UserNotAuthenticatedException;
 import de.madana.webclient.system.BackendHandler;
+import de.madana.webclient.system.SessionHandler;
 
 @Controller
 @Scope("session")
@@ -58,9 +60,9 @@ public class MenuController
 	MDN_User oUser;
 	List<MDN_SocialPlatform> oPlatforms;
 	@RequestMapping(value = "/bounty/{platform}", method = RequestMethod.GET)
-	public String loadBountyDetail(HttpSession session, Model model,@PathVariable("platform") String platform) 
+	public String loadBountyDetail(HttpSession session, Model model,@PathVariable("platform") String platform) throws UserNotAuthenticatedException 
 	{
-		String strUserName = session.getAttribute("username").toString();
+		String strUserName = SessionHandler.getCurrentUser(session);
 		oUser = ((MDN_RestClient) session.getAttribute("oClient")).getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
@@ -165,10 +167,10 @@ public class MenuController
 		return "ranking";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(HttpSession session,Model model) 
+	public String homePage(HttpSession session,Model model) throws UserNotAuthenticatedException 
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
-		String strUserName = session.getAttribute("username").toString();
+		String strUserName = SessionHandler.getCurrentUser(session);
 		oPlatforms = oClient.getSocialPlatforms();
 		oUser = oClient.getUser(strUserName);
 		oProfile= oClient.getProfile(strUserName);
@@ -227,9 +229,9 @@ public class MenuController
 		return "news";
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(HttpSession session,Model model) 
+	public String profilePage(HttpSession session,Model model) throws UserNotAuthenticatedException 
 	{
-		String strUserName = session.getAttribute("username").toString();
+		String strUserName = SessionHandler.getCurrentUser(session);
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
@@ -323,10 +325,10 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(HttpSession session,Model model) 
+	public String settingsPage(HttpSession session,Model model) throws UserNotAuthenticatedException 
 	{
 		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
-		String strUserName = session.getAttribute("username").toString();
+		String strUserName = SessionHandler.getCurrentUser(session);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);

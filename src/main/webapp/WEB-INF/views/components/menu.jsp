@@ -14,10 +14,11 @@
 					<i class="material-icons" role="presentation">arrow_drop_down</i> <span
 						class="visuallyhidden">Accounts</span>
 				</button>
-				<ul
-					class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+				<ul	class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 					for="accbtn">
-					<li class="mdl-menu__item"><i class="material-icons">lock</i>Logout...</li>
+					<a href="/logout" onclick="document.reRenderLoading({ phrases: ['Logging you out'] });" ><li class="mdl-menu__item">
+					<i class="material-icons">lock</i>Logout...</li>
+				</a>
 				</ul>
 			</div>
 			</header>

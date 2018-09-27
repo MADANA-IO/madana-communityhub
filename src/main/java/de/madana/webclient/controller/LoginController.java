@@ -138,7 +138,7 @@ public class LoginController
 
 	}
 
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submitRegisterPage(HttpSession session,@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
@@ -173,17 +173,30 @@ public class LoginController
 		}
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loadLoginPage(Model model) 
+	public String loadLoginPage( @RequestParam(value="msg", required=false) String msg,  @RequestParam(value="requesturi", required=false) String requesturi, Model model) 
 	{
-		model.addAttribute("msg", "Please Enter Your Login Details");
-	
+
+		if (requesturi != null )
+		{
+			model.addAttribute("requesturi", requesturi );
+			model.addAttribute("error", msg );
+		}
+		return "login";
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String loadLogoutPage(HttpSession session,Model model) 
+	{
+
+		session.invalidate();
+		model.addAttribute("error", "See you soon mate!" );
+
 		return "login";
 	}
 
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLoginPage(HttpSession session,Model model, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
+	public String submitLoginPage(HttpSession session,Model model,  @RequestParam(value="requesturi", required=false) String requesturi, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
@@ -195,6 +208,9 @@ public class LoginController
 				{
 					session.setAttribute("username",loginBean.getUserName());
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
+					if(requesturi!=null)
+						return "redirect:/"+requesturi;
+					
 					return "redirect:/home";
 				} else 
 				{
