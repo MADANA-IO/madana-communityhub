@@ -190,7 +190,7 @@ public class LoginController
 		session.invalidate();
 		model.addAttribute("error", "See you soon mate!" );
 
-		return "login";
+		return "redirect:/login";
 	}
 
 
