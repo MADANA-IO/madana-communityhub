@@ -11,8 +11,8 @@
 		<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content">
-<div class="mdl-grid mdl-cell--12-col">
+		<div class="mdl-grid demo-content ">
+<div class="mdl-grid mdl-cell--12-col transparent">
 			<div class="mdl-cell mdl-cell--2-col ">
 
 				<img src="${profile.image}" height="150" width="150">
