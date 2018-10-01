@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.madana.webclient.exceptions.ClientNotInitizializedException;
 import de.madana.webclient.exceptions.UserNotAuthenticatedException;
 
 /**
@@ -30,7 +31,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
 		} 
 		catch (Exception e) 
 		{
-			if(e.getCause() instanceof UserNotAuthenticatedException)
+			if(e.getCause() instanceof UserNotAuthenticatedException | e.getCause() instanceof ClientNotInitizializedException)
 			{
 				String strDestUri = request.getRequestURI();
 				response.sendRedirect("/login?msg=You need to authenticate yourself to view "+strDestUri+"&requesturi="+strDestUri);

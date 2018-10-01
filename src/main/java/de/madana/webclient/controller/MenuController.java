@@ -47,6 +47,7 @@ import de.madana.common.restclient.MDN_RestClient;
 import de.madana.webclient.dto.ReferralSocialPlatform;
 import de.madana.webclient.dto.UserSpecificSocialPlatform;
 import de.madana.webclient.dto.VisualSocialHistoryObject;
+import de.madana.webclient.exceptions.ClientNotInitizializedException;
 import de.madana.webclient.exceptions.UserNotAuthenticatedException;
 import de.madana.webclient.system.BackendHandler;
 import de.madana.webclient.system.SessionHandler;
@@ -60,17 +61,17 @@ public class MenuController
 	MDN_User oUser;
 	List<MDN_SocialPlatform> oPlatforms;
 	@RequestMapping(value = "/bounty/{platform}", method = RequestMethod.GET)
-	public String loadBountyDetail(HttpSession session, Model model,@PathVariable("platform") String platform) throws UserNotAuthenticatedException 
+	public String loadBountyDetail(HttpSession session, Model model,@PathVariable("platform") String platform) throws UserNotAuthenticatedException, ClientNotInitizializedException 
 	{
 		String strUserName = SessionHandler.getCurrentUser(session);
-		oUser = ((MDN_RestClient) session.getAttribute("oClient")).getUser(strUserName);
+		oUser = SessionHandler.getClient(session).getUser(strUserName);
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(oPlatforms.get(i).getName().equalsIgnoreCase(platform))
 			{
 				if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 				{
-					List<MDN_UserProfile> oReferred =  ((MDN_RestClient) session.getAttribute("oClient")).getReferredUsers(oPlatforms.get(i).getName(), strUserName);
+					List<MDN_UserProfile> oReferred =  SessionHandler.getClient(session).getReferredUsers(oPlatforms.get(i).getName(), strUserName);
 					model.addAttribute("platform",oPlatforms.get(i));
 					model.addAttribute("referrals",oReferred);
 					model.addAttribute("user", oUser);
@@ -86,11 +87,11 @@ public class MenuController
 							List<MDN_PersonalSocialPost> oNoActions = new ArrayList<MDN_PersonalSocialPost>();
 							List<MDN_PersonalSocialPost> oInProgress = new ArrayList<MDN_PersonalSocialPost>();
 							List<MDN_PersonalSocialPost> oCompleted = new ArrayList<MDN_PersonalSocialPost>();
-							List<MDN_PersonalSocialPost> oPosts =((MDN_RestClient) session.getAttribute("oClient")).getPersonalizedTwitterFeed(strUserName);
+							List<MDN_PersonalSocialPost> oPosts =SessionHandler.getClient(session).getPersonalizedTwitterFeed(strUserName);
 							Collections.sort(oPosts);
 							for(int k=0; k < oPosts.size(); k++)
 							{
-								oPosts.get(k).setEmbeddCode( ((MDN_RestClient) session.getAttribute("oClient")).getTwitterEmbeddCode(oPosts.get(k).getLink()));
+								oPosts.get(k).setEmbeddCode( SessionHandler.getClient(session).getTwitterEmbeddCode(oPosts.get(k).getLink()));
 								if(oPosts.get(k).isCompleted())
 								{
 
@@ -126,9 +127,9 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
-	public String loadRanking(HttpSession session, Model model) 
+	public String loadRanking(HttpSession session, Model model) throws ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		Map<String, String> oUsers = oClient.getRanking();
 		List<String> oRanking =new ArrayList(oUsers.keySet());
 		try
@@ -167,9 +168,9 @@ public class MenuController
 		return "ranking";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(HttpSession session,Model model) throws UserNotAuthenticatedException 
+	public String homePage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
 		oPlatforms = oClient.getSocialPlatforms();
 		oUser = oClient.getUser(strUserName);
@@ -229,10 +230,10 @@ public class MenuController
 		return "news";
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(HttpSession session,Model model) throws UserNotAuthenticatedException 
+	public String profilePage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
 	{
 		String strUserName = SessionHandler.getCurrentUser(session);
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
 		oProfile =  oClient.getProfile(strUserName);
@@ -265,9 +266,9 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) 
+	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", session.getAttribute("username").toString());
 		MDN_UserProfile oDestUserProfile = oClient.getProfile(strDestUsername);
 
@@ -304,9 +305,9 @@ public class MenuController
 		return "profile";
 	}
 	@RequestMapping(value = "/settings/avatar/{avatarid}", method = RequestMethod.GET)
-	public String setAvatar(HttpSession session,Model model,@PathVariable("avatarid") String strAvatarID) 
+	public String setAvatar(HttpSession session,Model model,@PathVariable("avatarid") String strAvatarID) throws ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		MDN_UserProfileImage oImage = new MDN_UserProfileImage();
 		oImage.setId(strAvatarID);
 		oImage.setImage(strAvatarID);
@@ -314,9 +315,9 @@ public class MenuController
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/{settingid}", method = RequestMethod.GET)
-	public String setSetting(HttpSession session,Model model,@PathVariable("settingid") String strSettingID, @RequestParam("value") String strValue) 
+	public String setSetting(HttpSession session,Model model,@PathVariable("settingid") String strSettingID, @RequestParam("value") String strValue) throws ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		MDN_UserSetting oSetting = new MDN_UserSetting();
 		oSetting.setId(strSettingID);
 		oSetting.setValue(strValue);
@@ -325,9 +326,9 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(HttpSession session,Model model) throws UserNotAuthenticatedException 
+	public String settingsPage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
 	{
-		MDN_RestClient oClient = ((MDN_RestClient) session.getAttribute("oClient"));
+		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
@@ -351,7 +352,7 @@ public class MenuController
 	{
 		try
 		{
-			((MDN_RestClient) session.getAttribute("oClient")).deleteUser(session.getAttribute("username").toString());
+			SessionHandler.getClient(session).deleteUser(session.getAttribute("username").toString());
 			redirectAttributes.addFlashAttribute("error", "Account deleted");
 			return "redirect:/login";
 		}

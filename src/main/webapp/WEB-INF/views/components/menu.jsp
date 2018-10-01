@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" %> 
+<%@ page import = "java.util.ResourceBundle" %>
+<% ResourceBundle resource = ResourceBundle.getBundle("system");
+  String version=resource.getString("version"); %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
@@ -47,7 +53,7 @@
 					alt="MADANA Logo" width="30" height="30" style="padding-top: 20px;"></i><span
 					style="font-size: 12px; color: #4d7da2; padding-left: 20px;">
 					Community Hub </span><span
-					style="font-size: 12px; padding-left: 60px; color: #4d7da2;">0.1.12-164.260</span>
+					style="font-size: 12px; padding-left: 60px; color: #4d7da2;">  <%=version %></span>
 			</div>
 
 			</nav>

@@ -40,6 +40,7 @@ import de.madana.webclient.bean.LoginBean;
 import de.madana.webclient.bean.ResetPasswordBean;
 import de.madana.webclient.bean.SetPasswordBean;
 import de.madana.webclient.dto.RegisterUser;
+import de.madana.webclient.system.SessionHandler;
 
 @Controller
 @Scope("session")
@@ -77,7 +78,7 @@ public class LoginController
 					oReset.setPassword(oNewPassword.getPassword());
 					oReset.setToken(token);
 
-					if (((MDN_RestClient) session.getAttribute("oClient")).setNewPassword(oReset)) ;
+					if (SessionHandler.getClient(session).setNewPassword(oReset)) ;
 					{
 						model.addAttribute("error", "Login with your new password");
 						return "redirect:/login";
@@ -109,7 +110,7 @@ public class LoginController
 			{
 				MDN_MailAddress oMail = new MDN_MailAddress();
 				oMail.setMail(mail.getMail());
-				if (((MDN_RestClient) session.getAttribute("oClient")).requestNewPassword(oMail)) ;
+				if (SessionHandler.getClient(session).requestNewPassword(oMail)) ;
 				{
 					redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
 					return "redirect:/login";
@@ -150,7 +151,7 @@ public class LoginController
 			{
 				try 
 				{
-					if (((MDN_RestClient) session.getAttribute("oClient")).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
+					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
 					{
 						redirectAttributes.addFlashAttribute("error", "Account created");
 						return "redirect:/login";
