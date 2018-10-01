@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page language="java" import="java.util.*" %> 
 <%@ page import = "java.util.ResourceBundle" %>
-<% ResourceBundle resource = ResourceBundle.getBundle("system");
+<% ResourceBundle resource = ResourceBundle.getBundle("de.madana.webclient.system");
   String version=resource.getString("version"); %>
 
 
