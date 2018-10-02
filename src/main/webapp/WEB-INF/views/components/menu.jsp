@@ -32,7 +32,7 @@
 				class="mdl-navigation__link" href="/home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
 				class="mdl-navigation__link" href="/news"><i
-				class=" material-icons" role="presentation">announcement</i>News</a> <a
+				class=" material-icons" role="presentation">info</i>News</a> <a
 				class="mdl-navigation__link" href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
 				class="mdl-navigation__link" href="/ranking"><i
@@ -44,7 +44,11 @@
 
 			<a class="mdl-navigation__link" href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
-				class="">FAQ</span></a> <a href="#" id="feedback-button"
+				class="">FAQ</span></a> 
+				<a href="#" id="feedback-button"
+				class="mdl-navigation__link"><i class=" material-icons"
+				role="presentation">feedback</i><span class="">Give Feedback</span></a>
+				<a href="#" id="bug-button"
 				class="mdl-navigation__link"><i class=" material-icons"
 				role="presentation">bug_report</i><span class="">Report a Bug</span></a>
 			<hr>

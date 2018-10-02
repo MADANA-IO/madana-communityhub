@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
@@ -74,17 +74,98 @@
 	src="http://code.jquery.com/jquery-latest.js" /></script>
 <script type="text/javascript"
 	src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
+<script type="text/javascript"
+	src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=710a7e45"></script>
+<script type="text/javascript"
+	src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=710a7e45"></script>
+
+
 
 <script type="text/javascript">
-	window.ATL_JQ_PAGE_PROPS = {
-		"triggerFunction" : function(showCollectorDialog) {
-			//Requries that jQuery is available! 
-			jQuery("#feedback-button").click(function(e) {
-				e.preventDefault();
-				showCollectorDialog();
-			});
-		}
-	};
+	// safely use jquery here since the issue collector will load it for you
+
+	window.ATL_JQ_PAGE_PROPS = $
+			.extend(
+					window.ATL_JQ_PAGE_PROPS,
+					{
+
+						// ==== feedback collector ====
+						"710a7e45" : {
+
+							// === custom trigger function ===
+								"triggerFunction" : function(showCollectorDialog) {
+								//Requries that jQuery is available! 
+								jQuery("#feedback-button").click(function(e) {
+									e.preventDefault();
+									showCollectorDialog();
+								});
+							}
+
+							// === default and hidden field values ===
+							,
+							fieldValues : {
+
+								// default values
+								summary : 'Feedback for new website designs',
+								description : 'The font doesn\'t quite look right'
+
+								// hidden field value
+								,
+								priority : '2'
+
+							}
+
+						}
+
+						// ==== bug collector ====
+						,
+						"0e0352a0" : {
+							// === custom trigger function ===
+
+							"triggerFunction" : function(showCollectorDialog) {
+								//Requries that jQuery is available! 
+								jQuery("#bug-button").click(function(e) {
+									e.preventDefault();
+									showCollectorDialog();
+								});
+							}
+
+							// === additional environment details ===
+							,
+							environment : function() {
+
+								var env_info = {};
+
+								if (window.ADDITIONAL_CUSTOM_CONTEXT) {
+									env_info['Additional Context Information'] = window.ADDITIONAL_CUSTOM_CONTEXT;
+								}
+
+								return env_info;
+							}
+							// === default field values ===
+							,
+							fieldValues : function() {
+
+								var values = {};
+
+								var error_message = $('.error_message');
+								if (error_message.length !== 0) {
+
+									// record error message from the page context rather than asking the user to enter it
+									values['summary'] = error_message.children(
+											'.summary').text();
+									values['description'] = error_message
+											.children('.description').text();
+
+								}
+
+								return values;
+
+							}
+
+						}
+
+					});
 </script>
 
 
