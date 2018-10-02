@@ -39,17 +39,21 @@
 					<div class="mdl-card__actions mdl-card--border">
 						<h4>Share the link below to get more pts. For every user who
 							signs up you will be rewarded with 2000 CP</h4>
-						<textarea class="mdl-textfield__input" type="text" rows="4"
+						<textarea id="copytext" class="mdl-textfield__input" type="text" rows="4"
 							disabled style="color: #274863;">${platform.link}?referrer=${user.guid}</textarea>
-
+	<div class="mdl-cell mdl-cell--6-col" text-align ="center">
+		<button
+						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="CopyToClipboard('copytext')">
+					  <i class="material-icons">file_copy</i>	copy Link</button>
+		</div>
 					</div>
-				</div>
-
-
+				
 
 
 			</div>
+		
 		</div>
+		
 	</div>
 
 	</main>
@@ -57,4 +61,20 @@
 	<jsp:include page="components/footer.jsp" />	 
 
 </body>
+    <script>
+    function CopyToClipboard(containerid) {
+    	if (document.selection) { 
+    	    var range = document.body.createTextRange();
+    	    range.moveToElementText(document.getElementById(containerid));
+    	    range.select().createTextRange();
+    	    document.execCommand("copy"); 
+
+    	} else if (window.getSelection) {
+    	    var range = document.createRange();
+    	     range.selectNode(document.getElementById(containerid));
+    	     window.getSelection().addRange(range);
+    	     document.execCommand("copy");
+    	     alert("Your referral Link has been copied to your clipboard") 
+    	}}
+    </script>
 </html>
