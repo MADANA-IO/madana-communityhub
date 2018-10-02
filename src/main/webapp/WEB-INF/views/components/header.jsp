@@ -74,12 +74,7 @@
 	src="http://code.jquery.com/jquery-latest.js" /></script>
 <script type="text/javascript"
 	src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=710a7e45"></script>
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=710a7e45"></script>
-
-
+<script type="text/javascript" src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=c539491a"></script>
 
 <script type="text/javascript">
 	// safely use jquery here since the issue collector will load it for you
@@ -90,7 +85,7 @@
 					{
 
 						// ==== feedback collector ====
-						"710a7e45" : {
+						"c539491a" : {
 
 							// === custom trigger function ===
 								"triggerFunction" : function(showCollectorDialog) {
