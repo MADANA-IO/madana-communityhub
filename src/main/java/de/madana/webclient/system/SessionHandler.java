@@ -37,4 +37,13 @@ public class SessionHandler
 			
 			return (MDN_RestClient) oClient;
 	}
+	/**
+	 * @param session
+	 */
+	public static void initNewClient(HttpSession session) 
+	{
+		MDN_RestClient oClient =  new MDN_RestClient();
+		session.setAttribute("oClient", oClient);
+		
+	}
 }

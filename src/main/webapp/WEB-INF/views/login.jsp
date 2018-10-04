@@ -218,7 +218,7 @@ body{
 					</tr>
 						<tr>
 						<td></td>
-						<td><a href="/resetPassword">Forgot Password</a></td>
+						<td><a href="/resetpassword">Forgot Password</a></td>
 					</tr>
 						<tr>
 						<td><br><br></td>
