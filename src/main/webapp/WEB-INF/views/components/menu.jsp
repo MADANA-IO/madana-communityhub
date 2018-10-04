@@ -53,7 +53,7 @@
 				role="presentation">bug_report</i><span class="">Report a Bug</span></a>
 			<hr>
 			<div style="margin-left: 30px;">
-				<i><img src="http://www.madana.io/assets/img/logo-madana.png"
+				<i><img src="https://www.madana.io/assets/img/logo-madana.png"
 					alt="MADANA Logo" width="30" height="30" style="padding-top: 20px;"></i><span
 					style="font-size: 12px; color: #4d7da2; padding-left: 20px;">
 					Community Hub </span><span

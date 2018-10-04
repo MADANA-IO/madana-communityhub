@@ -7,7 +7,7 @@
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
+<link rel="stylesheet" href="https://www.madana.io/assets/css/main.css">
 
 <title>MADANA Community Hub</title>
   <meta charset="UTF-8">
@@ -36,7 +36,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(http://www.madana.io/assets/img/hero-grid.jpg);
+	background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -186,7 +186,7 @@ body{
 		<div class="grad"></div>
 	<div class="header">
 			<div>
-                <img src="http://www.madana.io/assets/img/logo-madana.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;"><h4>Community Hub</h4></p></div>
+                <img src="https://www.madana.io/assets/img/logo-madana.png"	alt="MADANA Logo"width="175" height="175" style="text-align:center; display:block;"><p style="	text-align:center;font-size: 20px;"><h4>Community Hub</h4></p></div>
 		</div>
 		<br>
 		<div class="login">

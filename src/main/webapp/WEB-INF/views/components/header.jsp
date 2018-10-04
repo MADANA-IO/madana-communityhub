@@ -42,7 +42,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-<link rel="stylesheet" href="http://www.madana.io/assets/css/main.css">
+<link rel="stylesheet" href="https://www.madana.io/assets/css/main.css">
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/materials.css" />

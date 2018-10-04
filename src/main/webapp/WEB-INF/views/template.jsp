@@ -74,7 +74,7 @@
       </header>
       <div class="demo-drawer mdl-layout__drawer ">
         <header class="demo-drawer-header">
-          <img src="http://www.madana.io/images/animations/Animation 2/A2_3.png" class="demo-avatar">
+          <img src="https://www.madana.io/images/animations/Animation 2/A2_3.png" class="demo-avatar">
           <div class="demo-avatar-dropdown">
             <span><h4>${msg}</h4></span>
             <div class="mdl-layout-spacer"></div>
