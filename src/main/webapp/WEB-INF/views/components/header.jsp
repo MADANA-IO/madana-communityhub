@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -67,7 +67,7 @@
 	rel='stylesheet' type='text/css'>
 <link href=' http://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
-<noscript id="loading-config">{ "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":	1000, "loop": true } }</noscript>
+<noscript id="loading-config">{ "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":	1000, "loop": true }, "timeout": 30 }</noscript>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
 <script type="text/javascript"
