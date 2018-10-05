@@ -22,6 +22,7 @@ package de.madana.webclient.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.common.datastructures.MDN_PersonalSocialPost;
+import de.madana.common.datastructures.MDN_SimpleUserProfile;
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
 import de.madana.common.datastructures.MDN_User;
@@ -130,35 +132,13 @@ public class MenuController
 	public String loadRanking(HttpSession session, Model model) throws ClientNotInitizializedException 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
-		Map<String, String> oUsers = oClient.getRanking();
-		List<String> oRanking =new ArrayList(oUsers.keySet());
-		try
-		{
-			MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0));
-			model.addAttribute("user1", oFirstUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1));
-			model.addAttribute("user2", oSecondUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2));
-			model.addAttribute("user3", oThirdUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+
+
+		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+
+		model.addAttribute("user1", oUsers.get(0));
+		model.addAttribute("user2", oUsers.get(1));
+		model.addAttribute("user3", oUsers.get(2));
 		model.addAttribute("msg", session.getAttribute("username").toString());
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
@@ -180,35 +160,12 @@ public class MenuController
 
 
 
-		Map<String, String> oUsers = oClient.getRanking();
-		List<String> oRanking =new ArrayList(oUsers.keySet());
-		try
-		{
-			MDN_UserProfile oFirstUser = oClient.getProfile(oRanking.get(0));
-			model.addAttribute("user1", oFirstUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			MDN_UserProfile oSecondUser = oClient.getProfile(oRanking.get(1));
-			model.addAttribute("user2", oSecondUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			MDN_UserProfile oThirdUser = oClient.getProfile(oRanking.get(2));
-			model.addAttribute("user3", oThirdUser);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+		Collections.sort(oUsers);
+		model.addAttribute("user1", oUsers.get(0));
+		model.addAttribute("user2", oUsers.get(1));
+		model.addAttribute("user3", oUsers.get(2));
+
 
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);
@@ -279,7 +236,7 @@ public class MenuController
 			oNewList =  new ArrayList<VisualSocialHistoryObject>();
 			for(int i=0; i< oList.size();i ++)
 			{
-				
+
 				VisualSocialHistoryObject oObject = new VisualSocialHistoryObject(oList.get(i));
 				for(int j=0; j < oPlatforms.size(); j++)
 				{
@@ -296,9 +253,9 @@ public class MenuController
 
 				oNewList.add(oObject);
 			}
-		Collections.sort(oNewList);
+			Collections.sort(oNewList);
 		}
-	
+
 		model.addAttribute("history", oNewList);
 		model.addAttribute("user", oProfile);
 		model.addAttribute("profile", oDestUserProfile);

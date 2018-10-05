@@ -98,13 +98,14 @@
 						<c:forEach items="${users}" var="user" varStatus="myIndex">
 							<tr>
 								<td><h4>${myIndex.index +1}.</h4></td>
-								<td><h4>
-										<c:out value="${user.key}" />
+								<td style="text-align: left"><h4>
+							     <img src="${user.image}" width="50" height="50" style="margin-right:5px;">
+										<c:out value="${user.userName}" />
 									</h4></td>
-								<td><h4>${user.value} CP</h4></td>
+								<td><h4>${user.points} CP</h4></td>
 								<td >
 								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  	<a href="profile/<c:out value='${user.key}' />"><i class="material-icons">launch</i></a>
+  	<a href="profile/<c:out value='${user.userName}' />"><i class="material-icons">launch</i></a>
 </button>
 
 							</td>
