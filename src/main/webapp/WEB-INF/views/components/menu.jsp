@@ -7,6 +7,24 @@
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<header class="mdl-layout__header mdl-layout__header--transparent ">
+		<div class="mdl-layout__header-row mdnheader">
+			<!-- Title -->
+
+			<span class="mdl-layout-title">
+			 Community Hub
+			</span>
+			 <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link"target="_blank" href="https://www.madana.io">Website</a>
+        <a class="mdl-navigation__link" target="_blank" href="https://blog.madana.io">Blog</a>
+        <a class="mdl-navigation__link" target="_blank" href="https://www.reddit.com/r/MADANA/">Forum</a>
+        <a class="mdl-navigation__link" target="_blank"href="https://t.me/madanaofficial">Chat</a>
+      </nav>
+
+		</div>
+		</header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <img
 				src="${profile.image}" width="75" height="75"> 
