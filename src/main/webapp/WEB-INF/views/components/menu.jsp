@@ -26,11 +26,11 @@
 		</div>
 		</header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
-			<header class="demo-drawer-header"> <img
-				src="${profile.image}" width="75" height="75"> 
-			<span style="padding-top:10px;padding-bottom:5px;font-size: 1.0vw;">${profile.points} CP</span>
+			<header class="demo-drawer-header"> <a href="/profile"><img
+				src="${profile.image}" width="75" height="75"> </a> 
+			<a href="/profile"><span style="padding-top:10px;padding-bottom:5px;font-size: 1.0vw;">${profile.points} CP</span>
 			<div class="demo-avatar-dropdown" style="width:100%;">
-				<span><h3 style="font-size: 1.3vw;">${profile.userName}</h3></span>
+				<span><h3 style="font-size: 1.3vw;">${profile.userName}</h3></span></a> 
 
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
