@@ -50,7 +50,7 @@
 				<div class="mdl-card__actions mdl-card--border">
 				<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="${avatar.id}">
   <input type="radio" id="${avatar.id}" class="mdl-radio__button" name="options" value="1" checked>
-  <span class="mdl-radio__label">${avatar.id}</span>
+  <span class="mdl-radio__label"></span>
 </label>
 
 				</div>
