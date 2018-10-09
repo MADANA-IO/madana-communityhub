@@ -44,15 +44,19 @@
 
 				<table>
 					<tr>
-						<td>Username</td>
-						<td><input type="text" placeholder="username" name="userName" /></td>
+						<td ><p style = "padding-top:13px;padding-right:10px;">Username</p></td>
+						<td ><input type="text" placeholder="Username" name="userName" /></td>
 					</tr>
+					
 					<tr>
-						<td>Password</td>
-						<td><input type="password" placeholder="password" name="password" /></td>
+						<td ><p style = "padding-top:23px;padding-right:10px;">Password</p></td>
+						<td ><input type="password" placeholder="Password" name="password" /></td>
 					</tr>
 					<tr>
 						<td><br><br></td>
+						<td><div style="color: red">${error}</div>
+						<div style="color: green">${msg}</div>
+						</td>
 						</tr>
 					<tr>
 						<td><br><br></td>
@@ -68,7 +72,7 @@
 					</tr>
 						<tr>
 						<td><br><br></td>
-						<td>	<div style="color: red">${error}</div></td>
+						<td>	</td>
 					</tr>
 					
 				</table>
