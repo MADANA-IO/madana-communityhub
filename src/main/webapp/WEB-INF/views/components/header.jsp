@@ -31,11 +31,6 @@
 
 <link rel="shortcut icon" href="https://www.madana.io/favicon-32x32.png">
 
-<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-<!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
 <link href=“https://fonts.googleapis.com/css?family=Montserrat”
 	rel=“stylesheet”>
 <link rel="stylesheet"
@@ -63,15 +58,15 @@
 	z-index: 900;
 }
 </style>
-<link href=' http://fonts.googleapis.com/css?family=Raleway'
+<link href=' https://fonts.googleapis.com/css?family=Raleway'
 	rel='stylesheet' type='text/css'>
-<link href=' http://fonts.googleapis.com/css?family=Montserrat'
+<link href=' https://fonts.googleapis.com/css?family=Montserrat'
 	rel='stylesheet' type='text/css'>
 <noscript id="loading-config">{ "phrases": ["Guiding the bits in your direction", "Spinning the cube", "Moving the satellite into position"], "options": { "typeSpeed": 50, "backSpeed": 50, "backDelay":	1000, "loop": true }, "timeout": 30000 }</noscript>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/loadingscreen.min.js"></script>
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js" /></script>
+	src="https://code.jquery.com/jquery-latest.js" /></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106498074-4"></script>
 <script>
