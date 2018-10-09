@@ -102,7 +102,7 @@
 							<li class="mdl-list__item mdl-list__item--three-line transparent"
 								style="width: 100%"><span
 								class="mdl-list__item-primary-content"><span> <a
-										href="${object.link}">${object.text}</a></span> <span></span> <span
+										target="_blank" href="${object.link}">${object.text}</a></span> <span></span> <span
 									class="mdl-list__item-text-body"><img
 										src="${object.platformIcon}" height="50" width="50">${object.actionIcon}
 										Received ${object.benefit} pts for ${object.action} on
