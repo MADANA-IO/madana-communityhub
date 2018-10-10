@@ -11,7 +11,7 @@
 		<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content">
+		<div class="mdl-grid">
 			
 				<div class="mdl-cell mdl-cell--12-col ">
 				    <!-- Tabs -->
@@ -25,7 +25,7 @@
   <div class="mdl-tabs__panel is-active" id="starks-panel">
   	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
 <c:forEach items="${noaction}" var="post">
-							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col" style="background-color: transparent;">
 					<div class="mdl-card__title">
 					</div>
 					<div class="mdl-card__supporting-text   ">
@@ -36,18 +36,14 @@
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-						<button
-									 type="button"
-									class="mdl-button mdl-js-button "
-									style="width: 100%; font-size: 60%;text-align: left;">
+						<p style="width: 100%; font-size: 60%;text-align: left;">
 									<i class="material-icons">info</i> Earn 200 CPT for a Retweet
-								</button>
-									<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+								</p>
+									<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">info</i> Earn 100 CPT for a Like
-								</button>
+								</p>
 
 					</div>
 				</div>
@@ -58,7 +54,7 @@
   <div class="mdl-tabs__panel" id="lannisters-panel">
   	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
 <c:forEach items="${inprogress}" var="post">
-							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col" style="background-color: transparent;">
 					<div class="mdl-card__title">
 					</div>
 					<div class="mdl-card__supporting-text   ">
@@ -72,32 +68,28 @@
 					<c:set var="actions">${post.completedActions}</c:set>
 					<c:if test = "${fn:contains(actions, 'like')}">
     
-						<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+						<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">info</i> Earn 200 CPT for a Retweet
-								</button>
-									<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+								</p>
+									<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">done</i> Received 100 CPT for a Like
-								</button>
+								</p>
 								  </c:if>
 								  	<c:if test = "${fn:contains(actions, 'share')}">
-									<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+									<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">info</i> Earn 100 CPT for a Like
-								</button>
-								<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+								</p>
+								<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">done</i> Received 200 CPT for a Retweet
-								</button>
+								</p>
 								  </c:if>
 
 					</div>
@@ -109,7 +101,7 @@
   <div class="mdl-tabs__panel" id="targaryens-panel">
   	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
 <c:forEach items="${completed}" var="post">
-							<div class="mdl-card  mdl-cell mdl-cell--4-col transparent">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col" style="background-color: transparent;">
 					<div class="mdl-card__title">
 					</div>
 					<div class="mdl-card__supporting-text   ">
@@ -120,18 +112,16 @@
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-						<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+						<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">done</i> Received 200 CPT for a Retweet
-								</button>
-									<button
-									 type="button"
-									class="mdl-button mdl-js-button "
+								</p>
+									<p
+									
 									style="width: 100%;font-size: 60%;text-align: left;">
 									<i class="material-icons">done</i> Received 100 CPT for a Like
-								</button>
+								</p>
 
 					</div>
 				</div>
