@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="components/header.jsp" />
+
 <body>
 	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
@@ -375,9 +376,16 @@
 					</div>
 				</div>
 			</div>
+	
+
+	<jsp:include page="components/snackbar.jsp" />
+</div>
 		</main>
 	</div>
-	<jsp:include page="components/footer.jsp" />	 
+	<jsp:include page="components/footer.jsp" />
+
+	 
 
 </body>
+
 </html>

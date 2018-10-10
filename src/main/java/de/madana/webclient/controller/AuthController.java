@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.madana.security.MDN_RandomString;
 import de.madana.webclient.exceptions.ClientNotInitizializedException;
@@ -51,9 +52,16 @@ public class AuthController
 		return "redirect:"+ SessionHandler.getClient(session).getTwitterAuthURL();
 	}
 	@RequestMapping(value = "/auth/twitter/callback" , method = RequestMethod.GET)
-	public String setTwitterUserID(HttpSession session, @RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model) throws ClientNotInitizializedException 
+	public String setTwitterUserID(HttpSession session, @RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model ,   final RedirectAttributes redirectAttributes) throws ClientNotInitizializedException 
 	{
-		SessionHandler.getClient(session).setTwitterUID(token,verifier);
+		try
+		{
+			SessionHandler.getClient(session).setTwitterUID(token,verifier);
+		}
+		catch(Exception e)
+		{
+			 redirectAttributes.addFlashAttribute("error", e.toString());
+		}
 		return "redirect:/home";
 	}
 
