@@ -60,7 +60,7 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			 redirectAttributes.addFlashAttribute("error", e.toString());
+			 redirectAttributes.addFlashAttribute("error", "Could not verifiy Twitter" +e.getMessage());
 		}
 		return "redirect:/home";
 	}
