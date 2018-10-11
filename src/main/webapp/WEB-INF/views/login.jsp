@@ -67,7 +67,7 @@
 					<tr>
 						<td><br><br></td>
 						<td><div style="color: red">${error}</div>
-						<div style="color: green">${msg}</div>
+						<div style="color: green">${info}</div>
 						</td>
 						</tr>
 					<tr>

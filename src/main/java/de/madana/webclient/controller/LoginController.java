@@ -81,7 +81,7 @@ public class LoginController
 
 					if (SessionHandler.getClient(session).setNewPassword(oReset)) ;
 					{
-						model.addAttribute("error", "Login with your new password");
+						model.addAttribute("info", "Login with your new password");
 						return "redirect:/login";
 					} 
 			} catch (Exception e) 
@@ -113,7 +113,7 @@ public class LoginController
 				oMail.setMail(mail.getMail());
 				if (SessionHandler.getClient(session).requestNewPassword(oMail)) ;
 				{
-					redirectAttributes.addFlashAttribute("error", "You'll receive an mail in a few moments");
+					redirectAttributes.addFlashAttribute("info", "You'll receive an mail in a few moments");
 					return "redirect:/login";
 				} 
 			} catch (Exception e) 
@@ -134,8 +134,6 @@ public class LoginController
 	{
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is welcome page!");
 		model.setViewName("register");
 		return model;
 
@@ -155,7 +153,7 @@ public class LoginController
 				{
 					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
 					{
-						redirectAttributes.addFlashAttribute("error", "Account created");
+						redirectAttributes.addFlashAttribute("info", "Account created");
 						return "redirect:/login";
 					} 
 				} catch (Exception e) 
@@ -195,7 +193,7 @@ public class LoginController
 	{
 
 		session.invalidate();
-		model.addAttribute("msg", "See you soon mate!" );
+		model.addAttribute("info", "See you soon mate!" );
 
 		return "redirect:/login";
 	}

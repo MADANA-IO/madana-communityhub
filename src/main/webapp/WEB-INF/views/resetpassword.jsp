@@ -75,7 +75,7 @@
 					
 						<tr>
 						<td><br><br></td>
-						<td>	<div style="color: red">${error}</div></td>
+						<td>	<div style="color: red">${error}</div><div style="color: green">${info}</div></td>
 					</tr>
 					
 				</table>
