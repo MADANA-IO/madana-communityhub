@@ -142,6 +142,7 @@ public class MenuController
 		model.addAttribute("msg", session.getAttribute("username").toString());
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
+		model.addAttribute("info", "Last updated "+oClient.getSystemHealth().getRankingupdate());
 
 
 
