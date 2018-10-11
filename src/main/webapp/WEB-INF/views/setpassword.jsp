@@ -71,7 +71,7 @@
 					</tr>
 						<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="set new password" /></td>
+						<td><input type="submit" value="Set new password" /></td>
 					</tr>
 					<tr>
 						<td></td>
