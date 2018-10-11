@@ -115,7 +115,7 @@
 				</table>
 			</div>
           </div>
-   
+   	<jsp:include page="components/snackbar.jsp" />
         </div>
       </main>
     </div>

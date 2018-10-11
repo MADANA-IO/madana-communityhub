@@ -161,11 +161,13 @@ public class MenuController
 
 
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+		if(oUsers.size()>2)
+		{
 		Collections.sort(oUsers);
 		model.addAttribute("user1", oUsers.get(0));
 		model.addAttribute("user2", oUsers.get(1));
 		model.addAttribute("user3", oUsers.get(2));
-
+		}
 
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);

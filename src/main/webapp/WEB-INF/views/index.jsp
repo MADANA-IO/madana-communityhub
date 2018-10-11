@@ -9,8 +9,8 @@
 <style>
 .login {
 	position: absolute;
-	top: calc(20%);
-	left: calc(50% - 50px);
+	top: calc(30% );
+	left: calc(50%  -100px);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
@@ -65,7 +65,7 @@
 			<div class="header">
 				<div>
 					<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
-						alt="MADANA Logo" width="175" height="175"
+						alt="MADANA Logo" 
 						style="text-align: center; display: block;">
 				</div>
 			</div>
@@ -78,16 +78,18 @@
 						progress and development of MADANA, engage actively in community
 						campaigns and express your opinion on relevant topics in a fun and
 						ludic way.</p>
+						
 				<!-- 	<p>For every interaction with certain community hub features,
 						you will receive community points (CP). These points indicate your
 						engagement in the community hub and for MADANA. These points
 						influence your ranking on which basis MADANA decides how big the
 						reward from community campaigns for you will be. The higher your
 						rank, the better the reward will be.</p> -->
-
-					<span> <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="/register">Get
+<br><br>
+					<span> <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored customfont" style="color:#f3f3f6; font-size:14px;"  href="/register">Get
 							started</a> </span>
-							<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:a0c3e8" href="/login">Login</a></span>
+							
+							<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect customfont" style="color:#a0c3e8;font-size:14px;" href="/login">Login</a></span>
 
 
 

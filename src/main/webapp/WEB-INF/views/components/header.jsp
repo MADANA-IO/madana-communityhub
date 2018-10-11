@@ -43,8 +43,9 @@
 	href="<%=request.getContextPath()%>/resources/materials.css" />
 
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/styles.css" media="screen,projection">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/mobilestyles.css" media="handheld">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/styles.css" />
+	
 
 
 <style>

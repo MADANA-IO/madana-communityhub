@@ -10,7 +10,7 @@
 .login {
 	position: absolute;
 	top: calc(40%);
-	left: calc(50% - 50px);
+	left: calc(50% + 100px);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
@@ -99,7 +99,7 @@
 
 	</div>
 
-
+	<jsp:include page="components/snackbar.jsp" />
 
 	<jsp:include page="components/footer.jsp" />
 

@@ -15,7 +15,7 @@
 		<div class="mdl-grid">
 
 			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
-				<h1>Welcome to the Community Hub</h1>
+				<h1>Welcome !</h1>
 				<p>The Community Hub will be the future home of our community.
 					Here you will be able to get the newest information about the
 					progress and development of MADANA, engage actively in community

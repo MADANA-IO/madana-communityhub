@@ -10,10 +10,24 @@
 .login {
 	position: absolute;
 	top: calc(45%);
-	left: calc(50% - 50px);
+	   left: calc(60%);
+
 	height: 150px;
-	width: 600px;
+	width: 400px;
 	z-index: 2;
+}
+@media screen and (max-width: 767px)
+ {
+
+.login {
+	position: absolute;
+	top: 180px;
+	left:250px;
+	height: 150px;
+	width: 100%;;
+	z-index: 2;
+}
+
 }
 </style>
 
@@ -78,7 +92,7 @@
 	</div>
 
 
-
+	<jsp:include page="components/snackbar.jsp" />
 	<jsp:include page="components/footer.jsp" />
 
 

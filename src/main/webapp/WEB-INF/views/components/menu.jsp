@@ -17,10 +17,10 @@
 			 <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link"target="_blank" href="https://www.madana.io">Website</a>
-        <a class="mdl-navigation__link" target="_blank" href="https://blog.madana.io">Blog</a>
-        <a class="mdl-navigation__link" target="_blank" href="https://www.reddit.com/r/MADANA/">Forum</a>
-        <a class="mdl-navigation__link" target="_blank"href="https://t.me/madanaofficial">Chat</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone "target="_blank" href="https://www.madana.io">Website</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank" href="https://blog.madana.io">Blog</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank" href="https://www.reddit.com/r/MADANA/">Forum</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank"href="https://t.me/madanaofficial">Chat</a>
       </nav>
 
 		</div>
@@ -28,9 +28,9 @@
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"> <a href="/profile"><img
 				src="${profile.image}" width="75" height="75"> </a> 
-			<a href="/profile"><span style="padding-top:10px;padding-bottom:5px;font-size: 1.0vw;">${profile.points} CP</span>
-			<div class="demo-avatar-dropdown" style="width:100%;">
-				<span><h3 style="font-size: 1.3vw;">${profile.userName}</h3></span></a> 
+			<a href="/profile"><span class="customfontlabel" style="padding-top:10px;padding-bottom:5px;">${profile.points} CP</span>
+			<div class="demo-avatar-dropdown customfont" style="width:100%;">
+				<span><h3>${profile.userName}</h3></span></a> 
 
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
@@ -64,11 +64,11 @@
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> 
 				<a href="#" id="feedback-button"
-				class="mdl-navigation__link"><i class=" material-icons"
-				role="presentation">feedback</i><span class="">Give Feedback</span></a>
+				class="mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
+				role="presentation">feedback</i><span class="mobilehide">Give Feedback</span></a>
 				<a href="#" id="bug-button"
-				class="mdl-navigation__link"><i class=" material-icons"
-				role="presentation">bug_report</i><span class="">Report a Bug</span></a>
+				class="mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
+				role="presentation">bug_report</i><span>Report a Bug</span></a>
 			<hr>
 			<div style="margin-left: 30px;">
 				<i><img src="https://www.madana.io/assets/img/logo-madana.png"

@@ -11,8 +11,9 @@
 		<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content ">
-<div class="mdl-grid mdl-cell--12-col transparent">
+		<div class="mdl-grid demo-content  ">
+
+<div class="mdl-grid mdl-cell--12-col transparent" class="" >
 			<div class="mdl-cell mdl-cell--2-col ">
 
 				<img src="${profile.image}" height="150" width="150">
@@ -47,8 +48,8 @@
 
 						<c:forEach items="${achievementgroup.achievements}" var="achievement">
 
-							<div class="mdl-card something-else mdl-cell transparent"
-								style="<c:if test="${achievement.completed == false}">opacity: 0.3;</c:if> margin:5px;width:19%;"
+							<div class="mdl-card something-else mdl-cell--2-col-desktop mdl-cell--2-col-phone transparent"
+								style="<c:if test="${achievement.completed == false}">opacity: 0.3;</c:if> margin:5px;"
 								id="${achievement.name}">
 
 								<div class="mdl-card__title"
@@ -99,15 +100,15 @@
 					style="height: 600px; overflow-y: scroll;">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
-							<li class="mdl-list__item mdl-list__item--three-line transparent"
+							<li class="mdl-list__item mdl-list__item--three-line"
 								style="width: 100%"><span
 								class="mdl-list__item-primary-content"><span> <a
 										target="_blank" href="${object.link}">${object.text}</a></span> <span></span> <span
-									class="mdl-list__item-text-body"><img
-										src="${object.platformIcon}" height="50" width="50">${object.actionIcon}
+									class="mdl-list__item-text-body" style="color:#f3f3f6;"><img
+										src="${object.platformIcon}" height="25" width="25" style="margin-top:-10px;padding-right:5px;">${object.actionIcon}
 										Received ${object.benefit} pts for ${object.action} on
 										${object.platform} </span> </span> <span
-								class="mdl-list__item-secondary-content">
+								class="mdl-list__item-secondary-content" style="color:#f3f3f6;">
 									${object.created} </span></li>
 							<hr>
 						</c:forEach>

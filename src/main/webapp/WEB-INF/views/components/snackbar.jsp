@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
   	<c:if test="${not empty error}">
   <button class="mdl-snackbar__action" type="button"></button>
-							  <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+							  <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar" style="background-color:#995336">
 							  
   <div class="mdl-snackbar__text"></div>
  <button class="mdl-snackbar__action" type="button"></button>

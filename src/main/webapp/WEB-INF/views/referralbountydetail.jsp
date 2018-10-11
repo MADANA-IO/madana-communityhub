@@ -55,7 +55,7 @@
 		</div>
 		
 	</div>
-
+	<jsp:include page="components/snackbar.jsp" />
 	</main>
 	</div>
 	<jsp:include page="components/footer.jsp" />	 

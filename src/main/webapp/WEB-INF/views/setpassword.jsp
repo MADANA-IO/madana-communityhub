@@ -10,10 +10,23 @@
 .login {
 	position: absolute;
 	top: calc(40%);
-	left: calc(50% - 50px);
+	    left: calc(60%);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
+}
+@media screen and (max-width: 767px)
+ {
+
+.login {
+	position: absolute;
+	top: 180px;
+	left:270px;
+	height: 150px;
+	width: 300px;;
+	z-index: 2;
+}
+
 }
 </style>
 
@@ -74,7 +87,7 @@
 
 			</div>
 		</form>
-
+	<jsp:include page="components/snackbar.jsp" />
 				</div>
 			</div>
 		</div>

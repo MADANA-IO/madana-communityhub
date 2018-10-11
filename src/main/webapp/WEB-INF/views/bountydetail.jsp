@@ -5,6 +5,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="components/header.jsp" />
+
+<style>
+@media screen and (max-width: 767px)
+ {
+
+.mdl-tabs__tab, .mdl-tabs__tab-bar
+{
+	height:80px;
+}
+
+}
+</style>
 <body>
 	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
@@ -25,7 +37,7 @@
   <div class="mdl-tabs__panel is-active" id="starks-panel">
   	<div class=" mdl-grid mdl-cell mdl-cell--12-col ">
 <c:forEach items="${noaction}" var="post">
-							<div class="mdl-card  mdl-cell mdl-cell--4-col" style="background-color: transparent;">
+							<div class="mdl-card  mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-phone" style="background-color: transparent;">
 					<div class="mdl-card__title">
 					</div>
 					<div class="mdl-card__supporting-text   ">

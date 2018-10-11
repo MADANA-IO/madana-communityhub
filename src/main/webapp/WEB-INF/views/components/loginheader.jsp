@@ -23,7 +23,7 @@
 	color:#4d7da2;
 }
 .login a{
-	font-family: 'Exo', sans-serif;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
@@ -40,7 +40,7 @@
 	border: 1px solid rgba(255,255,255,0.6);
 	border-radius: 2px;
 	color: #fff;
-	font-family: 'Exo', sans-serif;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
@@ -53,7 +53,7 @@
 	border: 1px solid rgba(255,255,255,0.6);
 	border-radius: 2px;
 	color: #fff;
-	font-family: 'Exo', sans-serif;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
@@ -68,7 +68,7 @@
 	cursor: pointer;
 	border-radius: 2px;
 	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	font-weight: 400;
 	padding: 6px;
@@ -175,7 +175,7 @@ img{
 .header div{
 	float: left;
 	color: #fff;
-	font-family: 'Exo', sans-serif;
+	font-family: 'Montserrat';
 	font-size: 35px;
 	font-weight: 200;
 }
@@ -183,7 +183,7 @@ img{
 .header div span{
 	color: #5379fa !important;
 }
-@media screen and (max-width: 767px)
+@media (max-width: 767px)
  {
 .header{
 	position: absolute;
@@ -203,46 +203,6 @@ img{
 	height: 150px;
 	width: 250px;;
 	z-index: 2;
-}
-.login input[type=text]{
-	width: 200px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-}
-
-.login input[type=password]{
-		width: 200px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-	margin-top: 10px;
-}
-.login input[type=submit]{
-	width: 150px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
-	cursor: pointer;
-	border-radius: 2px;
-	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 6px;
-	margin-top: 10px;
 }
     #container{
     background:#274863;
@@ -292,6 +252,51 @@ width:100%;
 
     overflow:hidden;
 }
+.login input[type=text]{
+width: 200px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Montserrat';
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+	width: 200px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Montserrat';
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.login input[type=submit]{
+width: 200px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+		font-family: 'Montserrat';
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+.mdl-button.mdl-button--colored {
+		color: #a0c3e8;
+		font-size: 2.8vw;
+	}
 
 }
 </style>

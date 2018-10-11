@@ -31,7 +31,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
 		} 
 		catch (Exception e) 
 		{
-			if(e.getCause() instanceof UserNotAuthenticatedException | e.getCause() instanceof ClientNotInitizializedException)
+			if(e.getCause() instanceof UserNotAuthenticatedException | e.getCause() instanceof ClientNotInitizializedException | e.getCause() instanceof javax.ws.rs.NotAuthorizedException)
 			{
 				String strDestUri = request.getRequestURI();
 				response.sendRedirect("/login?msg=You need to authenticate yourself to view "+strDestUri+"&requesturi="+strDestUri);
