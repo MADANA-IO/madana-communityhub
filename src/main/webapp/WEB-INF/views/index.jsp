@@ -15,6 +15,40 @@
 	width: 600px;
 	z-index: 2;
 }
+
+@media screen and (max-width: 767px)
+ {
+
+.login {
+	position: absolute;
+	top: 180px;
+	left:10px;
+	height: 150px;
+	width: 90%;;
+	z-index: 2;
+	text-align:center;
+}
+.slide{
+    background:#274863;
+  display: block;
+  position: relative;
+  left: -50;
+  top: 0;
+  height: 200px;
+  width: 200px;
+  background: blue; 
+
+}
+
+.login span{
+
+	width: 300px;;
+	z-index: 2;
+}
+
+
+
+}
 </style>
 
 
@@ -38,18 +72,18 @@
 			<br>
 			<div class="content">
 				<div class="login">
-					<h1>Welcome to the Community Hub!</h1>
+					<h1>Welcome!</h1>
 					<p>The Community Hub will be the future home of our community.
 						Here you will be able to get the newest information about the
 						progress and development of MADANA, engage actively in community
 						campaigns and express your opinion on relevant topics in a fun and
 						ludic way.</p>
-					<p>For every interaction with certain community hub features,
+				<!-- 	<p>For every interaction with certain community hub features,
 						you will receive community points (CP). These points indicate your
 						engagement in the community hub and for MADANA. These points
 						influence your ranking on which basis MADANA decides how big the
 						reward from community campaigns for you will be. The higher your
-						rank, the better the reward will be.</p>
+						rank, the better the reward will be.</p> -->
 
 					<span> <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="/register">Get
 							started</a> </span>

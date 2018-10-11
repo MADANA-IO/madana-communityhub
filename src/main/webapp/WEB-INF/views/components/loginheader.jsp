@@ -183,6 +183,117 @@ img{
 .header div span{
 	color: #5379fa !important;
 }
+@media screen and (max-width: 767px)
+ {
+.header{
+	position: absolute;
+	height:100px;
+	width:100px;;
+	top: 50px;
+	left: calc(50% - 50px);
+	z-index: 2;
+	width:100%;
+	  
+
+}
+.login {
+	position: absolute;
+	top: 50%;
+	left:-42%;
+	height: 150px;
+	width: 250px;;
+	z-index: 2;
+}
+.login input[type=text]{
+	width: 200px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+		width: 200px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+.login input[type=submit]{
+	width: 150px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+    #container{
+    background:#274863;
+ left:0;
+  height: 100%;
+  width: 100%;
+    justify-content: center;
+  align-items: center;
+
+  
+}
+}
+    #container table{
+    position: absolute;
+ left:-215px;
+  height: 100%;
+  width: 100%;
+    justify-content: center;
+  align-items: center;
+
+  
+}
+.content
+{
+
+	left:-200px;
+width:100%;
+height:150px;
+}
+body, html
+{
+margin:0px;
+padding:0px;
+width:100%;
+
+      background:#274863;
+}
+.header img
+{
+
+  display: block;
+  position: relative;
+
+  top: 0;
+  height: 100px;
+  width: 100px;
+
+    overflow:hidden;
+}
+
+}
 </style>
 
 

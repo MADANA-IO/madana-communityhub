@@ -15,6 +15,18 @@
 	width: 600px;
 	z-index: 2;
 }
+@media screen and (max-width: 767px)
+ {
+.login {
+	position: absolute;
+	top: 180px;
+	left:250px;
+	height: 150px;
+	width: 250px;;
+	z-index: 2;
+}
+}
+
 </style>
 
 

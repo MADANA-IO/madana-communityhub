@@ -91,9 +91,10 @@
 					<a
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 						<form action="success" method="post">
+						<!-- 
 <button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Delete Account</button>
+						Delete Account</button> -->
 						</form>
 					</a>
 				</div>
@@ -119,6 +120,7 @@
 								<td width=20%;>Email:</td>
 								<td width="10%"><c:out value="${user.mail}" /></td>
 							</tr>
+							<!-- 
 							<tr class="tddefault">
 								<td width=20%;>Firstname:</td>
 								<td width="10%"><c:out value="${user.firstName}" /></td>
@@ -127,6 +129,7 @@
 								<td width=20%;>Lastname:</td>
 								<td width="10%"><c:out value="${user.lastName}" /></td>
 							</tr>
+							 -->
 							<tr class="tddefault">
 								<td width=20%;>Member since:</td>
 								<td width="10%"><c:out value="${user.created}" /></td>
@@ -146,12 +149,13 @@
 					</div>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
+				<!-- 
 					<button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 						Change Email</button>
 					<button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Change Password</button>
+						Change Password</button>  -->
 
 				</div>
 			</div>
@@ -225,7 +229,7 @@
 							<c:forEach var="socialuser" items="${user.socialAccounts}">
   							<li class="mdl-list__item mdl-list__item--three-line"><span
 							class="mdl-list__item-primary-content">
-							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;">
+							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;padding-right:10px;height:30px; width:40px;">
 							 <span>
 									${socialuser.platform}</span> <span class="mdl-list__item-text-body" style="align:center;padding-left:50px;">             ${socialuser.ident}</span>
 						</span> <span class="mdl-list__item-secondary-action"> <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
