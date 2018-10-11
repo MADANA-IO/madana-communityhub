@@ -2935,7 +2935,8 @@ ul, ol {
 }
 
 .mdl-button.mdl-button--colored {
-	color: #a0c3e8
+	color: #a0c3e8;
+	font-size:1.3vw;
 }
 
 .mdl-button.mdl-button--colored:focus:not (:active ){
@@ -3101,7 +3102,8 @@ input.mdl-button[type="submit"] {
 	top: 0;
 	width: 100%;
 	z-index: 0;
-	overflow: hidden
+	overflow: hidden;
+	font-size: 1.3vw;
 }
 
 .mdl-button[disabled] .mdl-button__ripple-container .mdl-ripple,
