@@ -9,6 +9,48 @@
 {
 padding-top:10px;
 }
+
+@media  (max-width: 600px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:6vw;
+}
+
+
+}
+@media  (min-width: 600px)  and (max-width: 800px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:4.5vw;
+}
+
+
+}
+@media  (min-width: 801px)  and (max-width: 1600px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:2.0vw;
+}
+
+
+}
+@media (min-width: 1600px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:1.5vw;
+}
+
+
+}
+
 </style>
 	<header class="mdl-layout__header mdl-layout__header--transparent ">
 		<div class="mdl-layout__header-row mdnheader">
@@ -33,7 +75,7 @@ padding-top:10px;
 			<header class="demo-drawer-header"> <a href="/profile"><img
 				src="${profile.image}" width="75" height="75"> </a> 
 			<a href="/profile"><span class="customfontlabel" style="padding-top:10px;padding-bottom:5px;">${profile.points} CP</span>
-			<div class="demo-avatar-dropdown customfont" style="width:100%;">
+			<div class="demo-avatar-dropdown" style="width:100%;">
 				<span><h3>${profile.userName}</h3></span></a> 
 
 				<div class="mdl-layout-spacer"></div>
