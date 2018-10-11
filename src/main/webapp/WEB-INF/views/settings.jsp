@@ -4,6 +4,24 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<style>
+@media  (max-width: 1000px) 
+{
+dialog.mdl-dialog
+{
+
+width:100%;
+}
+}
+@media  (min-width: 1000px) 
+{
+dialog.mdl-dialog 
+{
+
+width:800px;
+}
+}
+</style>
 <jsp:include page="components/header.jsp" />
 
 <body>
@@ -30,7 +48,7 @@
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 			<button id="show-dialog" type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change avatar</button>
-  <dialog class="mdl-dialog"  style="width:500px">
+  <dialog class="mdl-dialog" >
     <h4 class="mdl-dialog__title" style="text-align:center">Change Avatar</h4>
          <p style="font-size:8px; padding-top:5px;text-align:center">
          Avatars provided by "Eucalyp Studio" under CC0 on iconfinder.com .
@@ -38,7 +56,7 @@
     <div class="mdl-dialog__content"  style="height: 400px; overflow-y: scroll;">
     <div class="mdl-grid" id="avatars">
     <c:forEach var="avatar" items="${avatars}">
-    <div class="mdl-card  mdl-cell mdl-cell--3-col" >
+    <div class="mdl-card  mdl-cell mdl-cell--3-col mdl-cell--2-col-phone" >
 				<div class="mdl-card__title">
 				</div>
 				<div class="mdl-card__supporting-text meta">
@@ -60,7 +78,9 @@
       </div>
     </div>
     <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close">Set Avatar</button>
+      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect cancel">cancel</button>
+    
+      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close" style="width:200px; background:#a0c3e8; color:white;">Set Avatar</button>
     </div>
   </dialog>
   <script>
@@ -69,7 +89,8 @@
     if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
-    showDialogButton.addEventListener('click', function() {
+    showDialogButton.addEventListener('click', function() 
+    		{
       dialog.showModal();
     });
     dialog.querySelector('.close').addEventListener('click', function() 
@@ -86,6 +107,11 @@
     	
       dialog.close();
     });
+    
+    dialog.querySelector('.cancel').addEventListener('click', function() 
+    		{
+        dialog.close();
+    		});
 
   </script>
 					<a

@@ -216,27 +216,30 @@ font-family: 'Montserrat', Regular;
       -ms-flex-align: center;
           align-items: center;
 }
-@media  (max-width: 767px) {
-	.customfont {
+@media  (max-width: 767px) 
+{
+		.customfontlabel 
+		{
+		font-size: 2.4vw;
+	}
+	.customfont 
+	{
 		font-size: 2.8vw;
 	}
+	.content h1, h2, h3
+	{
+	font-size: 15vw;
+	}
+
 }
-@media (min-width: 767px) {
+@media (min-width: 767px)
+ {
 	.customfont {
 		font-size: 1.3vw;
 	}
-}
-@media  (max-width: 767px) {
-	.customfontlabel {
-		font-size: 2.4vw;
-	}
-}
-@media (min-width: 767px) {
 	.customfontlabel {
 		font-size: 1.0vw;
 	}
-}
-@media  (max-width: 767px) {
 	.mobilehide {
 		display:none;
 	}

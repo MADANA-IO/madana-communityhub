@@ -148,7 +148,7 @@ public class MenuController
 		return "ranking";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
+	public String homePage(HttpSession session,Model model) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
@@ -189,7 +189,7 @@ public class MenuController
 		return "news";
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
+	public String profilePage(HttpSession session,Model model) throws Exception 
 	{
 		String strUserName = SessionHandler.getCurrentUser(session);
 		MDN_RestClient oClient = SessionHandler.getClient(session);
@@ -225,7 +225,7 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws ClientNotInitizializedException 
+	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", session.getAttribute("username").toString());
@@ -285,7 +285,7 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(HttpSession session,Model model) throws UserNotAuthenticatedException, ClientNotInitizializedException 
+	public String settingsPage(HttpSession session,Model model) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);

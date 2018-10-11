@@ -83,7 +83,7 @@
 
 			</div>
 		</form>
-
+	<jsp:include page="components/snackbar.jsp" />
 				</div>
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 	</div>
 
 
-	<jsp:include page="components/snackbar.jsp" />
+
 	<jsp:include page="components/footer.jsp" />
 
 

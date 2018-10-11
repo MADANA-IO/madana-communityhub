@@ -30,7 +30,7 @@
 
 
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
-				<div class="mdl-grid mdl-cell mdl-cell--12-col"></div>
+			
 
 
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
@@ -45,9 +45,9 @@
 					<c:forEach items="${social_platforms}" var="platform">
 
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent">
+							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent" style="height:375px">
 							<div class="mdl-card__title"
-								style="height:400px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
+								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<c:forEach var="entry" items="${platform.oActions}">
@@ -61,7 +61,7 @@
 							</div>
 
 							<div class="mdl-card__actions mdl-card--border mdl-grid "
-								style="background: #f3f3f6; height: 20%;">
+								style="background: #f3f3f6; height: 75px;">
 
 
 								<c:if test="${platform.isDisabled == true}">
@@ -152,9 +152,9 @@
 					</div>
 					<c:forEach items="${referral_platforms}" var="platform">
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent">
+							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent" style="height:375px">
 							<div class="mdl-card__title"
-								style="height:400px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
+								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
@@ -164,7 +164,7 @@
 							</div>
 
 							<div class="mdl-card__actions mdl-card--border mdl-grid "
-								style="background: #f3f3f6; height: 20%;">
+								style="background: #f3f3f6; height: 75px;">
 
 								<c:if test="${platform.isDisabled == true}">
 									<button type="button" class="mdl-button mdl-js-button "
@@ -227,7 +227,7 @@
 							<table>
 
 								<tr class="tddefault">
-									<td width=20%;><img src="${user1.image}" width="75"
+									<td width=75px;><img src="${user1.image}" width="75"
 										height="75"> <c:out value="${user1.userName}" /></td>
 									<td align="left" width="10%"><c:out
 											value="${user1.points}" /> CP</td>
@@ -240,7 +240,7 @@
 									</a></td>
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;><img src="${user2.image}" width="75"
+									<td width=75px;><img src="${user2.image}" width="75"
 										height="75"> <c:out value="${user2.userName}" /></td>
 									<td width="10%"><c:out value="${user2.points}" /> CP</td>
 									<td align="right" width="10%"><a
@@ -253,7 +253,7 @@
 
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;><img src="${user3.image}" width="75"
+									<td width=75px;><img src="${user3.image}" width="75"
 										height="75"> <c:out value="${user3.userName}" /></td>
 									<td width="10%"><c:out value="${user3.points}" /> CP</td>
 									<td align="right" width="10%"><a
@@ -293,16 +293,16 @@
 
 
 								<tr class="tddefault">
-									<td width=20%;>Users:</td>
+									<td width=75px;>Users:</td>
 									<td align="left" width="10%"><c:out
 											value="${system.usercount}" /></td>
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;>Currently active users:</td>
+									<td width=75px;>Currently active users:</td>
 									<td width="10%"><c:out value="${system.activeusercount}" /></td>
 								</tr>
 								<tr class="tddefault">
-									<td width=20%;>Points collected:</td>
+									<td width=75px;>Points collected:</td>
 									<td width="10%"><c:out value="${system.rankingPointsSum}" /></td>
 								</tr>
 
@@ -322,7 +322,7 @@
 							width="90%" height="300" style="padding: 10px;">
 					</div>
 				</div>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent" >
 					<div class="mdl-card__title">
 						<h3>
 							<i class="material-icons">build</i> System Stats

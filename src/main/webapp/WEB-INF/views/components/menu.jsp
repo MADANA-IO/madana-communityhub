@@ -4,15 +4,19 @@
 <%@ page import = "java.util.ResourceBundle" %>
 <% ResourceBundle resource = ResourceBundle.getBundle("de.madana.webclient.system");
   String version=resource.getString("version"); %>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<style>
+.mdl-layout__drawer-button
+{
+padding-top:10px;
+}
+</style>
 	<header class="mdl-layout__header mdl-layout__header--transparent ">
 		<div class="mdl-layout__header-row mdnheader">
 			<!-- Title -->
 
 			<span class="mdl-layout-title">
-			 Community Hub
+			 <img src="https://www.madana.io/assets/img/logo-madana.png"
+					alt="MADANA Logo" width="30" height="30" style="margin-right: 10px;">Community Hub
 			</span>
 			 <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -63,12 +67,14 @@
 			<a class="mdl-navigation__link" href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> 
+				<div class=" mobilehide">
 				<a href="#" id="feedback-button"
-				class="mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
-				role="presentation">feedback</i><span class="mobilehide">Give Feedback</span></a>
+				class="mdl-navigation__link mdl-cell--hide-phone "><i class="material-icons"
+				role="presentation">feedback</i><span>Give Feedback</span></a></div>
+				<div class=" mobilehide">
 				<a href="#" id="bug-button"
-				class="mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
-				role="presentation">bug_report</i><span>Report a Bug</span></a>
+				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
+				role="presentation">bug_report</i><span>Report a Bug</span></a></div>
 			<hr>
 			<div style="margin-left: 30px;">
 				<i><img src="https://www.madana.io/assets/img/logo-madana.png"

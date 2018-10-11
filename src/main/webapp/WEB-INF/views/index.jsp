@@ -21,7 +21,7 @@
 
 .login {
 	position: absolute;
-	top: 180px;
+	top: 130px;
 	left:10px;
 	height: 150px;
 	width: 90%;;

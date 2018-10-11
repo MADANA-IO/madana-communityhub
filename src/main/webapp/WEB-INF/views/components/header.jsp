@@ -170,5 +170,48 @@
 </script>
 	<script async src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+<style>
+@media  (max-width: 767px) 
+{
 
+	.content h1
+	{
+	font-size: 15vw;
+	}
+	.content  h2
+	{
+	font-size: 8vw;
+	}
+	.content  h3
+	{
+	font-size: 6vw;
+	}
+	.content  .mdl-card__title h2
+	{
+	font-size: 6vw;
+	}
+	.content  .mdl-card__title h3
+	{
+	font-size: 5vw;
+	}
+
+}
+@media screen and (max-width: 1000px)
+ {
+	
+	.mobilehide {
+		display:none;
+	}
+}
+@media  (min-width: 767px) 
+{
+
+	.mdl-button.mdl-button--colored
+	{
+	font-size: 0.7vw;
+	}
+
+
+}
+</style>
 </head>
