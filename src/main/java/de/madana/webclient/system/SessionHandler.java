@@ -33,14 +33,17 @@ public class SessionHandler
 	{
 		Object oClient = session.getAttribute("oClient");
 		if(oClient == null)
-			throw new ClientNotInitizializedException();
+			{
+			initNewClient(session);
+			oClient = session.getAttribute("oClient");
+			}
 			
 			return (MDN_RestClient) oClient;
 	}
 	/**
 	 * @param session
 	 */
-	public static void initNewClient(HttpSession session) 
+	private static void initNewClient(HttpSession session) 
 	{
 		MDN_RestClient oClient =  new MDN_RestClient();
 		session.setAttribute("oClient", oClient);

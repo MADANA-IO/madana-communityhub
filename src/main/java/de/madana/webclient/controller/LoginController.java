@@ -73,7 +73,7 @@ public class LoginController
 			if( oNewPassword.getPassword().equals(oNewPassword.getMatchingPassword()))
 				try 
 			{
-					SessionHandler.initNewClient(session);
+					
 					MDN_PasswordReset oReset = new MDN_PasswordReset();
 					oReset.setMail(oNewPassword.getEmail());
 					oReset.setPassword(oNewPassword.getPassword());
@@ -106,7 +106,7 @@ public class LoginController
 
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
 		{
-			SessionHandler.initNewClient(session);
+	
 			try 
 			{
 				MDN_MailAddress oMail = new MDN_MailAddress();
@@ -148,7 +148,7 @@ public class LoginController
 		{
 			if( user.getPassword().equals(user.getMatchingPassword()))
 			{
-				SessionHandler.initNewClient(session);
+			
 				try 
 				{
 					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
