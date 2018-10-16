@@ -24,8 +24,7 @@
 							<c:forEach items="${referrals}" var="object">
 								<li class="mdl-list__item mdl-list__item--three-line"
 									style="width: 100%"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-avatar">person</i> <a
+									class="mdl-list__item-primary-content">  <img src="${object.image}" width="50" height="50" style="margin-right250px;"> <a
 										href="https://communityhub.madana.io/profile/${object.userName}">${object.userName}
 											(${object.points})</a> <span class="mdl-list__item-text-body">
 											<span> ${object.created} </span>
@@ -38,7 +37,7 @@
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 						<h4>Share the link below to get more pts. For every user who
-							signs up you will be rewarded with 2000 CP</h4>
+							signs up you will be rewarded with 1000 CP</h4>
 						<textarea id="copytext" class="mdl-textfield__input" type="text" rows="4"
 							disabled style="color: #274863;">${platform.link}?referrer=${user.guid}</textarea>
 	<div class="mdl-cell mdl-cell--6-col" text-align ="center">
