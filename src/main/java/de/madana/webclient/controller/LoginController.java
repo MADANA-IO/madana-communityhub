@@ -141,9 +141,13 @@ public class LoginController
 
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String submitRegisterPage(HttpSession session,@RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
+	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
-
+		if(read== null)
+		{
+			model.addAttribute("error", "Please read, understand and accept the Privacy Policy and Terms of Use Agreement");
+			return "register";
+		}
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
 		{
 			if( user.getPassword().equals(user.getMatchingPassword()))

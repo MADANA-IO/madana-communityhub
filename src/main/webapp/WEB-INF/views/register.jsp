@@ -73,6 +73,16 @@
 						<td>Re-enter password </td>
 						<td><input type="password" name="matchingPassword" /></td>
 					</tr>
+							<tr>
+						<td><br><br></td>
+						
+					</tr>
+						<tr>
+						<td></td>
+						<td ><input type="checkbox" name="TOC" value="read" >I've read and accept the <a target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
+						
+					</tr>
+
 						<tr>
 						<td><br><br></td>
 						<td><input type="submit" value="Register" /></td>
