@@ -40,6 +40,7 @@ import de.madana.webclient.bean.LoginBean;
 import de.madana.webclient.bean.ResetPasswordBean;
 import de.madana.webclient.bean.SetPasswordBean;
 import de.madana.webclient.dto.RegisterUser;
+import de.madana.webclient.exceptions.ClientNotInitizializedException;
 import de.madana.webclient.system.SessionHandler;
 
 @Controller
@@ -138,7 +139,22 @@ public class LoginController
 		return model;
 
 	}
+	@RequestMapping(value = "/activate/{token}", method = RequestMethod.GET)
+	public String loadRegisterPage(HttpSession session,Model model, @PathVariable("token") String token, final RedirectAttributes redirectAttributes) throws ClientNotInitizializedException 
+	{
 
+		boolean bActivated = SessionHandler.getClient(session).validateActivationToken(token);
+		if(bActivated)
+		{
+			redirectAttributes.addFlashAttribute("info", "Account activated!" );
+		}
+		else
+		{
+			redirectAttributes.addFlashAttribute("error", "Invalid Activation Code" );
+	}
+		return "redirect:/login";
+	}
+	
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
