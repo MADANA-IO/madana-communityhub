@@ -105,14 +105,12 @@
 							// === default and hidden field values ===
 							,
 							fieldValues : {
-
-								// default values
-								summary : 'Feedback for new website designs',
-								description : 'The font doesn\'t quite look right'
+								versions:'0.1',
 
 								// hidden field value
-								,
-								priority : '2'
+								priority : '2',
+								components: 'Community Hub'
+									
 
 							}
 
@@ -131,40 +129,20 @@
 								});
 							}
 
-							// === additional environment details ===
-							,
-							environment : function() {
+						// === default and hidden field values ===
+						,
+						fieldValues : {
+							versions:'0.1',
 
-								var env_info = {};
-
-								if (window.ADDITIONAL_CUSTOM_CONTEXT) {
-									env_info['Additional Context Information'] = window.ADDITIONAL_CUSTOM_CONTEXT;
-								}
-
-								return env_info;
-							}
-							// === default field values ===
-							,
-							fieldValues : function() {
-
-								var values = {};
-
-								var error_message = $('.error_message');
-								if (error_message.length !== 0) {
-
-									// record error message from the page context rather than asking the user to enter it
-									values['summary'] = error_message.children(
-											'.summary').text();
-									values['description'] = error_message
-											.children('.description').text();
-
-								}
-
-								return values;
-
-							}
+							// hidden field value
+							priority : '2',
+							components: 'Community Hub'
+								
 
 						}
+
+					}
+
 
 					});
 </script>
@@ -196,7 +174,7 @@
 	}
 
 }
-@media screen and (max-width: 1000px)
+@media screen and (max-width: 800px)
  {
 	
 	.mobilehide {
@@ -205,7 +183,9 @@
 }
 @media  (min-width: 767px) 
 {
-
+.mobilehide {
+		display:block;
+	}
 	.mdl-button.mdl-button--colored
 	{
 	font-size: 0.7vw;

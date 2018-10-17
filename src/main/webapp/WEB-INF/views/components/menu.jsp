@@ -58,7 +58,7 @@ font-size:1.5vw;
 
 			<span class="mdl-layout-title">
 			 <img src="https://www.madana.io/assets/img/logo-madana.png"
-					alt="MADANA Logo" width="30" height="30" style="margin-right: 10px;">Community Hub
+					alt="MADANA Logo" width="30" height="30" style="margin-right: 10px;">Community Hub [ BETA ]
 			</span>
 			 <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -109,12 +109,12 @@ font-size:1.5vw;
 			<a class="mdl-navigation__link" href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> 
-				<div class=" mobilehide">
-				<a href="#" id="feedback-button"
+				<div class=" mobilehide" id="feedback-button">
+				<a href="#" 
 				class="mdl-navigation__link mdl-cell--hide-phone "><i class="material-icons"
 				role="presentation">feedback</i><span>Give Feedback</span></a></div>
-				<div class=" mobilehide">
-				<a href="#" id="bug-button"
+				<div class=" mobilehide" id="bug-button">
+				<a href="#" 
 				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
 				role="presentation">bug_report</i><span>Report a Bug</span></a></div>
 			<hr>
