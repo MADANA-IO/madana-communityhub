@@ -22,9 +22,7 @@ package de.madana.webclient.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -139,7 +137,7 @@ public class MenuController
 		model.addAttribute("user1", oUsers.get(0));
 		model.addAttribute("user2", oUsers.get(1));
 		model.addAttribute("user3", oUsers.get(2));
-		model.addAttribute("msg", session.getAttribute("username").toString());
+		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("info", "Last updated "+oClient.getSystemHealth().getRankingupdate());
@@ -229,7 +227,7 @@ public class MenuController
 	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
-		model.addAttribute("msg", session.getAttribute("username").toString());
+		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
 		MDN_UserProfile oDestUserProfile = oClient.getProfile(strDestUsername);
 
 		List<VisualSocialHistoryObject> oNewList = null; 
@@ -271,7 +269,7 @@ public class MenuController
 		MDN_UserProfileImage oImage = new MDN_UserProfileImage();
 		oImage.setId(strAvatarID);
 		oImage.setImage(strAvatarID);
-		oClient.setAvatar(session.getAttribute("username").toString(), oImage);
+		oClient.setAvatar(SessionHandler.getCurrentUser(session), oImage);
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/{settingid}", method = RequestMethod.GET)
@@ -281,7 +279,7 @@ public class MenuController
 		MDN_UserSetting oSetting = new MDN_UserSetting();
 		oSetting.setId(strSettingID);
 		oSetting.setValue(strValue);
-		oClient.setUserSetting(session.getAttribute("username").toString(), oSetting);
+		oClient.setUserSetting(SessionHandler.getCurrentUser(session), oSetting);
 		return "redirect:/settings";
 	}
 
@@ -312,7 +310,7 @@ public class MenuController
 	{
 		try
 		{
-			SessionHandler.getClient(session).deleteUser(session.getAttribute("username").toString());
+			SessionHandler.getClient(session).deleteUser(SessionHandler.getCurrentUser(session));
 			redirectAttributes.addFlashAttribute("error", "Account deleted");
 			return "redirect:/login";
 		}
