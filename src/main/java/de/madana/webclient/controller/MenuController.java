@@ -177,7 +177,7 @@ public class MenuController
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oUser);
 		model.addAttribute("system",  oClient.getSystemHealth());
-		model.addAttribute("info", "If you have any Problems verifying your Twitter Account, you can also send a direct Message starting with CP: directly followed with your CommunityHub username to the MADANA Twitter account. After a few seconds it should be automated and you should see it in your settings. Your message = [CP:"+ strUserName+"]");
+		model.addAttribute("info", "If you have any Problems verifying your Twitter Account, you can also send a direct Message starting with 'CP:' directly followed with your CommunityHub username to the MADANA Twitter account. After a few seconds it should be automated and you should see it in your settings. Your message =CP:"+ strUserName+"");
 		return "home";
 
 	}
