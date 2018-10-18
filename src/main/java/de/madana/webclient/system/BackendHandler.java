@@ -25,6 +25,7 @@ import java.util.List;
 
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
+import de.madana.common.datastructures.MDN_SocialUserObject;
 import de.madana.common.datastructures.MDN_User;
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
@@ -34,10 +35,10 @@ import de.madana.webclient.dto.UserSpecificSocialPlatform;
 public class BackendHandler
 {
 	public static BackendHandler instance;
-	
+
 	private BackendHandler()
 	{
-		
+
 	}
 	public static BackendHandler getInstance()
 	{
@@ -78,6 +79,7 @@ public class BackendHandler
 	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile ) throws Exception
 	{
 		List<UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<UserSpecificSocialPlatform>();
+		List<MDN_SocialUserObject> oSocialAccounts = oUser.getSocialAccounts();
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(!oPlatforms.get(i).getIsReferralPlatform().equals("true"))
@@ -92,18 +94,17 @@ public class BackendHandler
 				oMyPlatform.setIsDisabled(oPlatforms.get(i).getIsDisabled());
 				oSocialPlatforms.add(oMyPlatform);
 
-				for(int j=0; j<oUser.getSocialAccounts().size();j++)
-				{
+
 					try
 					{
-						if(oUser.getSocialAccounts().get(i).getPlatform().equals(oMyPlatform.getName()))
-						oMyPlatform.setIsVerifiedByUser("true");
+						if(oSocialAccounts.toString().contains(oMyPlatform.getName()))
+								oMyPlatform.setIsVerifiedByUser("true");
 					}
 					catch(Exception ex)
 					{
 						oMyPlatform.setIsVerifiedByUser("false");
 					}
-				}
+				
 				if(oMyPlatform.getIsVerifiedByUser().equals("true"))
 				{
 					for(int j=0; j< oProfile.getHistory().size();j++)
@@ -127,9 +128,9 @@ public class BackendHandler
 					}
 				}
 			}
-				
+
 		}
-		
+
 		return oSocialPlatforms;
 	}
 }

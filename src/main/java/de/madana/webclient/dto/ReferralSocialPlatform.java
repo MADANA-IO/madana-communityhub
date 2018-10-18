@@ -28,6 +28,15 @@ import de.madana.common.datastructures.MDN_UserProfile;
 public class ReferralSocialPlatform extends MDN_SocialPlatform
 {
 	List<MDN_UserProfile> referrals;
+	public String isVerifiedByUser = "false";
+
+	public String getIsVerifiedByUser() {
+		return isVerifiedByUser;
+	}
+
+	public void setIsVerifiedByUser(String isVerifiedByUser) {
+		this.isVerifiedByUser = isVerifiedByUser;
+	}
 
 	public List<MDN_UserProfile> getReferrals() {
 		return referrals;
