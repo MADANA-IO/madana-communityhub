@@ -48,6 +48,14 @@ public class SessionHandler
 	 */
 	private static void initNewClient(HttpSession session) 
 	{
+		try
+		{
+			session.removeAttribute("oClient");
+		}
+		catch(Exception e)
+		{
+			
+		}
 		MDN_RestClient oClient =  new MDN_RestClient();
 		session.setAttribute("oClient", oClient);
 		
