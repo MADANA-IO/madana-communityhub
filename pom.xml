@@ -124,18 +124,14 @@
 			<artifactId>twitter4j-stream</artifactId>
 			<version>4.0.6</version>
 		</dependency>
-		<dependency>
-			<groupId>de.madana.common</groupId>
-			<artifactId>madana-restclient</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 
 
 		<dependency>
-			<groupId>de.madana.common</groupId>
-			<artifactId>madana-security</artifactId>
+			<groupId>de.madana</groupId>
+			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 	<reporting>
