@@ -47,8 +47,7 @@ import de.madana.webclient.system.SessionHandler;
 @Scope("session")
 public class LoginController 
 {
-
-
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
@@ -56,9 +55,6 @@ public class LoginController
 		session.setAttribute("oClient", oClient);
 		return "index";
 	}
-
-
-
 
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.GET)
 	public String loadResetPassword(Model model,@PathVariable("token") String token) 
