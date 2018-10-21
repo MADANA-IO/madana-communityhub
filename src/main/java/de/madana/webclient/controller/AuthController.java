@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.madana.common.security.RandomString;
 import de.madana.webclient.exceptions.ClientNotInitizializedException;
 import de.madana.webclient.system.SessionHandler;
 
@@ -33,7 +34,7 @@ public class AuthController
 	@RequestMapping(value = "/auth/fractal", method = RequestMethod.GET)
 	public String authFractal(HttpSession session,Model model) throws ClientNotInitizializedException 
 	{
-		String strRandom=new de.madana.common.security.MDN_RandomString(64).nextString();
+		String strRandom=new RandomString(64).nextString();
 		session.setAttribute("fractal_state", strRandom);
 		return "redirect:"+ SessionHandler.getClient(session).getFractalAuthURL()+"&state="+strRandom+"&response_type=code";
 	}
