@@ -74,6 +74,7 @@ public class MenuController
 					List<MDN_UserProfile> oReferred =  SessionHandler.getClient(session).getReferredUsers(oPlatforms.get(i).getName(), strUserName);
 					model.addAttribute("platform",oPlatforms.get(i));
 					model.addAttribute("referrals",oReferred);
+					model.addAttribute("platformname", oPlatforms.get(i).getName().toLowerCase());
 					model.addAttribute("user", oUser);
 					return "referralbountydetail";
 				}
