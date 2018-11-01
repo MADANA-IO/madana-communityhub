@@ -5,85 +5,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <style>
-@media  (max-width: 1000px) 
-{
-dialog.mdl-dialog
-{
+@media ( max-width : 1000px) {
+	dialog.mdl-dialog {
+		width: 100%;
+	}
+}
 
-width:100%;
-}
-}
-@media  (min-width: 1000px) 
-{
-dialog.mdl-dialog 
-{
-
-width:800px;
-}
+@media ( min-width : 1000px) {
+	dialog.mdl-dialog {
+		width: 800px;
+	}
 }
 </style>
 <jsp:include page="components/header.jsp" />
 
 <body>
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+	<div
+		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
-		
+
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid demo-content">
 
 
-			<div class="mdl-card something-else mdl-cell mdl-cell--12-col transparent">
+			<div
+				class="mdl-card something-else mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
-					<img src="${user.image}"><h2>
-						${user.userName}
-						</h2>
+					<img src="${user.image}">
+					<h2>${user.userName}</h2>
 				</div>
 
 				<div class="mdl-card__supporting-text">
-					You have successfully logged in. <br>
-					Please have a look at the
-					information we collected from you. Your email is private,
+					You have successfully logged in. <br> Please have a look at
+					the information we collected from you. Your email is private,
 					everything else can be discovered by everyone. <br> <br>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
-			<button id="show-dialog" type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change avatar</button>
-  <dialog class="mdl-dialog" >
-    <h4 class="mdl-dialog__title" style="text-align:center">Change Avatar</h4>
-         <p style="font-size:8px; padding-top:5px;text-align:center">
-         Avatars provided by "Eucalyp Studio" under CC0 on iconfinder.com .
-      </p>
-    <div class="mdl-dialog__content"  style="height: 400px; overflow-y: scroll;">
-    <div class="mdl-grid" id="avatars">
-    <c:forEach var="avatar" items="${avatars}">
-    <div class="mdl-card  mdl-cell mdl-cell--3-col mdl-cell--2-col-phone" >
-				<div class="mdl-card__title">
-				</div>
-				<div class="mdl-card__supporting-text meta">
+					<button id="show-dialog" type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+						avatar</button>
+					<dialog class="mdl-dialog">
+					<h4 class="mdl-dialog__title" style="text-align: center">Change
+						Avatar</h4>
+					<p style="font-size: 8px; padding-top: 5px; text-align: center">
+						Avatars provided by "Eucalyp Studio" under CC0 on iconfinder.com .
+					</p>
+					<div class="mdl-dialog__content"
+						style="height: 400px; overflow-y: scroll;">
+						<div class="mdl-grid" id="avatars">
+							<c:forEach var="avatar" items="${avatars}">
+								<div
+									class="mdl-card  mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+									<div class="mdl-card__title"></div>
+									<div class="mdl-card__supporting-text meta">
 
-					<div >
-						<img src="${avatar.image}">
+										<div>
+											<img src="${avatar.image}">
+										</div>
+									</div>
+									<div class="mdl-card__actions mdl-card--border">
+										<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+											for="${avatar.id}"> <input type="radio"
+											id="${avatar.id}" class="mdl-radio__button" name="options"
+											value="1" checked> <span class="mdl-radio__label"></span>
+										</label>
+
+									</div>
+								</div>
+							</c:forEach>
+
+						</div>
 					</div>
-				</div>
-				<div class="mdl-card__actions mdl-card--border">
-				<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="${avatar.id}">
-  <input type="radio" id="${avatar.id}" class="mdl-radio__button" name="options" value="1" checked>
-  <span class="mdl-radio__label"></span>
-</label>
+					<div class="mdl-dialog__actions">
+						<button type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect cancel">cancel</button>
 
-				</div>
-			</div>
-   		</c:forEach>
- 
-      </div>
-    </div>
-    <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect cancel">cancel</button>
-    
-      <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close" style="width:200px; background:#a0c3e8; color:white;">Set Avatar</button>
-    </div>
-  </dialog>
-  <script>
+						<button type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close"
+							style="width: 200px; background: #a0c3e8; color: white;">Set
+							Avatar</button>
+					</div>
+					</dialog>
+					<script>
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#show-dialog');
     if (! dialog.showModal) {
@@ -117,7 +121,7 @@ width:800px;
 					<a
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 						<form action="success" method="post">
-						<!-- 
+							<!-- 
 <button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 						Delete Account</button> -->
@@ -126,27 +130,27 @@ width:800px;
 				</div>
 
 			</div>
-<div class="mdl-grid mdl-cell mdl-cell--8-col transparent">
-			<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-				<div class="mdl-card__title">
-					<h3>Private Details</h3>
-				</div>
-				<div class="mdl-card__supporting-text meta ">
-					<div class="minilogo"></div>
-					<div>
-						<table>
+			<div class="mdl-grid mdl-cell mdl-cell--8-col transparent">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card__title">
+						<h3>Private Details</h3>
+					</div>
+					<div class="mdl-card__supporting-text meta ">
+						<div class="minilogo"></div>
+						<div>
+							<table>
 
-							<td width="50%;">
-							<tr class="tddefault">
-								<td width=20%;>Username:</td>
-								<td align="left" width="10%"><c:out
-										value="${user.userName}" /></td>
-							</tr>
-							<tr class="tddefault">
-								<td width=20%;>Email:</td>
-								<td width="10%"><c:out value="${user.mail}" /></td>
-							</tr>
-							<!-- 
+								<td width="50%;">
+								<tr class="tddefault">
+									<td width=20%;>Username:</td>
+									<td align="left" width="10%"><c:out
+											value="${user.userName}" /></td>
+								</tr>
+								<tr class="tddefault">
+									<td width=20%;>E-Mail:</td>
+									<td width="10%"><c:out value="${user.mail}" /></td>
+								</tr>
+								<!-- 
 							<tr class="tddefault">
 								<td width=20%;>Firstname:</td>
 								<td width="10%"><c:out value="${user.firstName}" /></td>
@@ -156,60 +160,137 @@ width:800px;
 								<td width="10%"><c:out value="${user.lastName}" /></td>
 							</tr>
 							 -->
-							<tr class="tddefault">
-								<td width=20%;>Member since:</td>
-								<td width="10%"><c:out value="${user.created}" /></td>
-							</tr>
-							<tr class="tddefault">
-								<td width=20%;>Last login:</td>
-								<td width="10%"><c:out value="${user.lastActive}" /></td>
-							</tr>
-							<tr>
+								<tr class="tddefault">
+									<td width=20%;>Member since:</td>
+									<td width="10%"><c:out value="${user.created}" /></td>
+								</tr>
+								<tr class="tddefault">
+									<td width=20%;>Last login:</td>
+									<td width="10%"><c:out value="${user.lastActive}" /></td>
+								</tr>
+								<tr>
 
 
-							</tr>
+								</tr>
 
-							</td>
+								</td>
 
-						</table>
+							</table>
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<button id="show-changepassword" type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+							password</button>
+						<button id="show-changemail" type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+							E-Mail</button>
 					</div>
 				</div>
-				<div class="mdl-card__actions mdl-card--border">
-				<!-- 
-					<button
-						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Change Email</button>
-					<button
-						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Change Password</button>  -->
+				<dialog class="mdl-dialog" id="changemaildialog">
+				<h4 class="mdl-dialog__title" style="text-align: center">Change
+					E-Mail</h4>
+				<p style="font-size: 8px; padding-top: 5px; text-align: center">
 
-				</div>
-			</div>
-					<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-				<div class="mdl-card__title ">
-					<h3>Privacy Settings</h3>
-				</div>
-				<div class="mdl-card__supporting-text meta">
-		
-					<ul class="demo-list-control mdl-list">
-						<c:forEach var="setting" items="${user.settings}">
-  							<li class="mdl-list__item mdl-list__item--three-line">
-  							<span class="mdl-list__item-primary-content"> 
-  							<i class="material-icons mdl-list__item-avatar">history</i> 
-  							<span>						${setting.name}</span>
-  							 <span class="mdl-list__item-text-body"> ${setting.description} </span>
-						</span> 
-						<span class="mdl-list__item-secondary-action"> 
-						<label	id="label${setting.id}"class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${setting.id}">
-						<input type="checkbox" id="${setting.id}" class="mdl-switch__input" 	<c:if test="${setting.value == 'true'}">checked</c:if> />
-							</label>
-						</span></li>
-					</c:forEach> 
-						
-					</ul>
+				</p>
+				<div class="mdl-dialog__content"
+					style="height: 100px; overflow-y: scroll;">
+					<table>
 
+						<tr>
+							<td>E-Mail</td>
+							<td><input type="text" id="pw1" name="password" /></td>
+						</tr>
+						<tr>
+							<td>Re-enter E-Mail</td>
+							<td><input type="text" id="pw2" name="matchingPassword" /></td>
+						</tr>
+						<tr>
+							<td><label id="pwinfolabel" style="color:red;"></label></td>
+							<td></td>
+						</tr>
+					</table>
 				</div>
-							<script>
+				<div class="mdl-dialog__actions">
+					<button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect cancel">cancel</button>
+
+					<button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close"
+						style="width: 200px; background: #a0c3e8; color: white;">Change
+						E-Mail</button>
+				</div>
+				</dialog>
+				<script>
+
+    var showDialogButton = document.querySelector('#show-changepassword');
+    
+    showDialogButton.addEventListener('click', function() 
+    		{
+    	window.location.href = "resetpassword";
+    });
+
+  </script>
+  				<script>
+    var dialog = document.querySelector('#changemaildialog');
+    var showDialogButton = document.querySelector('#show-changemail');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function() 
+    		{
+      dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() 
+    		{
+    	var todo = document.getElementById("pw1").value;
+    	var todo2 = document.getElementById("pw2").value;
+    		if(todo != todo2)
+    			{
+    			document.getElementById("pwinfolabel").innerHTML='Entered E-Mails are not matching';
+    			}
+    		else {
+    			window.location.href = "settings/changemail/"+todo;
+     		   dialog.close();
+     	}
+    	 
+    	
+   
+    });
+    
+    dialog.querySelector('.cancel').addEventListener('click', function() 
+    		{
+        dialog.close();
+    		});
+
+  </script>
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card__title ">
+						<h3>Privacy Settings</h3>
+					</div>
+					<div class="mdl-card__supporting-text meta">
+
+						<ul class="demo-list-control mdl-list">
+							<c:forEach var="setting" items="${user.settings}">
+								<li class="mdl-list__item mdl-list__item--three-line"><span
+									class="mdl-list__item-primary-content"> <i
+										class="material-icons mdl-list__item-avatar">history</i> <span>
+											${setting.name}</span> <span class="mdl-list__item-text-body">
+											${setting.description} </span>
+								</span> <span class="mdl-list__item-secondary-action"> <label
+										id="label${setting.id}"
+										class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+										for="${setting.id}"> <input type="checkbox"
+											id="${setting.id}" class="mdl-switch__input"
+											<c:if test="${setting.value == 'true'}">checked</c:if> />
+									</label>
+								</span></li>
+							</c:forEach>
+
+						</ul>
+
+					</div>
+					<script>
 						<c:forEach var="setting" items="${user.settings}">
 
 			
@@ -232,7 +313,7 @@ width:800px;
 						</c:forEach>
 </script>
 
-			</div>
+				</div>
 			</div>
 			<div
 				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
@@ -245,37 +326,38 @@ width:800px;
 					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
 					<span class="visuallyhidden">add</span>
 				</button> -->
-				<div
-					class="mdl-card__media">
-
-				</div>
-				<div
-					class="mdl-card__supporting-text meta meta--fill "  >
+				<div class="mdl-card__media"></div>
+				<div class="mdl-card__supporting-text meta meta--fill ">
 					<div></div>
 					<ul class="demo-list-control mdl-list">
-							<c:forEach var="socialuser" items="${user.socialAccounts}">
-  							<li class="mdl-list__item mdl-list__item--three-line"><span
-							class="mdl-list__item-primary-content">
-							<img src="${socialuser.image}" alt="${socialuser.platform}" height="50" width="50" style="margin-bottom:-15px;padding-right:10px;height:30px; width:40px;">
-							 <span>
-									${socialuser.platform}</span> <span class="mdl-list__item-text-body" style="align:center;padding-left:50px;">             ${socialuser.ident}</span>
-						</span> <span class="mdl-list__item-secondary-action"><!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+						<c:forEach var="socialuser" items="${user.socialAccounts}">
+							<li class="mdl-list__item mdl-list__item--three-line"><span
+								class="mdl-list__item-primary-content"> <img
+									src="${socialuser.image}" alt="${socialuser.platform}"
+									height="50" width="50"
+									style="margin-bottom: -15px; padding-right: 10px; height: 30px; width: 40px;">
+									<span> ${socialuser.platform}</span> <span
+									class="mdl-list__item-text-body"
+									style="align: center; padding-left: 50px;">
+										${socialuser.ident}</span>
+							</span> <span class="mdl-list__item-secondary-action">
+									<!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
   <i class="material-icons">cancel</i>
 </button> -->
-						</span></li>
-					</c:forEach>
-					
-						
+							</span></li>
+						</c:forEach>
+
+
 					</ul>
 				</div>
 			</div>
-	
 		</main>
 	</div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
-	<jsp:include page="components/footer.jsp" />	  
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<jsp:include page="components/footer.jsp" />
 </body>
 </html>
