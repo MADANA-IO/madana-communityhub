@@ -61,6 +61,11 @@ public class LoginController
 	{
 		return "setpassword";
 	}
+	@RequestMapping(value = "/intro", method = RequestMethod.GET)
+	public String loadIntro(Model model) 
+	{
+		return "introslider";
+	}
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.POST)
 	public String submitResetPassword(HttpSession session,Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") SetPasswordBean oNewPassword,  final RedirectAttributes redirectAttributes) 
 	{
@@ -127,11 +132,20 @@ public class LoginController
 		}
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public ModelAndView loadRegisterPage() 
+	public ModelAndView loadRegisterPage(HttpSession session,@RequestParam(value = "intro", required=false) String intro, @RequestParam(value = "referrer", required=false) String strToken) 
 	{
-
+		if(strToken!=null)
+			session.setAttribute("ref", strToken);
 		ModelAndView model = new ModelAndView();
-		model.setViewName("register");
+		if(intro==null)
+		{
+			model.setViewName("introslider");
+		}
+		else
+		{
+			model.setViewName("register");
+		}
+		
 		return model;
 
 	}
@@ -167,6 +181,8 @@ public class LoginController
 			
 				try 
 				{
+					if(session.getAttribute("ref")!=null)
+						strToken =(String) session.getAttribute("ref");
 					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
 					{
 						redirectAttributes.addFlashAttribute("info", "Account created");
