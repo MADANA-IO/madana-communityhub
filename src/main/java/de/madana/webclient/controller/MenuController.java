@@ -274,6 +274,16 @@ public class MenuController
 		oClient.setAvatar(SessionHandler.getCurrentUser(session), oImage);
 		return "redirect:/settings";
 	}
+	@RequestMapping(value = "/settings/changemail/{email}", method = RequestMethod.GET)
+	public String setNewMail(HttpSession session,Model model,@PathVariable("email") String mail) throws Exception 
+	{
+		MDN_RestClient oClient = SessionHandler.getClient(session);
+		MDN_User oUser = new MDN_User();
+		oUser.setMail(mail);
+		oClient.updateUser(oUser, SessionHandler.getCurrentUser(session));
+	
+		return "redirect:/settings";
+	}
 	@RequestMapping(value = "/settings/{settingid}", method = RequestMethod.GET)
 	public String setSetting(HttpSession session,Model model,@PathVariable("settingid") String strSettingID, @RequestParam("value") String strValue) throws ClientNotInitizializedException 
 	{
