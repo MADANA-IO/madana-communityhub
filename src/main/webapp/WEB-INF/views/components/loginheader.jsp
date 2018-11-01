@@ -125,7 +125,12 @@ margin:0px;
 padding:0px;
 width:100%;
   overflow:hidden;
-      background:#274863;
+  background: url(https://www.madana.io/assets/img/hero-grid.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    
 }
 img{
   position: absolute;
