@@ -7,10 +7,11 @@
 <jsp:include page="components/header.jsp" />
 
 <body>
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+	<div
+		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
-		
+
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid">
 
@@ -30,7 +31,7 @@
 
 
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
-			
+
 
 
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
@@ -45,7 +46,8 @@
 					<c:forEach items="${social_platforms}" var="platform">
 
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent" style="height:375px">
+							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent"
+							style="height: 375px">
 							<div class="mdl-card__title"
 								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
 								<div
@@ -82,8 +84,11 @@
 
 											<a
 												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"
-												style="align: right" onclick="document.forceLoading();"
-												style="width: 100%;"
+												style="align: right;width: 100%; " onclick="document.forceLoading();" s
+												
+												
+													
+															
 												href="auth/${fn:toLowerCase(platform.name)}">
 
 												<form action="success" method="post">
@@ -92,6 +97,7 @@
 														Verify ${platform.name} account</button>
 												</form>
 											</a>
+										
 										</c:when>
 
 										<c:otherwise>
@@ -128,11 +134,28 @@
 								</c:if>
 							</div>
 							<div class="mdl-card__menu">
+								<c:choose>
+									<c:when test="${platform.isVerifiedByUser == false}">
+										<c:if test="${platform.name == 'Twitter'}">
+										
+												<button type="button" id="twitterinfo" class="mdl-button mdl-js-button " style="color:#a0c3e8;"
+													>
+													<i class="material-icons">info</i>
+													
+												</button>
+													<div class="mdl-tooltip mdl-tooltip--large" for="twitterinfo" style="width:150px;">
+						You can also verify your account by sending a private message starting with "CH:" directly followed by your CommunityHub Username to the official MADANA Twitter Account.
+</div>
+						
+											</c:if>
+											</c:when>
+											</c:choose>
 								<a href="${platform.link}"><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">
 										<i class="material-icons">open_in_new</i>
 									</button> ${platform.name}</a>
+								
 							</div>
 
 						</div>
@@ -152,7 +175,8 @@
 					</div>
 					<c:forEach items="${referral_platforms}" var="platform">
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent" style="height:375px">
+							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent"
+							style="height: 375px">
 							<div class="mdl-card__title"
 								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
 								<div
@@ -322,7 +346,7 @@
 							width="90%" height="300" style="padding: 10px;">
 					</div>
 				</div>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent" >
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
 						<h3>
 							<i class="material-icons">build</i> System Stats
@@ -376,15 +400,15 @@
 					</div>
 				</div>
 			</div>
-	
 
-	<jsp:include page="components/snackbar.jsp" />
-</div>
+
+			<jsp:include page="components/snackbar.jsp" />
+		</div>
 		</main>
 	</div>
 	<jsp:include page="components/footer.jsp" />
 
-	 
+
 
 </body>
 
