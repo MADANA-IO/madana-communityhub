@@ -51,8 +51,15 @@ public class LoginController
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
-		MDN_RestClient oClient =  new MDN_RestClient();
-		session.setAttribute("oClient", oClient);
+
+		try 
+		{
+			if(SessionHandler.getClient(session).validateSession())
+				return "redirect:/home/";
+		} catch (ClientNotInitizializedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "index";
 	}
 
