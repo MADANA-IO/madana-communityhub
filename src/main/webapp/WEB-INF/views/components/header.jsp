@@ -127,6 +127,10 @@
 									e.preventDefault();
 									showCollectorDialog();
 								});
+								jQuery("#mainbug-button").click(function(e) {
+									e.preventDefault();
+									showCollectorDialog();
+								});
 							}
 
 						// === default and hidden field values ===

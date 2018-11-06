@@ -117,7 +117,7 @@
 								 "
 												style="align: right; width: 100%;"
 												onclick="document.forceLoading();"
-												href="bounty/${fn:toLowerCase(platform.name)}">
+												href="/bounty/${fn:toLowerCase(platform.name)}">
 
 												<form action="success" method="post">
 													<button
@@ -202,7 +202,7 @@
 									<a
 										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
 										style="width: 100%" onclick="document.forceLoading();"
-										href="bounty/${fn:toLowerCase(platform.name)}">
+										href="/bounty/${fn:toLowerCase(platform.name)}">
 										<form action="success" method="post">
 											<button
 												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
@@ -379,7 +379,7 @@
 					<div class="mdl-card__actions mdl-card--border">
 						<br>
 						<div>
-							<a href="/ranking"><button id="show-dialog" type="button"
+							<a href="https://blog.madana.io/tagged/dev-notes" target="_blank"><button  type="button"
 									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
 									style="width: 100%;">
 									<i class="material-icons">developer_board</i> See Update news
@@ -389,7 +389,7 @@
 						<div>
 
 
-							<button id="feedback-button" type="button"
+							<button id="mainbug-button" type="button"
 								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
 								style="width: 100%;">
 								<i class="material-icons">bug_report</i> Report a bug
