@@ -42,10 +42,10 @@
 					everything else can be discovered by everyone. <br> <br>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
-					<button id="show-dialog" type="button"
+					<button id="changeavatarbutton" type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
 						avatar</button>
-					<dialog class="mdl-dialog">
+					<dialog class="mdl-dialog" id="changeavatar">
 					<h4 class="mdl-dialog__title" style="text-align: center">Change
 						Avatar</h4>
 					<p style="font-size: 8px; padding-top: 5px; text-align: center">
@@ -88,16 +88,16 @@
 					</div>
 					</dialog>
 					<script>
-    var dialog = document.querySelector('dialog');
-    var showDialogButton = document.querySelector('#show-dialog');
-    if (! dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
+    var dialog1 = document.querySelector('#changeavatar');
+    var showDialogButton = document.querySelector('#changeavatarbutton');
+    if (! dialog1.showModal) {
+      dialogPolyfill.registerDialog(dialog1);
     }
     showDialogButton.addEventListener('click', function() 
     		{
-      dialog.showModal();
+    	dialog1.showModal();
     });
-    dialog.querySelector('.close').addEventListener('click', function() 
+    dialog1.querySelector('.close').addEventListener('click', function() 
     		{
     	var avatars = document.getElementById('avatars');
     	var btn = avatars.getElementsByClassName('is-checked')[0];
@@ -109,12 +109,12 @@
     		
     	}
     	
-      dialog.close();
+    	dialog1.close();
     });
     
-    dialog.querySelector('.cancel').addEventListener('click', function() 
+    dialog1.querySelector('.cancel').addEventListener('click', function() 
     		{
-        dialog.close();
+    	dialog1.close();
     		});
 
   </script>
