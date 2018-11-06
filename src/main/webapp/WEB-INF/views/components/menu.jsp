@@ -118,6 +118,10 @@ font-size:1.5vw;
 				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
 				role="presentation">bug_report</i><span>Report a Bug</span></a></div>
 			<hr>
+			<div id="status" style="margin-left:10px;">   <a href="http://status.madana.io" target="_blank">
+            <span class="color-dot"></span>
+            <span class="color-description"></span>
+          </a></div>
 			<div style="margin-left: 30px;">
 				<i><img src="https://www.madana.io/assets/img/logo-madana.png"
 					alt="MADANA Logo" width="30" height="30" style="padding-top: 20px;"></i><span
@@ -128,3 +132,61 @@ font-size:1.5vw;
 
 			</nav>
 		</div>
+		<style>
+<style>
+ #status {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+.color-dot {
+  @include border-radius(99px);
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:5px;
+
+}
+.maintenance
+{
+ background-color:#e74c3c;
+}
+.critical
+{
+ background-color:#e74c3c;
+}
+.major
+{
+ background-color:#e67e22;
+}
+.minor
+{
+ background-color:#f1c40f;
+}
+.none
+{
+ background-color:#2ecc71;
+}
+</style>
+
+<script type="text/javascript"
+	src=" https://cdn.statuspage.io/se-v2.js" /></script>
+	   <!-- status information inserted here -->
+      
+
+ <script  type="text/javascript">
+//notice the JS Library is imported already (click the gear next to JS)
+//this script also assumes jQuery is already loaded on the page.
+
+var sp = new StatusPage.page({ page: '41zg7lf9yvrd'});
+
+sp.summary({
+success: function(data) {
+  // adds the text description to the dropdown
+  $('.color-description').text(data.status.description);
+  // appends the status indicator as a class name so we can use the right color for the status light thing
+  $('.color-dot').addClass(data.status.indicator);
+}
+});
+</script>
+		
