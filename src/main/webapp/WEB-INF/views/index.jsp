@@ -78,6 +78,7 @@
 						progress and development of MADANA, engage actively in community
 						campaigns and express your opinion on relevant topics in a fun and
 						ludic way.</p>
+		
 						
 				<!-- 	<p>For every interaction with certain community hub features,
 						you will receive community points (CP). These points indicate your
@@ -90,7 +91,7 @@
 							started</a> </span>
 							
 							<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect customfont" style="color:#a0c3e8;font-size:14px;" href="/login">Login</a></span>
-
+ 
 
 
 				</div>
@@ -101,7 +102,7 @@
 	</div>
 
 
-
+<jsp:include page="components/statuspage.jsp" />
 	<jsp:include page="components/footer.jsp" />
 
 
