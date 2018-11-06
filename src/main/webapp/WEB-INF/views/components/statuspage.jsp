@@ -29,7 +29,7 @@
 {
  background-color:#e74c3c;
 }
-. major
+.major
 {
  background-color:#e67e22;
 }
