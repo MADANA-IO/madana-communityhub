@@ -66,7 +66,7 @@
 						</tr>
 					<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Reset password" /></td>
+						<td><input type="submit" value="Reset password" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -80,7 +80,20 @@
 					
 				</table>
 			
+			<script>
+		
+				   
+			
+grecaptcha.ready(function() 
+		{
+	
+grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'resetpassword'})
+.then(function(token) {
+	document.getElementById("tokenfield").value = token;
+});
+});
 
+</script>
 			</div>
 		</form>
 	<jsp:include page="components/snackbar.jsp" />

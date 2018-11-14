@@ -72,7 +72,7 @@
 						</tr>
 					<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Login" onclick="document.forceLoading();" /></td>
+						<td><input type="submit" value="Login" onclick="document.forceLoading();" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -88,7 +88,20 @@
 					</tr>
 					
 				</table>
+						<script>
+		
+				   
 			
+grecaptcha.ready(function() 
+		{
+	
+grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'login'})
+.then(function(token) {
+	document.getElementById("tokenfield").value = token;
+});
+});
+
+</script>
 
 			</div>
 		</form>

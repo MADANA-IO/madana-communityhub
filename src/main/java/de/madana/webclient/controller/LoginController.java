@@ -41,6 +41,7 @@ import de.madana.webclient.bean.ResetPasswordBean;
 import de.madana.webclient.bean.SetPasswordBean;
 import de.madana.webclient.dto.RegisterUser;
 import de.madana.webclient.exceptions.ClientNotInitizializedException;
+import de.madana.webclient.system.BackendHandler;
 import de.madana.webclient.system.SessionHandler;
 
 @Controller
@@ -74,9 +75,13 @@ public class LoginController
 		return "introslider";
 	}
 	@RequestMapping(value = "/resetpassword/{token}", method = RequestMethod.POST)
-	public String submitResetPassword(HttpSession session,Model model, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") SetPasswordBean oNewPassword,  final RedirectAttributes redirectAttributes) 
+	public String submitResetPassword(HttpSession session,Model model,  @RequestParam(value = "captchatoken", required=false) String captchatoken, @PathVariable("token") String token, @ModelAttribute("MDN_DTO_SetPassword") SetPasswordBean oNewPassword,  final RedirectAttributes redirectAttributes) 
 	{
-	
+		if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+		{
+			model.addAttribute("error", "We couldn't verify that you are a human");
+			return "redirect:/resetpassword/"+token;
+		}
 		if (oNewPassword.getEmail()!= null && oNewPassword.getEmail().length()>3 && oNewPassword.getEmail().contains("@")) 
 		{
 			if( oNewPassword.getPassword().equals(oNewPassword.getMatchingPassword()))
@@ -110,9 +115,14 @@ public class LoginController
 		return "resetpassword";
 	}
 	@RequestMapping(value = "/resetpassword", method = RequestMethod.POST)
-	public String submitResetPassword(HttpSession session,Model model, @ModelAttribute("MDN_DTO_ResetPassword") ResetPasswordBean mail,final RedirectAttributes redirectAttributes) 
+	public String submitResetPassword(HttpSession session,Model model,  @RequestParam(value = "captchatoken", required=false) String captchatoken, @ModelAttribute("MDN_DTO_ResetPassword") ResetPasswordBean mail,final RedirectAttributes redirectAttributes) 
 	{
 
+		if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+		{
+			model.addAttribute("error", "We couldn't verify that you are a human");
+			return "resetpassword";
+		}
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
 		{
 	
@@ -174,11 +184,16 @@ public class LoginController
 	
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("MDN_DTO_RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
+	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "captchatoken", required=false) String captchatoken, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
 		if(read== null)
 		{
 			model.addAttribute("error", "Please read, understand and accept the Privacy Policy and Terms of Use Agreement");
+			return "register";
+		}
+		if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+		{
+			model.addAttribute("error", "We couldn't verify that you are a human");
 			return "register";
 		}
 		if (user != null && user.getUsername()!= null & user.getPassword() != null) 
@@ -188,6 +203,7 @@ public class LoginController
 			
 				try 
 				{
+					
 					if(session.getAttribute("ref")!=null)
 						strToken =(String) session.getAttribute("ref");
 					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
@@ -240,7 +256,7 @@ public class LoginController
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLoginPage(HttpSession session,Model model,  @RequestParam(value="requesturi", required=false) String requesturi, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
+	public String submitLoginPage(HttpSession session,Model model,  @RequestParam(value="requesturi", required=false) String requesturi, @RequestParam(value = "captchatoken", required=false) String captchatoken, @ModelAttribute("loginBean") LoginBean loginBean, final RedirectAttributes redirectAttributes) 
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
@@ -248,6 +264,11 @@ public class LoginController
 			{
 				MDN_RestClient oClient =  new MDN_RestClient();
 				session.setAttribute("oClient", oClient);
+				if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+				{
+					model.addAttribute("error", "We couldn't verify that you are a human");
+					return "login";
+				}
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
 					session.setAttribute("username",loginBean.getUserName());

@@ -20,8 +20,18 @@
  ******************************************************************************/
 package de.madana.webclient.system;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.net.ssl.HttpsURLConnection;
 
 import de.madana.common.datastructures.MDN_SocialHistoryObject;
 import de.madana.common.datastructures.MDN_SocialPlatform;
@@ -35,6 +45,7 @@ import de.madana.webclient.dto.UserSpecificSocialPlatform;
 public class BackendHandler
 {
 	public static BackendHandler instance;
+	public final String captchaVerifyURL = "https://www.google.com/recaptcha/api/siteverify";
 
 	private BackendHandler()
 	{
@@ -47,6 +58,36 @@ public class BackendHandler
 			instance = new BackendHandler();
 		}
 		return instance;
+	}
+	public String getProperty (String strKey)
+	{
+		try
+		{
+			if (System.getProperty(strKey).length() > 0 && System.getProperty(strKey)!=null)
+			{
+				return System.getProperty(strKey);
+			}
+		}
+		catch(Exception ex)
+		{
+		}
+		try
+		{
+			if(System.getenv(strKey).length()>0 && System.getenv(strKey)!= null)
+			{
+				return System.getenv(strKey);
+			}
+		}
+		catch(Exception ex)
+		{
+
+		}
+
+		System.err.println("############################################################");
+		System.err.println("UNKNOWN PROPERTY: "+strKey);
+		System.err.println("############################################################");
+		return "";
+
 	}
 	public List<ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms, MDN_RestClient oClient, String strUserName)
 	{
@@ -75,6 +116,62 @@ public class BackendHandler
 			}
 		}
 		return oRefferalPlatforms;
+	}
+	public  boolean verifyGoogleCaptcha(String gRecaptchaResponse) {
+		if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {
+			return false;
+		}
+		
+		try
+		{
+
+		String secret = getProperty("GOOGLECAPTCHA");
+			String USER_AGENT = "Mozilla/5.0";
+		URL obj = new URL(captchaVerifyURL);
+		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+
+		// add reuqest header
+		con.setRequestMethod("POST");
+		con.setRequestProperty("User-Agent", USER_AGENT);
+		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+		String postParams = "secret=" + secret + "&response="
+				+ gRecaptchaResponse;
+
+		// Send post request
+		con.setDoOutput(true);
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(postParams);
+		wr.flush();
+		wr.close();
+
+		int responseCode = con.getResponseCode();
+
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(
+				con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		System.out.println("CAPTCHA:" + response.toString());
+		
+		//parse JSON response and return 'success' value
+		JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
+		JsonObject jsonObject = jsonReader.readObject();
+		jsonReader.close();
+		Double dScore = Double.valueOf(jsonObject.get("score").toString());
+		if(dScore < 0.2)
+			return false;
+		return jsonObject.getBoolean("success");
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile ) throws Exception
 	{

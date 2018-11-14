@@ -85,7 +85,8 @@
 
 						<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Register" /></td>
+						<td><input type="submit" id="registerbutton" value="Register" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
+						
 					</tr>
 					<tr>
 						<td></td>
@@ -97,8 +98,21 @@
 					</tr>
 					
 				</table>
-			
 
+			<script>
+		
+				   
+			
+grecaptcha.ready(function() 
+		{
+	
+grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'register'})
+.then(function(token) {
+	document.getElementById("tokenfield").value = token;
+});
+});
+
+</script>
 			</div>
 		</form>
 	<jsp:include page="components/snackbar.jsp" />
