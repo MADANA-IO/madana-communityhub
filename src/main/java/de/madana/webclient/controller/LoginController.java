@@ -260,18 +260,24 @@ public class LoginController
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
+			
 			try 
 			{
 				MDN_RestClient oClient =  new MDN_RestClient();
 				session.setAttribute("oClient", oClient);
+			
+			
 				if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
 				{
 					model.addAttribute("error", "We couldn't verify that you are a human");
 					return "login";
 				}
+				SessionHandler.validateLoginAttempts(session);
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
-					session.setAttribute("username",loginBean.getUserName());
+		
+					SessionHandler.setSuccessfulLogin(session, loginBean.getUserName());
+				
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
 						return "redirect:"+requesturi;

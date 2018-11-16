@@ -3,6 +3,9 @@
  */
 package de.madana.webclient.system;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import javax.servlet.http.HttpSession;
 
 import de.madana.common.datastructures.MDN_UserProfile;
@@ -58,6 +61,68 @@ public class SessionHandler
 		}
 		MDN_RestClient oClient =  new MDN_RestClient();
 		session.setAttribute("oClient", oClient);
+		
+	}
+
+	public static void validateLoginAttempts(HttpSession session) throws Exception
+	{
+		int loginAttempt;
+        if (session.getAttribute("loginCount") == null)
+        {
+            session.setAttribute("loginCount", 0);
+            session.setAttribute("loginWait", false);
+            loginAttempt = 0;
+        }
+        else
+        {
+             loginAttempt = (Integer) session.getAttribute("loginCount");
+        }
+
+        if (loginAttempt >= 2 )
+        {     
+        	  Date date = new Date();
+        	if (session.getAttribute("loginWait").toString().equals("false"))
+        	{
+                session.setAttribute("loginWait", true);
+        		session.setAttribute("loginWaitTime", date.getTime());
+        	}
+            long lastAccessedTime = (Long) session.getAttribute("loginWaitTime");
+          
+            long currentTime = date.getTime();
+            long timeDiff = currentTime - lastAccessedTime; 
+            if (timeDiff >= 600000)
+            {
+                //invalidate user session, so they can try again
+                session.setAttribute("loginCount",0);
+                session.invalidate();
+                return;
+            }
+            else
+            {
+            	long lWaitTime = 600000 - timeDiff;
+            throw new Exception("You have exceeded 3 failed login attempts. Please try again in "+ String.format("%d min, %d sec", 
+        		    TimeUnit.MILLISECONDS.toMinutes(lWaitTime),
+        		    TimeUnit.MILLISECONDS.toSeconds(lWaitTime) - 
+        		    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(lWaitTime))
+        		));
+            }  
+
+        }
+        else
+        {
+             loginAttempt++;
+        }
+        session.setAttribute("loginCount",loginAttempt);
+
+	}
+
+	public static void setSuccessfulLogin(HttpSession session, String userName)
+	{
+		
+	session.setAttribute("username",userName);
+	 session.setAttribute("loginCount", 0);
+     session.setAttribute("loginWait", false);
+		// TODO Auto-generated method stub
 		
 	}
 }
