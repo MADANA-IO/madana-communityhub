@@ -234,6 +234,12 @@
                 <include> **/*.properties</include>
             </includes>
         </resource>
+         <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include> **/*.crt</include>
+            </includes>
+        </resource>
     </resources>
 	</build>
 	<ciManagement>

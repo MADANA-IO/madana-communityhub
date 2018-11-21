@@ -67,7 +67,7 @@ public class SessionHandler
 
 		try
 		{
-			InputStream inputStream = SessionHandler.class.getClass().getClassLoader().getResourceAsStream("app.crt");
+			InputStream inputStream = SessionHandler.class.getResourceAsStream("app.crt");
 			X509Certificate clientCert =CertificateHandler.getCertificateFromInputStream(inputStream);
 			oClient.authApplication(clientCert);
 			session.setAttribute("oClient", oClient);
