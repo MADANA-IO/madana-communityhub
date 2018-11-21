@@ -134,17 +134,17 @@
 		<dependency>
 			<groupId>de.madana.common</groupId>
 			<artifactId>madana-restclient</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>LATEST</version>
 		</dependency>
 		<dependency>
 			<groupId>de.madana.common</groupId>
 			<artifactId>madana-security</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>LATEST</version>
 		</dependency>
 		<dependency>
 			<groupId>de.madana.common</groupId>
 			<artifactId>madana-datastructures</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>LATEST</version>
 		</dependency>
 	</dependencies>
 	<reporting>

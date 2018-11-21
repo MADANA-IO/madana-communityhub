@@ -3,6 +3,8 @@
  */
 package de.madana.webclient.system;
 
+import java.io.InputStream;
+import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import de.madana.common.datastructures.MDN_UserProfile;
 import de.madana.common.restclient.MDN_RestClient;
+import de.madana.common.security.certficate.CertificateHandler;
 import de.madana.webclient.exceptions.ClientNotInitizializedException;
 
 /**
@@ -48,8 +51,9 @@ public class SessionHandler
 	}
 	/**
 	 * @param session
+	 * @throws ClientNotInitizializedException 
 	 */
-	private static void initNewClient(HttpSession session) 
+	private static void initNewClient(HttpSession session) throws ClientNotInitizializedException 
 	{
 		try
 		{
@@ -60,7 +64,20 @@ public class SessionHandler
 			
 		}
 		MDN_RestClient oClient =  new MDN_RestClient();
-		session.setAttribute("oClient", oClient);
+
+		try
+		{
+			InputStream inputStream = SessionHandler.class.getClass().getClassLoader().getResourceAsStream("app.crt");
+			X509Certificate clientCert =CertificateHandler.getCertificateFromInputStream(inputStream);
+			oClient.authApplication(clientCert);
+			session.setAttribute("oClient", oClient);
+			return;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		throw new  ClientNotInitizializedException();
 		
 	}
 

@@ -263,7 +263,7 @@ public class LoginController
 			
 			try 
 			{
-				MDN_RestClient oClient =  new MDN_RestClient();
+				MDN_RestClient oClient =  SessionHandler.getClient(session);
 				session.setAttribute("oClient", oClient);
 			
 			
