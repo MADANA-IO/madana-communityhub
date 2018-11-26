@@ -105,6 +105,21 @@ font-family: 'Montserrat', Regular;
   padding: 16px;
   height: 151px;
 }
+.demo-drawer-header .drawercontainer{
+	position:absolute;
+	top:10px;
+
+}
+.demo-drawer-header .drawercontainer2{
+	position:relative;
+	top:60px;
+
+}
+.demo-drawer-header .drawercontainer3{
+	position:relative;
+	top:30px;
+
+}
 .demo-avatar-dropdown {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -216,15 +231,43 @@ font-family: 'Montserrat', Regular;
       -ms-flex-align: center;
           align-items: center;
 }
-@media  (max-width: 767px) 
+@media (min-width: 767px)
+ {
+
+	.mobilehide {
+		display:none;
+	}
+}
+
+.mdl-layout__drawer-button
 {
-		.customfontlabel 
-		{
-		font-size: 2.4vw;
+padding-top:10px;
+}
+
+@media  (max-width: 399px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:8vw;
+}
+
+
+}
+@media  (min-width: 400px)  and (max-width: 599px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:6.0vw;
+}
+.customfontlabel 
+	{
+		font-size: 5.4vw;
 	}
 	.customfont 
 	{
-		font-size: 2.8vw;
+		font-size: 3.8vw;
 	}
 	.content h1, h2, h3
 	{
@@ -232,15 +275,85 @@ font-family: 'Montserrat', Regular;
 	}
 
 }
-@media (min-width: 767px)
- {
+@media  (min-width: 600px)  and (max-width: 800px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:4.0vw;
+}
+.customfontlabel 
+	{
+		font-size: 2.4vw;
+	}
+	.customfont 
+	{
+		font-size: 3.8vw;
+	}
+	.content h1, h2, h3
+	{
+	font-size: 15vw;
+	}
+
+}
+@media  (min-width: 801px)  and (max-width: 1199px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:3.0vw;
+}
+
 	.customfont {
 		font-size: 1.3vw;
 	}
 	.customfontlabel {
-		font-size: 1.0vw;
-	}
-	.mobilehide {
-		display:none;
+		font-size: 2.3vw;
 	}
 }
+@media  (min-width: 1200px)  and (max-width: 1600px) 
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:2.0vw;
+}
+
+	.customfont {
+		font-size: 1.3vw;
+	}
+	.customfontlabel {
+		font-size: 1.5vw;
+	}
+}
+@media (min-width: 1600px)  and (max-width: 2200px)
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:1.5vw;
+}
+
+	.customfont {
+		font-size: 1.3vw;
+	}
+	.customfontlabel {
+		font-size: 1.2vw;
+	}
+
+}
+@media (min-width: 2200px)
+{
+
+.demo-avatar-dropdown h3
+{
+font-size:1.2vw;
+}
+	.customfont {
+		font-size: 1.3vw;
+	}
+	.customfontlabel {
+		font-size: 0.8vw;
+	}
+}
+

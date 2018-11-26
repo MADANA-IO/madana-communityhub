@@ -4,54 +4,6 @@
 <%@ page import = "java.util.ResourceBundle" %>
 <% ResourceBundle resource = ResourceBundle.getBundle("de.madana.webclient.system");
   String version=resource.getString("version"); %>
-<style>
-.mdl-layout__drawer-button
-{
-padding-top:10px;
-}
-
-@media  (max-width: 600px) 
-{
-
-.demo-avatar-dropdown h3
-{
-font-size:6vw;
-}
-
-
-}
-@media  (min-width: 600px)  and (max-width: 800px) 
-{
-
-.demo-avatar-dropdown h3
-{
-font-size:4.5vw;
-}
-
-
-}
-@media  (min-width: 801px)  and (max-width: 1600px) 
-{
-
-.demo-avatar-dropdown h3
-{
-font-size:2.0vw;
-}
-
-
-}
-@media (min-width: 1600px) 
-{
-
-.demo-avatar-dropdown h3
-{
-font-size:1.5vw;
-}
-
-
-}
-
-</style>
 	<header class="mdl-layout__header mdl-layout__header--transparent ">
 		<div class="mdl-layout__header-row mdnheader">
 			<!-- Title -->
@@ -72,11 +24,12 @@ font-size:1.5vw;
 		</div>
 		</header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
-			<header class="demo-drawer-header"> <a href="/profile"><img
-				src="${profile.image}" width="75" height="75"> </a> 
+			<header class="demo-drawer-header"><div class="drawercontainer"> <a href="/profile"><img
+				src="${profile.image}" width="75" height="75"> </a> </div>
+				<div class="drawercontainer2">
 			<a href="/profile"><span class="customfontlabel" style="padding-top:10px;padding-bottom:5px;">${profile.points} CP</span>
-			<div class="demo-avatar-dropdown" style="width:100%;">
-				<span><h3>${profile.userName}</h3></span></a> 
+			</div><div class="demo-avatar-dropdown drawercontainer3" style="width:100%;">
+				<span><h3  class="customfont">${profile.userName}</h3></span></a> 
 
 				<div class="mdl-layout-spacer"></div>
 				<button id="accbtn"
@@ -90,6 +43,7 @@ font-size:1.5vw;
 					<i class="material-icons">lock</i>Logout...</li>
 				</a>
 				</ul>
+			
 			</div>
 			</header>
 			<nav class="demo-navigation mdl-navigation mdnnav"> <a
