@@ -142,6 +142,7 @@ public class MenuController
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("info", "Last updated "+oClient.getSystemHealth().getRankingupdate());
+		model.addAttribute("currentsite","ranking");
 
 
 
@@ -168,7 +169,7 @@ public class MenuController
 		model.addAttribute("user2", oUsers.get(1));
 		model.addAttribute("user3", oUsers.get(2));
 		}
-
+		model.addAttribute("currentsite","home");
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);
 		model.addAttribute("msg", strUserName);
@@ -187,6 +188,7 @@ public class MenuController
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
 	public String loadHomepage(HttpSession session,Model model) 
 	{
+		model.addAttribute("currentsite","news");
 		return "news";
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -196,6 +198,7 @@ public class MenuController
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oClient.getUser(strUserName));
+		model.addAttribute("currentsite","profile");
 		oProfile =  oClient.getProfile(strUserName);
 		List<VisualSocialHistoryObject> oNewList = new ArrayList<VisualSocialHistoryObject>();
 		List<MDN_SocialHistoryObject> oList = oProfile.getHistory();
@@ -230,6 +233,7 @@ public class MenuController
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
+		model.addAttribute("currentsite","profile");
 		MDN_UserProfile oDestUserProfile = oClient.getProfile(strDestUsername);
 
 		List<VisualSocialHistoryObject> oNewList = null; 
@@ -272,6 +276,7 @@ public class MenuController
 		oImage.setId(strAvatarID);
 		oImage.setImage(strAvatarID);
 		oClient.setAvatar(SessionHandler.getCurrentUser(session), oImage);
+		model.addAttribute("currentsite","settings");
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/changemail/{email}", method = RequestMethod.GET)
@@ -281,7 +286,7 @@ public class MenuController
 		MDN_User oUser = new MDN_User();
 		oUser.setMail(mail);
 		oClient.updateUser(oUser, SessionHandler.getCurrentUser(session));
-	
+		model.addAttribute("currentsite","settings");
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/{settingid}", method = RequestMethod.GET)
@@ -292,6 +297,7 @@ public class MenuController
 		oSetting.setId(strSettingID);
 		oSetting.setValue(strValue);
 		oClient.setUserSetting(SessionHandler.getCurrentUser(session), oSetting);
+		model.addAttribute("currentsite","settings");
 		return "redirect:/settings";
 	}
 
@@ -305,6 +311,7 @@ public class MenuController
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("avatars", oClient.getAvailableAvatars(strUserName));
+		model.addAttribute("currentsite","settings");
 
 		return "settings";
 

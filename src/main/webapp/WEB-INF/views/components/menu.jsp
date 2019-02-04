@@ -5,6 +5,12 @@
 <% ResourceBundle resource = ResourceBundle.getBundle("de.madana.webclient.system");
   String version=resource.getString("version"); %>
 	<header class="mdl-layout__header mdl-layout__header--transparent ">
+	<style>
+	 .activelink
+{
+	background-color:#4d7da2;
+}
+	</style>
 		<div class="mdl-layout__header-row mdnheader">
 			<!-- Title -->
 
@@ -12,6 +18,7 @@
 			 <img src="https://www.madana.io/assets/img/logo-madana.png"
 					alt="MADANA Logo" width="30" height="30" style="margin-right: 10px;">Community Hub [ BETA ]
 			</span>
+			
 			 <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
@@ -46,16 +53,18 @@
 			
 			</div>
 			</header>
-			<nav class="demo-navigation mdl-navigation mdnnav"> <a
-				class="mdl-navigation__link" href="/home"><i
+			<nav class="demo-navigation mdl-navigation mdnnav"> 
+			
+			<a 
+				class="${currentsite eq 'home' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"  href="/home"><i
 				class=" material-icons" role="presentation">home</i>Home</a> <a
-				class="mdl-navigation__link" href="/news"><i
+			class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"  href="/news"><i
 				class=" material-icons" role="presentation">info</i>News</a> <a
-				class="mdl-navigation__link" href="/profile"><i
+			class="${currentsite eq 'profile' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"  href="/profile"><i
 				class=" material-icons" role="presentation">person</i>Profile</a> <a
-				class="mdl-navigation__link" href="/ranking"><i
+				class="${currentsite eq 'ranking' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"  href="/ranking"><i
 				class=" material-icons" role="presentation">group</i>Ranking</a> <a
-				class="mdl-navigation__link" href="/settings"><i
+				class="${currentsite eq 'settings' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"  href="/settings"><i
 				class=" material-icons" role="presentation">settings</i>Settings</a>
 			<div class="mdl-layout-spacer"></div>
 
