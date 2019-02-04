@@ -46,9 +46,9 @@
 					<c:forEach items="${social_platforms}" var="platform">
 
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent"
+							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent "
 							style="height: 375px">
-							<div class="mdl-card__title"
+							<div class="mdl-card__title "
 								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
@@ -67,7 +67,7 @@
 
 
 								<c:if test="${platform.isDisabled == true}">
-									<button type="button" class="mdl-button mdl-js-button "
+									<button type="button" class="mdl-button mdl-js-button mdl-button--disabled"
 										style="width: 100%;">
 										<i class="material-icons">info</i> Currently Disabled
 									</button>
@@ -83,8 +83,8 @@
 										<c:when test="${platform.isVerifiedByUser == false}">
 
 											<a
-												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect   mdl-cell--12-col"
-												style="align: right;width: 100%; " onclick="document.forceLoading();" s
+												
+												style="align: right;width: 100%; " onclick="document.forceLoading();" 
 												
 												
 													
@@ -93,7 +93,7 @@
 
 												<form action="success" method="post">
 													<button
-														class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 														Verify ${platform.name} account</button>
 												</form>
 											</a>
@@ -102,7 +102,7 @@
 
 										<c:otherwise>
 											<a
-												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect
+												class="
 								<c:choose>
   <c:when test="${empty platform.oActions}">
   mdl-cell--12-col
@@ -121,9 +121,9 @@
 
 												<form action="success" method="post">
 													<button
-														class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 														style="width: 100%;">
-														<i class="material-icons">arrow_forward</i>
+														<i class="material-icons">forward</i>
 														${platform.name} bounty
 													</button>
 												</form>
@@ -191,7 +191,7 @@
 								style="background: #f3f3f6; height: 75px;">
 
 								<c:if test="${platform.isDisabled == true}">
-									<button type="button" class="mdl-button mdl-js-button "
+									<button type="button" class="mdl-button mdl-js-button mdl-button--disabled"
 										style="width: 100%;">
 										<i class="material-icons">info</i> Currently Disabled
 									</button>
@@ -200,14 +200,14 @@
 								<c:if test="${platform.isDisabled == false}">
 
 									<a
-										class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell--8-col"
+									
 										style="width: 100%" onclick="document.forceLoading();"
 										href="/bounty/${fn:toLowerCase(platform.name)}">
 										<form action="success" method="post">
 											<button
-												class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 												style="width: 100%;">
-												<i class="material-icons">arrow_forward</i> ${platform.name}
+												<i class="material-icons">forward</i> ${platform.name}
 												bounty
 											</button>
 										</form>
@@ -231,9 +231,9 @@
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
+					<div class="mdl-card__title ">
 						<h3>
-							<i class="material-icons">whatshot</i> Top Users
+							<i class="material-icons" >whatshot</i> Top Users
 						</h3>
 					</div>
 					<div class="mdl-card__supporting-text   ">
@@ -251,42 +251,42 @@
 							<table>
 
 								<tr class="tddefault">
-									<td width=75px;><img src="${user1.image}" width="75"
-										height="75"> <c:out value="${user1.userName}" /></td>
-									<td align="left" width="10%"><c:out
-											value="${user1.points}" /> CP</td>
-									<td align="right" width="10%"><a
+									<td class="subheading"><img src="${user1.image}" width="75"
+										height="75" class="circle "><a
 										href="/profile/<c:out value="${user1.userName}" />">
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-												<i class="material-icons">launch</i>
-											</button>
-									</a></td>
+											
+									 <button
+												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
+												<i class="material-icons" >face</i>
+											</button> </a> <c:out value="${user1.userName}" /></td>
+									<td style="text-align:right;"><c:out
+											value="${user1.points}" /> CP</td>
+								
 								</tr>
 								<tr class="tddefault">
-									<td width=75px;><img src="${user2.image}" width="75"
-										height="75"> <c:out value="${user2.userName}" /></td>
-									<td width="10%"><c:out value="${user2.points}" /> CP</td>
-									<td align="right" width="10%"><a
+									<td  class="subheading"><img src="${user2.image}" width="75"
+										height="75" class="circle"> <a
 										href="/profile/<c:out value="${user2.userName}" />">
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-												<i class="material-icons">launch</i>
-											</button>
-									</a></td>
+											
+									 <button
+												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
+												<i class="material-icons" >face</i>
+											</button> </a><c:out value="${user2.userName}" /></td>
+									<td style="text-align:right;"><c:out value="${user2.points}" /> CP</td>
+							
 
 								</tr>
 								<tr class="tddefault">
-									<td width=75px;><img src="${user3.image}" width="75"
-										height="75"> <c:out value="${user3.userName}" /></td>
-									<td width="10%"><c:out value="${user3.points}" /> CP</td>
-									<td align="right" width="10%"><a
+									<td class="subheading"><img src="${user3.image}" width="75"
+										height="75" class="circle"><a
 										href="/profile/<c:out value="${user3.userName}" />">
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-												<i class="material-icons">launch</i>
-											</button>
-									</a></td>
+											
+									 <button
+												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
+												<i class="material-icons" >face</i>
+											</button> </a><c:out value="${user3.userName}" /></td>
+									<td style="text-align:right;"><c:out value="${user3.points}" /> CP</td>
+								
 
 								</tr>
 
@@ -297,9 +297,9 @@
 					<div class="mdl-card__actions mdl-card--border">
 						<br> <a href="/ranking"><button id="show-dialog"
 								type="button"
-								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+								class="mdl-button mdl-js-button  mdl-js-ripple-effect"
 								style="width: 100%;">
-								<i class="material-icons">people</i> See all users
+								<i class="material-icons ">people</i> See all users
 							</button></a>
 
 					</div>
@@ -341,9 +341,7 @@
 						</div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border ">
-						<img
-							src="http://img.sc.chinaz.com/upload/2015/12/11//2015121109134858.jpg"
-							width="90%" height="300" style="padding: 10px;">
+				
 					</div>
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
@@ -380,7 +378,7 @@
 						<br>
 						<div>
 							<a href="https://blog.madana.io/tagged/dev-notes" target="_blank"><button  type="button"
-									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 									style="width: 100%;">
 									<i class="material-icons">developer_board</i> See Update news
 								</button></a>
@@ -390,7 +388,7 @@
 
 
 							<button id="mainbug-button" type="button"
-								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 								style="width: 100%;">
 								<i class="material-icons">bug_report</i> Report a bug
 							</button>

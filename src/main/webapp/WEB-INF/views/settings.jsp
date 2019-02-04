@@ -26,13 +26,13 @@
 		<jsp:include page="components/menu.jsp" />
 
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content">
+		<div class="mdl-grid ">
 
 
 			<div
 				class="mdl-card something-else mdl-cell mdl-cell--12-col transparent">
 				<div class="mdl-card__title">
-					<img src="${user.image}">
+					<img src="${user.image}" class ="circle">
 					<h2>${user.userName}</h2>
 				</div>
 
@@ -118,15 +118,15 @@
     		});
 
   </script>
-					<a
+					<!--	<a
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-						<form action="success" method="post">
-							<!-- 
+				 		<form action="success" method="post">
+						
 <button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-						Delete Account</button> -->
+						Delete Account</button>
 						</form>
-					</a>
+					</a> -->
 				</div>
 
 			</div>
@@ -141,7 +141,7 @@
 							<table>
 
 								<td width="50%;">
-								<tr class="tddefault">
+								<tr class="tddefault class="subheading"">
 									<td width=20%;>Username:</td>
 									<td align="left" width="10%"><c:out
 											value="${user.userName}" /></td>
@@ -274,7 +274,7 @@
 							<c:forEach var="setting" items="${user.settings}">
 								<li class="mdl-list__item mdl-list__item--three-line"><span
 									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-avatar">history</i> <span>
+										class="material-icons mdl-list__item-avatar">history</i> <span class="subheading">
 											${setting.name}</span> <span class="mdl-list__item-text-body">
 											${setting.description} </span>
 								</span> <span class="mdl-list__item-secondary-action"> <label
@@ -336,7 +336,7 @@
 									src="${socialuser.image}" alt="${socialuser.platform}"
 									height="50" width="50"
 									style="margin-bottom: -15px; padding-right: 10px; height: 30px; width: 40px;">
-									<span> ${socialuser.platform}</span> <span
+									<span class="subheading"> ${socialuser.platform}</span> <span
 									class="mdl-list__item-text-body"
 									style="align: center; padding-left: 50px;">
 										${socialuser.ident}</span>

@@ -259,11 +259,11 @@ blockquote {
 blockquote:before {
 	position: absolute;
 	left: -.5em;
-	content: 'â€œ'
+	content: 'Ã¢â‚¬Å“'
 }
 
 blockquote:after {
-	content: 'â€';
+	content: 'Ã¢â‚¬Â�';
 	margin-left: -.05em
 }
 
@@ -2934,10 +2934,10 @@ auto
 	border: 0
 }
 
-.mdl-button:hover {
-	background-color: rgba(158, 158, 158, .2)
-}
 
+.mdl-js-button__ripple-container:hover {
+	background-color: black;
+}
 .mdl-button
 :focus
 :not
@@ -2959,18 +2959,49 @@ rgba
 
 
 }
-.mdl-button:active {
-	background-color: rgba(158, 158, 158, .4)
+.mdl-button 
+{
+	background-color: #4d7da2;
+	 color:#f3f3f6;
+
 }
+.mdl-button .material-icons {
+	color:#274863;
+}
+.mdl-button .material-icons:hover {
+
+	color:#274863;
+}
+.mdl-button__ripple-container {
+ 
+
+}
+.mdl-button:hover 
+{
+	background-color: #b2d1ef;
+	color:#4d7da2;
+}
+.mdl-button:active 
+{
+	background-color:#274863;
+	color:#f3f3f6;
+}
+.mdl-button[disabled][disabled], .mdl-button.mdl-button--disabled.mdl-button--disabled
+	{
+	color: #274863;
+	cursor: default;
+	background-color: #f3f3f6;
+}
+
 @media (min-width: 767px) {
 	.mdl-button.mdl-button--colored {
-		color: #a0c3e8;
+		
 		font-size: 1.3vw;
 	}
 }
 @media  (max-width: 767px) {
 	.mdl-button.mdl-button--colored {
-		color: #a0c3e8;
+	
 		font-size: 2.8vw;
 	}
 }
@@ -3319,12 +3350,7 @@ rgb
 	background-color: rgb(64, 196, 255)
 }
 
-.mdl-button[disabled][disabled], .mdl-button.mdl-button--disabled.mdl-button--disabled
-	{
-	color: rgba(0, 0, 0, .26);
-	cursor: default;
-	background-color: transparent
-}
+
 
 .mdl-button--fab[disabled][disabled], .mdl-button--fab.mdl-button--disabled.mdl-button--disabled
 	{
@@ -3381,7 +3407,7 @@ rgb
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	color: #000;
+	color: #4d7da2;
 	display: block;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -4536,7 +4562,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 	margin: 0;
 	opacity: 0;
 	clip: rect(0, 0, 0, 0);
-	z-index: -1
+	z-index: -1;
+	background-color:#f3f3f6;
 }
 
 .mdl-menu__container.is-visible .mdl-menu {
@@ -4574,18 +4601,18 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 .mdl-menu__item {
 	display: block;
 	border: none;
-	color: rgba(0, 0, 0, .87);
-	background-color: transparent;
+	color: #4d7da2;
+	background-color: #f3f3f6;
 	text-align: left;
 	margin: 0;
 	padding: 0 16px;
-	outline-color: #bdbdbd;
+	outline-color:  #4d7da2;
 	position: relative;
 	overflow: hidden;
 	font-size: 14px;
 	font-weight: 400;
 	letter-spacing: 0;
-	text-decoration: none;
+
 	cursor: pointer;
 	height: 48px;
 	line-height: 48px;
@@ -4632,7 +4659,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 .mdl-menu__item:hover {
-	background-color: #eee
+	background-color: #a0c3e8;
 }
 
 .mdl-menu__item:focus {
@@ -4946,12 +4973,9 @@ width
 .mdl-layout__title, .mdl-layout-title {
 	display: block;
 	position: relative;
-	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-	font-size: 20px;
-	line-height: 1;
-	letter-spacing: .02em;
-	font-weight: 400;
-	box-sizing: border-box
+font-family: Raleway; font-size: 28px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 30.8px;
+	box-sizing: border-box;
+	
 }
 
 .mdl-layout-spacer {
@@ -5934,7 +5958,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 
 .mdl-slider.is-upgraded.is-lowest-value:focus:not (:active )::-ms-thumb
 	{
-	background: radial-gradient(circle closest-side, rgba(0, 0, 0, .12) 0%,
+	background: radial-gradient(mdl-layout-title closest-side, rgba(0, 0, 0, .12) 0%,
 		rgba(0, 0, 0, .12) 25%, rgba(0, 0, 0, .26) 25%, rgba(0, 0, 0, .26)
 		37.5%, rgba(0, 0, 0, .12) 37.5%, rgba(0, 0, 0, .12) 100%);
 	transform: scale(1)
@@ -6996,7 +7020,7 @@ to {
 }
 
 .mdl-switch.is-checked .mdl-switch__track {
-	background: rgba(0, 188, 212, .5)
+	background-color:#a0c3e8;
 }
 
 .mdl-switch__track fieldset[disabled] .mdl-switch, .mdl-switch.is-disabled .mdl-switch__track
@@ -7022,7 +7046,7 @@ to {
 }
 
 .mdl-switch.is-checked .mdl-switch__thumb {
-	background: #a0c3e8;
+	background: #274863;
 	left: 16px;
 	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px
 		rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12)

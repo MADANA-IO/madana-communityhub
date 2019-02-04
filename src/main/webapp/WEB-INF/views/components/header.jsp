@@ -31,12 +31,11 @@
 
 <link rel="shortcut icon" href="https://www.madana.io/favicon-32x32.png">
 
-<link href=â€œhttps://fonts.googleapis.com/css?family=Montserratâ€
-	rel=â€œstylesheetâ€>
+<link href=€œhttps://fonts.googleapis.com/css?family=Montserrat€
+	rel=€œstylesheet€>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+
 <link rel="stylesheet" href="https://www.madana.io/assets/css/main.css">
 
 <link rel="stylesheet"

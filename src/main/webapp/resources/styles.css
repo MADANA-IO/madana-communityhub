@@ -16,17 +16,23 @@
 
 .content
 {
+	/*
 background: #000;
 background-image:linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2);
 color:#f3f3f6;
 font-family:Raleway;
+*/
+background: #f3f3f6;
+color:#274863;
+  font-family:Montserrat;
+  
 }
 .mdnheader
 {
 background-color:#f3f3f6;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
-  color:#4d7da2;
-  font-family:Montserrat;
+  color:#4d7da2	;
+
 
 }
 
@@ -37,7 +43,7 @@ background-color:#f3f3f6;
 }
 .content h1, h2, h3
 {
-font-family:Montserrat;
+font-family: Raleway;  font-style: normal; font-variant: normal; font-weight: 700; 
 }
 .transparent
 {
@@ -69,7 +75,7 @@ font-family: 'Montserrat', Regular;
 .demo-drawer {
   border: none;
     background-color:#f3f3f6;
-    color:#4d7da2;
+  
 }
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
@@ -91,7 +97,7 @@ font-family: 'Montserrat', Regular;
           align-items: center;
 }
 .demo-drawer-header {
-	background-color:#f3f3f6;
+
   box-sizing: border-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,12 +118,12 @@ font-family: 'Montserrat', Regular;
 }
 .demo-drawer-header .drawercontainer2{
 	position:relative;
-	top:60px;
+	top:80px;
 
 }
 .demo-drawer-header .drawercontainer3{
 	position:relative;
-	top:30px;
+	top:50px;
 
 }
 .demo-avatar-dropdown {
@@ -139,6 +145,27 @@ font-family: 'Montserrat', Regular;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
+.profilelinkcircle
+{
+	position:absoulute; left:-40px; top:25px;
+}
+.circle {
+		
+ 
+  border: 2px solid #a0c3e8;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+margin-left:10px;
+margin-right:10px;
+  background-color:#f3f3f6;
+  /* width and height can be anything, as long as they're equal */
+}
+.subheading
+{ 
+	font-family: Raleway; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; 
+	color:#274863;
+	}
 .demo-layout .demo-navigation .mdl-navigation__link {
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
@@ -194,12 +221,7 @@ font-family: 'Montserrat', Regular;
 .demo-cards h3 {
   font-size: 1em;
 }
-.demo-updates .mdl-card__title {
-  min-height: 200px;
-  background-image: url('images/dog.png');
-  background-position: 90% 100%;
-  background-repeat: no-repeat;
-}
+
 .demo-cards .mdl-card__actions a {
   color: #a0c3e8;
   text-decoration: none;

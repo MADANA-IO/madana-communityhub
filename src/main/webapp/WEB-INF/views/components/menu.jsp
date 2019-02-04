@@ -13,26 +13,34 @@
 	</style>
 		<div class="mdl-layout__header-row mdnheader">
 			<!-- Title -->
-
-			<span class="mdl-layout-title">
-			 <img src="https://www.madana.io/assets/img/logo-madana.png"
-					alt="MADANA Logo" width="30" height="30" style="margin-right: 10px;">Community Hub [ BETA ]
-			</span>
-			
+<div class="mdl-layout-spacer"></div>
+	 	
+			<div class="mdl-layout-title"><img src="https://www.madana.io/assets/img/communityhub.png"
+					alt="MADANA Community Hub Logo" width="50" height="50"  style="padding-right:10px;margin-left:50px;">  MADANA Community Hub
+		
+			</div>
 			 <div class="mdl-layout-spacer"></div>
+			  <div class="mdl-layout-spacer"></div>
+			   <div class="mdl-layout-spacer"></div>
+			    <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link mdl-cell--hide-phone "target="_blank" href="https://www.madana.io">Website</a>
-        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank" href="https://blog.madana.io">Blog</a>
-        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank" href="https://www.reddit.com/r/MADANA/">Forum</a>
-        <a class="mdl-navigation__link mdl-cell--hide-phone " target="_blank"href="https://t.me/madanaofficial">Chat</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone subheading"target="_blank" href="https://www.madana.io"><i  class=" material-icons " style="padding-right:10px"
+				role="presentation">undo</i>Website</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone subheading" target="_blank" href="https://blog.madana.io"><img src="https://cdn-images-1.medium.com/max/1600/1*emiGsBgJu2KHWyjluhKXQw.png" width="35"
+										height="35" class="circle ">Blog</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone subheading" target="_blank" href="https://www.reddit.com/r/MADANA/"><img src="https://www.redditstatic.com/new-icon.png" width="35"
+										height="35" class="circle ">Reddit</a>
+        <a class="mdl-navigation__link mdl-cell--hide-phone subheading" target="_blank"href="https://t.me/madanaofficial"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/240px-Telegram_logo.svg.png" width="35"
+										height="35" class="circle ">Telegram</a>
+										
       </nav>
 
 		</div>
 		</header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 			<header class="demo-drawer-header"><div class="drawercontainer"> <a href="/profile"><img
-				src="${profile.image}" width="75" height="75"> </a> </div>
+				src="${profile.image}" width="90" height="90" class="circle"> </a> </div>
 				<div class="drawercontainer2">
 			<a href="/profile"><span class="customfontlabel" style="padding-top:10px;padding-bottom:5px;">${profile.points} CP</span>
 			</div><div class="demo-avatar-dropdown drawercontainer3" style="width:100%;">
@@ -90,7 +98,7 @@
 					alt="MADANA Logo" width="30" height="30" style="padding-top: 20px;"></i><span
 					style="font-size: 12px; color: #4d7da2; padding-left: 20px;">
 					Community Hub </span><span
-					style="font-size: 12px; padding-left: 60px; color: #4d7da2;">  <%=version %></span>
+					style="font-size: 12px; padding-left: 60px; color: #4d7da2;">Beta  <%=version %> </span>
 			</div>
 
 			</nav>

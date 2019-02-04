@@ -23,15 +23,15 @@ font-size:2.5vw;
 		<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content  ">
+		<div class="mdl-grid   ">
 
-<div class="mdl-grid mdl-cell--12-col transparent" class="" >
+<div class="mdl-grid mdl-cell--12-col " class="" >
 			<div class="mdl-cell mdl-cell--2-col ">
 
-				<img src="${profile.image}" height="150" width="150">
+				<img src="${profile.image}" height="150" width="150" class="circle">
 			</div>
 			<div class="mdl-cell mdl-cell--10-col ">
-				<h1>${profile.userName}</h1>
+				<h2>${profile.userName}</h2>
 				<h3>${profile.points}CP</h3>
 			</div>
 			</div>
@@ -109,18 +109,18 @@ font-size:2.5vw;
     </c:when>
     <c:otherwise>
         	<div class="mdl-cell mdl-cell--12-col"
-					style="height: 600px; overflow-y: scroll;">
+					style="color:#274863">
 					<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
 							<li class="mdl-list__item mdl-list__item--three-line"
-								style="width: 100%"><span
+								style="width: 100%;"><span
 								class="mdl-list__item-primary-content"><span> <a
-										target="_blank" href="${object.link}">${object.text}</a></span> <span></span> <span
-									class="mdl-list__item-text-body" style="color:#f3f3f6;"><img
-										src="${object.platformIcon}" height="25" width="25" style="margin-top:-10px;padding-right:5px;">${object.actionIcon}
+										target="_blank" class="subeading" href="${object.link}">${object.text}</a></span> <span></span> <span
+									class="mdl-list__item-text-body  " ><img
+										src="${object.platformIcon}" height="40" width="40" style="margin-top:-10px;padding-right:5px; ">${object.actionIcon}
 										Received ${object.benefit} pts for ${object.action} on
 										${object.platform} </span> </span> <span
-								class="mdl-list__item-secondary-content" style="color:#f3f3f6;">
+								class="mdl-list__item-secondary-content">
 									${object.created} </span></li>
 							<hr>
 						</c:forEach>

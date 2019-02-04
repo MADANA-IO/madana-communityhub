@@ -21,7 +21,9 @@ body{
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
+
 }
+
 .grad{
 	position: absolute;
 	top: -20px;
