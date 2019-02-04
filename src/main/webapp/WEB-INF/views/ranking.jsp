@@ -118,16 +118,17 @@ top:65px;
 			</div>
         </div>
           <div class="mdl-cell mdl-cell--12-col transparent">
-         	<div style="height: 600px; overflow-y: scroll;">
+  
 				<table
 					class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-descending  transparent"
 					style="width: 100%">
 					<thead>
 						<tr>
-							<th>Rank</th>
-							<th>Username</th>
-							<th>Points</th>
+							
+							<th>Rank & Username</th>
 							<th></th>
+							<th>Points</th>
+							<th>Link</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -149,7 +150,7 @@ top:65px;
 						</c:forEach>
 					</tbody>
 				</table>
-			</div>
+		
           </div>
    	<jsp:include page="components/snackbar.jsp" />
         </div>
