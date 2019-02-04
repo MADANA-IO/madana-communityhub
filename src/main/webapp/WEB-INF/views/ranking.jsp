@@ -133,6 +133,7 @@ top:65px;
 					</thead>
 					<tbody>
 						<c:forEach items="${users}" var="user" varStatus="myIndex">
+						<c:if test="${myIndex.index>2}">
 							<tr>
 								<td class="tblrank"><h4>${myIndex.index +1}.</h4></td>
 								<td style="text-align: left"><h4>
@@ -147,6 +148,7 @@ top:65px;
 
 							</td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</tbody>
 				</table>
