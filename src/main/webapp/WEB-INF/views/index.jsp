@@ -87,10 +87,10 @@
 						reward from community campaigns for you will be. The higher your
 						rank, the better the reward will be.</p> -->
 <br><br>
-					<span> <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored customfont" style="color:#f3f3f6; font-size:14px;"  href="/register">Get
+					<span> <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:#274863; font-size:14px;"  href="/register">Get
 							started</a> </span>
 							
-							<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect customfont" style="color:#a0c3e8;font-size:14px;" href="/login">Login</a></span>
+							<span><a  class="mdl-button mdl-js-button mdl-button--raised customfont" style="margin-left:10px;" href="/login">Login</a></span>
  
 
 

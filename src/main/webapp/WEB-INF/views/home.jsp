@@ -87,11 +87,11 @@
 															
 												href="auth/${fn:toLowerCase(platform.name)}">
 
-												<form action="success" method="post">
+											
 													<button
 														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 														Verify ${platform.name} account</button>
-												</form>
+											
 											</a>
 										
 										</c:when>
@@ -115,14 +115,14 @@
 												onclick="document.forceLoading();"
 												href="/bounty/${fn:toLowerCase(platform.name)}">
 
-												<form action="success" method="post">
+											
 													<button
 														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 														style="width: 100%;">
 														<i class="material-icons">forward</i>
 														${platform.name} bounty
 													</button>
-												</form>
+											
 											</a>
 										</c:otherwise>
 
@@ -200,14 +200,14 @@
 									
 										style="width: 100%" onclick="document.forceLoading();"
 										href="/bounty/${fn:toLowerCase(platform.name)}">
-										<form action="success" method="post">
+										
 											<button
 												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 												style="width: 100%;">
 												<i class="material-icons">forward</i> ${platform.name}
 												bounty
 											</button>
-										</form>
+										
 									</a>
 								</c:if>
 							</div>

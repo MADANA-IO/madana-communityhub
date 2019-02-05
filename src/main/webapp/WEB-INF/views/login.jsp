@@ -57,6 +57,7 @@
 				<table>
 					<tr>
 						<td ><p style = "padding-top:13px;padding-right:10px; color:#f3f3f6;" class="subheading">Username</p></td>
+						
 						<td ><input type="text" placeholder="Username" name="userName" /></td>
 					</tr>
 					
@@ -76,11 +77,12 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><br><a href="/register">Create an Account</a> </td>
+						<td><br><a  class="mdl-button mdl-js-button mdl-button--raised customfont"  href="/register">Create Account</a>
+						<a  class="mdl-button mdl-js-button mdl-button--raised customfont" style="margin-left:10px;" href="/resetpassword">Reset Password</a> </td>
 					</tr>
 						<tr>
 						<td></td>
-						<td><a href="/resetpassword">Forgot Password</a></td>
+						<td><a href="/resetpassword"></a></td>
 					</tr>
 						<tr>
 						<td><br><br></td>
