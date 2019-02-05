@@ -26,17 +26,17 @@
 		<jsp:include page="components/menu.jsp" />
 
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid ">
+		<div class="mdl-grid " >
 
 
 			<div
-				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent">
-				<div class="mdl-card__title">
+				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent;">
+				<div class="mdl-card__title" style="color:#274863;">
 					<img src="${user.image}" class ="circle">
 					<h3>${user.userName}</h3>
 				</div>
 
-				<div class="mdl-card__supporting-text">
+				<div class="">
 					You have successfully logged in. <br> Please have a look at
 					the information we collected from you. Your email is private,
 					everything else can be discovered by everyone. <br> <br>
@@ -132,12 +132,12 @@
 			</div>
 			<div class="mdl-grid mdl-cell mdl-cell--8-col ">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
-					<div class="mdl-card__title">
+					<div class="mdl-card__title" style="color:#274863;">
 					<h2>
 							<i class="material-icons material-heading" >perm_identity</i> Private Details
 						</h2>
 					</div>
-					<div class="mdl-card__supporting-text meta ">
+					<div class=" ">
 						<div class="minilogo"></div>
 						<div>
 							<table class="subheading">
@@ -267,7 +267,7 @@
 
   </script>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
-					<div class="mdl-card__title">
+					<div class="mdl-card__title"style="color:#274863;">
 					<h2>
 							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
 						</h2>
@@ -278,7 +278,7 @@
 							<c:forEach var="setting" items="${user.settings}">
 								<li class="mdl-list__item mdl-list__item--three-line"><span
 									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-avatar" style="background:transparent;color:#a0c3e8">settings</i> <span class="subheading">
+										class="material-icons mdl-list__item-avatar" style="background:transparent;color:#274863;">settings</i> <span class="subheading">
 											${setting.name}</span> <span class="mdl-list__item-text-body">
 											${setting.description} </span>
 								</span> <span class="mdl-list__item-secondary-action"> <label

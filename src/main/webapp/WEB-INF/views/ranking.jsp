@@ -52,7 +52,7 @@ top:65px;
          <div class="mdl-layout-spacer"></div>
          	<div
 				class="mdl-card something-else mdl-cell--6-col-desktop mdl-cell--6-col-phone " style="background:transparent;">
-		  <div class="mdl-card__title mdl-card--expand " >
+		  <div class="mdl-card__title mdl-card--expand " style="color:#274863;">
   
     <img src="${user1.image}" width="150" height="150" class ="circle"style="margin-right:25px;">
     <div>
@@ -79,11 +79,11 @@ top:65px;
         <div class="mdl-grid" style="width:100%;"> 
         	     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--2-col-phone" style="background:transparent;"">
-		  <div class="mdl-card__title mdl-card--expand">
+		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
      
     <img src="${user2.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h3 ><c:out value="${user2.userName}" /></h3>
+    <h3  ><c:out value="${user2.userName}" /></h3>
       <h4>${user2.points} CP</h4>
     </div> 
   </div>
@@ -99,7 +99,7 @@ top:65px;
 			   <div class="mdl-layout-spacer"></div>
 			     	<div
 				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--2-col-phone mdl-cell--6-col-desktop " style="background:transparent;">
-		  <div class="mdl-card__title mdl-card--expand">
+		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
      <img src="${user3.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
     <h3 ><c:out value="${user3.userName}" /></h3>

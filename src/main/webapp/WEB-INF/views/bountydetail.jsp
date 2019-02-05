@@ -47,13 +47,13 @@
 	
 						</div>
 					</div>
-					<div class="mdl-card__actions mdl-card--border">
-						<p style="width: 100%; font-size: 60%;text-align: left;">
-									<i class="material-icons">info</i> Earn 200 CP for a Retweet
+					<div class="mdl-card__actions mdl-card--border ">
+						<p style="width: 100%; text-align: left;" class="subheading">
+									<i class="material-icons ">info</i> Earn 200 CP for a retweet
 								</p>
 									<p
 									
-									style="width: 100%;font-size: 60%;text-align: left;">
+									style="width: 100%;text-align: left;" class="subheading">
 									<i class="material-icons">info</i> Earn 100 CP for a Like
 								</p>
 
@@ -82,12 +82,12 @@
     
 						<p
 									
-									style="width: 100%;font-size: 60%;text-align: left;">
+									style="width: 100%;text-align: left;" class="subheading">
 									<i class="material-icons">info</i> Earn 200 CP for a Retweet
 								</p>
 									<p
 									
-									style="width: 100%;font-size: 60%;text-align: left;">
+									style="width: 100%;text-align: left;"class="subheading" >
 									<i class="material-icons">done</i> Received 100 CP for a Like
 								</p>
 								  </c:if>
