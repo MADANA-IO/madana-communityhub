@@ -28,11 +28,11 @@ font-size:2.5vw;
 <div class="mdl-grid mdl-cell--12-col " class="" >
 			<div class="mdl-cell mdl-cell--2-col ">
 
-				<img src="${profile.image}" height="150" width="150" class="circle">
+				<img src="${destprofile.image}" height="150" width="150" class="circle">
 			</div>
 			<div class="mdl-cell mdl-cell--10-col ">
-				<h2>${profile.userName}</h2>
-				<h3>${profile.points}CP</h3>
+				<h2>${destprofile.userName}</h2>
+				<h3>${destprofile.points}CP</h3>
 			</div>
 			</div>
 			<div class=" mdl-cell--12-col">
@@ -47,11 +47,11 @@ font-size:2.5vw;
 					you can miss out on them, so pay attention!</p>
 					
 					<c:choose>
-    <c:when test="${empty profile.achievements}">
+    <c:when test="${empty destprofile.achievements}">
 <h4> User has decided to hide his achievements</h4>
     </c:when>
     <c:otherwise>
-    <c:forEach items="${profile.achievements}" var="achievementgroup">
+    <c:forEach items="${destprofile.achievements}" var="achievementgroup">
 					<div class="mdl-grid mdl-cell mdl-cell--12-col">
 						<div class="mdl-cell--12-col ">
 							<h3>${achievementgroup.name}</h3>

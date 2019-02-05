@@ -223,7 +223,7 @@ public class MenuController
 		Collections.sort(oNewList);
 		model.addAttribute("history", oNewList);
 		model.addAttribute("profile", oProfile);
-		model.addAttribute("user", oProfile);
+		model.addAttribute("destprofile", oProfile);
 
 		return "profile";
 
@@ -264,8 +264,8 @@ public class MenuController
 		}
 
 		model.addAttribute("history", oNewList);
-		model.addAttribute("user", oProfile);
-		model.addAttribute("profile", oDestUserProfile);
+		model.addAttribute("profile", oProfile);
+		model.addAttribute("destprofile", oDestUserProfile);
 		return "profile";
 	}
 	@RequestMapping(value = "/settings/avatar/{avatarid}", method = RequestMethod.GET)
