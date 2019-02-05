@@ -47,15 +47,15 @@
 
 						<div
 							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent "
-							style="height: 375px">
+							style="height: 350px">
 							<div class="mdl-card__title "
-								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
+								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:75px 75px,cover ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<c:forEach var="entry" items="${platform.oActions}">
 										<span class="mdl-cell--3-col"> <i
-											class="material-icons">${entry.key}</i> ${entry.value} /
-											${fn:length(platform.feed)}
+											class="material-icons"> ${entry.key} </i><span style="padding:5px;"> ${entry.value} </span>
+											
 
 										</span>
 									</c:forEach>
@@ -176,13 +176,13 @@
 					<c:forEach items="${referral_platforms}" var="platform">
 						<div
 							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent"
-							style="height: 375px">
+							style="height: 350px">
 							<div class="mdl-card__title"
-								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:100px 100px,cover ;">
+								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:75px 75px,cover ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
-										${fn:length(platform.referrals)}
+										<span style="padding:5px;">${fn:length(platform.referrals)}</span>
 									</span>
 								</div>
 							</div>
