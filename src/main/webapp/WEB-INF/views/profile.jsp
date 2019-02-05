@@ -4,7 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
 <jsp:include page="components/header.jsp" />
+
 <style>
 @media  (max-width: 1000px) 
 {
@@ -19,7 +21,7 @@ font-size:2.5vw;
 </style>
 <body>
 	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
+   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
 		<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
