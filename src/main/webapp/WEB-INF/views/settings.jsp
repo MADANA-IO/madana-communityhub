@@ -30,10 +30,10 @@
 
 
 			<div
-				class="mdl-card something-else mdl-cell mdl-cell--12-col transparent">
+				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent">
 				<div class="mdl-card__title">
 					<img src="${user.image}" class ="circle">
-					<h2>${user.userName}</h2>
+					<h3>${user.userName}</h3>
 				</div>
 
 				<div class="mdl-card__supporting-text">
@@ -130,18 +130,20 @@
 				</div>
 
 			</div>
-			<div class="mdl-grid mdl-cell mdl-cell--8-col transparent">
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+			<div class="mdl-grid mdl-cell mdl-cell--8-col ">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
 					<div class="mdl-card__title">
-						<h3>Private Details</h3>
+					<h2>
+							<i class="material-icons material-heading" >perm_identity</i> Private Details
+						</h2>
 					</div>
 					<div class="mdl-card__supporting-text meta ">
 						<div class="minilogo"></div>
 						<div>
-							<table>
+							<table class="subheading">
 
 								<td width="50%;">
-								<tr class="tddefault class="subheading"">
+								<tr class="tddefault ">
 									<td width=20%;>Username:</td>
 									<td align="left" width="10%"><c:out
 											value="${user.userName}" /></td>
@@ -264,17 +266,19 @@
     		});
 
   </script>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title ">
-						<h3>Privacy Settings</h3>
-					</div>
+				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
+					<div class="mdl-card__title">
+					<h2>
+							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
+						</h2>
+						</div>
 					<div class="mdl-card__supporting-text meta">
 
 						<ul class="demo-list-control mdl-list">
 							<c:forEach var="setting" items="${user.settings}">
 								<li class="mdl-list__item mdl-list__item--three-line"><span
 									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-avatar">history</i> <span class="subheading">
+										class="material-icons mdl-list__item-avatar" style="background:transparent;color:#a0c3e8">settings</i> <span class="subheading">
 											${setting.name}</span> <span class="mdl-list__item-text-body">
 											${setting.description} </span>
 								</span> <span class="mdl-list__item-secondary-action"> <label
@@ -317,9 +321,11 @@
 			</div>
 			<div
 				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
-				<div class="mdl-card__title">
-					<h3>Linked Accounts</h3>
-				</div>
+			<div class="mdl-card__title">
+					<h2>
+							<i class="material-icons material-heading" >link</i> Linked Accounts
+						</h2>
+						</div>
 				<!-- 
 				<button
 					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
@@ -334,7 +340,7 @@
 							<li class="mdl-list__item mdl-list__item--three-line"><span
 								class="mdl-list__item-primary-content"> <img
 									src="${socialuser.image}" alt="${socialuser.platform}"
-									height="50" width="50"
+									height="50" width="50" class=""
 									style="margin-bottom: -15px; padding-right: 10px; height: 30px; width: 40px;">
 									<span class="subheading"> ${socialuser.platform}</span> <span
 									class="mdl-list__item-text-body"

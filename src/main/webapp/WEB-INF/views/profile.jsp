@@ -31,14 +31,16 @@ font-size:2.5vw;
 				<img src="${destprofile.image}" height="150" width="150" class="circle">
 			</div>
 			<div class="mdl-cell mdl-cell--10-col ">
-				<h2>${destprofile.userName}</h2>
-				<h3>${destprofile.points}CP</h3>
+				<h3>${destprofile.userName}</h3>
+				<h4>${destprofile.points}CP</h4>
 			</div>
 			</div>
-			<div class=" mdl-cell--12-col">
+			<div class=" mdl-cell--8-col">
 
-				<h3>Achievements</h3>
-
+			
+	<h3>
+							<i class="material-icons material-heading">grade</i> Achievements
+						</h3>
 
 				<p>After reaching a certain milestone, you can unlock
 					achievements. For every achievement you unlock, you will receive
@@ -54,7 +56,10 @@ font-size:2.5vw;
     <c:forEach items="${destprofile.achievements}" var="achievementgroup">
 					<div class="mdl-grid mdl-cell mdl-cell--12-col">
 						<div class="mdl-cell--12-col ">
-							<h3>${achievementgroup.name}</h3>
+					
+								<h4>
+							<i class="material-icons material-heading">category</i> ${achievementgroup.name}
+						</h4>
 						</div>
 
 
@@ -99,18 +104,26 @@ font-size:2.5vw;
 				
 
 			</div>
-	<h3>Action History</h3>
+			<div class=" mdl-cell--4-col">
 		
+
+        	<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card__title">
+						<h4>
+							<i class="material-icons">history</i> Action History
+						</h4>
+					</div>
+					<div class="mdl-card__supporting-text meta">
+							
 <c:choose>
  <c:when test="${empty history}">
    <div class="mdl-cell mdl-cell--12-col">
-					<h4> User has decided to hide his Action History</h4>
+					<p> User has decided to hide his Action History</p>
 					</div>
     </c:when>
     <c:otherwise>
-        	<div class="mdl-cell mdl-cell--12-col"
-					style="color:#274863">
-					<ul class="demo-list-three mdl-list">
+						<div>
+							<ul class="demo-list-three mdl-list">
 						<c:forEach items="${history}" var="object">
 							<li class="mdl-list__item mdl-list__item--three-line"
 								style="width: 100%;"><span
@@ -125,12 +138,19 @@ font-size:2.5vw;
 							<hr>
 						</c:forEach>
 					</ul>
-				</div>
-    </c:otherwise>
+						</div>
+						    </c:otherwise>
 </c:choose>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+			
+					</div>
+				</div>
+
 	
 
 
+		</div>
 		</div>
 		</main>
 	</div>

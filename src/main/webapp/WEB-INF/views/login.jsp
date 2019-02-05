@@ -56,12 +56,12 @@
 
 				<table>
 					<tr>
-						<td ><p style = "padding-top:13px;padding-right:10px;">Username</p></td>
+						<td ><p style = "padding-top:13px;padding-right:10px; color:#f3f3f6;" class="subheading">Username</p></td>
 						<td ><input type="text" placeholder="Username" name="userName" /></td>
 					</tr>
 					
 					<tr>
-						<td ><p style = "padding-top:23px;padding-right:10px;">Password</p></td>
+						<td ><p style = "padding-top:23px;padding-right:10px;color:#f3f3f6;" class="subheading">Password</p></td>
 						<td ><input type="password" placeholder="Password" name="password" /></td>
 					</tr>
 					<tr>
@@ -72,7 +72,7 @@
 						</tr>
 					<tr>
 						<td><br><br></td>
-						<td><input type="submit" value="Login" onclick="document.forceLoading();" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
+						<td><input  type="submit" value="Login" onclick="document.forceLoading();" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 					</tr>
 					<tr>
 						<td></td>

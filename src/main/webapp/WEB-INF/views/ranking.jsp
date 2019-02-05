@@ -51,13 +51,13 @@ top:65px;
          <div class="mdl-grid" style="width:100%;" > 
          <div class="mdl-layout-spacer"></div>
          	<div
-				class="mdl-card something-else mdl-cell--6-col-desktop mdl-cell--6-col-phone ">
-		  <div class="mdl-card__title mdl-card--expand ">
+				class="mdl-card something-else mdl-cell--6-col-desktop mdl-cell--6-col-phone " style="background:transparent;">
+		  <div class="mdl-card__title mdl-card--expand " >
   
     <img src="${user1.image}" width="150" height="150" class ="circle"style="margin-right:25px;">
     <div>
-    <h2 ><c:out value="${user1.userName}" /></h2>
-      <h3>${user1.points} CP</h3>
+    <h3 ><c:out value="${user1.userName}" /></h3>
+      <h4>${user1.points} CP</h4>
     </div>
 
 
@@ -78,13 +78,13 @@ top:65px;
          </div>
         <div class="mdl-grid" style="width:100%;"> 
         	     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--2-col-phone transparent">
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--2-col-phone" style="background:transparent;"">
 		  <div class="mdl-card__title mdl-card--expand">
      
     <img src="${user2.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h2 ><c:out value="${user2.userName}" /></h2>
-      <h3>${user2.points} CP</h3>
+    <h3 ><c:out value="${user2.userName}" /></h3>
+      <h4>${user2.points} CP</h4>
     </div> 
   </div>
    <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#CCC2C2;">
@@ -98,19 +98,19 @@ top:65px;
 			</div>
 			   <div class="mdl-layout-spacer"></div>
 			     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--2-col-phone mdl-cell--6-col-desktop transparent">
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--2-col-phone mdl-cell--6-col-desktop " style="background:transparent;">
 		  <div class="mdl-card__title mdl-card--expand">
      <img src="${user3.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h2 ><c:out value="${user3.userName}" /></h2>
-      <h3>${user3.points} CP</h3>
+    <h3 ><c:out value="${user3.userName}" /></h3>
+      <h4>${user3.points} CP</h4>
     </div> 
    </div>
    <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#965A38;">
 		
 		</div>
 <div class="mdl-card__menu">
-   <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+   <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect ">
      	 <i class="material-icons">face</i>
     </button></a>
   </div>
@@ -137,7 +137,7 @@ top:65px;
 							<tr>
 								<td class="tblrank"><h4>${myIndex.index +1}.</h4></td>
 								<td style="text-align: left"><h4>
-							     <img src="${user.image}" width="50" height="50" class ="circle" style="margin-right:5px;">
+							     <img src="${user.image}" width="75" height="75" class ="circle" style="margin-right:5px;">
 										<c:out value="${user.userName}" />
 									</h4></td>
 								<td><h4 class="tblcp">${user.points} CP</h4></td>

@@ -57,7 +57,7 @@
 
 				<table>
 					<tr>
-						<td>E-Mail</td>
+						<td  style="color:#f3f3f6;" class="subheading">E-Mail</td>
 						<td><input type="text"
 							placeholder="Please enter your E-Mail address" name="mail" /></td>
 					</tr>

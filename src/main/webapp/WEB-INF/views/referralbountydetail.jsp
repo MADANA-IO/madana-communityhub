@@ -12,16 +12,11 @@
 		<jsp:include page="components/menu.jsp" />
 
 		<main class="mdl-layout__content content">
-		<div class="mdl-grid demo-content">
+		<div class="mdl-grid ">
 
-			<div class="mdl-cell mdl-cell--12-col ">
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
-						<h3>Thanks for inviting ${fn:length(referrals)} users</h3>
-					</div>
-					<div class="mdl-card__supporting-text   ">
-						<!-- Deletable Contact Chip -->
-						<ul class="demo-list-three mdl-list">
+		
+					<div class="mdl-cell mdl-cell--4-col ">
+				<ul class="demo-list-three mdl-list">
 							<c:forEach items="${referrals}" var="object">
 								<li class="mdl-list__item mdl-list__item--three-line"
 									style="width: 100%"><span
@@ -34,6 +29,16 @@
 								</span></li>
 							</c:forEach>
 						</ul>
+
+		</div>
+			<div class="mdl-cell mdl-cell--8-col ">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
+					<div class="mdl-card__title">
+						<h3>Thanks for inviting ${fn:length(referrals)} users</h3>
+					</div>
+					<div class="mdl-card__supporting-text   ">
+						<!-- Deletable Contact Chip -->
+					
 
 						<div></div>
 					</div>
@@ -65,8 +70,6 @@
 				</div>
 
 			</div>
-
-		</div>
 		<jsp:include page="components/snackbar.jsp" /> </main>
 	</div>
 	<jsp:include page="components/footer.jsp" />

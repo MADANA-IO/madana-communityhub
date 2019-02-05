@@ -16,7 +16,7 @@
 		<div class="mdl-grid">
 
 			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
-				<h1>Welcome !</h1>
+				<h2>Welcome !</h2>
 				<p>The Community Hub will be the future home of our community.
 					Here you will be able to get the newest information about the
 					progress and development of MADANA, engage actively in community
@@ -28,17 +28,13 @@
 					the reward from community campaigns for you will be. The higher
 					your rank, the better the reward will be.
 			</div>
-
-
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
-
-
-
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
 					<div class="mdl-cell--12-col">
-						<h2>
-							<i class="material-icons md-36">share</i> Share the vision
-						</h2>
+						<h3>
+							<i class="material-icons material-heading">share</i> Share the vision
+						</h3>
+				
 						<p>Link your social media account to the community hub and
 							collect community points by following MADANA and sharing relevant
 							posts. Check the integrated feed for possible opportunities</p>
@@ -165,10 +161,11 @@
 				</div>
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col">
 					<div class="mdl-cell--12-col">
-						<h2>
-							<i class="material-icons md-36">person_add</i> Invite some
+
+							<h3>
+							<i class="material-icons material-heading">person_add</i> Invite some
 							friends
-						</h2>
+						</h3>
 						<p>Invite your friends with your referral links and introduce
 							them to MADANA. For every new friend, you can boost your
 							community points counter considerably.</p>
@@ -232,9 +229,9 @@
 			<div class=" mdl-grid mdl-cell--4-col">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title ">
-						<h3>
-							<i class="material-icons" >whatshot</i> Top Users
-						</h3>
+							<h4>
+							<i class="material-icons">whatshot</i> Top Users
+						</h4>
 					</div>
 					<div class="mdl-card__supporting-text   ">
 						<!-- Deletable Contact Chip -->
@@ -306,9 +303,9 @@
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>
+							<h4>
 							<i class="material-icons">timeline</i> User Stats
-						</h3>
+						</h4>
 					</div>
 					<div
 						class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -346,9 +343,9 @@
 				</div>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>
+						<h4>
 							<i class="material-icons">build</i> System Stats
-						</h3>
+						</h4>
 					</div>
 					<div class="mdl-card__supporting-text meta">
 						<div>

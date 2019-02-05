@@ -60,6 +60,10 @@ html, body {
 font-family: 'Montserrat', Regular;
     color:#274863;
 }
+.mdl-card__title .material-icons
+{
+	font-size:38px;
+} 
 
 .demo-avatar {
   width: 48px;
@@ -126,6 +130,8 @@ font-family: 'Montserrat', Regular;
 	top:50px;
 
 }
+.material-heading{ font-size: 36px; }
+
 .demo-avatar-dropdown {
   display: -webkit-flex;
   display: -ms-flexbox;

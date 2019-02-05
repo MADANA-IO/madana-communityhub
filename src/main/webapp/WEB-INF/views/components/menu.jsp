@@ -15,11 +15,11 @@
 			<!-- Title -->
 <div class="mdl-layout-spacer"></div>
 	 	
-			<div class="mdl-layout-title"><img src="https://www.madana.io/assets/img/communityhub.png"
-					alt="MADANA Community Hub Logo" width="50" height="50"  style="padding-right:10px;margin-left:50px;">  MADANA Community Hub
+			<div class="mdl-layout-title"><span><img src="https://www.madana.io/assets/img/communityhub.png"
+					alt="MADANA Community Hub Logo" width="50" height="50"  style="padding-right:10px"> </span>
 		
 			</div>
-			 <div class="mdl-layout-spacer"></div>
+			 <div class=""><h4> MADANA Community Hub</h4></div>
 			  <div class="mdl-layout-spacer"></div>
 			   <div class="mdl-layout-spacer"></div>
 			    <div class="mdl-layout-spacer"></div>

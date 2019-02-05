@@ -57,20 +57,20 @@
 
 				<table>
 					<tr>
-						<td>Username</td>
+						<td style="color:#f3f3f6;" class="subheading">Username</td>
 						<td><input type="text" name="username" /></td>
 					</tr>
 					<tr>
 					
-						<td><br><br>E-Mail</td>
+						<td style="color:#f3f3f6;" class="subheading"><br><br>E-Mail</td>
 						<td><br><br><input type="text" name="email" /></td>
 					</tr>
 					<tr>
-						<td>Password</td>
+						<td style="color:#f3f3f6;" class="subheading">Password</td>
 						<td><input type="password" name="password" /></td>
 					</tr>
 					<tr>
-						<td>Re-enter password </td>
+						<td style="color:#f3f3f6;" class="subheading">Re-enter password </td>
 						<td><input type="password" name="matchingPassword" /></td>
 					</tr>
 							<tr>
@@ -79,18 +79,20 @@
 					</tr>
 						<tr>
 						<td></td>
-						<td ><input type="checkbox" name="TOC" value="read" >I've read and accept the <a target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
+						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
 						
 					</tr>
 
 						<tr>
 						<td><br><br></td>
-						<td><input type="submit" id="registerbutton" value="Register" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
+						<td><input type="submit" id="registerbutton" value="Register" /><input type="hidden" id="tokenfield" name="captchatoken" value="null">
+						<a  type="button"
+									style="align:center" href="/login">Login</a></td>
 						
 					</tr>
 					<tr>
 						<td></td>
-						<td><a href="/login">Login</a></td>
+						<td></td>
 					</tr>
 						<tr>
 						<td><br><br></td>
