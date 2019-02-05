@@ -130,12 +130,12 @@ font-size:2.5vw;
 							<li class="mdl-list__item mdl-list__item--three-line"
 								style="width: 100%;"><span
 								class="mdl-list__item-primary-content"><span> <a
-										target="_blank" class="subeading" href="${object.link}">${object.text}</a></span> <span></span> <span
-									class="mdl-list__item-text-body  " ><img
-										src="${object.platformIcon}" height="40" width="40" style="margin-top:-10px;padding-right:5px; ">${object.actionIcon}
+										target="_blank" class="subheading" style="color:#4d7da2;" href="${object.link}">${object.text}</a></span> <span></span> <span
+									class="mdl-list__item-text-body subheading " style="font-size:80%;color:#274863"><img
+										src="${object.platformIcon}" height="30" width="30" style="margin-top:-10px;padding-right:5px; ">${object.actionIcon}
 										Received ${object.benefit} pts for ${object.action} on
 										${object.platform} </span> </span> <span
-								class="mdl-list__item-secondary-content">
+								class="subheading" style="Font-size:60%">
 									${object.created} </span></li>
 							<hr>
 						</c:forEach>
