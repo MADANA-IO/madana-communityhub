@@ -18,15 +18,26 @@
 					<div class="mdl-cell mdl-cell--4-col ">
 				<ul class="demo-list-three mdl-list">
 							<c:forEach items="${referrals}" var="object">
-								<li class="mdl-list__item mdl-list__item--three-line"
-									style="width: 100%"><span
-									class="mdl-list__item-primary-content"> <img
-										src="${object.image}" width="50" height="50" style=""> <a
-										href="https://communityhub.madana.io/profile/${object.userName}">${object.userName}
-											(${object.points})</a> <span class="mdl-list__item-text-body">
-											<span> ${object.created} </span>
-									</span>
-								</span></li>
+							
+			
+								  <li class="mdl-list__item mdl-list__item--two-line">
+    <span class="mdl-list__item-primary-content" style="height:75px">
+     <img src="${object.image}" width="50" height="50" class="circle"> 
+      <span> <a	href="https://communityhub.madana.io/profile/${object.userName}" class="subheading" style="font-size:24px;">${object.userName}(${object.points})</a></span>
+      <span class="mdl-list__item-sub-title" style="padding-left:75px;margin-top:-15px;"> ${object.created} </span>
+
+    </span>
+    <span class="mdl-list__item-secondary-content">
+    <a class="" 		href="/profile/<c:out value="${object.userName}" />">
+											
+									 <button
+												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " >
+												<i class="material-icons" >face</i>
+											</button> </a>
+											
+ 
+    </span>
+  </li>
 							</c:forEach>
 						</ul>
 
@@ -34,15 +45,9 @@
 			<div class="mdl-cell mdl-cell--8-col ">
 				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
 					<div class="mdl-card__title">
-						<h3>Thanks for inviting ${fn:length(referrals)} users</h3>
+						<h2>Thanks for inviting ${fn:length(referrals)} users</h2>
 					</div>
 					<div class="mdl-card__supporting-text   ">
-						<!-- Deletable Contact Chip -->
-					
-
-						<div></div>
-					</div>
-					<div class="mdl-card__actions mdl-card--border">
 						<c:choose>
 							<c:when test="${platformname eq 'whitelisting'}">
 					<h4>Share the link below to get more CP and a 10% commission for every user who invests by using your referral link. You will be rewarded with additional 5000 CP</h4>
@@ -54,7 +59,11 @@
 									</h4>
 							</c:otherwise>
 						</c:choose>
-						<textarea id="copytext" class="mdl-textfield__input" type="text"
+						<div></div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+				
+						<textarea id="copytext" class="mdl-textfield__input subheading" type="text"
 							rows="4" disabled style="color: #274863;">${platform.link}?referrer=${user.guid}</textarea>
 						<div class="mdl-cell mdl-cell--6-col" text-align="center">
 							<button
