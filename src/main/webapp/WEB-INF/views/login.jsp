@@ -42,9 +42,9 @@
 
 			<div class="header">
 				<div>
-					<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
+				 <img src="https://www.madana.io/assets/img/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
-						style="text-align: center; display: block;">
+						style="text-align: center; display: block;"> 
 				</div>
 			</div>
 			<br>
