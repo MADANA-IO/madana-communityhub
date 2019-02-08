@@ -10,20 +10,6 @@
 {
 
 
-.smallinfo
-{
-position:absolute;
-}
-.smallinfo h2
-{
-position:absolute;
-padding-top:28px;
-}
-.smallinfo h3
-{
-position:absolute;
-top:65px;
-}
 .mdl-data-table {
     table-layout:fixed;
     width:100%; 
@@ -81,7 +67,7 @@ top:65px;
          </div>
         <div class="mdl-grid" style="width:100%;"> 
         	     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--2-col-phone" style="background:transparent;"">
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--12-col-phone " style="background:transparent;"">
 		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
      
     <img src="${user2.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
@@ -90,7 +76,7 @@ top:65px;
 									<i class="material-icons">check_circle</i>
 											</c:if></h3>
     	
-      <h4>${user2.points} CP</h4>
+      <h4 >${user2.points} CP</h4>
     </div> 
   </div>
    <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#CCC2C2;">
@@ -104,7 +90,7 @@ top:65px;
 			</div>
 			   <div class="mdl-layout-spacer"></div>
 			     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--2-col-phone mdl-cell--6-col-desktop " style="background:transparent;">
+				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--12-col-phone  mdl-cell--6-col-desktop " style="background:transparent;">
 		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
      <img src="${user3.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
@@ -152,7 +138,7 @@ top:65px;
 									<i class="material-icons">check_circle</i>
 											</c:if>
 									</h4></td>
-								<td><h4 class="tblcp">${user.points} CP</h4></td>
+								<td><h4 class="tblcp" style="margin-top:-10px;">${user.points} CP</h4></td>
 								<td >
 								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
   	<a href="profile/<c:out value='${user.userName}' />"><i class="material-icons">face</i></a>

@@ -86,8 +86,7 @@
 						<tr>
 						<td><br><br></td>
 						<td><input type="submit" id="registerbutton" value="Register" /><input type="hidden" id="tokenfield" name="captchatoken" value="null">
-						<a  type="button"
-									style="align:center" href="/login">Login</a></td>
+						</td>
 						
 					</tr>
 					<tr>
@@ -96,7 +95,8 @@
 					</tr>
 						<tr>
 						<td><br><br></td>
-						<td>	<div style="color: red">${error}</div></td>
+						<td><a  
+									 href="/login">Already have an Account?</a>	<div style="color: red">${error}</div></td>
 					</tr>
 					
 				</table>

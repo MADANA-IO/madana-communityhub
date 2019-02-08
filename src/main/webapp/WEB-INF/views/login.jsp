@@ -77,12 +77,12 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><br><a  class="mdl-button mdl-js-button mdl-button--raised customfont"  href="/register">Create Account</a>
-						<a  class="mdl-button mdl-js-button mdl-button--raised customfont" style="margin-left:10px;" href="/resetpassword">Reset Password</a> </td>
+						<td><br><a  class=""  href="/register">Create Account</a>
+						 </td>
 					</tr>
 						<tr>
 						<td></td>
-						<td><a href="/resetpassword"></a></td>
+						<td><a  class="" href="/resetpassword">Reset Password</a></td>
 					</tr>
 						<tr>
 						<td><br><br></td>

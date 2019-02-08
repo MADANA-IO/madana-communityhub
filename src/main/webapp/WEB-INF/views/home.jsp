@@ -42,7 +42,7 @@
 					<c:forEach items="${social_platforms}" var="platform">
 
 						<div
-							class="mdl-card something-else mdl-cell mdl-cell--6-col transparent "
+							class="mdl-card something-else mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  transparent "
 							style="height: 350px">
 							<div class="mdl-card__title "
 								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:75px 75px,cover ;">

@@ -57,6 +57,19 @@
 					<a href="/logout" onclick="document.reRenderLoading({ phrases: ['Logging you out'] });" ><li class="mdl-menu__item">
 					<i class="material-icons">lock</i>Logout...</li>
 				</a>
+				
+					<hr class="mobilehide">
+					<a id="feedback-button" href="#" 
+				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><li class="mdl-menu__item">
+					<i class=" material-icons"
+				role="presentation">feedback</i><span>Give feedback</span></li>
+				</a>
+					<a id="bug-button" href="#" 
+				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><li class="mdl-menu__item">
+					<i class=" material-icons"
+				role="presentation">bug_report</i><span>Report a bug</span></li>
+				</a>
+					
 				</ul>
 			
 			</div>
@@ -80,14 +93,7 @@
 			<a class="mdl-navigation__link" href="/faq"><i
 				class=" material-icons" role="presentation">help_outline</i><span
 				class="">FAQ</span></a> 
-				<div class=" mobilehide" id="feedback-button">
-				<a href="#" 
-				class="mdl-navigation__link mdl-cell--hide-phone "><i class="material-icons"
-				role="presentation">feedback</i><span>Give Feedback</span></a></div>
-				<div class=" mobilehide" id="bug-button">
-				<a href="#" 
-				class="mobilehide mdl-navigation__link mdl-cell--hide-phone mobilehide"><i class=" material-icons"
-				role="presentation">bug_report</i><span>Report a Bug</span></a></div>
+				
 			<hr>
 			<div id="status" style="margin-left:10px;">   <a href="http://status.madana.io" target="_blank">
             <span class="color-dot"></span>
