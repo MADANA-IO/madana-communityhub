@@ -255,7 +255,9 @@
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
 												<i class="material-icons" >face</i>
-											</button> </a> <c:out value="${user1.userName}" /></td>
+											</button> </a> <c:out value="${user1.userName}" /><c:if test="${user1.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></td>
 									<td style="text-align:right;"><c:out
 											value="${user1.points}" /> CP</td>
 								
@@ -268,7 +270,9 @@
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
 												<i class="material-icons" >face</i>
-											</button> </a><c:out value="${user2.userName}" /></td>
+											</button> </a><c:out value="${user2.userName}" /><c:if test="${user2.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></td>
 									<td style="text-align:right;"><c:out value="${user2.points}" /> CP</td>
 							
 
@@ -281,7 +285,9 @@
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
 												<i class="material-icons" >face</i>
-											</button> </a><c:out value="${user3.userName}" /></td>
+											</button> </a><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></td>
 									<td style="text-align:right;"><c:out value="${user3.points}" /> CP</td>
 								
 

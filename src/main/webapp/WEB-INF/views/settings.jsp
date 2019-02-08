@@ -33,13 +33,15 @@
 				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent;">
 				<div class="mdl-card__title" style="color:#274863;">
 					<img src="${user.image}" class ="circle">
-					<h3>${user.userName}</h3>
+					<h3>${user.userName}<c:if test="${user.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></h3>
 				</div>
 
 				<div class="">
-					You have successfully logged in. <br> Please have a look at
+					<span>You have successfully logged in. <br> Please have a look at
 					the information we collected from you. Your email is private,
-					everything else can be discovered by everyone. <br> <br>
+					everything else can be discovered by everyone. <br> <br></span>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 					<button id="changeavatarbutton" type="button"
@@ -130,8 +132,8 @@
 				</div>
 
 			</div>
-			<div class="mdl-grid mdl-cell mdl-cell--8-col ">
-				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
+			<div class="mdl-grid mdl-cell mdl-cell--12-col ">
+				<div class="mdl-card  mdl-cell mdl-cell--6-col " style="background:transparent">
 					<div class="mdl-card__title" style="color:#274863;">
 					<h2>
 							<i class="material-icons material-heading" >perm_identity</i> Private Details
@@ -150,7 +152,7 @@
 								</tr>
 								<tr class="tddefault">
 									<td width=20%;>E-Mail:</td>
-									<td width="10%"><c:out value="${user.mail}" /></td>
+									<td width="10%"><c:out value="${user.mail}" /> </td>
 								</tr>
 								<!-- 
 							<tr class="tddefault">
@@ -187,8 +189,21 @@
 						<button id="show-changemail" type="button"
 							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
 							E-Mail</button>
+						
+							<c:if test="${!user.activated eq 'true'}">
+								
+											
+								<a  class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised " style="margin-left:10px;" href="/settings/verifymail"><i class="material-icons">check_circle</i> verify
+							E-Mail
+									</a></c:if>
+									
+										<c:if test="${user.activated eq 'true'}">
+								
+											
+								  <span> E-Mail verified!</span></c:if>
 					</div>
-				</div>
+					</div>
+				
 				<dialog class="mdl-dialog" id="changemaildialog">
 				<h4 class="mdl-dialog__title" style="text-align: center">Change
 					E-Mail</h4>
@@ -266,7 +281,7 @@
     		});
 
   </script>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
+  			<div class="mdl-card  mdl-cell mdl-cell--8-col " style="background:transparent">
 					<div class="mdl-card__title"style="color:#274863;">
 					<h2>
 							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
@@ -294,33 +309,9 @@
 						</ul>
 
 					</div>
-					<script>
-						<c:forEach var="setting" items="${user.settings}">
-
-			
-						document.addEventListener("DOMContentLoaded", function (event) 
-								{
-							var _selector = document.querySelector('label[id="label${setting.id}"]');
-						    _selector.addEventListener('click', function (event) {
-						        if ($(_selector).is('.is-checked'))
-						        {
-						        	document.forceLoading();
-						        	window.location.href = "settings/${setting.id}?value=false";
-						        } 
-						        else 
-						        {
-						        	document.forceLoading();
-						        	window.location.href = "settings/${setting.id}?value=true";
-						        }
-						    });
-						});
-						</c:forEach>
-</script>
-
-				</div>
-			</div>
-			<div
-				class="mdl-card  mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop transparent">
+					</div>
+  	<div
+				class="mdl-card  mdl-cell mdl-cell--6-col mdl-cell--4-col-desktop transparent">
 			<div class="mdl-card__title">
 					<h2>
 							<i class="material-icons material-heading" >link</i> Linked Accounts
@@ -357,6 +348,34 @@
 					</ul>
 				</div>
 			</div>
+	
+					<script>
+						<c:forEach var="setting" items="${user.settings}">
+
+			
+						document.addEventListener("DOMContentLoaded", function (event) 
+								{
+							var _selector = document.querySelector('label[id="label${setting.id}"]');
+						    _selector.addEventListener('click', function (event) {
+						        if ($(_selector).is('.is-checked'))
+						        {
+						        	document.forceLoading();
+						        	window.location.href = "settings/${setting.id}?value=false";
+						        } 
+						        else 
+						        {
+						        	document.forceLoading();
+						        	window.location.href = "settings/${setting.id}?value=true";
+						        }
+						    });
+						});
+						</c:forEach>
+</script>
+
+				
+				</div>
+			</div>
+		
 		</main>
 	</div>
 

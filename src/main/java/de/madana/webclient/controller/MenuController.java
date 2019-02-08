@@ -268,15 +268,13 @@ public class MenuController
 		model.addAttribute("destprofile", oDestUserProfile);
 		return "profile";
 	}
-	@RequestMapping(value = "/settings/avatar/{avatarid}", method = RequestMethod.GET)
-	public String setAvatar(HttpSession session,Model model,@PathVariable("avatarid") String strAvatarID) throws ClientNotInitizializedException 
+	
+	@RequestMapping(value = "/settings/verifymail", method = RequestMethod.GET)
+	public String setAvatar(HttpSession session,Model model) throws ClientNotInitizializedException 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
-		MDN_UserProfileImage oImage = new MDN_UserProfileImage();
-		oImage.setId(strAvatarID);
-		oImage.setImage(strAvatarID);
-		oClient.setAvatar(SessionHandler.getCurrentUser(session), oImage);
-		model.addAttribute("currentsite","settings");
+		oClient.requestEmailVerification(SessionHandler.getCurrentUser(session));
+		model.addAttribute("info","E-Mail Sent!");
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/changemail/{email}", method = RequestMethod.GET)

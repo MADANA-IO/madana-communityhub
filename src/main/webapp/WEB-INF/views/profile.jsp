@@ -33,7 +33,9 @@ font-size:2.5vw;
 				<img src="${destprofile.image}" height="150" width="150" class="circle">
 			</div>
 			<div class="mdl-cell mdl-cell--10-col ">
-				<h3>${destprofile.userName}</h3>
+				<h3>${destprofile.userName}<c:if test="${destprofile.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></h3>
 				<h4>${destprofile.points}CP</h4>
 			</div>
 			</div>

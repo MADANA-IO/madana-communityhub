@@ -22,7 +22,9 @@
 			
 								  <li class="mdl-list__item mdl-list__item--two-line">
     <span class="mdl-list__item-primary-content" style="height:75px">
-     <img src="${object.image}" width="50" height="50" class="circle"> 
+     <img src="${object.image}" width="50" height="50" class="circle"> <c:if test="${object.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if>
       <span> <a	href="https://communityhub.madana.io/profile/${object.userName}" class="subheading" style="font-size:24px;">${object.userName}(${object.points})</a></span>
       <span class="mdl-list__item-sub-title" style="padding-left:75px;margin-top:-15px;"> ${object.created} </span>
 

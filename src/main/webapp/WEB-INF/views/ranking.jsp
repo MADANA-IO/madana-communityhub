@@ -56,7 +56,10 @@ top:65px;
   
     <img src="${user1.image}" width="150" height="150" class ="circle"style="margin-right:25px;">
     <div>
-    <h3 ><c:out value="${user1.userName}" /></h3>
+    <h3 ><c:out value="${user1.userName}" />	<c:if test="${user1.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></h3>
+    
       <h4>${user1.points} CP</h4>
     </div>
 
@@ -83,7 +86,10 @@ top:65px;
      
     <img src="${user2.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h3  ><c:out value="${user2.userName}" /></h3>
+    <h3  ><c:out value="${user2.userName}" /><c:if test="${user2.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></h3>
+    	
       <h4>${user2.points} CP</h4>
     </div> 
   </div>
@@ -102,7 +108,10 @@ top:65px;
 		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
      <img src="${user3.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h3 ><c:out value="${user3.userName}" /></h3>
+    <h3 ><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if></h3>
+    	
       <h4>${user3.points} CP</h4>
     </div> 
    </div>
@@ -139,6 +148,9 @@ top:65px;
 								<td style="text-align: left"><h4>
 							     <img src="${user.image}" width="75" height="75" class ="circle" style="margin-right:5px;">
 										<c:out value="${user.userName}" />
+										<c:if test="${user.activated eq 'true'}">
+									<i class="material-icons">check_circle</i>
+											</c:if>
 									</h4></td>
 								<td><h4 class="tblcp">${user.points} CP</h4></td>
 								<td >
