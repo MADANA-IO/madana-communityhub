@@ -179,7 +179,7 @@
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
-										<span style="padding:5px;">${fn:length(platform.referrals)}</span>
+									<!-- 	<span style="padding:5px;">${fn:length(platform.referrals)}</span> -->
 									</span>
 								</div>
 							</div>

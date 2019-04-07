@@ -108,7 +108,7 @@ public class BackendHandler
 				oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
 				try
 				{
-					oMyPlatform.setReferrals(oClient.getReferredUsers(oPlatforms.get(i).getName(), strUserName));
+//					oMyPlatform.setReferrals(oClient.getReferredUsers(oPlatforms.get(i).getName(), strUserName));
 				}
 				catch(Exception e)
 				{
