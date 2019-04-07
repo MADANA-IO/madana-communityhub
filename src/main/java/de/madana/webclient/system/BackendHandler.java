@@ -25,6 +25,8 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URL;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +93,7 @@ public class BackendHandler
 	}
 	public List<ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms, MDN_RestClient oClient, String strUserName)
 	{
+		Instant start = Instant.now();
 		List<ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<ReferralSocialPlatform>();
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
@@ -115,6 +118,9 @@ public class BackendHandler
 
 			}
 		}
+		Instant end = Instant.now();
+		Duration timeElapsed = Duration.between(start, end);
+		System.out.println("ReferralPlatforms: "+ timeElapsed.toMillis() +" milliseconds");
 		return oRefferalPlatforms;
 	}
 	public  boolean verifyGoogleCaptcha(String gRecaptchaResponse) {
@@ -175,13 +181,21 @@ public class BackendHandler
 	}
 	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile ) throws Exception
 	{
+		Instant start = Instant.now();
 		List<UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<UserSpecificSocialPlatform>();
 		List<MDN_SocialUserObject> oSocialAccounts = oUser.getSocialAccounts();
+		Instant end = Instant.now();
+		Duration timeElapsed = Duration.between(start, end);
+		System.out.println("Custom - Loaded Social Accounts: "+ timeElapsed.toMillis() +" milliseconds");
 		for(int i=0; i < oPlatforms.size(); i++)
 		{
 			if(!oPlatforms.get(i).getIsReferralPlatform().equals("true"))
 			{
-				oClient.getSocialFeed(oPlatforms.get(i));
+				start = Instant.now();
+//				oClient.getSocialFeed(oPlatforms.get(i));
+				 end = Instant.now();
+				 timeElapsed = Duration.between(start, end);
+				System.out.println("Loading Social Feed: "+ timeElapsed.toMillis() +" milliseconds");
 				UserSpecificSocialPlatform oMyPlatform = new UserSpecificSocialPlatform();
 				oMyPlatform.setName(oPlatforms.get(i).getName());
 				oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
@@ -227,7 +241,9 @@ public class BackendHandler
 			}
 
 		}
-
+		 end = Instant.now();
+		 timeElapsed = Duration.between(start, end);
+		System.out.println("CustomSocialPlatforms: "+ timeElapsed.toMillis() +" milliseconds");
 		return oSocialPlatforms;
 	}
 }

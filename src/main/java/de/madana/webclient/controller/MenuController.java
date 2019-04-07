@@ -20,6 +20,8 @@
  ******************************************************************************/
 package de.madana.webclient.controller;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -134,10 +136,12 @@ public class MenuController
 
 
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
-
+		if(oUsers.size()>2)
+		{
 		model.addAttribute("user1", oUsers.get(0));
 		model.addAttribute("user2", oUsers.get(1));
 		model.addAttribute("user3", oUsers.get(2));
+		}
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
@@ -151,15 +155,20 @@ public class MenuController
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String homePage(HttpSession session,Model model) throws Exception 
 	{
+
+		Instant start = Instant.now();
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
 		oPlatforms = oClient.getSocialPlatforms();
 		oUser = oClient.getUser(strUserName);
 		oProfile= oClient.getProfile(strUserName);
+		Instant end = Instant.now();
+		Duration timeElapsed = Duration.between(start, end);
+		System.out.println("Init Home: "+ timeElapsed.toMillis() +" milliseconds");
 		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
 		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
 
-
+		start = Instant.now();
 
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
 		if(oUsers.size()>2)
@@ -180,6 +189,9 @@ public class MenuController
 		model.addAttribute("user", oUser);
 		model.addAttribute("system",  oClient.getSystemHealth());
 		model.addAttribute("info", "If you have any Problems verifying your Twitter Account, you can also send a direct Message starting with 'CP:' directly followed with your CommunityHub username to the MADANA Twitter account. After a few seconds it should be automated and you should see it in your settings. Your message =CP:"+ strUserName+"");
+		 end = Instant.now();
+		 timeElapsed = Duration.between(start, end);
+		System.out.println("Loading Home: "+ timeElapsed.toMillis() +" milliseconds");
 		return "home";
 
 	}
