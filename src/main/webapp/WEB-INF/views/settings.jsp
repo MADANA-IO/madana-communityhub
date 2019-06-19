@@ -201,6 +201,7 @@
 								
 											
 								  <span> E-Mail verified!</span></c:if>
+								  <a  class="mdl-button mdl-js-button mdl-button--raised " href="deleteaccount" style="background-color:#a2574d;">Delete Account</a>
 					</div>
 					</div>
 				

@@ -48,7 +48,7 @@ import de.madana.webclient.system.SessionHandler;
 @Scope("session")
 public class LoginController 
 {
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
@@ -87,7 +87,7 @@ public class LoginController
 			if( oNewPassword.getPassword().equals(oNewPassword.getMatchingPassword()))
 				try 
 			{
-					
+
 					MDN_PasswordReset oReset = new MDN_PasswordReset();
 					oReset.setMail(oNewPassword.getEmail());
 					oReset.setPassword(oNewPassword.getPassword());
@@ -125,7 +125,7 @@ public class LoginController
 		}
 		if (mail.getMail()!= null && mail.getMail().length()>3 && mail.getMail().contains("@")) 
 		{
-	
+
 			try 
 			{
 				MDN_MailAddress oMail = new MDN_MailAddress();
@@ -162,10 +162,11 @@ public class LoginController
 		{
 			model.setViewName("register");
 		}
-		
+
 		return model;
 
 	}
+
 	@RequestMapping(value = "/activate/{token}", method = RequestMethod.GET)
 	public String loadRegisterPage(HttpSession session,Model model, @PathVariable("token") String token, final RedirectAttributes redirectAttributes) throws ClientNotInitizializedException 
 	{
@@ -178,10 +179,10 @@ public class LoginController
 		else
 		{
 			redirectAttributes.addFlashAttribute("error", "Invalid Activation Code" );
-	}
+		}
 		return "redirect:/login";
 	}
-	
+
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "captchatoken", required=false) String captchatoken, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
@@ -200,10 +201,10 @@ public class LoginController
 		{
 			if( user.getPassword().equals(user.getMatchingPassword()))
 			{
-			
+
 				try 
 				{
-					
+
 					if(session.getAttribute("ref")!=null)
 						strToken =(String) session.getAttribute("ref");
 					if (SessionHandler.getClient(session).createUser(user.getUsername(), user.getPassword(), user.getEmail(), strToken)) ;
@@ -260,13 +261,13 @@ public class LoginController
 	{
 		if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) 
 		{
-			
+
 			try 
 			{
 				MDN_RestClient oClient =  SessionHandler.getClient(session);
 				session.setAttribute("oClient", oClient);
-			
-			
+
+
 				if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
 				{
 					model.addAttribute("error", "We couldn't verify that you are a human");
@@ -275,9 +276,9 @@ public class LoginController
 				SessionHandler.validateLoginAttempts(session);
 				if (oClient.logon(loginBean.getUserName(), loginBean.getPassword())) 
 				{
-		
+
 					SessionHandler.setSuccessfulLogin(session, loginBean.getUserName());
-				
+
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
 						return "redirect:"+requesturi;
@@ -299,6 +300,53 @@ public class LoginController
 			model.addAttribute("error", "Please enter Details");
 			return "login";
 		}
+	}
+	@RequestMapping(value = "/deleteaccount", method = RequestMethod.GET)
+	public ModelAndView loadAccountDeletionPage(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView();
+		model.setViewName("deleteAccount");
+		return model;
+	}
+
+	@RequestMapping(value = "/deleteaccount", method = RequestMethod.POST)
+	public String submitAccountDeletionPage(HttpSession session,@RequestParam(value = "del", required=false) String del, @RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "captchatoken", required=false) String captchatoken, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
+	{
+		if(read== null)
+		{
+			model.addAttribute("error", "Please read, understand and accept the Privacy Policy and Terms of Use Agreement");
+			return "deleteAccount";
+		}
+		if(del== null)
+		{
+			model.addAttribute("error", "Please check that you want to delete your account");
+			return "deleteAccount";
+		}
+		if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+		{
+			model.addAttribute("error", "We couldn't verify that you are a human");
+			return "deleteAccount";
+		}
+
+		try 
+		{
+			SessionHandler.getClient(session).deleteUser(SessionHandler.getCurrentUser(session));
+			redirectAttributes.addFlashAttribute("error", "Account deleted");
+			return "redirect:/login";
+		} catch (ClientNotInitizializedException e)
+		{
+			redirectAttributes.addFlashAttribute("error", "Please sign in to delete your account");
+			redirectAttributes.addFlashAttribute("requesturi","/deleteAccount");
+			return "redirect:/login";
+
+		} catch (Exception e) 
+		{
+			model.addAttribute("error", e.toString());
+			return "deleteAccount";
+		}
+	
+
+		
 	}
 
 }

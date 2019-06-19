@@ -351,30 +351,4 @@ public class MenuController
 
 	}
 
-	/**
-	 * Home action.
-	 *
-	 * @param session the session
-	 * @param model the model
-	 * @param redirectAttributes the redirect attributes
-	 * @return the string
-	 */
-	//	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	//	public String homeAction(HttpSession session,Model model ,final RedirectAttributes redirectAttributes)
-	//	{
-	//		try
-	//		{
-	//			SessionHandler.getClient(session).deleteUser(SessionHandler.getCurrentUser(session));
-	//			redirectAttributes.addFlashAttribute("error", "Account deleted");
-	//			return "redirect:/login";
-	//		}
-	//		catch(Exception e)
-	//		{
-	//
-	//		}
-	//		model.addAttribute("msg", "Account couldn't be deleted");
-	//		return "home";
-	//
-	//	}
-
 }
