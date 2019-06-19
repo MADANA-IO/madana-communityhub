@@ -89,11 +89,16 @@
 
 											
 													<button
-														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="width: 100%;">
 														Verify ${platform.name} account</button>
-											
+				
 											</a>
+																											<c:if test="${platform.name == 'Twitter'}">
 										
+			<br>
+										
+																<div style="font-size:12px;color:#274863">You can also verify your account by sending a private message with "CH:${profile.userName}"  to the official MADANA Twitter Account.</div>
+											</c:if>	
 										</c:when>
 
 										<c:otherwise>
@@ -130,22 +135,6 @@
 								</c:if>
 							</div>
 							<div class="mdl-card__menu">
-								<c:choose>
-									<c:when test="${platform.isVerifiedByUser == false}">
-										<c:if test="${platform.name == 'Twitter'}">
-										
-												<button type="button" id="twitterinfo" class="mdl-button mdl-js-button " style="color:#a0c3e8;"
-													>
-													<i class="material-icons">info</i>
-													
-												</button>
-													<div class="mdl-tooltip mdl-tooltip--large" for="twitterinfo" style="width:150px;">
-						You can also verify your account by sending a private message starting with "CH:" directly followed by your CommunityHub Username to the official MADANA Twitter Account.
-</div>
-						
-											</c:if>
-											</c:when>
-											</c:choose>
 								<a href="${platform.link}"><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">

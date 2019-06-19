@@ -138,9 +138,9 @@ public class MenuController
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
 		if(oUsers.size()>2)
 		{
-		model.addAttribute("user1", oUsers.get(0));
-		model.addAttribute("user2", oUsers.get(1));
-		model.addAttribute("user3", oUsers.get(2));
+			model.addAttribute("user1", oUsers.get(0));
+			model.addAttribute("user2", oUsers.get(1));
+			model.addAttribute("user3", oUsers.get(2));
 		}
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
 		model.addAttribute("users", oUsers);
@@ -160,11 +160,20 @@ public class MenuController
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
 		oPlatforms = oClient.getSocialPlatforms();
-		oUser = oClient.getUser(strUserName);
-		oProfile= oClient.getProfile(strUserName);
 		Instant end = Instant.now();
 		Duration timeElapsed = Duration.between(start, end);
-		System.out.println("Init Home: "+ timeElapsed.toMillis() +" milliseconds");
+		System.out.println("Get social platforms: "+ timeElapsed.toMillis() +" milliseconds");
+		start = Instant.now();
+		oUser = oClient.getUser(strUserName);
+		end = Instant.now();
+		timeElapsed = Duration.between(start, end);
+		System.out.println("Loading user: "+ timeElapsed.toMillis() +" milliseconds");
+		start = Instant.now();
+		oProfile= oClient.getProfile(strUserName);
+		end = Instant.now();
+		timeElapsed = Duration.between(start, end);
+		System.out.println("Loading Profile: "+ timeElapsed.toMillis() +" milliseconds");
+		start = Instant.now();
 		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
 		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
 
@@ -173,10 +182,10 @@ public class MenuController
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
 		if(oUsers.size()>2)
 		{
-		Collections.sort(oUsers);
-		model.addAttribute("user1", oUsers.get(0));
-		model.addAttribute("user2", oUsers.get(1));
-		model.addAttribute("user3", oUsers.get(2));
+			Collections.sort(oUsers);
+			model.addAttribute("user1", oUsers.get(0));
+			model.addAttribute("user2", oUsers.get(1));
+			model.addAttribute("user3", oUsers.get(2));
 		}
 		model.addAttribute("currentsite","home");
 		model.addAttribute("social_platforms",oSocialPlatforms);
@@ -186,11 +195,9 @@ public class MenuController
 		model.addAttribute("profile", oProfile);	
 		session.setAttribute("profile", oProfile);
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oUser);
 		model.addAttribute("system",  oClient.getSystemHealth());
-		model.addAttribute("info", "If you have any Problems verifying your Twitter Account, you can also send a direct Message starting with 'CP:' directly followed with your CommunityHub username to the MADANA Twitter account. After a few seconds it should be automated and you should see it in your settings. Your message =CP:"+ strUserName+"");
-		 end = Instant.now();
-		 timeElapsed = Duration.between(start, end);
+		end = Instant.now();
+		timeElapsed = Duration.between(start, end);
 		System.out.println("Loading Home: "+ timeElapsed.toMillis() +" milliseconds");
 		return "home";
 
@@ -209,7 +216,6 @@ public class MenuController
 		String strUserName = SessionHandler.getCurrentUser(session);
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oClient.getUser(strUserName));
 		model.addAttribute("currentsite","profile");
 		oProfile =  oClient.getProfile(strUserName);
 		List<VisualSocialHistoryObject> oNewList = new ArrayList<VisualSocialHistoryObject>();
@@ -344,7 +350,7 @@ public class MenuController
 		return "externalframe";
 
 	}
-	
+
 	/**
 	 * Home action.
 	 *
@@ -353,22 +359,22 @@ public class MenuController
 	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
-//	@RequestMapping(value = "/home", method = RequestMethod.POST)
-//	public String homeAction(HttpSession session,Model model ,final RedirectAttributes redirectAttributes)
-//	{
-//		try
-//		{
-//			SessionHandler.getClient(session).deleteUser(SessionHandler.getCurrentUser(session));
-//			redirectAttributes.addFlashAttribute("error", "Account deleted");
-//			return "redirect:/login";
-//		}
-//		catch(Exception e)
-//		{
-//
-//		}
-//		model.addAttribute("msg", "Account couldn't be deleted");
-//		return "home";
-//
-//	}
+	//	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	//	public String homeAction(HttpSession session,Model model ,final RedirectAttributes redirectAttributes)
+	//	{
+	//		try
+	//		{
+	//			SessionHandler.getClient(session).deleteUser(SessionHandler.getCurrentUser(session));
+	//			redirectAttributes.addFlashAttribute("error", "Account deleted");
+	//			return "redirect:/login";
+	//		}
+	//		catch(Exception e)
+	//		{
+	//
+	//		}
+	//		model.addAttribute("msg", "Account couldn't be deleted");
+	//		return "home";
+	//
+	//	}
 
 }
