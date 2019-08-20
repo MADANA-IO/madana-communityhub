@@ -10,7 +10,7 @@
 <!-- Latest compiled and minified CSS -->
 
 	<div
-		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 

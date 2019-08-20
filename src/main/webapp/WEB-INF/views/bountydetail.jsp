@@ -16,9 +16,12 @@
 }
 
 }
+.subheading {
+color:#4d7da2;
+}
 </style>
 <body>
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 		

@@ -6,29 +6,37 @@
 <html lang="en">
 <jsp:include page="components/header.jsp" />
 <jsp:include page="components/loginheader.jsp" />
+<head>
+		<script language="javascript">
+				function authenticate(username,password){
+				
+					   document.getElementById("username").value = username;
+					   document.getElementById("password").value = password;
+					   document.getElementById("submitForm").submit();
+					}
+				</script>
+				</head>
 <style>
 .login {
 	position: absolute;
-	top: calc(45%);
-	   left: calc(60%);
-
+top: calc(50% - 50px);
+	left: calc(50%);
 	height: 150px;
-	width: 400px;
+	width: 600px;
 	z-index: 2;
 }
 @media screen and (max-width: 767px)
  {
-
 .login {
 	position: absolute;
-	top: 180px;
-	left:250px;
+	top: 250px;
+	    left: calc(22%);
 	height: 150px;
-	width: 100%;;
+	width: 250px;;
 	z-index: 2;
 }
-
 }
+
 </style>
 
 
@@ -39,38 +47,73 @@
 
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<div id="container">
-			<img src="https://www.madana.io/assets/img/hero-grid.jpg" />
+		<div id="container" style="    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(39,72,99,0.3);
+    background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    -webkit-filter: blur(5px);">
+		
 
-			<div class="header">
+		
+			<br>
+
+		</div>
+
+
+	</div>
+		<div class="header">
 				<div>
-					<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
+				 <img src="https://www.madana.io/assets/img/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
-						style="text-align: center; display: block;">
+						style="text-align: center; display: block;"> 
+						<span style="   font-family: Montserrat;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 24px;
+    color: #a0c3e8 !important;
+    position: absolute;
+    top: 120px;
+    left: -60px;
+        margin-right: -50px;
+">Community Hub</span>
 				</div>
 			</div>
-			<br>
 			<div class="content">
-				<div class="login">				<form name="submitForm" method="POST">
+				<div class="login">
+				<form name="submitForm" method="POST">
 
 			<div>
 
 				<table>
 					<tr>
-						<td  style="color:#f3f3f6;" class="subheading">E-Mail</td>
+					
 						<td><input type="text"
-							placeholder="Please enter your E-Mail address" name="mail" /></td>
+							placeholder="E-Mail" placeholder="E-Mail" name="mail" /></td>
 					</tr>
 					<tr>
-						<td><br><br></td>
+						<td><p>Please enter your E-Mail address. We will send you a Link and information on how to reset your password</p></td>
 						</tr>
 					<tr>
-						<td><br><br></td>
-						<td><input type="submit" value="Reset password" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
+
+						<td><input type="submit" value="Reset password" style="background: rgba(33,73,99, 0.7);
+    border: 1px solid #4d7da2;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a0c3e8;"/><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td><br><a href="/register">Create an Account</a> </td>
+					
+						<td><br><a href="/register">Create Account</a> </td>
 					</tr>
 					
 						<tr>
@@ -99,11 +142,6 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'resetpa
 	<jsp:include page="components/snackbar.jsp" />
 				</div>
 			</div>
-		</div>
-
-
-	</div>
-
 
 <jsp:include page="components/statuspage.jsp" />
 	<jsp:include page="components/footer.jsp" />

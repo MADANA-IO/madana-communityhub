@@ -13,32 +13,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+.mdl-layout__header-row .mdl-navigation__link 
+{
+	color:#274863;
+	}
+	.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+    display: block;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding: 12px 40px;
+    margin: 0;
+    color: white;
+        font-family: Montserrat;
+}
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link .hr{
+margin:25px;
+}
 .content
 {
-	/*
+
 background: #000;
 background-image:linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2);
 color:#f3f3f6;
-font-family:Raleway;
-*/
+font-family:Montserrat;
+
+/*
 background: #f3f3f6;
 color:#274863;
   font-family:Montserrat;
-  
+  */
 }
 .mdnheader
 {
-background-color:#f3f3f6;
+background-color:white;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
   color:#4d7da2	;
-
+font-family:Montserrat;
 
 }
+.mdl-data-table {
+	background-color:transparent;
+color:#f3f3f6;
+	}
+data-table {
+background-color:transparent;
+color:#f3f3f6;	}
+
+.mdl-data-table th 
+{
+	color:#4d7da2;
+	}
 
 .mdnnav
 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(65deg, rgba(77, 125, 162, 0), #4d7da2), linear-gradient(255deg, rgba(77, 125, 162, 0), #4d7da2 53%, rgba(77, 125, 162, 0)), linear-gradient(249deg, rgba(77, 125, 162, 0), #4d7da2 17%, rgba(77, 125, 162, 0)), linear-gradient(132deg, rgba(77, 125, 162, 0), #4d7da2);
+   color:white;
+
 
 }
 .content h1, h2, h3
@@ -53,7 +83,7 @@ background-color: #ffffff;
 }
 .demo-header 
 {
-    background-color:#f3f3f6;
+    background-color:white;
     color:#274863;
 }
 html, body {
@@ -78,8 +108,8 @@ font-family: 'Montserrat', Regular;
 }
 .demo-drawer {
   border: none;
-    background-color:#f3f3f6;
-  
+     background: #000; 
+   background-image: linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2); 
 }
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
@@ -87,7 +117,7 @@ font-family: 'Montserrat', Regular;
 }
 .demo-drawer .demo-navigation {
   z-index: -2;
-    background-color:#274863;
+ 
     color:#a0c3e8;
  
 }
@@ -113,7 +143,8 @@ font-family: 'Montserrat', Regular;
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding: 16px;
-  height: 151px;
+  height: 100px;
+
 }
 .demo-drawer-header .drawercontainer{
 	position:absolute;

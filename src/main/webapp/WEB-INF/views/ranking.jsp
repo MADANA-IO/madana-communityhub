@@ -28,7 +28,7 @@
 }
 </style>
 <body>
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 		
@@ -36,6 +36,10 @@
         <div class="mdl-grid ">
          <div class="mdl-grid" style="width:100%;" > 
          <div class="mdl-layout-spacer"></div>
+         <div class="mdl-cell--12-col">
+         <p>In this section, you can see which rank you hold compared to other community members. The more community points you have the higher your rank will be. The ranking is the basis on which MADANA decides how big the reward from community campaigns will be for you. The higher your rank, the better the reward will be.
+</p>
+         </div>
          	<div
 				class="mdl-card something-else mdl-cell--6-col-desktop mdl-cell--6-col-phone " style="background:transparent;">
 		  <div class="mdl-card__title mdl-card--expand " style="color:#274863;">
@@ -59,7 +63,7 @@
 
 			<div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">face</i>
+     	 <i class="material-icons">person</i>
     </button></a>
   </div>
 			</div>
@@ -84,7 +88,7 @@
 		</div>
 <div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user2.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">face</i>
+     	 <i class="material-icons">person</i>
     </button></a>
   </div>
 			</div>
@@ -106,7 +110,7 @@
 		</div>
 <div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect ">
-     	 <i class="material-icons">face</i>
+     	 <i class="material-icons">person</i>
     </button></a>
   </div>
   	
@@ -141,7 +145,7 @@
 								<td><h4 class="tblcp" style="margin-top:-10px;">${user.points} CP</h4></td>
 								<td >
 								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  	<a href="profile/<c:out value='${user.userName}' />"><i class="material-icons">face</i></a>
+  	<a href="profile/<c:out value='${user.userName}' />"><i class="material-icons">person</i></a>
 </button>
 
 							</td>

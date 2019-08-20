@@ -6,28 +6,37 @@
 <html lang="en">
 <jsp:include page="components/header.jsp" />
 <jsp:include page="components/loginheader.jsp" />
+<head>
+		<script language="javascript">
+				function authenticate(username,password){
+				
+					   document.getElementById("username").value = username;
+					   document.getElementById("password").value = password;
+					   document.getElementById("submitForm").submit();
+					}
+				</script>
+				</head>
 <style>
 .login {
 	position: absolute;
-	top: calc(40%);
-	left: calc(50% + 100px);
+top: calc(50% - 50px);
+	left: calc(50%);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
 }
 @media screen and (max-width: 767px)
  {
-
 .login {
 	position: absolute;
-	top: 180px;
-	left:230px;
+	top: 250px;
+	    left: calc(22%);
 	height: 150px;
-	width: 100%;;
+	width: 250px;;
 	z-index: 2;
 }
-
 }
+
 </style>
 
 
@@ -38,64 +47,94 @@
 
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<div id="container">
-			<img src="https://www.madana.io/assets/img/hero-grid.jpg" />
+		<div id="container" style="    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(39,72,99,0.3);
+    background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    -webkit-filter: blur(5px);">
+		
 
-			<div class="header">
+		
+			<br>
+
+		</div>
+
+
+	</div>
+		<div class="header">
 				<div>
-					<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
+				 <img src="https://www.madana.io/assets/img/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
-						style="text-align: center; display: block;">
+						style="text-align: center; display: block;"> 
+						<span style="   font-family: Montserrat;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 24px;
+    color: #a0c3e8 !important;
+    position: absolute;
+    top: 120px;
+    left: -60px;
+        margin-right: -50px;
+">Community Hub</span>
 				</div>
 			</div>
-			<br>
 			<div class="content">
 				<div class="login">
-<form name="submitForm" method="POST">
+					<form name="submitForm" method="POST">
 
 			<div>
 
 				<table>
 					<tr>
-						<td style="color:#f3f3f6;" class="subheading">Username</td>
-						<td><input type="text" name="username" /></td>
+					
+						<td><input  style="border: 1px solid #4d7da2;"  type="text" placeholder="Username" name="username" /></td>
 					</tr>
 					<tr>
 					
-						<td style="color:#f3f3f6;" class="subheading"><br><br>E-Mail</td>
-						<td><br><br><input type="text" name="email" /></td>
+				
+						<td><br><input  style="border: 1px solid #4d7da2;"  type="text"  placeholder="E-Mail"name="email" /></td>
 					</tr>
 					<tr>
-						<td style="color:#f3f3f6;" class="subheading">Password</td>
-						<td><input type="password" name="password" /></td>
+				
+						<td><input  style="border: 1px solid #4d7da2;"  type="password" placeholder="Password" name="password" /></td>
 					</tr>
 					<tr>
-						<td style="color:#f3f3f6;" class="subheading">Re-enter password </td>
-						<td><input type="password" name="matchingPassword" /></td>
+
+						<td><input  style="border: 1px solid #4d7da2;"  type="password" placeholder="Re-Enter Password" name="matchingPassword" /></td>
 					</tr>
 							<tr>
 						<td><br><br></td>
 						
 					</tr>
 						<tr>
-						<td></td>
+				
 						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
 						
 					</tr>
 
 						<tr>
-						<td><br><br></td>
-						<td><input type="submit" id="registerbutton" value="Register" /><input type="hidden" id="tokenfield" name="captchatoken" value="null">
+				
+						<td><input type="submit" id="registerbutton" value="Register" style="background: rgba(33,73,99, 0.7);
+    border: 1px solid #4d7da2;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a0c3e8;"/><input type="hidden" id="tokenfield" name="captchatoken" value="null">
 						</td>
 						
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
+				
 						<tr>
-						<td><br><br></td>
-						<td><a  
+						<td><br><br><a  
 									 href="/login">Already have an Account?</a>	<div style="color: red">${error}</div></td>
 					</tr>
 					
@@ -120,11 +159,6 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'registe
 	<jsp:include page="components/snackbar.jsp" />
 				</div>
 			</div>
-		</div>
-
-
-	</div>
-
 
 <jsp:include page="components/statuspage.jsp" />
 	<jsp:include page="components/footer.jsp" />

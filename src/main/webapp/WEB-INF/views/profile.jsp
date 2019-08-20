@@ -20,9 +20,8 @@ font-size:2.5vw;
 }
 </style>
 <body>
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-		<jsp:include page="components/menu.jsp" />
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+   	<jsp:include page="components/menu.jsp" />
 		
 		<main class="mdl-layout__content content">
 		<div class="mdl-grid   ">

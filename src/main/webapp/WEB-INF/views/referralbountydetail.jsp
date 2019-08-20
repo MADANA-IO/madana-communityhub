@@ -7,7 +7,7 @@
 <jsp:include page="components/header.jsp" />
 <body>
 	<div
-		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 
@@ -15,7 +15,45 @@
 		<div class="mdl-grid ">
 
 		
-					<div class="mdl-cell mdl-cell--4-col ">
+		
+			<div class="mdl-cell mdl-cell--12-col ">
+				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background-color:transparent; color:white;">
+					<div class="">
+						<h2>Thanks for inviting ${fn:length(referrals)} users</h2>
+					</div>
+					<div class="  ">
+						<c:choose>
+							<c:when test="${platformname eq 'whitelisting'}">
+					<h4>Share the link below to get more CP and a 10% commission for every user who invests by using your referral link. You will be rewarded with additional 5000 CP</h4>
+							</c:when>
+							<c:otherwise>
+								<h4>Share the link below to get more CP. For every user who
+									signs up with your referral link, you will be rewarded with
+									1000 CP
+									</h4>
+							</c:otherwise>
+						</c:choose>
+						<div></div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+				
+						<textarea id="copytext" class="mdl-textfield__input subheading" type="text"
+							rows="4" disabled style="color: #4d7da2;">${platform.link}?referrer=${user.guid}</textarea>
+						<div class="mdl-cell mdl-cell--6-col" text-align="center">
+							<button
+								class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+								onclick="CopyToClipboard('copytext')">
+								<i class="material-icons">file_copy</i> copy Link
+							</button>
+						</div>
+					</div>
+
+
+
+				</div>
+
+			</div>
+						<div class="mdl-cell mdl-cell--12-col ">
 				<ul class="demo-list-three mdl-list">
 							<c:forEach items="${referrals}" var="object">
 							
@@ -25,7 +63,7 @@
      <img src="${object.image}" width="50" height="50" class="circle"> <c:if test="${object.activated eq 'true'}">
 									<i class="material-icons">check_circle</i>
 											</c:if>
-      <span> <a	href="https://communityhub.madana.io/profile/${object.userName}" class="subheading" style="font-size:24px;">${object.userName}(${object.points})</a></span>
+      <span> <a	href="https://communityhub.madana.io/profile/${object.userName}" class="subheading" style="color:#a0c3e8;font-size:24px;">${object.userName}(${object.points})</a></span>
       <span class="mdl-list__item-sub-title" style="padding-left:75px;margin-top:-15px;"> ${object.created} </span>
 
     </span>
@@ -44,43 +82,6 @@
 						</ul>
 
 		</div>
-			<div class="mdl-cell mdl-cell--8-col ">
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
-						<h2>Thanks for inviting ${fn:length(referrals)} users</h2>
-					</div>
-					<div class="mdl-card__supporting-text   ">
-						<c:choose>
-							<c:when test="${platformname eq 'whitelisting'}">
-					<h4>Share the link below to get more CP and a 10% commission for every user who invests by using your referral link. You will be rewarded with additional 5000 CP</h4>
-							</c:when>
-							<c:otherwise>
-								<h4>Share the link below to get more CP. For every user who
-									signs up with your referral link, you will be rewarded with
-									1000 CP
-									</h4>
-							</c:otherwise>
-						</c:choose>
-						<div></div>
-					</div>
-					<div class="mdl-card__actions mdl-card--border">
-				
-						<textarea id="copytext" class="mdl-textfield__input subheading" type="text"
-							rows="4" disabled style="color: #274863;">${platform.link}?referrer=${user.guid}</textarea>
-						<div class="mdl-cell mdl-cell--6-col" text-align="center">
-							<button
-								class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-								onclick="CopyToClipboard('copytext')">
-								<i class="material-icons">file_copy</i> copy Link
-							</button>
-						</div>
-					</div>
-
-
-
-				</div>
-
-			</div>
 		<jsp:include page="components/snackbar.jsp" /> </main>
 	</div>
 	<jsp:include page="components/footer.jsp" />

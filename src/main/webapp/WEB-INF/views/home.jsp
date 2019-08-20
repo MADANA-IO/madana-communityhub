@@ -5,10 +5,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="components/header.jsp" />
+<style>
+.mdl-card
+{
+background-color:transparent;
+}
+</style>
 
 <body>
 	<div
-		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 
@@ -31,6 +37,7 @@
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
 					<div class="mdl-cell--12-col">
+					<hr>
 						<h3>
 							<i class="material-icons material-heading">share</i> Share the vision
 						</h3>
@@ -43,14 +50,14 @@
 
 						<div
 							class="mdl-card something-else mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  transparent "
-							style="height: 350px">
+							style="height: 250px">
 							<div class="mdl-card__title "
-								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:75px 75px,cover ;">
+								style="height:200px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ;">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<c:forEach var="entry" items="${platform.oActions}">
 										<span class="mdl-cell--3-col"> <i
-											class="material-icons"> ${entry.key} </i><span style="padding:5px;"> ${entry.value} </span>
+											class="material-icons" style="color:#4d7da2;"> ${entry.key} </i><span style="padding:5px;"> ${entry.value} </span>
 											
 
 										</span>
@@ -58,8 +65,8 @@
 								</div>
 							</div>
 
-							<div class="mdl-card__actions mdl-card--border mdl-grid "
-								style="background: #f3f3f6; height: 75px;">
+							<div class="mdl-card__actions mdl-card--border mdl-grid transparent"
+								style="height: 75px;">
 
 
 								<c:if test="${platform.isDisabled == true}">
@@ -134,7 +141,7 @@
 									</c:choose>
 								</c:if>
 							</div>
-							<div class="mdl-card__menu">
+							<div class="mdl-card__menu" style="font-size:10px;">
 								<a href="${platform.link}"><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">
@@ -150,7 +157,7 @@
 				</div>
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col">
 					<div class="mdl-cell--12-col">
-
+<hr>
 							<h3>
 							<i class="material-icons material-heading">person_add</i> Invite some
 							friends
@@ -162,19 +169,19 @@
 					<c:forEach items="${referral_platforms}" var="platform">
 						<div
 							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent"
-							style="height: 350px">
+							style="height: 250px">
 							<div class="mdl-card__title"
-								style="height:300px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:75px 75px,cover ;">
+								style="height:250px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
-									<span class="mdl-cell--3-col"> <i class="material-icons">person_add</i>
+									<span class="mdl-cell--3-col"> 
 									<!-- 	<span style="padding:5px;">${fn:length(platform.referrals)}</span> -->
 									</span>
 								</div>
 							</div>
 
-							<div class="mdl-card__actions mdl-card--border mdl-grid "
-								style="background: #f3f3f6; height: 75px;">
+							<div class="mdl-card__actions mdl-card--border mdl-grid transparent "
+								style=" height: 75px;">
 
 								<c:if test="${platform.isDisabled == true}">
 									<button type="button" class="mdl-button mdl-js-button mdl-button--disabled"
@@ -200,7 +207,7 @@
 									</a>
 								</c:if>
 							</div>
-							<div class="mdl-card__menu">
+							<div class="mdl-card__menu" style="font-size:10px;">
 								<a href="${platform.link}" onclick="document.forceLoading();"><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">
@@ -216,9 +223,12 @@
 				</div>
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title ">
-							<h4>
+				<div class="mdl-cell mdl-cell--12-col ">
+					<div class="">
+							<h4 style="    background-color: #4d7da2;
+    height: 50px;
+    padding: 10px;
+}">
 							<i class="material-icons">whatshot</i> Top Users
 						</h4>
 					</div>
@@ -226,58 +236,53 @@
 						<!-- Deletable Contact Chip -->
 
 						<div>
-							<p>In the ranking section, you can see which ranking position
-								you hold compared to other community members. The more community
-								points you have the higher your rank will be. The ranking is the
-								basis on which MADANA decides how big the reward from community
-								campaigns will be for you. The higher your rank, the better the
-								reward will be.</p>
-							<br>
-							<hr>
+						
 							<table>
 
 								<tr class="tddefault">
-									<td class="subheading"><img src="${user1.image}" width="75"
+									<td class="" style="color:white;"><img src="${user1.image}" width="75"
 										height="75" class="circle "><a
 										href="/profile/<c:out value="${user1.userName}" />">
 											
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
-												<i class="material-icons" >face</i>
+												<i class="material-icons" >person</i>
 											</button> </a> <c:out value="${user1.userName}" /><c:if test="${user1.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
-											</c:if></td>
-									<td style="text-align:right;"><c:out
-											value="${user1.points}" /> CP</td>
+									<i class="material-icons">verified_user</i>
+											</c:if>	<span style="display:block"><c:out value="${user1.points}" /> CP</span>
+											</td>
+							
 								
 								</tr>
 								<tr class="tddefault">
-									<td  class="subheading"><img src="${user2.image}" width="75"
+									<td  style="color:white;"><img src="${user2.image}" width="75"
 										height="75" class="circle"> <a
 										href="/profile/<c:out value="${user2.userName}" />">
 											
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
-												<i class="material-icons" >face</i>
+												<i class="material-icons" >person</i>
 											</button> </a><c:out value="${user2.userName}" /><c:if test="${user2.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
-											</c:if></td>
-									<td style="text-align:right;"><c:out value="${user2.points}" /> CP</td>
+									<i class="material-icons">verified_user</i>
+											</c:if>
+												<span style="display:block"><c:out value="${user2.points}" /> CP</span></td>
+							
 							
 
 								</tr>
 								<tr class="tddefault">
-									<td class="subheading"><img src="${user3.image}" width="75"
+									<td style="color:white;"><img src="${user3.image}" width="75"
 										height="75" class="circle"><a
 										href="/profile/<c:out value="${user3.userName}" />">
 											
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle" >
-												<i class="material-icons" >face</i>
+												<i class="material-icons" >person</i>
 											</button> </a><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
-											</c:if></td>
-									<td style="text-align:right;"><c:out value="${user3.points}" /> CP</td>
+									<i class="material-icons">verified_user</i>
+											</c:if>
+											<span style="display:block"><c:out value="${user3.points}" /> CP</span></td>
+							
 								
 
 								</tr>
@@ -291,78 +296,69 @@
 								type="button"
 								class="mdl-button mdl-js-button  mdl-js-ripple-effect"
 								style="width: 100%;">
-								<i class="material-icons ">people</i> See all users
+								<i class="material-icons ">people</i> View Ranking
 							</button></a>
 
 					</div>
 				</div>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
-							<h4>
-							<i class="material-icons">timeline</i> User Stats
+<div class="  mdl-cell mdl-cell--12-col ">
+					<div class="">
+						<h4 style="background-color: #4d7da2;
+    height: 50px;
+    padding: 10px;">
+							<i class="material-icons">build</i> User Stats
 						</h4>
 					</div>
-					<div
-						class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+					<div class="">
 						<div>
 							<table>
 
-
-								<tr class="tddefault">
-									<td width=75px;>Users:</td>
-									<td align="left" width="10%"><c:out
+<tr class="tddefault">
+									<td width="50%">Users:</td>
+									<td align="left" width="50%"><c:out
 											value="${system.usercount}" /></td>
 								</tr>
 								<tr class="tddefault">
-									<td width=75px;>Currently active users:</td>
-									<td width="10%"><c:out value="${system.activeusercount}" /></td>
+									<td width="50%">Currently active:</td>
+									<td width="50%"><c:out value="${system.activeusercount}" /></td>
 								</tr>
 								<tr class="tddefault">
-									<td width=75px;>Points collected:</td>
-									<td width="10%"><c:out value="${system.rankingPointsSum}" /></td>
+									<td width="50%" >Points collected:</td>
+									<td width="50%"><c:out value="${system.rankingPointsSum}" /></td>
 								</tr>
 
-								<tr>
-
-
-								</tr>
-
-
-
+								
+							
 							</table>
 						</div>
 					</div>
-					<div class="mdl-card__actions mdl-card--border ">
-				
-					</div>
+					<div class="mdl-card__actions mdl-card--border">
+					
+						</div>
+					
 				</div>
-				<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
-						<h4>
+				<div class="  mdl-cell mdl-cell--12-col ">
+					<div class="">
+						<h4 style="background-color: #4d7da2;
+    height: 50px;
+    padding: 10px;">
 							<i class="material-icons">build</i> System Stats
 						</h4>
 					</div>
-					<div class="mdl-card__supporting-text meta">
+					<div class="">
 						<div>
 							<table>
 
 
-
 								<tr class="tddefault">
-									<td>Started:</td>
-									<td width="70%"><c:out value="${system.startup}" /></td>
+									<td width="50%">Started:</td>
+									<td width="50%"><c:out value="${system.startup}" /></td>
 								</tr>
 								<tr class="tddefault">
-									<td>Last update:</td>
-									<td width="70%"><c:out value="${system.useractionupdate}" /></td>
+									<td width="50%">Last update:</td>
+									<td width="50%"><c:out value="${system.useractionupdate}" /></td>
 								</tr>
-								<tr>
-
-
-								</tr>
-
-								</td>
-
+							
 							</table>
 						</div>
 					</div>
@@ -389,6 +385,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 
 
