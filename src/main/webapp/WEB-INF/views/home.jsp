@@ -82,7 +82,7 @@ $.each(response.items, function(k, item) {
 				//re-trim if we are in the middle of a word
 				trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 				output += '<p style="line-height: 22px;color:#274863">' + trimmedString + '...</p>';
-				output += '</div></div><a style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
+				output += '</div></div><a target="_blank" style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
     return k<0
                 });
 $content.html(output);

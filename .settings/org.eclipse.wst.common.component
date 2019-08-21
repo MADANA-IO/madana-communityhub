@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                                	
+                                                        	
+    
+    
     
     
     
@@ -12,7 +14,9 @@
     
     
     <wb-module deploy-name="madana-communityhub-1.0.0-BUILD-SNAPSHOT">
-                                                                                                        
+                                                                                                                        
+        
+        
         
         
         
@@ -25,7 +29,9 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                                                                		
+                                                                                                                		
+        
+        
         
         
         
@@ -38,7 +44,9 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                                                                                                		
+                                                                                                                		
+        
+        
         
         
         
@@ -51,7 +59,18 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                                                                                		
+        <dependent-module archiveName="madana-restclient-${bamboo.mcrestclient.version}.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MDN_RestClient/MDN_RestClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="madana-security-${bamboo.mcsecurity.version}.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MDN_Security/MDN_Security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="madana-datastructures-${bamboo.mcdatastructures.version}.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MDN_Datastructures/MDN_Datastructures">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                                                                                                                		
+        
+        
         
         
         
@@ -64,7 +83,9 @@
         
         
         <property name="java-output-path" value="target/classes"/>
-                                                                
+                                                                                
+        
+        
         
         
         
@@ -72,7 +93,9 @@
         
         
         <property name="context-root" value="madana-communityhub"/>
-                                                                                                	
+                                                                                                                	
+    
+    
     
     
     
@@ -85,7 +108,9 @@
     
     
     </wb-module>
-                                                
+                                                        
+
+
 
 
 
