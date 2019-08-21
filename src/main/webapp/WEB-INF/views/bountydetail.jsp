@@ -29,6 +29,9 @@ color:#4d7da2;
 		<div class="mdl-grid">
 			
 				<div class="mdl-cell mdl-cell--12-col ">
+					  <h2 style="background-color: #4d7da2;
+    height: 50px;width:100%;
+    ">Twitter bounty</h2>
 				    <!-- Tabs -->
    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
   <div class="mdl-tabs__tab-bar mdnheader" style="color:#f3f3f6;">

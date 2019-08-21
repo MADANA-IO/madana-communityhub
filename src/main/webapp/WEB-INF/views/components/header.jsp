@@ -77,9 +77,8 @@
   gtag('config', 'UA-106498074-4');
 </script>
 	
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/3c7b8ba2b9b6923997fd484e6a6c6162-T/-jyncwb/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=0e0352a0"></script>
-<script type="text/javascript" src="https://intranet.madana.io/jira/s/96d54b25af8f37d3ebe0fab1198cff95-T/4z7lt3/711000/124fd565435d239522ceadf76f2edbee/2.0.31/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=c539491a"></script>
+<script type="text/javascript" src="https://intranet.madana.io/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/2.2.4.6/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=310fbd12"></script><script type="text/javascript" src="https://intranet.madana.io/jira/s/57d9dd941d81787075f5df502cd5a087-T/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/3.0.7/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=310fbd12"></script>
+<script type="text/javascript" src="https://intranet.madana.io/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/2.2.4.6/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=8cb698c9"></script><script type="text/javascript" src="https://intranet.madana.io/jira/s/57d9dd941d81787075f5df502cd5a087-T/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/3.0.7/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=8cb698c9"></script>
 
 <script type="text/javascript">
 	// safely use jquery here since the issue collector will load it for you
@@ -90,7 +89,7 @@
 					{
 
 						// ==== feedback collector ====
-						"c539491a" : {
+						"8cb698c9" : {
 
 							// === custom trigger function ===
 								"triggerFunction" : function(showCollectorDialog) {
@@ -117,7 +116,7 @@
 
 						// ==== bug collector ====
 						,
-						"0e0352a0" : {
+						"310fbd12" : {
 							// === custom trigger function ===
 
 							"triggerFunction" : function(showCollectorDialog) {

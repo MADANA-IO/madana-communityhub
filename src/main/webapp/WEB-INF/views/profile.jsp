@@ -27,6 +27,9 @@ font-size:2.5vw;
 		<div class="mdl-grid   ">
 
 <div class="mdl-grid mdl-cell--12-col " class="" >
+     <h2 style="background-color: #4d7da2;
+    height: 50px;width:100%;
+    ">Profile of ${destprofile.userName}</h2>
 			<div class="mdl-cell mdl-cell--2-col ">
 
 				<img src="${destprofile.image}" height="150" width="150" class="circle">
@@ -38,7 +41,7 @@ font-size:2.5vw;
 				<h4>${destprofile.points}CP</h4>
 			</div>
 			</div>
-			<div class=" mdl-cell--8-col">
+			<div class=" mdl-cell--12-col">
 
 			
 	<h3>
@@ -107,11 +110,11 @@ font-size:2.5vw;
 				
 
 			</div>
-			<div class=" mdl-cell--4-col">
+			<div class=" mdl-cell--12-col">
 		
 
-        	<div class="mdl-card  mdl-cell mdl-cell--12-col transparent">
-					<div class="mdl-card__title">
+        	<div class=" mdl-cell mdl-cell--12-col">
+					<div class="">
 						<h4>
 							<i class="material-icons">history</i> Action History
 						</h4>
@@ -132,11 +135,11 @@ font-size:2.5vw;
 								style="width: 100%;"><span
 								class="mdl-list__item-primary-content"><span> <a
 										target="_blank" class="subheading" style="color:#4d7da2;" href="${object.link}">${object.text}</a></span> <span></span> <span
-									class="mdl-list__item-text-body subheading " style="font-size:80%;color:#274863"><img
+									class="mdl-list__item-text-body subheading " style="font-size:80%;color:white;"><img
 										src="${object.platformIcon}" height="30" width="30" style="margin-top:-10px;padding-right:5px; ">${object.actionIcon}
 										Received ${object.benefit} pts for ${object.action} on
 										${object.platform} </span> </span> <span
-								class="subheading" style="Font-size:60%">
+								class="subheading" style="Font-size:60%;color:#4d7da2;">
 									${object.created} </span></li>
 							<hr>
 						</c:forEach>

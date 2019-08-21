@@ -37,92 +37,107 @@
          <div class="mdl-grid" style="width:100%;" > 
          <div class="mdl-layout-spacer"></div>
          <div class="mdl-cell--12-col">
+         <h2 style="background-color: #4d7da2;
+    height: 50px;
+    ">Ranking</h2>
          <p>In this section, you can see which rank you hold compared to other community members. The more community points you have the higher your rank will be. The ranking is the basis on which MADANA decides how big the reward from community campaigns will be for you. The higher your rank, the better the reward will be.
 </p>
          </div>
+            <div class="mdl-cell--12-col mdl-grid" style="padding-top:50px;">
          	<div
-				class="mdl-card something-else mdl-cell--6-col-desktop mdl-cell--6-col-phone " style="background:transparent;">
-		  <div class="mdl-card__title mdl-card--expand " style="color:#274863;">
+				class="mdl-card something-else mdl-cell mdl-cell--4-col mdl-cell--12-col-phone " style="    margin-top: 80px;background: linear-gradient(180deg, #CCC2C2, transparent);
+    height: 325px;">
+		  <div class="mdl-card__title mdl-card--expand " style="color:white;">
   
-    <img src="${user1.image}" width="150" height="150" class ="circle"style="margin-right:25px;">
+    <img src="${user2.image}" width="100" height="100" class ="circle"style="margin-right:25px;">
     <div>
-    <h3 ><c:out value="${user1.userName}" />	<c:if test="${user1.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
+    <h3 ><c:out value="${user2.userName}" />	<c:if test="${user2.activated eq 'true'}">
+									<i class="material-icons">verified_user</i>
 											</c:if></h3>
     
-      <h4>${user1.points} CP</h4>
+    
     </div>
 
 
    
 
   </div>
-    <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#D9A441;">
-		
+    <div class="mdl-card__supporting-text   "   style="    width: 100%;
+   text-align: center;
+    color: #4d7da2;
+    background-color: white;">
+		  <h4>${user2.points} CP</h4>
 		</div>
 
 			<div class="mdl-card__menu">
-   <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-     	 <i class="material-icons">person</i>
-    </button></a>
-  </div>
-			</div>
-			<div class="mdl-layout-spacer"></div>
-         </div>
-        <div class="mdl-grid" style="width:100%;"> 
-        	     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop mdl-cell--12-col-phone " style="background:transparent;"">
-		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
-     
-    <img src="${user2.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
-    <div class="smallinfo">
-    <h3  ><c:out value="${user2.userName}" /><c:if test="${user2.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
-											</c:if></h3>
-    	
-      <h4 >${user2.points} CP</h4>
-    </div> 
-  </div>
-   <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#CCC2C2;">
-		
-		</div>
-<div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user2.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
      	 <i class="material-icons">person</i>
     </button></a>
   </div>
 			</div>
-			   <div class="mdl-layout-spacer"></div>
-			     	<div
-				class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--12-col-phone  mdl-cell--6-col-desktop " style="background:transparent;">
-		  <div class="mdl-card__title mdl-card--expand"  style="color:#274863;">
-     <img src="${user3.image}" width="150" height="150" class ="circle" style="margin-right:25px;">
+			
+  
+        	     	<div
+				class="mdl-card something-else mdl-cell mdl-cell--4-col mdl-cell--12-col-phone  " style="background: linear-gradient(180deg, #D9A441, transparent);
+    height: 400px;">
+		  <div class="mdl-card__title mdl-card--expand"  style="color:white;">
+     
+    <img src="${user1.image}" width="100" height="100" class ="circle" style="margin-right:25px;">
     <div class="smallinfo">
-    <h3 ><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
+    <h3  ><c:out value="${user1.userName}" /><c:if test="${user1.activated eq 'true'}">
+									<i class="material-icons">verified_user</i>
 											</c:if></h3>
     	
-      <h4>${user3.points} CP</h4>
+     
+    </div> 
+  </div>
+   <div class="mdl-card__supporting-text   "  style="    width: 100%;
+   text-align: center;
+    color: #4d7da2;
+    background-color: white;">
+		 <h4 >${user1.points} CP</h4>
+		</div>
+<div class="mdl-card__menu">
+   <a href="/profile/<c:out value="${user1.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+     	 <i class="material-icons">person</i>
+    </button></a>
+  </div>
+			</div>
+			
+			     	<div
+				class="mdl-card something-else mdl-cell mdl-cell--4-col mdl-cell--12-col-phone  " style="     margin-top: 155px;   background: linear-gradient(180deg, #965A38, transparent);
+    height: 250px;">
+		  <div class="mdl-card__title mdl-card--expand"  style="color:white;">
+     <img src="${user3.image}" width="100" height="100" class ="circle" style="margin-right:25px;">
+    <div class="smallinfo">
+    <h3 ><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
+									<i class="material-icons">verified_user</i>
+											</c:if></h3>
+    	
+    
     </div> 
    </div>
-   <div class="mdl-card__supporting-text   "  style="width:100%;background-color:#965A38;">
-		
+   <div class="mdl-card__supporting-text   "  style="    width: 100%;
+    text-align: center;
+    color: #4d7da2;
+    background-color: white;">
+		  <h4>${user3.points} CP</h4>
 		</div>
 <div class="mdl-card__menu">
    <a href="/profile/<c:out value="${user3.userName}" />" > <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect ">
      	 <i class="material-icons">person</i>
     </button></a>
   </div>
-  	
+  	      </div>
 			</div>
         </div>
-          <div class="mdl-cell mdl-cell--12-col ">
+          <div class="mdl-cell mdl-cell--12-col " style="padding-top:50px;">
   
 				<table
 					class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-descending  "
-					style="width: 100%">
+					style="width: 100%; color: #4d7da2;">
 					<thead>
-						<tr>
+						<tr style="    background-color: white;">
 							
 							<th>Rank & Username</th>
 							<th></th>
@@ -133,16 +148,22 @@
 					<tbody>
 						<c:forEach items="${users}" var="user" varStatus="myIndex">
 						<c:if test="${myIndex.index>2}">
-							<tr>
-								<td class="tblrank"><h4>${myIndex.index +1}.</h4></td>
-								<td style="text-align: left"><h4>
-							     <img src="${user.image}" width="75" height="75" class ="circle" style="margin-right:5px;">
+							<tr style="height:0!important; padding-top:0!important; padding-bottom:0!important;">
+								<td class="tblrank"><p style="    font-size: 16px;
+    letter-spacing: 0;
+    margin: 0px;">${myIndex.index +1}.</p></td>
+								<td style="text-align: left"><p style="    font-size: 16px;
+    letter-spacing: 0;
+    margin: 0px;">
+							     <img src="${user.image}" width="40" height="40" class ="circle" style="margin-right:5px;">
 										<c:out value="${user.userName}" />
 										<c:if test="${user.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
+									<i class="material-icons">verified_user</i>
 											</c:if>
-									</h4></td>
-								<td><h4 class="tblcp" style="margin-top:-10px;">${user.points} CP</h4></td>
+									</p></td>
+								<td><p class="tblcp mobilehide" style="    font-size: 16px;
+    letter-spacing: 0;
+    margin: 0px;">${user.points} CP</p></td>
 								<td >
 								<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
   	<a href="profile/<c:out value='${user.userName}' />"><i class="material-icons">person</i></a>

@@ -17,6 +17,9 @@
 		
 		
 			<div class="mdl-cell mdl-cell--12-col ">
+			  <h2 style="background-color: #4d7da2;
+    height: 50px;width:100%;
+    ">Referral bounty ${platformname} </h2>
 				<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background-color:transparent; color:white;">
 					<div class="">
 						<h2>Thanks for inviting ${fn:length(referrals)} users</h2>
@@ -24,7 +27,7 @@
 					<div class="  ">
 						<c:choose>
 							<c:when test="${platformname eq 'whitelisting'}">
-					<h4>Share the link below to get more CP and a 10% commission for every user who invests by using your referral link. You will be rewarded with additional 5000 CP</h4>
+					<h4>Users who referred other users to the whitelisting get a 10% commission for every investment made. 5000 CP will be rewarded in addition</h4>
 							</c:when>
 							<c:otherwise>
 								<h4>Share the link below to get more CP. For every user who
@@ -70,7 +73,7 @@
 								  <li class="mdl-list__item mdl-list__item--two-line">
     <span class="mdl-list__item-primary-content" style="height:75px">
      <img src="${object.image}" width="50" height="50" class="circle"> <c:if test="${object.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
+									<i class="material-icons">verified_user</i>
 											</c:if>
       <span> <a	href="https://communityhub.madana.io/profile/${object.userName}" class="subheading" style="color:#a0c3e8;font-size:24px;">${object.userName}(${object.points})</a></span>
       <span class="mdl-list__item-sub-title" style="padding-left:75px;margin-top:-15px;"> ${object.created} </span>
@@ -81,7 +84,7 @@
 											
 									 <button
 												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " >
-												<i class="material-icons" >face</i>
+												<i class="material-icons" >person</i>
 											</button> </a>
 											
  

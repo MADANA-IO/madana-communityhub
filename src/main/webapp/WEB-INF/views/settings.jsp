@@ -31,22 +31,58 @@
 
 			<div
 				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent;">
-				<div class="mdl-card__title" style="color:#274863;">
-					<img src="${user.image}" class ="circle">
+				     <h2 style="background-color: #4d7da2;
+    height: 50px;
+    ">Settings</h2>
+    				<span>You have successfully logged in. <br> Please have a look at
+					the information we collected from you. Your email is private,
+					everything else can be discovered by everyone. <br> <br></span>
+				<div class="mdl-card__title" style="">
+					<img style="    position: relative;
+    top: 60px;"src="${user.image}" class ="circle">
 					<h3>${user.userName}<c:if test="${user.activated eq 'true'}">
-									<i class="material-icons">check_circle</i>
+									<i class="material-icons">verified_user</i>
 											</c:if></h3>
 				</div>
 
-				<div class="">
-					<span>You have successfully logged in. <br> Please have a look at
-					the information we collected from you. Your email is private,
-					everything else can be discovered by everyone. <br> <br></span>
+				<div class="" style="    padding-left: 170px;
+    width: 60%;
+    margin-top: -50px;">
+	<div>
+							<table style="color:white;">
+
+								<tr class="tddefault ">
+									<td >Signed up with username: <c:out
+											value="${user.userName}" /></td>
+								
+								</tr>
+								<tr class="tddefault">
+									<td >Registered E-Mail: <c:out value="${user.mail}" /> </td>
+								</tr>
+
+								<tr class="tddefault">
+									<td >Member since: <c:out value="${user.created}" /></td>
+								</tr>
+								<tr class="tddefault">
+									<td >Last seen: <c:out value="${user.lastActive}" /></td>
+								</tr>
+							
+	<tr class="tddefault">
+									<td ><br><br></td>
+								</tr>
+							</table>
+						</div>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 					<button id="changeavatarbutton" type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
 						avatar</button>
+							<button id="show-changepassword" type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+							password</button>
+						<button id="show-changemail" type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+							E-Mail</button>
 					<dialog class="mdl-dialog" id="changeavatar">
 					<h4 class="mdl-dialog__title" style="text-align: center">Change
 						Avatar</h4>
@@ -133,77 +169,7 @@
 
 			</div>
 			<div class="mdl-grid mdl-cell mdl-cell--12-col ">
-				<div class="mdl-card  mdl-cell mdl-cell--6-col " style="background:transparent">
-					<div class="mdl-card__title" style="color:#274863;">
-					<h2>
-							<i class="material-icons material-heading" >perm_identity</i> Private Details
-						</h2>
-					</div>
-					<div class=" ">
-						<div class="minilogo"></div>
-						<div>
-							<table class="subheading">
-
-								<td width="50%;">
-								<tr class="tddefault ">
-									<td width=20%;>Username:</td>
-									<td align="left" width="10%"><c:out
-											value="${user.userName}" /></td>
-								</tr>
-								<tr class="tddefault">
-									<td width=20%;>E-Mail:</td>
-									<td width="10%"><c:out value="${user.mail}" /> </td>
-								</tr>
-								<!-- 
-							<tr class="tddefault">
-								<td width=20%;>Firstname:</td>
-								<td width="10%"><c:out value="${user.firstName}" /></td>
-							</tr>
-							<tr class="tddefault">
-								<td width=20%;>Lastname:</td>
-								<td width="10%"><c:out value="${user.lastName}" /></td>
-							</tr>
-							 -->
-								<tr class="tddefault">
-									<td width=20%;>Member since:</td>
-									<td width="10%"><c:out value="${user.created}" /></td>
-								</tr>
-								<tr class="tddefault">
-									<td width=20%;>Last login:</td>
-									<td width="10%"><c:out value="${user.lastActive}" /></td>
-								</tr>
-								<tr>
-
-
-								</tr>
-
-								</td>
-
-							</table>
-						</div>
-					</div>
-					<div class="mdl-card__actions mdl-card--border">
-						<button id="show-changepassword" type="button"
-							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
-							password</button>
-						<button id="show-changemail" type="button"
-							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
-							E-Mail</button>
-						
-							<c:if test="${!user.activated eq 'true'}">
-								
-											
-								<a  class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised " style="margin-left:10px;" href="/settings/verifymail"><i class="material-icons">check_circle</i> verify
-							E-Mail
-									</a></c:if>
-									
-										<c:if test="${user.activated eq 'true'}">
-								
-											
-								  <span> E-Mail verified!</span></c:if>
-								  <a  class="mdl-button mdl-js-button mdl-button--raised " href="deleteaccount" style="background-color:#a2574d;">Delete Account</a>
-					</div>
-					</div>
+			
 				
 				<dialog class="mdl-dialog" id="changemaildialog">
 				<h4 class="mdl-dialog__title" style="text-align: center">Change
@@ -282,38 +248,9 @@
     		});
 
   </script>
-  			<div class="mdl-card  mdl-cell mdl-cell--8-col " style="background:transparent">
-					<div class="mdl-card__title"style="color:#274863;">
-					<h2>
-							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
-						</h2>
-						</div>
-					<div class="mdl-card__supporting-text meta">
-
-						<ul class="demo-list-control mdl-list">
-							<c:forEach var="setting" items="${user.settings}">
-								<li class="mdl-list__item mdl-list__item--three-line"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-avatar" style="background:transparent;color:#274863;">settings</i> <span class="subheading">
-											${setting.name}</span> <span class="mdl-list__item-text-body">
-											${setting.description} </span>
-								</span> <span class="mdl-list__item-secondary-action"> <label
-										id="label${setting.id}"
-										class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-										for="${setting.id}"> <input type="checkbox"
-											id="${setting.id}" class="mdl-switch__input"
-											<c:if test="${setting.value == 'true'}">checked</c:if> />
-									</label>
-								</span></li>
-							</c:forEach>
-
-						</ul>
-
-					</div>
-					</div>
-  	<div
-				class="mdl-card  mdl-cell mdl-cell--6-col mdl-cell--4-col-desktop transparent">
-			<div class="mdl-card__title">
+  <div
+				class="  mdl-cell mdl-cell--12-col " style="color:white;">
+			<div class="">
 					<h2>
 							<i class="material-icons material-heading" >link</i> Linked Accounts
 						</h2>
@@ -334,9 +271,9 @@
 									src="${socialuser.image}" alt="${socialuser.platform}"
 									height="50" width="50" class=""
 									style="margin-bottom: -15px; padding-right: 10px; height: 30px; width: 40px;">
-									<span class="subheading"> ${socialuser.platform}</span> <span
+									<span class="subheading" style="color:white;"> ${socialuser.platform}</span> <span
 									class="mdl-list__item-text-body"
-									style="align: center; padding-left: 50px;">
+									style="align: center; color:#4d7da2;padding-left: 50px;">
 										${socialuser.ident}</span>
 							</span> <span class="mdl-list__item-secondary-action">
 									<!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
@@ -349,6 +286,40 @@
 					</ul>
 				</div>
 			</div>
+  			<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
+					<div class="mdl-card__title"style="color:white;">
+					<h2>
+							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
+						</h2>
+						</div>
+					<div class="mdl-card__supporting-text meta">
+
+						<ul class="demo-list-control mdl-list">
+							<c:forEach var="setting" items="${user.settings}">
+								<li class="mdl-list__item mdl-list__item--three-line"><span
+									class="mdl-list__item-primary-content"> <i
+										class="material-icons mdl-list__item-avatar" style="background:transparent;">settings</i> <span style="color:white"class="subheading">
+											${setting.name}</span> <span class="mdl-list__item-text-body" style="color:#4d7da2">
+											${setting.description} </span>
+								</span> <span class="mdl-list__item-secondary-action"> <label
+										id="label${setting.id}"
+										class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+										for="${setting.id}"> <input type="checkbox"
+											id="${setting.id}" class="mdl-switch__input"
+											<c:if test="${setting.value == 'true'}">checked</c:if> />
+									</label>
+								</span></li>
+							</c:forEach>
+
+						</ul>
+
+					</div>
+					</div>
+					<div class="mdl-cel--12-col">
+									  <a  class="mdl-button mdl-js-button mdl-button--raised " href="deleteaccount" style="    background-color: transparent;
+    color: indianred;">Delete Account</a>
+			</div>
+  	
 	
 					<script>
 						<c:forEach var="setting" items="${user.settings}">

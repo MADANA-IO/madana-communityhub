@@ -16,6 +16,9 @@
 
 		<div class="mdl-layout__content content" style="height: 100%">
 <div class="mdl-grid mdl-cell mdl-cell--12-col ">
+     <h2 style="background-color: #4d7da2;
+    height: 50px;width:100%;
+    ">News</h2>
 </div>
 
 			<div class="mdl-grid mdl-cell mdl-cell--12-col ">
@@ -39,26 +42,26 @@ $.get('https://api.rss2json.com/v1/api.json', data, function(response) {
                 
                 var output = '';
 $.each(response.items, function(k, item) {
-                output += '<div class="col-sm-4" style="padding:10px;margin-bottom: 40px;color:#274863"">';
-				output += '<div style="background-color:white;" class=""><header style="position: relative">';
+                output += '<div class="col-sm-12" style="padding:10px;margin-bottom: 40px;color:#274863"">';
+				output += '<div style="color:white;" class=""><header style="position: relative">';
 			  	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">' + moment(item.pubDate).format("DD<br>MMM")+ "</h4>";
 				var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
 				var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
 				var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
 				var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
 				var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-				output += '<div style ="text-transform: uppercase;;"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="' + src + '" width="100%" height="240px"></a></div></header>';
-				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#274863" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
+				output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="' + src + '" width="100%" height="200px"></a></div></header>';
+				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
 				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
   
 				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
-				var maxLength = 250 // maximum number of characters to extract
+				var maxLength = 1500 ;// maximum number of characters to extract
 				//trim the string to the maximum length
 				var trimmedString = yourString.substr(0, maxLength);
 				//re-trim if we are in the middle of a word
 				trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 				output += '<p style="line-height: 22px;color:#274863">' + trimmedString + '...</p>';
-				output += '</div></div></div>';
+				output += '</div></div><a style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
     return k<8
                 });
 $content.html(output);

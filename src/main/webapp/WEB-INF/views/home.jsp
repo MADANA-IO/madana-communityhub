@@ -11,7 +11,9 @@
 background-color:transparent;
 }
 </style>
-
+		<script type="text/javascript"	src="https://explorer.madana.io/resources/moment.js"></script>
+	<script type="text/javascript"
+	src="https://explorer.madana.io//resources/livestamp.js"></script>
 <body>
 	<div
 		class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -22,7 +24,9 @@ background-color:transparent;
 		<div class="mdl-grid">
 
 			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
-				<h2>Welcome !</h2>
+				       <h2 style="background-color: #4d7da2;
+    height: 50px;width:100%;
+    ">Home</h2>
 				<p>The Community Hub will be the future home of our community.
 					Here you will be able to get the newest information about the
 					progress and development of MADANA, engage actively in community
@@ -33,6 +37,60 @@ background-color:transparent;
 					points influence your ranking on which basis MADANA decides how big
 					the reward from community campaigns for you will be. The higher
 					your rank, the better the reward will be.
+			</div>
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid"> 
+				<h3>
+							<i class="material-icons material-heading">announcement</i> Latest News
+						</h3>
+			<div  class ="row" style="padding-left:25px;padding-right:25px;"id="medium"></div>
+			<a href="/news" style="width: 90%;text-align:center;">
+			<button id="" type="button"
+								class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+								style="width: 90%;">
+								<i class="material-icons">message</i> See latest News
+							</button>
+		</a>
+				    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var $content = $('#medium');
+        var data = {
+            rss_url: 'https://blog.madana.io/feed/'
+        };
+$.get('https://api.rss2json.com/v1/api.json', data, function(response) {
+            if (response.status == 'ok') 
+            {
+                
+                var output = '';
+$.each(response.items, function(k, item) {
+                output += '<div class="col-sm-12" style="padding:10px;margin-bottom: 40px;color:#274863"">';
+				output += '<div style="color:white;" class=""><header style="position: relative">';
+			  	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">' + moment(item.pubDate).format("DD<br>MMM")+ "</h4>";
+				var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
+				var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
+				var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
+				var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
+				var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
+				output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="' + src + '"  style="height:350px;width:100%; "></a></div></header>';
+				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
+				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
+  
+				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
+				var maxLength = 1500 ;// maximum number of characters to extract
+				//trim the string to the maximum length
+				var trimmedString = yourString.substr(0, maxLength);
+				//re-trim if we are in the middle of a word
+				trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+				output += '<p style="line-height: 22px;color:#274863">' + trimmedString + '...</p>';
+				output += '</div></div><a style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
+    return k<0
+                });
+$content.html(output);
+}
+});
+});
+</script>
+
 			</div>
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
@@ -250,11 +308,11 @@ background-color:transparent;
 
 						<div>
 						
-							<table>
+							<table style="width:100%">
 
-								<tr class="tddefault">
-									<td class="" style="color:white;"><img src="${user1.image}" width="75"
-										height="75" class="circle "><a
+								<tr class="tddefault" style="  background-image: linear-gradient(to right, #D9A441, rgba(255,255,255,0.1));;">
+									<td class="" style="color:white;"><img src="${user1.image}" width="60"
+										height="60" class="circle "><a
 										href="/profile/<c:out value="${user1.userName}" />">
 											
 									 <button
@@ -262,14 +320,19 @@ background-color:transparent;
 												<i class="material-icons" >person</i>
 											</button> </a> <c:out value="${user1.userName}" /><c:if test="${user1.activated eq 'true'}">
 									<i class="material-icons">verified_user</i>
-											</c:if>	<span style="display:block"><c:out value="${user1.points}" /> CP</span>
+											</c:if>	<span style="    display: block;
+    font-size: 14px;
+    position: relative;
+    left: 120px;
+    bottom: 20px;
+    color: #274863;"><c:out value="${user1.points}" /> CP</span>
 											</td>
 							
 								
 								</tr>
-								<tr class="tddefault">
-									<td  style="color:white;"><img src="${user2.image}" width="75"
-										height="75" class="circle"> <a
+								<tr class="tddefault" style=" background-image: linear-gradient(to right, #CCC2C2 50%, rgba(255,255,255,0.1));">
+									<td  style="color:white; "><img src="${user2.image}" width="60"
+										height="60" class="circle"> <a 
 										href="/profile/<c:out value="${user2.userName}" />">
 											
 									 <button
@@ -278,14 +341,19 @@ background-color:transparent;
 											</button> </a><c:out value="${user2.userName}" /><c:if test="${user2.activated eq 'true'}">
 									<i class="material-icons">verified_user</i>
 											</c:if>
-												<span style="display:block"><c:out value="${user2.points}" /> CP</span></td>
+												<span style="    display: block;
+    font-size: 14px;
+    position: relative;
+    left: 120px;
+    bottom: 20px;
+    color: #274863;"><c:out value="${user2.points}" /> CP</span></td>
 							
 							
 
 								</tr>
-								<tr class="tddefault">
-									<td style="color:white;"><img src="${user3.image}" width="75"
-										height="75" class="circle"><a
+								<tr class="tddefault" style="background-image: linear-gradient(to right, #965A38 50%, rgba(255,255,255,0.1));">
+									<td style="color:white;"><img src="${user3.image}" width="60"
+										height="60" class="circle"><a
 										href="/profile/<c:out value="${user3.userName}" />">
 											
 									 <button
@@ -294,7 +362,12 @@ background-color:transparent;
 											</button> </a><c:out value="${user3.userName}" /><c:if test="${user3.activated eq 'true'}">
 									<i class="material-icons">verified_user</i>
 											</c:if>
-											<span style="display:block"><c:out value="${user3.points}" /> CP</span></td>
+											<span style="    display: block;
+    font-size: 14px;
+    position: relative;
+    left: 120px;
+    bottom: 20px;
+    color: #274863;"><c:out value="${user3.points}" /> CP</span></td>
 							
 								
 
@@ -398,6 +471,52 @@ background-color:transparent;
 						</div>
 					</div>
 				</div>
+			</div>
+				<div class=" mdl-cell mdl-cell--12-col mdl-grid"> 
+				<hr>
+				<h3>
+							<i class="material-icons material-heading">share</i> Check our reddit
+						</h3>
+			<div  class ="mdl-grid" style="padding-left:25px;padding-right:25px;"id="reddit"></div>
+			    <script type="text/javascript">
+    $(function() {
+        var $content = $('#reddit');
+        var data = {
+            rss_url: 'https://www.reddit.com/r/MADANA.rss'
+        };
+$.get('https://api.rss2json.com/v1/api.json', data, function(response) {
+            if (response.status == 'ok') 
+            {
+                
+                var output = '';
+$.each(response.items, function(k, item) {
+	var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
+	var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
+	var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
+	var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
+	var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
+                output += '<div class="mdl-cell--12-col mdl-grid">';
+                output += '<div class="mdl-cell--2-col " style="">';
+				output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="padding:25px" class="img-responsive" src="' + src + '"  ></a></div>';
+                output += '</div>';
+                output += '<div class="mdl-cell--10-col " style="">';
+            
+				output += '<h5><a style="color:#4d7da2 font-size:14px;" target="_blank" href="'+ item.link + '">' + item.title + '</a></h5>';
+				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2"><span style="color:#b2d1ef"> Created <span  data-livestamp="'+ item.pubDate+'">'+ item.pubDate+'"</span> by ' + item.author + '</span></div>';
+  
+				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
+	
+                output += '</div>';
+                
+                output += '</div>';
+                
+    return k<10;
+                });
+$content.html(output);
+}
+});
+});
+</script>
 			</div>
 			</div>
 
