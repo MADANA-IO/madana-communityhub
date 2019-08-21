@@ -36,8 +36,12 @@
 						<div></div>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
-				
-						<textarea id="copytext" class="mdl-textfield__input subheading" type="text"
+									<c:choose>
+							<c:when test="${platformname eq 'whitelisting'}">
+					<h5>Ended on 08.08.2019</h5>
+							</c:when>
+							<c:otherwise>
+							<textarea id="copytext" class="mdl-textfield__input subheading" type="text"
 							rows="4" disabled style="color: #4d7da2;">${platform.link}?referrer=${user.guid}</textarea>
 						<div class="mdl-cell mdl-cell--6-col" text-align="center">
 							<button
@@ -45,7 +49,12 @@
 								onclick="CopyToClipboard('copytext')">
 								<i class="material-icons">file_copy</i> copy Link
 							</button>
-						</div>
+							</div>
+							</c:otherwise>
+						</c:choose>
+				
+						
+						
 					</div>
 
 

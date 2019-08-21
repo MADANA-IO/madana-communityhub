@@ -175,7 +175,11 @@ background-color:transparent;
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<span class="mdl-cell--3-col"> 
-									<!-- 	<span style="padding:5px;">${fn:length(platform.referrals)}</span> -->
+										<c:if test="${platform.name == 'Whitelisting'}">
+									<p style="    position: relative;
+    bottom: -80px;
+    width: 350px;">Ended on 08.08.2019</p>
+									</c:if>
 									</span>
 								</div>
 							</div>
@@ -208,11 +212,20 @@ background-color:transparent;
 								</c:if>
 							</div>
 							<div class="mdl-card__menu" style="font-size:10px;">
+											<c:choose>
+							<c:when test="${platform.name == 'Whitelisting'}">
+				
+							</c:when>
+							<c:otherwise>
+					
 								<a href="${platform.link}" onclick="document.forceLoading();"><button
 										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
 										style="align: center">
 										<i class="material-icons">open_in_new</i>
 									</button> ${platform.name}</a>
+							</c:otherwise>
+						</c:choose>
+						
 							</div>
 
 						</div>

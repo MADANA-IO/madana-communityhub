@@ -7,7 +7,7 @@
 <jsp:include page="components/header.jsp" />
 <body>
 	<div
-		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 		<jsp:include page="components/menu.jsp" />
 
