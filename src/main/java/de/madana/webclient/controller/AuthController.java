@@ -71,4 +71,36 @@ public class AuthController
 		SessionHandler.getClient(session).setFacebookUID(code);
 		return "redirect:/home";
 	}
+
+	@RequestMapping(value = "/auth/ethereum" , method = RequestMethod.GET)
+	public String authEthereumWallet(HttpSession session, Model model)
+	{
+		return "ethereum";
+	}
+
+	@RequestMapping(value = "/auth/ethereum", method = RequestMethod.POST, params = "wallet", produces = "application/json")
+	public String getEthereumVerificationNonce(HttpSession session, @RequestParam("wallet") String wallet, Model model) throws ClientNotInitizializedException 
+	{
+		try {
+			String nonce = SessionHandler.getClient(session).getEthereumVerificationNonce(wallet);
+			model.addAttribute("nonce", nonce );
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		}
+
+		return "ethereum";
+	}
+	
+	@RequestMapping(value = "/auth/ethereum", method = RequestMethod.POST, params = { "wallet", "nonce", "signature" }, produces = "application/json")
+	public String getEthereumVerificationNonce(HttpSession session, @RequestParam("wallet") String wallet, @RequestParam("nonce") String nonce, @RequestParam("signature") String signature, Model model) throws ClientNotInitizializedException 
+	{
+		try {
+			SessionHandler.getClient(session).verifyEthereumWallet(wallet, nonce, signature);
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "ethereum";
+		}
+		return "redirect:/home/";
+	}
+
 }
