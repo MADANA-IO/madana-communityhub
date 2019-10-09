@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.madana.webclient.filter;
+package com.madana.webclient.filter;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.ModelAndView;
 
-import de.madana.webclient.exceptions.ClientNotInitizializedException;
-import de.madana.webclient.exceptions.UserNotAuthenticatedException;
+import com.madana.webclient.exceptions.ClientNotInitizializedException;
+import com.madana.webclient.exceptions.UserNotAuthenticatedException;
 
 /**
  * @author J.-Fabian Wenisch

@@ -18,7 +18,7 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.bean;
+package com.madana.webclient.bean;
 
 public class LoginBean {
 

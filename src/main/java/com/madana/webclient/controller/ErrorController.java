@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.madana.webclient.controller;
+package com.madana.webclient.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

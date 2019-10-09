@@ -22,5 +22,5 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<context:component-scan base-package="de.madana.webclient.controller" />
+	<context:component-scan base-package="com.madana.webclient.controller" />
 </beans:beans>

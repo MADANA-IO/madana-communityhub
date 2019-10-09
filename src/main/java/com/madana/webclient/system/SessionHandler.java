@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.madana.webclient.system;
+package com.madana.webclient.system;
 
 import java.io.InputStream;
 import java.security.cert.X509Certificate;
@@ -10,10 +10,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpSession;
 
-import de.madana.common.datastructures.MDN_UserProfile;
-import de.madana.common.restclient.MDN_RestClient;
-import de.madana.common.security.certficate.CertificateHandler;
-import de.madana.webclient.exceptions.ClientNotInitizializedException;
+import com.madana.common.datastructures.MDN_UserProfile;
+import com.madana.common.restclient.MDN_RestClient;
+import com.madana.common.security.certficate.CertificateHandler;
+import com.madana.webclient.exceptions.ClientNotInitizializedException;
 
 /**
  * @author J.-Fabian Wenisch

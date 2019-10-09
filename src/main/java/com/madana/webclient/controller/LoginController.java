@@ -18,7 +18,7 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.controller;
+package com.madana.webclient.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,16 +33,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.madana.common.datastructures.MDN_MailAddress;
-import de.madana.common.datastructures.MDN_PasswordReset;
-import de.madana.common.restclient.MDN_RestClient;
-import de.madana.webclient.bean.LoginBean;
-import de.madana.webclient.bean.ResetPasswordBean;
-import de.madana.webclient.bean.SetPasswordBean;
-import de.madana.webclient.dto.RegisterUser;
-import de.madana.webclient.exceptions.ClientNotInitizializedException;
-import de.madana.webclient.system.BackendHandler;
-import de.madana.webclient.system.SessionHandler;
+import com.madana.common.datastructures.MDN_MailAddress;
+import com.madana.common.datastructures.MDN_PasswordReset;
+import com.madana.common.restclient.MDN_RestClient;
+import com.madana.webclient.bean.LoginBean;
+import com.madana.webclient.bean.ResetPasswordBean;
+import com.madana.webclient.bean.SetPasswordBean;
+import com.madana.webclient.dto.RegisterUser;
+import com.madana.webclient.exceptions.ClientNotInitizializedException;
+import com.madana.webclient.system.BackendHandler;
+import com.madana.webclient.system.SessionHandler;
 
 @Controller
 @Scope("session")

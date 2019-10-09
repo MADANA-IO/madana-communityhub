@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.madana.webclient.controller;
+package com.madana.webclient.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.DefaultValue;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.madana.common.security.RandomString;
-import de.madana.webclient.exceptions.ClientNotInitizializedException;
-import de.madana.webclient.system.SessionHandler;
+import com.madana.common.security.RandomString;
+import com.madana.webclient.exceptions.ClientNotInitizializedException;
+import com.madana.webclient.system.SessionHandler;
 
 /**
  * @author J.-Fabian Wenisch

@@ -18,17 +18,31 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.bean;
+package com.madana.webclient.dto;
 
-public class ResetPasswordBean 
+import java.util.List;
+
+import com.madana.common.datastructures.MDN_SocialPlatform;
+import com.madana.common.datastructures.MDN_UserProfile;
+
+public class ReferralSocialPlatform extends MDN_SocialPlatform
 {
-	private String mail;
+	List<MDN_UserProfile> referrals;
+	public String isVerifiedByUser = "false";
 
-	public String getMail() {
-		return mail;
+	public String getIsVerifiedByUser() {
+		return isVerifiedByUser;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setIsVerifiedByUser(String isVerifiedByUser) {
+		this.isVerifiedByUser = isVerifiedByUser;
+	}
+
+	public List<MDN_UserProfile> getReferrals() {
+		return referrals;
+	}
+
+	public void setReferrals(List<MDN_UserProfile> referrals) {
+		this.referrals = referrals;
 	}
 }

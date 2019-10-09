@@ -18,38 +18,31 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.dto;
+package com.madana.webclient.dto;
 
-public class RegisterUser
+import java.util.HashMap;
+import java.util.Map;
+
+import com.madana.common.datastructures.MDN_SocialPlatform;
+
+public class UserSpecificSocialPlatform extends MDN_SocialPlatform
 {
-    private String password;
-    private String matchingPassword;
-    private String username;
-    private String email;
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getMatchingPassword() {
-		return matchingPassword;
-	}
-	public void setMatchingPassword(String matchingPassword) {
-		this.matchingPassword = matchingPassword;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-     
+	public Map<String, String> oActions = new HashMap<String, String>();
+	public String isVerifiedByUser = "false";
 
+	public String getIsVerifiedByUser() {
+		return isVerifiedByUser;
+	}
+
+	public void setIsVerifiedByUser(String isVerifiedByUser) {
+		this.isVerifiedByUser = isVerifiedByUser;
+	}
+
+	public Map<String, String> getoActions() {
+		return oActions;
+	}
+
+	public void setoActions(Map<String, String> oActions) {
+		this.oActions = oActions;
+	}
 }

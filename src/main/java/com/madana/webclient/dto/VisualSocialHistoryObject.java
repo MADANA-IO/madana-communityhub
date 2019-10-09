@@ -18,9 +18,9 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.dto;
+package com.madana.webclient.dto;
 
-import de.madana.common.datastructures.MDN_SocialHistoryObject;
+import com.madana.common.datastructures.MDN_SocialHistoryObject;
 
 public class VisualSocialHistoryObject extends MDN_SocialHistoryObject
 {

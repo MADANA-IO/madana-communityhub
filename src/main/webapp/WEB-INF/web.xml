@@ -6,7 +6,7 @@
 </error-page>
 <filter> 
     <filter-name>exceptionHandlerFilter</filter-name> 
-    <filter-class>de.madana.webclient.filter.ExceptionHandlerFilter</filter-class> 
+    <filter-class>com.madana.webclient.filter.ExceptionHandlerFilter</filter-class> 
 </filter> 
   <filter-mapping>
     <filter-name>exceptionHandlerFilter</filter-name>

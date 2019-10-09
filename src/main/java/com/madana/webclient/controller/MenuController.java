@@ -18,7 +18,7 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.controller;
+package com.madana.webclient.controller;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -37,22 +37,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.madana.common.datastructures.MDN_PersonalSocialPost;
-import de.madana.common.datastructures.MDN_SimpleUserProfile;
-import de.madana.common.datastructures.MDN_SocialHistoryObject;
-import de.madana.common.datastructures.MDN_SocialPlatform;
-import de.madana.common.datastructures.MDN_User;
-import de.madana.common.datastructures.MDN_UserProfile;
-import de.madana.common.datastructures.MDN_UserProfileImage;
-import de.madana.common.datastructures.MDN_UserSetting;
-import de.madana.common.restclient.MDN_RestClient;
-import de.madana.webclient.dto.ReferralSocialPlatform;
-import de.madana.webclient.dto.UserSpecificSocialPlatform;
-import de.madana.webclient.dto.VisualSocialHistoryObject;
-import de.madana.webclient.exceptions.ClientNotInitizializedException;
-import de.madana.webclient.exceptions.UserNotAuthenticatedException;
-import de.madana.webclient.system.BackendHandler;
-import de.madana.webclient.system.SessionHandler;
+import com.madana.common.datastructures.MDN_PersonalSocialPost;
+import com.madana.common.datastructures.MDN_SimpleUserProfile;
+import com.madana.common.datastructures.MDN_SocialHistoryObject;
+import com.madana.common.datastructures.MDN_SocialPlatform;
+import com.madana.common.datastructures.MDN_User;
+import com.madana.common.datastructures.MDN_UserProfile;
+import com.madana.common.datastructures.MDN_UserProfileImage;
+import com.madana.common.datastructures.MDN_UserSetting;
+import com.madana.common.restclient.MDN_RestClient;
+import com.madana.webclient.dto.ReferralSocialPlatform;
+import com.madana.webclient.dto.UserSpecificSocialPlatform;
+import com.madana.webclient.dto.VisualSocialHistoryObject;
+import com.madana.webclient.exceptions.ClientNotInitizializedException;
+import com.madana.webclient.exceptions.UserNotAuthenticatedException;
+import com.madana.webclient.system.BackendHandler;
+import com.madana.webclient.system.SessionHandler;
 
 @Controller
 @Scope("session")

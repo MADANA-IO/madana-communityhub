@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.madana</groupId>
+	<groupId>com.madana</groupId>
 	<name>MADANA Community Hub</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	      <repositories>
+		<repository>
+		  <id>github</id>
+		  <name>GitHub MADANA-IO Apache Maven Packages</name>
+		  <url>https://maven.pkg.github.com/madana-io/madana-common</url>
+		</repository>
+	      </repositories>
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>4.0.2.RELEASE</org.springframework-version>
@@ -17,19 +24,19 @@
     <system>MADANA Jira</system>
     <url>https://intranet.madana.io/jira/browse/DEV</url>
   </issueManagement>
-	<dependencies>
+<dependencies>
 	<dependency>
-  <groupId>jstl</groupId>
-  <artifactId>jstl</artifactId>
-  <version>1.2</version>
-  <scope>compile</scope>
-</dependency>
-<dependency>
-  <groupId>taglibs</groupId>
-  <artifactId>standard</artifactId>
-  <version>1.1.2</version>
-  <scope>compile</scope>
-</dependency>
+	  <groupId>jstl</groupId>
+	  <artifactId>jstl</artifactId>
+	  <version>1.2</version>
+	  <scope>compile</scope>
+	</dependency>
+	<dependency>
+	  <groupId>taglibs</groupId>
+	  <artifactId>standard</artifactId>
+	  <version>1.1.2</version>
+	  <scope>compile</scope>
+	</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -136,28 +143,28 @@
 			<artifactId>twitter4j-stream</artifactId>
 			<version>4.0.6</version>
 		</dependency>
-<dependency>
-	<groupId>org.glassfish</groupId>
-	<artifactId>javax.json</artifactId>
-	<version>1.1.3</version>
-</dependency>
+	<dependency>
+		<groupId>org.glassfish</groupId>
+		<artifactId>javax.json</artifactId>
+		<version>1.1.3</version>
+	</dependency>
 
 
-		<dependency>
-			<groupId>de.madana.common</groupId>
-			<artifactId>madana-restclient</artifactId>
-			<version>LATEST</version>
-		</dependency>
-		<dependency>
-			<groupId>de.madana.common</groupId>
-			<artifactId>madana-security</artifactId>
-			<version>LATEST</version>
-		</dependency>
-		<dependency>
-			<groupId>de.madana.common</groupId>
-			<artifactId>madana-datastructures</artifactId>
-			<version>LATEST</version>
-		</dependency>
+	<dependency>
+	  <groupId>com.madana.common</groupId>
+	  <artifactId>madana-common-restclient</artifactId>
+	  <version>0.1.27</version>
+	</dependency>
+	<dependency>
+		<groupId>com.madana.common</groupId>
+		<artifactId>madana-common-security</artifactId>
+		<version>0.1.27</version>
+	</dependency>
+	<dependency>
+		<groupId>com.madana.common</groupId>
+		<artifactId>madana-common-datastructures</artifactId>
+		<version>0.1.23</version>
+	</dependency>
 	</dependencies>
 	<reporting>
 		<plugins>

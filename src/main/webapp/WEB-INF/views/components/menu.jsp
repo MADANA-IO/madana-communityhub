@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page import="java.util.ResourceBundle"%>
-<% ResourceBundle resource = ResourceBundle.getBundle("de.madana.webclient.system");
+<% ResourceBundle resource = ResourceBundle.getBundle("com.madana.webclient.system");
   String version=resource.getString("version"); %>
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>

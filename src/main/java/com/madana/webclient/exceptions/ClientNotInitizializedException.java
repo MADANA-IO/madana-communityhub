@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.madana.webclient.exceptions;
+package com.madana.webclient.exceptions;
 
 /**
  * @author J.-Fabian Wenisch

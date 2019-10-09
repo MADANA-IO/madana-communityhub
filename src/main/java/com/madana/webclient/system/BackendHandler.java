@@ -18,7 +18,7 @@
  * @author:Jean-Fabian Wenisch
  * @contact:dev@madana.io
  ******************************************************************************/
-package de.madana.webclient.system;
+package com.madana.webclient.system;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -35,14 +35,14 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
 
-import de.madana.common.datastructures.MDN_SocialHistoryObject;
-import de.madana.common.datastructures.MDN_SocialPlatform;
-import de.madana.common.datastructures.MDN_SocialUserObject;
-import de.madana.common.datastructures.MDN_User;
-import de.madana.common.datastructures.MDN_UserProfile;
-import de.madana.common.restclient.MDN_RestClient;
-import de.madana.webclient.dto.ReferralSocialPlatform;
-import de.madana.webclient.dto.UserSpecificSocialPlatform;
+import com.madana.common.datastructures.MDN_SocialHistoryObject;
+import com.madana.common.datastructures.MDN_SocialPlatform;
+import com.madana.common.datastructures.MDN_SocialUserObject;
+import com.madana.common.datastructures.MDN_User;
+import com.madana.common.datastructures.MDN_UserProfile;
+import com.madana.common.restclient.MDN_RestClient;
+import com.madana.webclient.dto.ReferralSocialPlatform;
+import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
 public class BackendHandler
 {
