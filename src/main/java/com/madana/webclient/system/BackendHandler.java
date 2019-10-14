@@ -61,7 +61,7 @@ public class BackendHandler
 		}
 		return instance;
 	}
-	public String getProperty (String strKey)
+	public static String getProperty (String strKey)
 	{
 		try
 		{
@@ -131,7 +131,7 @@ public class BackendHandler
 		try
 		{
 
-		String secret = getProperty("GOOGLECAPTCHA");
+		String secret = BackendHandler.getProperty("GOOGLECAPTCHA");
 			String USER_AGENT = "Mozilla/5.0";
 		URL obj = new URL(captchaVerifyURL);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();

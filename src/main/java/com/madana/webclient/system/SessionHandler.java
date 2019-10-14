@@ -4,7 +4,9 @@
 package com.madana.webclient.system;
 
 import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import java.security.cert.X509Certificate;
+import java.util.Base64;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,8 @@ import com.madana.webclient.exceptions.ClientNotInitizializedException;
  */
 public class SessionHandler
 {
+	public static final String BEGIN_CERT = "-----BEGIN CERTIFICATE-----";
+	public static final String END_CERT = "-----END CERTIFICATE-----";
 
 	public static String getCurrentUser(HttpSession session) throws ClientNotInitizializedException
 	{
@@ -67,8 +71,19 @@ public class SessionHandler
 
 		try
 		{
-			InputStream inputStream = SessionHandler.class.getResourceAsStream("app.crt");
-			X509Certificate clientCert =CertificateHandler.getCertificateFromInputStream(inputStream);
+			String certStr = BackendHandler.getProperty("CERTIFICATE");
+			InputStream inputStream = null;
+			if (certStr.equals("")) {
+				inputStream = SessionHandler.class.getResourceAsStream("app.crt");
+			} else {
+				inputStream = new ByteArrayInputStream(
+					Base64.getDecoder().decode(certStr
+						.replaceAll(SessionHandler.BEGIN_CERT, "")
+						.replaceAll(SessionHandler.END_CERT, "")
+						.replaceAll("\n", ""))
+				);
+			}
+			X509Certificate clientCert = CertificateHandler.getCertificateFromInputStream(inputStream);
 			oClient.authApplication(clientCert);
 			session.setAttribute("oClient", oClient);
 			return;
