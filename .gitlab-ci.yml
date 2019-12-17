@@ -1,0 +1,136 @@
+image: maven:3-jdk-8-slim
+
+stages:
+  - build
+  - test
+  - package
+  - docker
+  - deploy
+
+variables:
+  MAVEN_CLI_OPTS: "-Dbamboo.gituser=${GITREPOUSER} -Dbamboo.gittoken=${GITREPOTOKEN} -Ddeploymenttoken=${AWS_ACCESS_KEY_ID} -Ddeploymentsecret=${AWS_SECRET_KEY} -DAWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} -s src/main/resources/env.properties --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  GSG_RELEASE_BRANCHES: production
+  S3_BUCKET: elasticbeanstalk-eu-central-1-957799606666
+  AWS_REGION: eu-central-1
+  APPLICATION_NAME: "MADANA WebService"
+  ENVIRONMENT_STAGING: "MadanaWebservice-staging"
+
+.default_cache: &default_cache
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .m2/repository/
+    - target
+
+version:
+  stage: .pre
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
+  before_script:
+  - apt update
+  - apt install --no-install-recommends -y git
+  - git fetch --tags
+  script:
+    - release --bump-patch next-version > .next-version
+    - cat .next-version
+  artifacts:
+    paths:
+    - .next-version
+  except:
+    - tags
+   
+build:
+  stage: build
+  cache:
+    << : *default_cache
+    policy: pull-push
+  script:
+    - mvn clean
+    - export RELEASE_VERSION=$(<.next-version)
+    - mvn versions:set -DnewVersion=$RELEASE_VERSION -DprocessAllModules
+    - mvn $MAVEN_CLI_OPTS compile
+  artifacts:
+    paths:
+    - pom.xml
+  except:
+    - tags
+
+test:
+  stage: test
+  cache:
+    << : *default_cache
+    policy: pull-push
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+  except:
+    - tags
+
+package:
+  stage: package
+  cache:
+    << : *default_cache
+    policy: pull-push
+  script:
+    - mvn $MAVEN_CLI_OPTS package
+  artifacts:
+    paths:
+    - target/madana-*-*.war
+  except:
+    - tags
+
+build_docker:
+  image: docker:latest
+  stage: docker
+  cache:
+    << : *default_cache
+    policy: pull
+  services:
+  - docker:dind
+  script:
+  - export RELEASE_VERSION=$(cat .next-version)
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker pull $CI_REGISTRY_IMAGE:latest || true
+  - >
+    docker build --pull
+    --tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION
+    --cache-from $CI_REGISTRY_IMAGE:latest .
+  - docker push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
+  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - >
+    if [ "$CI_COMMIT_REF_SLUG" == "master" ]; then
+      docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:latest
+      docker push $CI_REGISTRY_IMAGE:latest
+    fi
+  except:
+  - tags
+
+version_tag:
+  stage: deploy
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
+  before_script:
+  - apt update
+  - apt install --no-install-recommends -y git
+  - git fetch --tags
+  script:
+    - release --bump-patch commit-and-tag pom.xml
+  except:
+    - tags
+ 
+deploy:
+  image: python:alpine
+  stage: deploy
+  script:
+    - export RELEASE_VERSION=$(cat .next-version)
+    - export WAR_FILE=$(cd target && ls madana-*-*.war)
+    - export S3_KEY=$CI_PROJECT_NAME-$RELEASE_VERSION/$WAR_FILE
+    - export AWS_ACCESS_KEY_ID=$AWS_EB_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_EB_SECRET_KEY
+    - pip install awscli
+    - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
+    - aws configure set region $AWS_REGION
+    - aws s3 cp target/$WAR_FILE s3://$S3_BUCKET/$S3_KEY
+    - >
+      aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
+    - > 
+      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
