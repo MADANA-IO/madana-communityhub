@@ -6,7 +6,7 @@
 	<groupId>com.madana</groupId>
 	<name>MADANA Community Hub</name>
 	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>0.2.0-master.1</version>
 	      <repositories>
 		<repository>
 		  <id>github</id>
