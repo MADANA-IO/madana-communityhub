@@ -75,9 +75,9 @@ To run the latest version using docker run
 
 #### -p 9280:8080
 To expose a container’s internal port, an operator can start the container with the -P or -p flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.
-The port number inside the container (where the service listens) does not need to match the port number exposed on the outside of the container (where clients connect). For example, inside the container an HTTP service is always listening on port 9291. At runtime, the port might be bound to 9292 on the host to run a secound node on the same host by using 
+The port number inside the container (where the service listens) does not need to match the port number exposed on the outside of the container (where clients connect). For example, inside the container an HTTP service is always listening on port 8080. At runtime, the port might be bound to 10280 on the host to run a second node on the same host by using 
 ```
- docker run -p 10280:8080 --rm -it --privileged=true registry.gitlab.com/madana-io/madana-communityhub:latest
+ docker run -p 10280:8080 --rm -it --privileged=true  --env GOOGLECAPTCHA=6LeSsno... --env RESTURI=https://localhost:8080/madana-api/rest registry.gitlab.com/madana-io/madana-communityhub:latest
 ```
 
 #### --rm
