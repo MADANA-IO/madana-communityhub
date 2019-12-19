@@ -139,6 +139,8 @@ deploy:
       aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
     - > 
       aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
+  only:
+   - production
 
 deploy_production:
   image: python:alpine
@@ -158,3 +160,5 @@ deploy_production:
     - aws configure set region $AWS_REGION
     - > 
       aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_PRODUCTION" --version-label "$RELEASE_VERSION"
+  only:
+   - production
