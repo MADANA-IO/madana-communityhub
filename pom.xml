@@ -6,7 +6,7 @@
 	<groupId>com.madana</groupId>
 	<name>MADANA Community Hub</name>
 	<packaging>war</packaging>
-	<version>0.2.0-master.2</version>
+	<version>0.2.0-master.3</version>
 	      <repositories>
 		<repository>
 		  <id>github</id>
@@ -20,10 +20,6 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-		 <issueManagement>
-    <system>MADANA Jira</system>
-    <url>https://intranet.madana.io/jira/browse/DEV</url>
-  </issueManagement>
 <dependencies>
 	<dependency>
 	  <groupId>jstl</groupId>
@@ -262,8 +258,8 @@
     </resources>
 	</build>
 	<ciManagement>
-		<system>MADANA Bamboo</system>
-		<url>https://intranet.madana.io/bamboo/</url>
+		<system>Gitlab</system>
+		<url>https://gitlab.com/madana-io/</url>
 	</ciManagement>
 	<organization>
 		<name>MADNA</name>

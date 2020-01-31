@@ -1,11 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page import="java.util.ResourceBundle"%>
 <% ResourceBundle resource = ResourceBundle.getBundle("com.madana.webclient.system");
   String version=resource.getString("version"); %>
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>
+	 a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+a:active {
+   text-decoration: none;
+}
 .activelink {
 	background-color: rgba(0, 0, 0, 0.2);
 }
@@ -126,18 +143,30 @@
  -->
 
 			<div class="mdl-layout-spacer"></div>
+			<c:choose>
+  <c:when test="${empty profile.userName}">
+ 		<a href="/login"
+		
+				class="mdl-navigation__link mdl-cell--hide-phone"> <i
+				class=" material-icons " style="padding-right: 10px;"
+				role="presentation">account_circle</i>Sign in
 
-			<img id="accbtn" src="${profile.image}" width="35" height="35"
+			</a> 
+  </c:when>
+  <c:otherwise>
+
+			<span id="accbtn">
+			<img  src="${profile.image}" width="35" height="35"
 				class="circle">
+<strong>${profile.userName}</strong><i
+				class=" material-icons " style ="position: relative;
+    top: 5px;"	role="presentation">arrow_drop_down</i></span>
 
 
 			<ul
 				class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 				for="accbtn">
-				<li style="width:200px;    padding: 10px 16px;
-    font-weight: 600;"><img src="${profile.image}"
-					width="40" height="40" class="circle " style="margin-left: -0px;">${profile.userName}</li>
-					<hr>
+			
 
 		<a target="_blank" href="https://communityhub.madana.io/profile/${profile.userName}"
 				><li
@@ -163,7 +192,8 @@
 							a bug</span></li> </a>
 		
 			</ul>
-
+  </c:otherwise>
+  </c:choose>
 		</nav>
 
 	</div>
