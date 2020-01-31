@@ -10,4 +10,12 @@ package com.madana.webclient.exceptions;
 public class ClientNotInitizializedException extends Exception
 {
 
+	public ClientNotInitizializedException(String string) {
+		super(string);
+	}
+
+	public ClientNotInitizializedException() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

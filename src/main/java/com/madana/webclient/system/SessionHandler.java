@@ -34,7 +34,7 @@ public class SessionHandler
 		{
 			MDN_UserProfile oProfile = getClient(session).getProfile();
 			if(oProfile==null)
-				throw new ClientNotInitizializedException();
+				throw new ClientNotInitizializedException("Couldn't request own profile");
 			username = oProfile.getUserName();
 			session.setAttribute("username", username);
 		}
@@ -71,11 +71,14 @@ public class SessionHandler
 
 		try
 		{
-			String certStr = BackendHandler.getProperty("CERTIFICATE");
+			String certStr = BackendHandler.getProperty("CERTIFICATE"); //Try to get certificate from env
 			InputStream inputStream = null;
-			if (certStr.equals("")) {
-				inputStream = SessionHandler.class.getResourceAsStream("app.crt");
-			} else {
+			if (certStr.equals("")) 
+			{
+				inputStream = SessionHandler.class.getResourceAsStream("app.crt"); // If not set, try getting it from file in package ( DEBUG Mode )
+			} 
+			else 
+			{
 				inputStream = new ByteArrayInputStream(
 					Base64.getDecoder().decode(certStr
 						.replaceAll(SessionHandler.BEGIN_CERT, "")
@@ -90,9 +93,9 @@ public class SessionHandler
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			System.err.println("Couldn't read certificate from ENV or file");
 		}
-		throw new  ClientNotInitizializedException();
+		throw new  ClientNotInitizializedException("Application certificate could not be read");
 		
 	}
 
