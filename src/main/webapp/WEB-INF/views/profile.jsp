@@ -76,7 +76,7 @@ font-size:2.5vw;
 								id="${achievement.name}">
 
 								<div class="mdl-card__title"
-									style="height:150px;  background-image: url('${achievement.image}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
+									style="height:150px;  background-image: url('${achievement.image}'), url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  background-size:50px,cover ;">
 
 								</div>
 

@@ -58,7 +58,7 @@ top: calc(50% - 50px);
     min-width: 100%;
     min-height: 100%;
     background-color: rgba(39,72,99,0.3);
-    background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
+    background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg);
     background-size: cover;
     background-blend-mode: multiply;
     -webkit-filter: blur(5px);">
@@ -73,7 +73,7 @@ top: calc(50% - 50px);
 	</div>
 		<div class="header">
 				<div>
-				 <img src="https://www.madana.io/assets/img/logo-madana@3x.png"
+				 <img src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
 						style="text-align: center; display: block;"> 
 						<span style="   font-family: Montserrat;
@@ -118,7 +118,7 @@ top: calc(50% - 50px);
 					</tr>
 						<tr>
 				
-						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
+						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://resources.madana.io/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
 						
 					</tr>
 

@@ -15,18 +15,16 @@
 	width: 600px;
 	z-index: 2;
 }
-@media screen and (max-width: 767px)
- {
 
-.login {
-	position: absolute;
-	top: 180px;
-	left:230px;
-	height: 150px;
-	width: 100%;;
-	z-index: 2;
-}
-
+@media screen and (max-width: 767px) {
+	.login {
+		position: absolute;
+		top: 180px;
+		left: 230px;
+		height: 150px;
+		width: 100%;;
+		z-index: 2;
+	}
 }
 </style>
 
@@ -39,11 +37,13 @@
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 		<div id="container">
-			<img src="https://www.madana.io/assets/img/hero-grid.jpg" />
+			<img
+				src="https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg" />
 
 			<div class="header">
 				<div>
-					<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
+					<img
+						src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
 						style="text-align: center; display: block;">
 				</div>
@@ -51,44 +51,52 @@
 			<br>
 			<div class="content">
 				<div class="login">
-<form name="submitForm" method="POST">
+					<form name="submitForm" method="POST">
 
-			<div>
+						<div>
 
-				<table>
-					
-						
-			
-						<tr>
-						<td></td>
-						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="del" value="del" > I want to delete my account </td>
-						
-					</tr>
-					<tr>		<td><br><br></td></tr>
-	<tr>
-						<td></td>
-						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
-						
-					</tr>
-						<tr>
-						<td><br><br></td>
-						<td><input type="submit" id="registerbutton" value="Delete" /><input type="hidden" id="tokenfield" name="captchatoken" value="null">
-						</td>
-						
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-						<tr>
-						<td><br><br></td>
-						<td><a  
-									 href="/login">Log-In</a>	<div style="color: red">${error}</div></td>
-					</tr>
-					
-				</table>
+							<table>
+								<tr>
+									<td></td>
+									<td style="color: #f3f3f6;" class="subheading"><input
+										type="checkbox" name="del" value="del"> I want to
+										delete my account</td>
 
-			<script>
+								</tr>
+								<tr>
+									<td><br> <br></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td style="color: #f3f3f6;" class="subheading"><input
+										type="checkbox" name="TOC" value="read"> I've read and
+										accept the <a style="font-size: 14px;" target="_blank"
+										href="https://resources.madana.io/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms
+											of Use Agreement</a> and <a style="font-size: 14px;"
+										target="_blank" href="https://www.madana.io/privacy-policy">Privacy
+											policy</a></td>
+
+								</tr>
+								<tr>
+									<td><br> <br></td>
+									<td><input type="submit" id="registerbutton"
+										value="Delete" /><input type="hidden" id="tokenfield"
+										name="captchatoken" value="null"></td>
+
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><br> <br></td>
+									<td><a href="/login">Log-In</a>
+										<div style="color: red">${error}</div></td>
+								</tr>
+
+							</table>
+
+							<script>
 		
 				   
 			
@@ -102,9 +110,9 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'delete'
 });
 
 </script>
-			</div>
-		</form>
-	<jsp:include page="components/snackbar.jsp" />
+						</div>
+					</form>
+					<jsp:include page="components/snackbar.jsp" />
 				</div>
 			</div>
 		</div>
@@ -113,7 +121,7 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'delete'
 	</div>
 
 
-<jsp:include page="components/statuspage.jsp" />
+	<jsp:include page="components/statuspage.jsp" />
 	<jsp:include page="components/footer.jsp" />
 
 

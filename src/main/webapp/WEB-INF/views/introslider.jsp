@@ -17,7 +17,7 @@ width:100%;
       background:  linear-gradient(
       rgba(255, 255, 255, 0.9), 
       rgba(255, 255, 255, 0.1)
-    ),url(https://www.madana.io/assets/img/hero-grid.jpg) no-repeat center center fixed; 
+    ),url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -154,23 +154,23 @@ font-family:Raleway;
 
 <div class="mySlides ">
 
-  <img src="https://www.madana.io/resources/introslider/Slide1.png" style="width:90%">
+  <img src="https://cdn.madana.io/commonvisuals/introslider/Slide1.png" style="width:90%">
 
 </div>
 
 <div class="mySlides ">
 
-  <img src="https://www.madana.io/resources/introslider/Slide2.png" style="width:90%">
+  <img src="https://cdn.madana.io/commonvisuals/introslider/Slide2.png" style="width:90%">
 
 </div>
 
 <div class="mySlides ">
 
-  <img src="https://www.madana.io/resources/introslider/Slide3.png" style="width:90%">
+  <img src="https://cdn.madana.io/commonvisuals/introslider/Slide3.png" style="width:90%">
 </div>
 <div class="mySlides ">
 
-  <img src="https://www.madana.io/resources/introslider/Slide4.png" style="width:90%">
+  <img src="https://cdn.madana.io/commonvisuals/introslider/Slide4.png" style="width:90%">
 </div>
 
 <a class="prev" style="font-size:64px;color:#a0c3e8;"onclick="plusSlides(-1)">&#10094;</a>

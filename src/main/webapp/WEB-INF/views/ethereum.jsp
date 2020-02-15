@@ -11,66 +11,44 @@
 <style>
 .ethereum {
 	position: absolute;
-top: calc(50% - 50px);
+	top: calc(50% - 50px);
 	left: calc(50%);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
 }
-@media screen and (max-width: 767px)
- {
-.ethereum {
-	position: absolute;
-	top: 250px;
-	    left: calc(22%);
-	height: 150px;
-	width: 250px;;
-	z-index: 2;
-}
+
+@media screen and (max-width: 767px) {
+	.ethereum {
+		position: absolute;
+		top: 250px;
+		left: calc(22%);
+		height: 150px;
+		width: 250px;;
+		z-index: 2;
+	}
 }
 </style>
 
 <body onload="checkWeb3()">
 	<div id="nonce" hidden>${nonce}</div>
 
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<div id="container" style="
-			height: 100%;
-			width: 100%;
-			justify-content: center;
-			align-items: center;
-			overflow: hidden;
-			position: fixed;
-			top: 0;
-			left: 0;
-			min-width: 100%;
-			min-height: 100%;
-			background-color: rgba(39,72,99,0.3);
-			background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
-			background-size: cover;
-			background-blend-mode: multiply;
-			-webkit-filter: blur(5px);">
-		
+	<div
+		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		<div id="container"
+			style="height: 100%; width: 100%; justify-content: center; align-items: center; overflow: hidden; position: fixed; top: 0; left: 0; min-width: 100%; min-height: 100%; background-color: rgba(39, 72, 99, 0.3); background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg); background-size: cover; background-blend-mode: multiply; -webkit-filter: blur(5px);">
+
 			<br>
 		</div>
 	</div>
 	<div class="header">
 		<div>
-			<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
-			alt="MADANA Logo" width="175" height="175"
-			style="text-align: center; display: block;"> 
-
-			<span style="font-family: Montserrat;
-			font-style: normal;
-			font-variant: normal;
-			font-size: 24px;
-			color: #a0c3e8 !important;
-			position: absolute;
-			top: 120px;
-			left: -60px;
-			margin-right: -50px;">
-				Community Hub
-			</span>
+			<img
+				src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
+				alt="MADANA Logo" width="175" height="175"
+				style="text-align: center; display: block;"> <span
+				style="font-family: Montserrat; font-style: normal; font-variant: normal; font-size: 24px; color: #a0c3e8 !important; position: absolute; top: 120px; left: -60px; margin-right: -50px;">
+				Community Hub </span>
 		</div>
 	</div>
 	<div class="content">

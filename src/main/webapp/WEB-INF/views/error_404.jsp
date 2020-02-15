@@ -27,7 +27,7 @@
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" style="background:#565F66;">
 		<div id="container">
-			<img src="https://www.madana.io/assets/img/hero-grid@3x.png" />
+			<img src="https://cdn.madana.io/commonvisuals/backgrounds/hero-grid@3x.png" />
 
 			<br>
 			<div class="content">
