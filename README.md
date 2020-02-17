@@ -91,4 +91,3 @@ By default, Docker containers are “unprivileged” and cannot, for example, ru
 
 When the operator executes docker run --privileged, Docker will enable access to all devices on the host as well as set some configuration in AppArmor or SELinux to allow the container nearly all the same access to the host as processes running outside containers on the host. Additional information about running with --privileged is available on the Docker Blog.
 
-
