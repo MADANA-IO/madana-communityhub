@@ -141,7 +141,7 @@ a:active {
 			</span>
 			 <span class="mobilehide"> <a
 				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="/nodes" onclick="document.forceLoading();"><i
+				href="/bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
 			</span>
 			 <span class="mobilehide"> <a
@@ -259,7 +259,7 @@ a:active {
 			href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
 				 <a
 				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="/nodes" onclick="document.forceLoading();"><i
+				href="bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
 		
 
