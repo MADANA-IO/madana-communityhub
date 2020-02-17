@@ -140,7 +140,7 @@ deploy:
     - > 
       aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
   only:
-   - production
+   - master
 
 deploy_production:
   image: python:alpine
