@@ -182,7 +182,7 @@
 
 @media ( min-width : 767px) {
 	.mobilehide {
-		display: block;
+		display: inline-block;
 	}
 	.mdl-button.mdl-button--colored {
 		font-size: 0.7vw;

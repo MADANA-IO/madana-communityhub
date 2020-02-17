@@ -35,7 +35,7 @@
 					the reward from community campaigns for you will be. The higher
 					your rank, the better the reward will be.
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid" >
 				<h3>
 					<i class="material-icons material-heading">announcement</i> Latest
 					News
@@ -69,7 +69,7 @@
 																response.items,
 																function(k,
 																		item) {
-																	output += '<div class="col-sm-12" style="padding:10px;margin-bottom: 40px;color:#274863"">';
+																	output += '<div class="col-sm-12" style=" padding:10px;margin-bottom: 40px;color:#274863"">';
 																	output += '<div style="color:white;" class=""><header style="position: relative">';
 																	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">'
 																			+ moment(
@@ -78,7 +78,7 @@
 																							"DD<br>MMM")
 																			+ "</h4>";
 																	var tagIndex = item.description
-																			.indexOf('<img'); // Find where the img tag starts
+																			.indexOf('<img '); // Find where the img tag starts
 																	var srcIndex = item.description
 																			.substring(
 																					tagIndex)
@@ -340,7 +340,7 @@
 				</div>
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
-				<div class="mdl-cell mdl-cell--12-col ">
+				<div class="mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -352,7 +352,7 @@
 
 						<div>
 
-							<table style="width: 100%">
+							<table style="width: 100%;" >
 
 								<tr class="tddefault"
 									style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));">
@@ -428,7 +428,7 @@
 
 					</div>
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col ">
+				<div class="  mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -461,7 +461,7 @@
 					<div class="mdl-card__actions mdl-card--border"></div>
 
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col ">
+				<div class="  mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -510,7 +510,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid" >
 				<hr>
 				<h3>
 					<i class="material-icons material-heading">share</i> Check our
@@ -557,15 +557,15 @@
 																					srcStart,
 																					srcEnd); // Extract just the URL
 																	output += '<div class="mdl-cell--12-col mdl-grid">';
-																	output += '<div class="mdl-cell--2-col " style="">';
-																	output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="padding:25px" class="img-responsive" src="' + src + '"  ></a></div>';
+																	output += '<div class="mdl-cell--2-col ">';
+																	output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="" class="img-responsive" src="' + src + '"  ></a></div>';
 																	output += '</div>';
-																	output += '<div class="mdl-cell--10-col " style="">';
+																	output += '<div class="mdl-cell--10-col " style="    height: 60px;">';
 
 																	output += '<h5><a style="color:#4d7da2 font-size:14px;" target="_blank" href="'+ item.link + '">'
 																			+ item.title
 																			+ '</a></h5>';
-																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2"><span style="color:#b2d1ef"> Created <span  data-livestamp="'+ item.pubDate+'">'
+																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2;"><span style="color:#4d7da2;"> Created <span  data-livestamp="'+ item.pubDate+'">'
 																			+ item.pubDate
 																			+ '"</span> by '
 																			+ item.author

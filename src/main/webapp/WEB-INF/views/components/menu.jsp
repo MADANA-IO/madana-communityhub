@@ -123,65 +123,112 @@ a:active {
 	<div class="mdl-layout__header-row mdnheader">
 		<!-- Title -->
 
-		<div class="mdl-layout-title">
-			<a href="/home"><span
-				style="color: #a0c3e8; font-size: 22px; padding-left: 25px;"><i><img
+		<div class="mdl-layout-title" style="padding-right: 50px;">
+			<div class="mobilehide" style="padding-left: 25px;"></div>
+			<a href="/home"><span style="color: #a0c3e8; font-size: 22px;"><i><img
 						src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 						alt="MADANA Logo" width="30" height="30"></i> Community Hub</span> </a>
 		</div>
 
-		<div class="mdl-layout-spacer"></div>
 
-		<!-- Navigation -->
-		<nav class="mdl-navigation">
 
+		<nav class="mdl-navigation ">
+
+			<span class="mobilehide"> <a
+				class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/news" onclick="document.forceLoading();"><i
+					class=" material-icons" role="presentation">message</i> News</a>
+			</span>
+			 <span class="mobilehide"> <a
+				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/nodes" onclick="document.forceLoading();"><i
+					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
+			</span>
+			 <span class="mobilehide"> <a
+				class="${currentsite eq 'users' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="#" onclick="document.forceLoading();" style="color:darkgrey;"><i
+					class=" material-icons" role="presentation">people</i> Users</a>
+			</span>
+			 <span class="mobilehide"> <a
+				class="${currentsite eq 'organizations' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="#" onclick="document.forceLoading();" style="color:darkgrey;"><i
+					class=" material-icons" role="presentation" disabled>business</i>
+					Organizations</a>
+
+			</span>
 
 			<div class="mdl-layout-spacer"></div>
+
+			<div style="position: absolute; right: 180px;" class="mobilehide">
+				<a class="mdl-navigation__link" href="/faq"><i
+					class=" material-icons" role="presentation">help_outline</i><span
+					class=""> FAQ </span></a>
+			</div>
 			<c:choose>
 				<c:when test="${empty profile.userName}">
+					<div style="position: absolute; right: 20px;">
 					<a href="/login" class="mdl-navigation__link mdl-cell--hide-phone">
 						<i class=" material-icons " style="padding-right: 10px;"
 						role="presentation">account_circle</i>Sign in
 
 					</a>
+						</div>
 				</c:when>
 				<c:otherwise>
+					<div style="position: absolute; right: 20px;">
 
-					<span id="accbtn"> <img src="${profile.image}" width="35"
-						height="35" class="circle"> <strong>${profile.userName}</strong><i
-						class=" material-icons " style="position: relative; top: 5px;"
-						role="presentation">arrow_drop_down</i></span>
+						<span id="accbtn"> <img src="${profile.image}" width="35"
+							height="35" class="circle"> <span class="mobilehide"><strong>${profile.userName}</strong></span>
+							<i class=" material-icons " style="position: relative; top: 5px;"
+							role="presentation">arrow_drop_down</i>
+						</span>
+					</div>
+
 
 
 					<ul
 						class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 						for="accbtn">
+						<li class="mdl-menu__item"><a
+							href="/profile/${profile.userName}" style="text-decoration: none">
+								<img
+								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_account-circle_32_0_274863_none.png"
+								width="18" height="18"><span style="margin-left: 25px;">Community
+									Profile</span>
+						</a></li>
 
+						<li class="mdl-menu__item"><a href="/settings"
+							style="text-decoration: none"> <img
+								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_settings_32_0_274863_none.png"
+								width="18" height="18"><span style="margin-left: 25px;">Account
+									Settings</span></a></li>
 
-						<a target="_blank"
-							href="https://communityhub.madana.io/profile/${profile.userName}"><li
-							class="mdl-menu__item"><i class="material-icons">account_circle</i><span
-								style="margin-left: 25px;">Profile</span></li> </a>
-						<a target="_blank" href="https://communityhub.madana.io/settings"><li
-							class="mdl-menu__item"><i class="material-icons">settings</i><span
-								style="margin-left: 25px;">Settings</span></li> </a>
-						<a href="/logout"
-							onclick="document.reRenderLoading({ phrases: ['Logging you out'] });"><li
-							class="mdl-menu__item"><i class="material-icons">lock</i><span
-								style="margin-left: 25px;">Logout</span></li> </a>
-						<hr class="mobilehide">
+						<li class="mdl-menu__item"><a href="/logout"
+							style="text-decoration: none"> <img
+								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_lock_32_0_274863_none.png"
+								width="18" height="18"><span style="margin-left: 25px;">Logout</span></a></li>
 
-						<a id="feedback-button" href="#"><li class="mdl-menu__item"><i
-								class=" material-icons">feedback</i><span
-								style="margin-left: 25px;">Give feedback</span></li> </a>
-						<a id="bug-button" href="#"><li class="mdl-menu__item"><i
-								class=" material-icons">bug_report</i><span
-								style="margin-left: 25px;">Report a bug</span></li> </a>
+						<li>
+							<hr>
+						<li>
+						<li id="feedback-button" class="mdl-menu__item"><a
+							href="/logout" style="text-decoration: none"> <img
+								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_feedback_32_0_274863_none.png"
+								width="18" height="18"><span
+								style="margin-left: 25px; color: #a0c3e8;">Give feedback</span></a></li>
+
+						<li id="bug-button" class="mdl-menu__item"><img
+							src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_bug-report_32_0_274863_none.png"
+							width="18" height="18"><span
+							style="margin-left: 25px; color: #a0c3e8;">Report a bug</span></li>
+
 
 					</ul>
 				</c:otherwise>
 			</c:choose>
 		</nav>
+		<!-- Navigation -->
+
 
 	</div>
 </header>
@@ -208,24 +255,25 @@ a:active {
 
 
 		<a
-			class="${currentsite eq '/news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+			class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 			href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
-		<a
-			class="${currentsite eq '/profile' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-			href="/profile"><i class=" material-icons" role="presentation">person</i>Profile</a>
+				 <a
+				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/nodes" onclick="document.forceLoading();"><i
+					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
+		
 
 
+
 		<a
-			class="${currentsite eq '/ranking' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+			class="${currentsite eq 'ranking' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 			href="/ranking"><i class=" material-icons" role="presentation">people</i>Ranking</a>
-
-
-
+	
 
 
 		<div class="mdl-layout-spacer"></div>
-
-		<hr style="margin: 25px;">
+<hr style="margin: 25px;">
+	
 		<p style="text-align: center">More from MADANA</p>
 
 		<a class="mdl-navigation__link" target="_blank"
@@ -245,10 +293,7 @@ a:active {
 			href="https://t.me/madanaofficial"><img
 			src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/240px-Telegram_logo.svg.png"
 			width="25" height="25" class="circle " style="margin-left: -0px;"><span
-			style="padding-left: 20px;">Telegram</span></a> <a
-			class="mdl-navigation__link" href="/faq"><i
-			class=" material-icons" role="presentation">help_outline</i><span
-			class="">FAQ</span></a>
+			style="padding-left: 20px;">Telegram</span></a>
 
 		<div class="mdl-layout-spacer"></div>
 		<div id="status" class="mdl-navigation__link"

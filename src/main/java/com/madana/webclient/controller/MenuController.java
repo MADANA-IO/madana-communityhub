@@ -210,6 +210,38 @@ public class MenuController
 		model.addAttribute("currentsite","news");
 		return "news";
 	}
+	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
+	public String bountyPage(HttpSession session,Model model) throws Exception 
+	{
+
+
+		MDN_RestClient oClient = SessionHandler.getClient(session);
+		String strUserName = SessionHandler.getCurrentUser(session);
+		oPlatforms = oClient.getSocialPlatforms();
+		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
+
+	
+
+		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+		if(oUsers.size()>2)
+		{
+			Collections.sort(oUsers);
+			model.addAttribute("user1", oUsers.get(0));
+			model.addAttribute("user2", oUsers.get(1));
+			model.addAttribute("user3", oUsers.get(2));
+		}
+		model.addAttribute("currentsite","bounty");
+		model.addAttribute("social_platforms",oSocialPlatforms);
+		model.addAttribute("referral_platforms",oRefferalPlatforms);
+		model.addAttribute("msg", strUserName);
+		model.addAttribute("user", oUser);
+		model.addAttribute("profile", oProfile);	
+
+
+		return "bounty";
+
+	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profilePage(HttpSession session,Model model) throws Exception 
 	{

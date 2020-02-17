@@ -30,7 +30,7 @@
 
 
 			<div
-				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:transparent;">
+				class="mdl-card something-else mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
 				     <h2 style="background-color: #4d7da2;
     height: 50px;
     ">Settings</h2>
@@ -168,10 +168,9 @@
 				</div>
 
 			</div>
-			<div class="mdl-grid mdl-cell mdl-cell--12-col ">
 			
 				
-				<dialog class="mdl-dialog" id="changemaildialog">
+				<dialog class="mdl-dialog" id="changemaildialog" >
 				<h4 class="mdl-dialog__title" style="text-align: center">Change
 					E-Mail</h4>
 				<p style="font-size: 8px; padding-top: 5px; text-align: center">
@@ -248,50 +247,16 @@
     		});
 
   </script>
-  <div
-				class="  mdl-cell mdl-cell--12-col " style="color:white;">
-			<div class="">
-					<h2>
-							<i class="material-icons material-heading" >link</i> Linked Accounts
-						</h2>
-						</div>
-				<!-- 
-				<button
-					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
-					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
-					<span class="visuallyhidden">add</span>
-				</button> -->
-				<div class="mdl-card__media"></div>
-				<div class="mdl-card__supporting-text meta meta--fill ">
-					<div></div>
-					<ul class="demo-list-control mdl-list">
-						<c:forEach var="socialuser" items="${user.socialAccounts}">
-							<li class="mdl-list__item mdl-list__item--three-line"><span
-								class="mdl-list__item-primary-content"> <img
-									src="${socialuser.image}" alt="${socialuser.platform}"
-									height="50" width="50" class=""
-									style="margin-bottom: -15px; padding-right: 10px; height: 30px; width: 40px;">
-									<span class="subheading" style="color:white;"> ${socialuser.platform}</span> <span
-									class="mdl-list__item-text-body"
-									style="align: center; color:#4d7da2;padding-left: 50px;">
-										${socialuser.ident}</span>
-							</span> <span class="mdl-list__item-secondary-action">
-									<!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-  <i class="material-icons">cancel</i>
-</button> -->
-							</span></li>
-						</c:forEach>
-
-
-					</ul>
-				</div>
-			</div>
+  <div class="mdl-grid mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+			
   			<div class="mdl-card  mdl-cell mdl-cell--12-col " style="background:transparent">
 					<div class="mdl-card__title"style="color:white;">
 					<h2>
 							<i class="material-icons material-heading" >account_circle</i> Privacy Settings
 						</h2>
+						
 						</div>
+							<hr>
 					<div class="mdl-card__supporting-text meta">
 
 						<ul class="demo-list-control mdl-list">
@@ -315,10 +280,7 @@
 
 					</div>
 					</div>
-					<div class="mdl-cel--12-col">
-									  <a  class="mdl-button mdl-js-button mdl-button--raised " href="deleteaccount" style="    background-color: transparent;
-    color: indianred;">Delete Account</a>
-			</div>
+				
   	
 	
 					<script>
@@ -345,6 +307,73 @@
 </script>
 
 				
+				</div>
+					<div class="mdl-grid mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+		
+  <div
+				class="mdl-grid mdl-cell mdl-cell--12-col " >
+			<div class="mdl-cell mdl-cell--12-col">
+					<h2>
+							<i class="material-icons material-heading" >link</i> Linked Accounts
+						</h2>
+						<hr >
+						</div>
+	
+				<div class="mdl-card__media  mdl-cell mdl-cell--12-col"></div>
+				<div class="mdl-card__supporting-text meta meta--fill ">
+					<div></div>
+					<ul class="demo-list-control mdl-list" style="width:100%;">
+						<c:forEach var="socialuser" items="${user.socialAccounts}">
+							<li class="mdl-list__item mdl-list__item--three-line" style="">
+							<span
+								class="mdl-list__item-primary-content"> <img
+									src="${socialuser.image}" alt="${socialuser.platform}"
+									height="50" width="50" class=""
+									style="margin-bottom: -15px; padding-right: 10px; height: 40px; width: 40px;">
+									<span class="subheading" style="color:white;"> ${socialuser.platform}</span> <span
+									class="mdl-list__item-text-body"
+									style="align: center; color:#4d7da2;padding-left: 50px"">
+										${socialuser.ident}</span>
+							</span> 
+							
+							<span class="mdl-list__item-secondary-action">
+									  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons">cancel</i>
+</button>
+							</span></li>
+						</c:forEach>
+						<li><hr></li>
+<li class="mdl-list__item mdl-list__item--three-line" style=""><span
+								class="mdl-list__item-primary-content"> <a href="#">	<button
+					class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab " style="margin-left: -10px; padding-right: 10px; ">
+					<i class="material-icons mdl-color-text--white" role="presentation">add</i>
+					<span class="visuallyhidden">add</span>
+				</button>
+									<span class="subheading" style="color:white;padding-left: 10px;"> Link another account</span> 
+						</a>	</span> <span class="mdl-list__item-secondary-action">
+									<!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons">cancel</i>
+</button> -->
+							</span></li>
+
+					</ul>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+				</div>
+			</div>
+			</div>
+			
+					<div class="mdl-grid  mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+					<div class="mdl-cell mdl-cell--12-col">
+					<h2>
+							<i class="material-icons material-heading" >warning</i> Danger Zone
+						</h2>
+						<hr >
+						</div>
+						<div class="mdl-cell mdl-cell--12-col">
+						  <a  class="mdl-button mdl-js-button mdl-button--raised " href="deleteaccount" style="margin-left:10%;width:80%;   background-color: transparent;
+    color: indianred;">Delete Account</a>
+			</div>
 				</div>
 			</div>
 		
