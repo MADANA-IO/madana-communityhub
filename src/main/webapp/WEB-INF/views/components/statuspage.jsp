@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<div id="status">   <a href="http://status.madana.io" target="_blank">
+<div class="mobilehide" id="status">   <a href="http://status.madana.io" target="_blank" style="text-decoration:none;">
             <span class="color-dot"></span>
             <span class="color-description"></span>
           </a></div>

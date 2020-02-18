@@ -149,7 +149,7 @@
 	<dependency>
 	  <groupId>com.madana.common</groupId>
 	  <artifactId>madana-common-restclient</artifactId>
-	  <version>0.1.27</version>
+	  <version>0.1.35</version>
 	</dependency>
 	<dependency>
 		<groupId>com.madana.common</groupId>

@@ -52,7 +52,14 @@
 		</div>
 	</div>
 	<div class="content">
+	
 		<div class="ethereum">
+		<h2>Pending signature challenge</h2>
+		<p class="mobilehide">
+	We are verifying the ownership of your account by generating and random text and letting you sign that data using your private key provided by metamask. If the signature can be verified we will consider you user the owner of that public address. The backend checks which MADANA account was linked with this address and provides an authentication token.
+	</p>
+	<h5>Waiting for input from metamask...</h5>
+	<img src="https://cdn.madana.io/commonvisuals/icons/loading.gif" style="height:10px;width:150px;"> 
 			<div id="error" style="color: red">${error}</div>
 			<div id="info" style="color: green">${info}</div>
 

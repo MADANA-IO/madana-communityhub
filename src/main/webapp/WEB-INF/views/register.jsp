@@ -113,7 +113,7 @@ top: calc(50% - 50px);
 						<td><input  style="border: 1px solid #4d7da2;"  type="password" placeholder="Re-Enter Password" name="matchingPassword" /></td>
 					</tr>
 							<tr>
-						<td><br><br></td>
+						<td><br></td>
 						
 					</tr>
 						<tr>
@@ -135,7 +135,7 @@ top: calc(50% - 50px);
 				
 						<tr>
 						<td><br><br><a  
-									 href="/login">Already have an Account?</a>	<div style="color: red">${error}</div></td>
+									 href="/login" style="text-decoration:none;">Already have an Account?</a>	<div style="color: red">${error}</div></td>
 					</tr>
 					
 				</table>

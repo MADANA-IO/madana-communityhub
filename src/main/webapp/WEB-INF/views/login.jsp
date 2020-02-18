@@ -59,7 +59,7 @@
 	</div>
 	<div class="header">
 		<div>
-			<img
+			<img id="logo"
 				src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
 				alt="MADANA Logo" width="175" height="175"
 				style="text-align: center; display: block;"> <span
@@ -94,22 +94,34 @@
 						<tr>
 
 							<td><input type="submit" value="Login"
-							
 								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 2px; color: #a0c3e8;" /><input
 								type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 						</tr>
 						<tr>
 
-							<td><br>
-							<a class="" href="/register">Create Account</a></td>
+							<td><br> <span
+								style="background: rgba(255, 255, 255, 0.7); border: 1px solid #4d7da2; padding: 10px; color: #f3f3f6; width: 250px;">
+									<a
+									style="color: black; text-decoration: none;"
+			
+				href="/login/ethereum"><img
+										src="https://metamask.io/img/metamask.png"
+										style="position: relative;left:8px; height: 20px; width: 20px;">
+										<span style="padding-left:8px">Login with MetaMask </span>
+								</a>
+							</span></td>
+						</tr>
+						<tr>
+
+							<td><br> <a class="" href="/register">Create
+									Account</a></td>
 						</tr>
 						<tr>
 
 							<td><a class="" href="/resetpassword">Reset Password</a></td>
 						</tr>
 						<tr>
-							<td><br>
-							<br></td>
+							<td><br> <br></td>
 						</tr>
 					</table>
 					<script>
@@ -141,7 +153,7 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'login'}
 <script type="text/javascript">
 $("#container").mousemove(function(e) {
   parallaxIt(e, ".slide", -100);
-  parallaxIt(e, "img", -30);
+  parallaxIt(e, ".logo", -30);
 });
 
 function parallaxIt(e, target, movement) {

@@ -24,6 +24,7 @@
 
 			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
 				<h2 style="background-color: #4d7da2; height: 50px; width: 100%;">Home</h2>
+
 				<p>The Community Hub will be the future home of our community.
 					Here you will be able to get the newest information about the
 					progress and development of MADANA, engage actively in community
@@ -35,12 +36,12 @@
 					the reward from community campaigns for you will be. The higher
 					your rank, the better the reward will be.
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid" >
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid" style="">
 				<h3>
 					<i class="material-icons material-heading">announcement</i> Latest
 					News
 				</h3>
-				<div class="row" style="padding-left: 25px; padding-right: 25px;"
+				<div class="row" style="margin:20px;"
 					id="medium"></div>
 				<a href="/news" style="width: 90%; text-align: center;">
 					<button id="" type="button"
@@ -69,7 +70,7 @@
 																response.items,
 																function(k,
 																		item) {
-																	output += '<div class="col-sm-12" style=" padding:10px;margin-bottom: 40px;color:#274863"">';
+																	output += '<div class="col-sm-12" style=" padding:10px;margin-bottom: 40px; ">';
 																	output += '<div style="color:white;" class=""><header style="position: relative">';
 																	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">'
 																			+ moment(
@@ -340,7 +341,8 @@
 				</div>
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
-				<div class="mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+				<div class="mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -352,7 +354,7 @@
 
 						<div>
 
-							<table style="width: 100%;" >
+							<table style="width: 100%;">
 
 								<tr class="tddefault"
 									style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));">
@@ -428,7 +430,8 @@
 
 					</div>
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+				<div class="  mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -461,7 +464,8 @@
 					<div class="mdl-card__actions mdl-card--border"></div>
 
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col " style="background:rgba(0,0,0,0.3)">
+				<div class="  mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -510,7 +514,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid" >
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
 				<hr>
 				<h3>
 					<i class="material-icons material-heading">share</i> Check our
@@ -565,7 +569,7 @@
 																	output += '<h5><a style="color:#4d7da2 font-size:14px;" target="_blank" href="'+ item.link + '">'
 																			+ item.title
 																			+ '</a></h5>';
-																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2;"><span style="color:#4d7da2;"> Created <span  data-livestamp="'+ item.pubDate+'">'
+																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2;"><span style="color:white;"> Created <span  data-livestamp="'+ item.pubDate+'">'
 																			+ item.pubDate
 																			+ '"</span> by '
 																			+ item.author
@@ -589,12 +593,131 @@
 				</script>
 			</div>
 		</div>
+	
+
+	
+		
+
+		<div class="mdl-cell--12-col mdl-grid" style="background:rgba(0,0,0,0.3); border-top:solid 1px #4d7da2">
+	<div class="mdl-cell--3-col mdl-grid">
+	<div class="mdl-cell--4-col mdl-grid"> <img
+						src="https://cdn.madana.io/commonvisuals/logos/logo-madana-big@2x.png"
+						alt="MADANA Logo" style="height:100px;margin:20px;" ></div>
+	<div class="mdl-cell--6-col mdl-grid"> <p class="legal" style="font-size:12px;">
+	<br>
+	
+MADANA UG (haftungsbeschränkt)<br> c/o Space Shack Coworking <br> Akazienstrasse 3A<br> 10823 Berlin,
+Germany <br>
+
+</p></div>
+	
+	</div>
+	<div class="mdl-cell--9-col mdl-grid" >
+				<div	class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
+					<p>Links</p>
+					<p>
+						<a class="mdl-cell--6-col copyright" href="http://faq.madana.io"
+							target="_blank" style="text-align: center;">Knowledge Base</a>
+					</p>
+					<p>
+						<a class="mdl-cell--6-col copyright"
+							href="https://communityhub.madana.io" target="_blank"
+							style="text-align: center;">Community Hub</a>
+					</p>
+					<p>
+						<a class="mdl-cell--6-col copyright" href="https://blog.madana.io"
+							target="_blank" style="text-align: center;">Blog / News</a>
+					</p>
+					<p>
+						<a class="mdl-cell--6-col copyright" href="/download/MADANA_mediakit.zip"
+							style="text-align: center;">Media / Press Kit</a>
+					</p>
+				</div>
+				<div
+					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
+					<p>Developers</p>
+					<div id="statuspage">
+						<p>
+							<a href="http://status.madana.io" target="_blank"><span
+								class="color-dot none"></span><span class="col-sm-6 copyright"
+								style="text-align: center;">Statuspage</span></a>
+						</p>
+						<p>
+							<a class="col-sm-6 copyright"
+								href="https://blog.madana.io/tagged/dev-notes" target="_blank"
+								style="text-align: center;">Release Notes</a>
+						</p>
+						<p>
+							<a class="col-sm-6 copyright"
+								href="https://communityhub.madana.io/login" target="_blank"
+								style="text-align: center;">Give Feedback</a>
+						</p>
+						<p>
+							<a class="col-sm-6 copyright"
+								href="https://communityhub.madana.io/login" target="_blank"
+								style="text-align: center;">Report a Bug</a>
+						</p>
+					</div>
+				</div>
+				<div
+					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
+					<p>Documents</p>
+					<p>
+						<a class="col-sm-6 copyright "
+							href="https://www.madana.io/onepager" target="_blank"
+							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, assets/img/icon-mini-doc@3x.png 3x"
+							style="text-align: center;">Onepager</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright "
+							href="https://www.madana.io/usecases" target="_blank"
+							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
+							style="text-align: center;">Use Case Paper</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright "
+							href="https://www.madana.io/whitepaper" target="_blank"
+							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
+							style="text-align: center;">White Paper</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright "
+							href="https://www.madana.io/tokenomicspaper" target="_blank"
+							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
+							style="text-align: center;">Tokenomics Paper</a>
+					</p>
+				</div>
+				<div
+					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
+					<p>Legal</p>
+					<p>
+						<a class="col-sm-6 copyright" href="https://www.madana.io/legal"
+							style="text-align: center;">Impressum</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright" href="http://www.madana.io/cookies"
+							style="text-align: center;">Cookie Policy</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright"
+							href="http://www.madana.io/privacy-policy"
+							style="text-align: center;">Privacy Policy</a>
+					</p>
+					<p>
+						<a class="col-sm-6 copyright"
+							href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf"
+							target="_blank" style="text-align: center;">Terms of Use</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	
 
 
 		<jsp:include page="components/snackbar.jsp" />
 	</div>
 	</main>
-	</div>
+
 	<jsp:include page="components/footer.jsp" />
 
 
