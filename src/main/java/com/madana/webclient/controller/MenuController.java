@@ -378,7 +378,7 @@ public class MenuController
 	public String faqPage(HttpSession session,Model model) 
 	{
 
-		model.addAttribute("url", "https://intranet.madana.io/confluence/display/MADANA/MADANA+FAQ");
+		model.addAttribute("url", "https://intranet.madana.io/confluence/x/CQCeB");
 		return "externalframe";
 
 	}
