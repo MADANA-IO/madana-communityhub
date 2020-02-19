@@ -56,6 +56,13 @@ public class LoginController
 {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String redirectHome(HttpSession session,Model model) 
+	{
+
+		return "redirect:/home/";
+	}
+
+	@RequestMapping(value = "/start", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
 

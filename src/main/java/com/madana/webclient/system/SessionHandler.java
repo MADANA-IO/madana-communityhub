@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
 
 import com.madana.common.datastructures.MDN_UserProfile;
 import com.madana.common.restclient.MDN_RestClient;
@@ -21,14 +23,27 @@ import com.madana.webclient.exceptions.ClientNotInitizializedException;
  * @author J.-Fabian Wenisch
  *
  */
-public class SessionHandler
+public class SessionHandler implements HttpSessionListener
 {
 	public static final String BEGIN_CERT = "-----BEGIN CERTIFICATE-----";
 	public static final String END_CERT = "-----END CERTIFICATE-----";
+	private static int globalSessionCount = 0;
 
+	public void sessionCreated(HttpSessionEvent se) {
+		globalSessionCount++;
+	}
+
+	public void sessionDestroyed(HttpSessionEvent se) {
+		if(globalSessionCount > 0)
+			globalSessionCount--;
+	}
+
+	public static int getSessionCount() {
+		return globalSessionCount;
+	}
 	public static String getCurrentUser(HttpSession session) throws ClientNotInitizializedException
 	{
-	
+
 		String username =  (String) session.getAttribute("username");
 		if(username == null)
 		{
@@ -46,12 +61,12 @@ public class SessionHandler
 	{
 		Object oClient = session.getAttribute("oClient");
 		if(oClient == null)
-			{
+		{
 			initNewClient(session);
 			oClient = session.getAttribute("oClient");
-			}
-			
-			return (MDN_RestClient) oClient;
+		}
+
+		return (MDN_RestClient) oClient;
 	}
 	/**
 	 * @param session
@@ -65,7 +80,7 @@ public class SessionHandler
 		}
 		catch(Exception e)
 		{
-			
+
 		}
 		MDN_RestClient oClient =  new MDN_RestClient();
 
@@ -80,11 +95,11 @@ public class SessionHandler
 			else 
 			{
 				inputStream = new ByteArrayInputStream(
-					Base64.getDecoder().decode(certStr
-						.replaceAll(SessionHandler.BEGIN_CERT, "")
-						.replaceAll(SessionHandler.END_CERT, "")
-						.replaceAll("\n", ""))
-				);
+						Base64.getDecoder().decode(certStr
+								.replaceAll(SessionHandler.BEGIN_CERT, "")
+								.replaceAll(SessionHandler.END_CERT, "")
+								.replaceAll("\n", ""))
+						);
 			}
 			X509Certificate clientCert = CertificateHandler.getCertificateFromInputStream(inputStream);
 			oClient.authApplication(clientCert);
@@ -96,68 +111,68 @@ public class SessionHandler
 			System.err.println("Couldn't read certificate from ENV or file");
 		}
 		throw new  ClientNotInitizializedException("Application certificate could not be read");
-		
+
 	}
 
 	public static void validateLoginAttempts(HttpSession session) throws Exception
 	{
 		int loginAttempt;
-        if (session.getAttribute("loginCount") == null)
-        {
-            session.setAttribute("loginCount", 0);
-            session.setAttribute("loginWait", false);
-            loginAttempt = 0;
-        }
-        else
-        {
-             loginAttempt = (Integer) session.getAttribute("loginCount");
-        }
+		if (session.getAttribute("loginCount") == null)
+		{
+			session.setAttribute("loginCount", 0);
+			session.setAttribute("loginWait", false);
+			loginAttempt = 0;
+		}
+		else
+		{
+			loginAttempt = (Integer) session.getAttribute("loginCount");
+		}
 
-        if (loginAttempt >= 2 )
-        {     
-        	  Date date = new Date();
-        	if (session.getAttribute("loginWait").toString().equals("false"))
-        	{
-                session.setAttribute("loginWait", true);
-        		session.setAttribute("loginWaitTime", date.getTime());
-        	}
-            long lastAccessedTime = (Long) session.getAttribute("loginWaitTime");
-          
-            long currentTime = date.getTime();
-            long timeDiff = currentTime - lastAccessedTime; 
-            if (timeDiff >= 600000)
-            {
-                //invalidate user session, so they can try again
-                session.setAttribute("loginCount",0);
-                session.invalidate();
-                return;
-            }
-            else
-            {
-            	long lWaitTime = 600000 - timeDiff;
-            throw new Exception("You have exceeded 3 failed login attempts. Please try again in "+ String.format("%d min, %d sec", 
-        		    TimeUnit.MILLISECONDS.toMinutes(lWaitTime),
-        		    TimeUnit.MILLISECONDS.toSeconds(lWaitTime) - 
-        		    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(lWaitTime))
-        		));
-            }  
+		if (loginAttempt >= 2 )
+		{     
+			Date date = new Date();
+			if (session.getAttribute("loginWait").toString().equals("false"))
+			{
+				session.setAttribute("loginWait", true);
+				session.setAttribute("loginWaitTime", date.getTime());
+			}
+			long lastAccessedTime = (Long) session.getAttribute("loginWaitTime");
 
-        }
-        else
-        {
-             loginAttempt++;
-        }
-        session.setAttribute("loginCount",loginAttempt);
+			long currentTime = date.getTime();
+			long timeDiff = currentTime - lastAccessedTime; 
+			if (timeDiff >= 600000)
+			{
+				//invalidate user session, so they can try again
+				session.setAttribute("loginCount",0);
+				session.invalidate();
+				return;
+			}
+			else
+			{
+				long lWaitTime = 600000 - timeDiff;
+				throw new Exception("You have exceeded 3 failed login attempts. Please try again in "+ String.format("%d min, %d sec", 
+						TimeUnit.MILLISECONDS.toMinutes(lWaitTime),
+						TimeUnit.MILLISECONDS.toSeconds(lWaitTime) - 
+						TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(lWaitTime))
+						));
+			}  
+
+		}
+		else
+		{
+			loginAttempt++;
+		}
+		session.setAttribute("loginCount",loginAttempt);
 
 	}
 
 	public static void setSuccessfulLogin(HttpSession session, String userName)
 	{
-		
-	session.setAttribute("username",userName);
-	 session.setAttribute("loginCount", 0);
-     session.setAttribute("loginWait", false);
+
+		session.setAttribute("username",userName);
+		session.setAttribute("loginCount", 0);
+		session.setAttribute("loginWait", false);
 		// TODO Auto-generated method stub
-		
+
 	}
 }

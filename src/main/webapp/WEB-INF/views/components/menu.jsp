@@ -167,7 +167,7 @@ a:active {
 			<c:choose>
 				<c:when test="${empty profile.userName}">
 					<div style="position: absolute; right: 20px;">
-					<a href="/login" class="mdl-navigation__link mdl-cell--hide-phone">
+					<a href="/start" class="mdl-navigation__link ">
 						<i class=" material-icons " style="padding-right: 10px;"
 						role="presentation">account_circle</i>Sign in
 

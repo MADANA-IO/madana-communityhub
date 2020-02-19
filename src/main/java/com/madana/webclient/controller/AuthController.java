@@ -49,7 +49,16 @@ public class AuthController
 	@RequestMapping(value = "/auth/twitter", method = RequestMethod.GET)
 	public String authTwitter(HttpSession session,Model model) throws ClientNotInitizializedException 
 	{
-		return "redirect:"+ SessionHandler.getClient(session).getTwitterAuthURL();
+		try
+		{
+			String redirectURL = SessionHandler.getClient(session).getTwitterAuthURL();
+			return "redirect:"+ redirectURL;
+		}
+		catch(Exception ex)
+		{
+			throw new ClientNotInitizializedException();
+		}
+	
 	}
 	@RequestMapping(value = "/auth/twitter/callback" , method = RequestMethod.GET)
 	public String setTwitterUserID(HttpSession session, @RequestParam("oauth_token") String token, @RequestParam("oauth_verifier") String verifier, Model model ,   final RedirectAttributes redirectAttributes) throws ClientNotInitizializedException 

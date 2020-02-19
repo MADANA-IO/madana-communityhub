@@ -93,16 +93,16 @@
 						</tr>
 						<tr>
 
-							<td><input type="submit" value="Login"
-								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 2px; color: #a0c3e8;" /><input
+							<td><input type="submit" clas="mdl-button" value="Login"
+								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 2px; color: white;" /><input
 								type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 						</tr>
 						<tr>
 
 							<td><br> <span
-								style="background: rgba(255, 255, 255, 0.7); border: 1px solid #4d7da2; padding: 10px; color: #f3f3f6; width: 250px;">
+								style="background: white;color:#274863; border: 1px solid #4d7da2; border-radius:14px;padding: 10px;">
 									<a
-									style="color: black; text-decoration: none;"
+									style="color:#274863; text-decoration: none;"
 			
 				href="/login/ethereum"><img
 										src="https://metamask.io/img/metamask.png"

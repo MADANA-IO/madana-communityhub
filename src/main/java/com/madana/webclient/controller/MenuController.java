@@ -41,6 +41,7 @@ import com.madana.common.datastructures.MDN_PersonalSocialPost;
 import com.madana.common.datastructures.MDN_SimpleUserProfile;
 import com.madana.common.datastructures.MDN_SocialHistoryObject;
 import com.madana.common.datastructures.MDN_SocialPlatform;
+import com.madana.common.datastructures.MDN_SystemHealthObject;
 import com.madana.common.datastructures.MDN_User;
 import com.madana.common.datastructures.MDN_UserProfile;
 import com.madana.common.datastructures.MDN_UserProfileImage;
@@ -156,49 +157,54 @@ public class MenuController
 	public String homePage(HttpSession session,Model model) throws Exception 
 	{
 
-		Instant start = Instant.now();
 		MDN_RestClient oClient = SessionHandler.getClient(session);
-		String strUserName = SessionHandler.getCurrentUser(session);
+
+		Instant start = Instant.now();
 		oPlatforms = oClient.getSocialPlatforms();
+		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, "");
 		Instant end = Instant.now();
 		Duration timeElapsed = Duration.between(start, end);
 		System.out.println("Get social platforms: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
-		oUser = oClient.getUser(strUserName);
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading user: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
-		oProfile= oClient.getProfile(strUserName);
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading Profile: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
-		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
-		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
 
-		start = Instant.now();
-
-		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
-		if(oUsers.size()>2)
-		{
-			Collections.sort(oUsers);
-			model.addAttribute("user1", oUsers.get(0));
-			model.addAttribute("user2", oUsers.get(1));
-			model.addAttribute("user3", oUsers.get(2));
-		}
 		model.addAttribute("currentsite","home");
-		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("user", oUser);
-		model.addAttribute("profile", oProfile);	
-		session.setAttribute("profile", oProfile);
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("system",  oClient.getSystemHealth());
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading Home: "+ timeElapsed.toMillis() +" milliseconds");
+
+		try //getting user specific information to be displayed
+		{	
+			start = Instant.now();
+			String strUserName = SessionHandler.getCurrentUser(session);
+			oUser = oClient.getUser(strUserName);
+			end = Instant.now();
+			timeElapsed = Duration.between(start, end);
+			System.out.println("Loading user: "+ timeElapsed.toMillis() +" milliseconds");
+			start = Instant.now();
+			oProfile= oClient.getProfile(strUserName);
+			end = Instant.now();
+			timeElapsed = Duration.between(start, end);
+			System.out.println("Loading Profile: "+ timeElapsed.toMillis() +" milliseconds");
+			start = Instant.now();
+			List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+
+			model.addAttribute("social_platforms",oSocialPlatforms);
+			model.addAttribute("msg", strUserName);
+			model.addAttribute("user", oUser);
+			model.addAttribute("profile", oProfile);	
+			session.setAttribute("profile", oProfile);
+		}
+		catch(Exception ex) // Client not authenticated / information not availabe
+		{
+
+		}
+
+		//Adding Bounty sections relating to user / client
+		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+		model.addAttribute("social_platforms",oSocialPlatforms);
+
+		MDN_SystemHealthObject system =  oClient.getSystemHealth();
+		int backendSessions= Integer.valueOf(system.getActiveusercount());
+		int totalSessions = backendSessions+SessionHandler.getSessionCount();
+		system.setActiveusercount(String.valueOf(totalSessions));
+		model.addAttribute("system",system );
 		return "home";
 
 	}
@@ -221,7 +227,7 @@ public class MenuController
 		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
 		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
 
-	
+
 
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
 		if(oUsers.size()>2)

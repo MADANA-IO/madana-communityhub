@@ -90,14 +90,14 @@ top: calc(50% - 50px);
 					<tr>
 					
 				
-						<td><br>		<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="width:100%; font-size: 12px;padding:5px;"
+						<td><br>		<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style=" font-size: 12px;padding:10px;"
 				href="/register/basic">Signup with Password</a></span></td>
 					</tr>
 				
 						<tr>
 				
 						<td>	<br>	<a style="text-decoration:none;width:100%;padding:5px;"href="/register/ethereum" ><span 
-								style="background: white;color:#274863; border: 1px solid #4d7da2; padding: 10px; ">
+								style="background: white;color:#274863; border: 1px solid #4d7da2; border-radius:14px;padding: 10px; ">
 							
 									<img
 										src="https://metamask.io/img/metamask.png"

@@ -41,8 +41,7 @@
 					<i class="material-icons material-heading">announcement</i> Latest
 					News
 				</h3>
-				<div class="row" style="margin:20px;"
-					id="medium"></div>
+				<div class="row" style="margin: 20px;" id="medium"></div>
 				<a href="/news" style="width: 90%; text-align: center;">
 					<button id="" type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
@@ -206,13 +205,14 @@
 
 												</a>
 												<c:if test="${platform.name == 'Twitter'}">
+													<c:if test="${not empty profile.UserName}">
+														<br>
 
-													<br>
-
-													<div style="font-size: 12px; color: #274863">You can
-														also verify your account by sending a private message with
-														"CH:${profile.userName}" to the official MADANA Twitter
-														Account.</div>
+														<div style="font-size: 12px; color: #274863">You can
+															also verify your account by sending a private message
+															with "CH:${profile.userName}" to the official MADANA
+															Twitter Account.</div>
+													</c:if>
 												</c:if>
 											</c:when>
 											<c:otherwise>
@@ -354,71 +354,65 @@
 
 						<div>
 
-							<table style="width: 100%;">
-
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));">
-									<td class="" style="color: white;"><img
-										src="${user1.image}" width="60" height="60" class="circle "><a
-										href="/profile/<c:out value="${user1.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a> <c:out value="${user1.userName}" /> <c:if
-											test="${user1.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user1.points}" /> CP</span></td>
+							<table id="rankingtable" style="width: 100%;">
 
 
+
+								<tr id="rankingtableloader">
+									<td><img
+										src="https://cdn.madana.io/commonvisuals/icons/loading.gif"></td>
 								</tr>
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #CCC2C2 50%, rgba(255, 255, 255, 0.1));">
-									<td style="color: white;"><img src="${user2.image}"
-										width="60" height="60" class="circle"> <a
-										href="/profile/<c:out value="${user2.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a> <c:out value="${user2.userName}" /> <c:if
-											test="${user2.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user2.points}" /> CP</span></td>
-
-
-
-								</tr>
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #965A38 50%, rgba(255, 255, 255, 0.1));">
-									<td style="color: white;"><img src="${user3.image}"
-										width="60" height="60" class="circle"><a
-										href="/profile/<c:out value="${user3.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a> <c:out value="${user3.userName}" /> <c:if
-											test="${user3.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user3.points}" /> CP</span></td>
-
-
-
-								</tr>
-
-
 							</table>
 						</div>
+
+
+						<script>
+							$
+									.ajax({
+										type : "GET",
+										url : '${pageContext.request.contextPath}/session/ranking/top',
+										dataType : "json",
+										complete : [ function(response) {
+
+											var obj = $
+													.parseJSON(response.responseText);
+											if (obj.length > 0) {
+
+												const myNode = document
+														.getElementById("rankingtableloader");
+												myNode.innerHTML = '';
+												var trHTML = '';
+												for (var i = 0; i < obj.length; i++) {
+
+													trHTML += '	<tr class="tddefault"	';
+													if (i == 0) {
+														trHTML += '  style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));" ';
+													} else if (i == 1) {
+														trHTML += '  style="background-image: linear-gradient(to right, #CCC2C2 50%, rgba(255, 255, 255, 0.1));" ';
+													} else if (i == 2) {
+														trHTML += '  style="background-image: linear-gradient(to right, #965A38 50%, rgba(255, 255, 255, 0.1));" ';
+													}
+													trHTML += '>';
+													trHTML += '<td style="color: white;"><img src="'+obj[i].image+'"	width="60" height="60" class="circle"><a href="/profile/'+obj[i].userName+'">';
+													trHTML += '<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle"> <i class="material-icons">person</i></button>';
+													trHTML += '</a> '
+															+ obj[i].userName
+															+ ' ';
+													if (obj[i].activated == "true") {
+														trHTML += '<i class="material-icons">verified_user</i>';
+													}
+
+													trHTML += ' <span style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;">'
+															+ obj[i].points
+															+ ' CP</span></td>	</tr>';
+
+												}
+												$("#rankingtable tbody")
+														.append(trHTML);
+											}
+										} ]
+									});
+						</script>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 						<br> <a href="/ranking"><button id="show-dialog"
@@ -593,127 +587,6 @@
 				</script>
 			</div>
 		</div>
-	
-
-	
-		
-
-		<div class="mdl-cell--12-col mdl-grid" style="background:rgba(0,0,0,0.3); border-top:solid 1px #4d7da2">
-	<div class="mdl-cell--3-col mdl-grid">
-	<div class="mdl-cell--4-col mdl-grid"> <img
-						src="https://cdn.madana.io/commonvisuals/logos/logo-madana-big@2x.png"
-						alt="MADANA Logo" style="height:100px;margin:20px;" ></div>
-	<div class="mdl-cell--6-col mdl-grid"> <p class="legal" style="font-size:12px;">
-	<br>
-	
-MADANA UG (haftungsbeschränkt)<br> c/o Space Shack Coworking <br> Akazienstrasse 3A<br> 10823 Berlin,
-Germany <br>
-
-</p></div>
-	
-	</div>
-	<div class="mdl-cell--9-col mdl-grid" >
-				<div	class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
-					<p>Links</p>
-					<p>
-						<a class="mdl-cell--6-col copyright" href="http://faq.madana.io"
-							target="_blank" style="text-align: center;">Knowledge Base</a>
-					</p>
-					<p>
-						<a class="mdl-cell--6-col copyright"
-							href="https://communityhub.madana.io" target="_blank"
-							style="text-align: center;">Community Hub</a>
-					</p>
-					<p>
-						<a class="mdl-cell--6-col copyright" href="https://blog.madana.io"
-							target="_blank" style="text-align: center;">Blog / News</a>
-					</p>
-					<p>
-						<a class="mdl-cell--6-col copyright" href="/download/MADANA_mediakit.zip"
-							style="text-align: center;">Media / Press Kit</a>
-					</p>
-				</div>
-				<div
-					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
-					<p>Developers</p>
-					<div id="statuspage">
-						<p>
-							<a href="http://status.madana.io" target="_blank"><span
-								class="color-dot none"></span><span class="col-sm-6 copyright"
-								style="text-align: center;">Statuspage</span></a>
-						</p>
-						<p>
-							<a class="col-sm-6 copyright"
-								href="https://blog.madana.io/tagged/dev-notes" target="_blank"
-								style="text-align: center;">Release Notes</a>
-						</p>
-						<p>
-							<a class="col-sm-6 copyright"
-								href="https://communityhub.madana.io/login" target="_blank"
-								style="text-align: center;">Give Feedback</a>
-						</p>
-						<p>
-							<a class="col-sm-6 copyright"
-								href="https://communityhub.madana.io/login" target="_blank"
-								style="text-align: center;">Report a Bug</a>
-						</p>
-					</div>
-				</div>
-				<div
-					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
-					<p>Documents</p>
-					<p>
-						<a class="col-sm-6 copyright "
-							href="https://www.madana.io/onepager" target="_blank"
-							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, assets/img/icon-mini-doc@3x.png 3x"
-							style="text-align: center;">Onepager</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright "
-							href="https://www.madana.io/usecases" target="_blank"
-							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
-							style="text-align: center;">Use Case Paper</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright "
-							href="https://www.madana.io/whitepaper" target="_blank"
-							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
-							style="text-align: center;">White Paper</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright "
-							href="https://www.madana.io/tokenomicspaper" target="_blank"
-							srcset="https://www.madana.io/assets/img/icon-mini-doc@2x.png 2x, https://www.madana.io/assets/img/icon-mini-doc@3x.png 3x"
-							style="text-align: center;">Tokenomics Paper</a>
-					</p>
-				</div>
-				<div
-					class="mdl-cell--3-col align-items-center text-center  justify-content-around ">
-					<p>Legal</p>
-					<p>
-						<a class="col-sm-6 copyright" href="https://www.madana.io/legal"
-							style="text-align: center;">Impressum</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright" href="http://www.madana.io/cookies"
-							style="text-align: center;">Cookie Policy</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright"
-							href="http://www.madana.io/privacy-policy"
-							style="text-align: center;">Privacy Policy</a>
-					</p>
-					<p>
-						<a class="col-sm-6 copyright"
-							href="https://www.madana.io/resources/TERMSOFUSE_MADANA_CommunityHub.pdf"
-							target="_blank" style="text-align: center;">Terms of Use</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	
-
-
 		<jsp:include page="components/snackbar.jsp" />
 	</div>
 	</main>
