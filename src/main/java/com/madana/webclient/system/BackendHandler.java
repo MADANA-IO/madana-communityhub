@@ -142,7 +142,7 @@ public class BackendHandler implements ServletContextListener
 		try
 		{
 
-			String secret = BackendHandler.getProperty("GOOGLECAPTCHA");
+	
 			String USER_AGENT = "Mozilla/5.0";
 			URL obj = new URL(GOOGLECAPTCHA_VERIFYURL);
 			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -152,7 +152,7 @@ public class BackendHandler implements ServletContextListener
 			con.setRequestProperty("User-Agent", USER_AGENT);
 			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-			String postParams = "secret=" + secret + "&response="
+			String postParams = "secret=" + GOOGLECAPTCHA_SECRETKEY + "&response="
 					+ gRecaptchaResponse;
 
 			// Send post request
