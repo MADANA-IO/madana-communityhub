@@ -14,17 +14,21 @@ JDK 1.8<br/>
 The result is packaged as deployable war which can be found under `/target/madana-communityhub-{version}.war`
 
 
-## Environment Variables
-##### Required variables
+## Configure
+The Application can be configured with environment variables that are read on startup. An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer.
 
+They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.
 
+### Required
 
 
 
 `RESTURI=https://localhost:8080/madana-api/rest` <br/>
 Connection URL of API REST Context<br/><br/>
 
-##### GOOGLECAPTCHA
+### Optional
+
+#### Enabling reCAPTCHA protection
 reCAPTCHA is a free service that protects your website from spam and abuse. reCAPTCHA uses an advanced risk analysis engine and adaptive challenges to keep automated software from engaging in abusive activities on your site. It does this while letting your valid users pass through with ease.)<br/>
 The Application is able to restrict login / singup  by defining the following environment variables:<br/>
 
@@ -88,20 +92,20 @@ To run the latest version using docker run
 ```
 
 #### -p 9280:8080
-To expose a containerâ€™s internal port, an operator can start the container with the -P or -p flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.
+To expose a containerÃ¢â‚¬â„¢s internal port, an operator can start the container with the -P or -p flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.
 The port number inside the container (where the service listens) does not need to match the port number exposed on the outside of the container (where clients connect). For example, inside the container an HTTP service is always listening on port 8080. At runtime, the port might be bound to 10280 on the host to run a second node on the same host by using 
 ```
  docker run -p 10280:8080 --rm -it --privileged=true  --env GOOGLECAPTCHA=6LeSsno... --env RESTURI=https://localhost:8080/madana-api/rest registry.gitlab.com/madana-io/madana-communityhub:latest
 ```
 
 #### --rm
-By default a containerâ€™s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running short-term foreground processes, these container file systems can really pile up. If instead youâ€™d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the --rm flag:
+By default a containerÃ¢â‚¬â„¢s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running short-term foreground processes, these container file systems can really pile up. If instead youÃ¢â‚¬â„¢d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the --rm flag:
 
 ```
 --rm=false: Automatically remove the container when it exits
 ```
 #### -it --privileged=true
-By default, Docker containers are â€œunprivilegedâ€� and cannot, for example, run a Docker daemon inside a Docker container. This is because by default a container is not allowed to access any devices, but a â€œprivilegedâ€� container is given access to all devices (see the documentation on cgroups devices).
+By default, Docker containers are Ã¢â‚¬Å“unprivilegedÃ¢â‚¬ï¿½ and cannot, for example, run a Docker daemon inside a Docker container. This is because by default a container is not allowed to access any devices, but a Ã¢â‚¬Å“privilegedÃ¢â‚¬ï¿½ container is given access to all devices (see the documentation on cgroups devices).
 
 When the operator executes docker run --privileged, Docker will enable access to all devices on the host as well as set some configuration in AppArmor or SELinux to allow the container nearly all the same access to the host as processes running outside containers on the host. Additional information about running with --privileged is available on the Docker Blog.
 
