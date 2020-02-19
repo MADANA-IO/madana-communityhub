@@ -195,7 +195,7 @@
 											<c:when test="${platform.isVerifiedByUser == false}">
 
 												<a style="align: right; width: 100%;"
-													href="auth/${fn:toLowerCase(platform.name)}">
+													href="/auth/${fn:toLowerCase(platform.name)}">
 
 
 													<button
