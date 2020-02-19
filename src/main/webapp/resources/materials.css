@@ -2973,14 +2973,12 @@ rgba
 
 
 }
-.mdl-button 
-{
-background: rgba(33,73,99, 0.7);
+.mdl-button {
+    background: #274863;
     border: 1px solid #4d7da2;
     cursor: pointer;
-    border-radius: 2px;
-    color: #a0c3e8;;
-
+       border-radius: 14px;
+    color: white;
 }
 .mdl-button .material-icons {
 	color:#a0c3e8;
