@@ -59,7 +59,8 @@
 	</div>
 	<div class="header">
 		<div>
-			<img src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
+			<img
+				src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
 				alt="MADANA Logo" width="175" height="175"
 				style="text-align: center; display: block;"> <span
 				style="font-family: Montserrat; font-style: normal; font-variant: normal; font-size: 24px; color: #a0c3e8 !important; position: absolute; top: 120px; left: -60px; margin-right: -50px;">Community
@@ -76,9 +77,8 @@
 						<tr>
 
 
-							<td><br>
-							<br>
-							<input type="text" placeholder="E-mail" name="email" /></td>
+							<td><br> <br> <input type="text"
+								placeholder="E-mail" name="email" /></td>
 						</tr>
 						<tr>
 
@@ -98,33 +98,32 @@
 						</tr>
 						<tr>
 
-							<td><br>
-							<a href="/login">Create new account</a></td>
+							<td><br> <a href="/login">Create new account</a></td>
 						</tr>
 						<tr>
-							<td><br>
-							<br></td>
+							<td><br> <br></td>
 							<td>
 								<div style="color: red">${error}</div>
 							</td>
 						</tr>
 
 					</table>
-
-					<script>
+					<c:if test="${GOOGLECAPTCHA == 'true'}">
+						<script>
 		
 				   
 			
 grecaptcha.ready(function() 
 		{
 	
-grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'resetpassword'})
+grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'resetpassword'})
 .then(function(token) {
 	document.getElementById("tokenfield").value = token;
 });
 });
 
 </script>
+					</c:if>
 				</div>
 			</form>
 			<jsp:include page="components/snackbar.jsp" />

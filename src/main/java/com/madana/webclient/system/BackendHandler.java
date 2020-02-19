@@ -34,6 +34,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 import com.madana.common.datastructures.MDN_SocialHistoryObject;
 import com.madana.common.datastructures.MDN_SocialPlatform;
@@ -44,12 +46,15 @@ import com.madana.common.restclient.MDN_RestClient;
 import com.madana.webclient.dto.ReferralSocialPlatform;
 import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
-public class BackendHandler
+public class BackendHandler implements ServletContextListener
 {
 	public static BackendHandler instance;
-	public final String captchaVerifyURL = "https://www.google.com/recaptcha/api/siteverify";
+	private static String GOOGLECAPTCHA_WEBSITEKEY = "";
+	private static String GOOGLECAPTCHA_SECRETKEY = "";
+	private String GOOGLECAPTCHA_VERIFYURL = "https://www.google.com/recaptcha/api/siteverify";
+	private String GOOGLECAPTCHA_TRUSTSCORE = "0.2";
 
-	private BackendHandler()
+	public BackendHandler()
 	{
 
 	}
@@ -85,9 +90,9 @@ public class BackendHandler
 
 		}
 
-		System.err.println("############################################################");
-		System.err.println("UNKNOWN PROPERTY: "+strKey);
-		System.err.println("############################################################");
+//		System.err.println("############################################################");
+//		System.err.println("UNKNOWN PROPERTY: "+strKey);
+//		System.err.println("############################################################");
 		return "";
 
 	}
@@ -124,7 +129,12 @@ public class BackendHandler
 		System.out.println("ReferralPlatforms: "+ timeElapsed.toMillis() +" milliseconds");
 		return oRefferalPlatforms;
 	}
-	public  boolean verifyGoogleCaptcha(String gRecaptchaResponse) {
+	public  boolean verifyGoogleCaptcha(String gRecaptchaResponse) 
+	{
+		if(GOOGLECAPTCHA_SECRETKEY.length()<1) //No captchatoken provided
+			return true;
+		
+		
 		if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {
 			return false;
 		}
@@ -134,7 +144,7 @@ public class BackendHandler
 
 			String secret = BackendHandler.getProperty("GOOGLECAPTCHA");
 			String USER_AGENT = "Mozilla/5.0";
-			URL obj = new URL(captchaVerifyURL);
+			URL obj = new URL(GOOGLECAPTCHA_VERIFYURL);
 			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
 			// add reuqest header
@@ -172,7 +182,8 @@ public class BackendHandler
 			JsonObject jsonObject = jsonReader.readObject();
 			jsonReader.close();
 			Double dScore = Double.valueOf(jsonObject.get("score").toString());
-			if(dScore < 0.2)
+			Double dThreshold = Double.valueOf(GOOGLECAPTCHA_TRUSTSCORE);
+			if(dScore < dThreshold)
 				return false;
 			return jsonObject.getBoolean("success");
 		}catch(Exception e){
@@ -249,5 +260,59 @@ public class BackendHandler
 		}
 
 		return oSocialPlatforms;
+	}
+	@Override
+	public void contextInitialized(ServletContextEvent sce)
+	{
+		
+		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce)); 
+		System.out.println("Succesfully initialized MADANA CommunityHub");
+		
+	}
+	private boolean initGoogleCaptcha(ServletContextEvent sce) 
+	{
+		boolean initError=false;
+		GOOGLECAPTCHA_SECRETKEY= getProperty("GOOGLECAPTCHA_SECRETKEY");
+		if(GOOGLECAPTCHA_SECRETKEY.length()<1)
+		{
+			System.err.println("GOOGLECAPTCHA_SECRETKEY not provided. Disabling captchasecurity" );
+			initError=true;
+		}
+		
+		GOOGLECAPTCHA_WEBSITEKEY= getProperty("GOOGLECAPTCHA_WEBSITEKEY");
+		if(GOOGLECAPTCHA_WEBSITEKEY.length()<1)
+		{
+			System.err.println("GOOGLECAPTCHA_WEBSITEKEY not provided. Disabling captchasecurity" );
+			initError=true;
+		}
+		else
+		{
+			sce.getServletContext().setAttribute("GOOGLECAPTCHA_WEBSITEKEY", GOOGLECAPTCHA_WEBSITEKEY);
+		}
+
+		if(getProperty("GOOGLECAPTCHA_VERIFYURL").length()<1)
+		{
+			System.out.println("GOOGLECAPTCHA_VERIFYURL not provided. Falling back to default "+GOOGLECAPTCHA_VERIFYURL );
+		}
+		else
+		{
+			GOOGLECAPTCHA_VERIFYURL= getProperty("GOOGLECAPTCHA_VERIFYURL");
+		}
+		if(getProperty("GOOGLECAPTCHA_TRUSTSCORE").length()<1)
+		{
+			System.out.println("GOOGLECAPTCHA_TRUSTSCORE not provided. Falling back to default "+GOOGLECAPTCHA_TRUSTSCORE );
+		}
+		else
+		{
+			GOOGLECAPTCHA_TRUSTSCORE = getProperty("GOOGLECAPTCHA_TRUSTSCORE");
+		}
+		
+		return initError==false;
+	}
+	@Override
+	public void contextDestroyed(ServletContextEvent sce)
+	{
+		System.out.println("Killed MADANA CommunityHub");
+		
 	}
 }

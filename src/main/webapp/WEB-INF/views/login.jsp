@@ -100,15 +100,12 @@
 						<tr>
 
 							<td><br> <span
-								style="background: white;color:#274863; border: 1px solid #4d7da2; border-radius:14px;padding: 10px;">
-									<a
-									style="color:#274863; text-decoration: none;"
-			
-				href="/login/ethereum"><img
+								style="background: white; color: #274863; border: 1px solid #4d7da2; border-radius: 14px; padding: 10px;">
+									<a style="color: #274863; text-decoration: none;"
+									href="/login/ethereum"><img
 										src="https://metamask.io/img/metamask.png"
-										style="position: relative;left:8px; height: 20px; width: 20px;">
-										<span style="padding-left:8px">Login with MetaMask </span>
-								</a>
+										style="position: relative; left: 8px; height: 20px; width: 20px;">
+										<span style="padding-left: 8px">Login with MetaMask </span> </a>
 							</span></td>
 						</tr>
 						<tr>
@@ -124,20 +121,20 @@
 							<td><br> <br></td>
 						</tr>
 					</table>
-					<script>
-		
-				   
-			
-grecaptcha.ready(function() 
+					<c:if test="${GOOGLECAPTCHA == 'true'}">
+						<script>
+						
+	grecaptcha.ready(function() 
 		{
 	
-grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'login'})
+grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'login'})
 .then(function(token) {
 	document.getElementById("tokenfield").value = token;
 });
 });
 
 </script>
+					</c:if>
 
 				</div>
 			</form>

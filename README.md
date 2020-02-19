@@ -18,14 +18,28 @@ The result is packaged as deployable war which can be found under `/target/madan
 ##### Required variables
 
 
-`GOOGLECAPTCHA=6LeSsno...` (reCAPTCHAv3 Token provided from https://www.google.com/recaptcha/)<br>
+
+
+
+`RESTURI=https://localhost:8080/madana-api/rest` <br/>
+Connection URL of API REST Context<br/><br/>
+
+##### GOOGLECAPTCHA
 reCAPTCHA is a free service that protects your website from spam and abuse. reCAPTCHA uses an advanced risk analysis engine and adaptive challenges to keep automated software from engaging in abusive activities on your site. It does this while letting your valid users pass through with ease.)<br/>
-
-`RESTURI=https://localhost:8080/madana-api/rest` ( Connection URL of API REST Context )<br/>
-
+The Application is able to restrict login / singup  by defining the following environment variables:<br/>
 
 
-## Deploy to Tomcat
+|    Variable                          |    Defaultvalue           |    Description     |
+| -------------                   |:-------------:           | -----:       |
+|    GOOGLECAPTCHA_WEBSITEKEY     |              |     reCAPTCHAv3 WebsiteKey provided from https://www.google.com/recaptcha |
+|    GOOGLECAPTCHA_SECRETKEY      |             |       reCAPTCHAv3 Token Secretkey from https://www.google.com/recaptcha/ |
+|    GOOGLECAPTCHA_TRUSTSCORE     |    0.2                   |      A threshold for the trustscore can be set between 0 and 1 ( double ). The default is set to 0.2  |
+|    GOOGLECAPTCHA_VERIFYURL      |    https://www.google.com/recaptcha/api/siteverify      |        |
+
+
+ For more information on recaptcha v3 please refer to the [google recaptcha documentation](https://developers.google.com/recaptcha/docs/v3) <br><br/>
+
+## Run with tomcat
 
 ### Requirements
 Tomcat 8.5+<br/>
@@ -64,7 +78,7 @@ If the Host autoDeploy attribute is "true", the Host will attempt to deploy and 
 
 
 
-##  Run Application using docker
+##  Run with docker
 
 All versions are deployed to the gitlab [docker repository](https://gitlab.com/madana-io/madana-communityhub/container_registry)
 To run the latest version using docker run
@@ -74,20 +88,20 @@ To run the latest version using docker run
 ```
 
 #### -p 9280:8080
-To expose a container’s internal port, an operator can start the container with the -P or -p flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.
+To expose a containerâ€™s internal port, an operator can start the container with the -P or -p flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.
 The port number inside the container (where the service listens) does not need to match the port number exposed on the outside of the container (where clients connect). For example, inside the container an HTTP service is always listening on port 8080. At runtime, the port might be bound to 10280 on the host to run a second node on the same host by using 
 ```
  docker run -p 10280:8080 --rm -it --privileged=true  --env GOOGLECAPTCHA=6LeSsno... --env RESTURI=https://localhost:8080/madana-api/rest registry.gitlab.com/madana-io/madana-communityhub:latest
 ```
 
 #### --rm
-By default a container’s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running short-term foreground processes, these container file systems can really pile up. If instead you’d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the --rm flag:
+By default a containerâ€™s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running short-term foreground processes, these container file systems can really pile up. If instead youâ€™d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the --rm flag:
 
 ```
 --rm=false: Automatically remove the container when it exits
 ```
 #### -it --privileged=true
-By default, Docker containers are “unprivileged” and cannot, for example, run a Docker daemon inside a Docker container. This is because by default a container is not allowed to access any devices, but a “privileged” container is given access to all devices (see the documentation on cgroups devices).
+By default, Docker containers are â€œunprivilegedâ€� and cannot, for example, run a Docker daemon inside a Docker container. This is because by default a container is not allowed to access any devices, but a â€œprivilegedâ€� container is given access to all devices (see the documentation on cgroups devices).
 
 When the operator executes docker run --privileged, Docker will enable access to all devices on the host as well as set some configuration in AppArmor or SELinux to allow the container nearly all the same access to the host as processes running outside containers on the host. Additional information about running with --privileged is available on the Docker Blog.
 

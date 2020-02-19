@@ -143,7 +143,7 @@ top: calc(50% - 50px);
 					</tr>
 					
 				</table>
-
+		<c:if test="${GOOGLECAPTCHA == 'true'}">
 			<script>
 		
 				   
@@ -151,13 +151,14 @@ top: calc(50% - 50px);
 grecaptcha.ready(function() 
 		{
 	
-grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'register'})
+grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'registerEthereum'})
 .then(function(token) {
 	document.getElementById("tokenfield").value = token;
 });
 });
 
 </script>
+</c:if>
 			</div>
 		</form>
 		

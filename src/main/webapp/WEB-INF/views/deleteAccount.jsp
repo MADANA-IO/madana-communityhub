@@ -95,7 +95,7 @@
 								</tr>
 
 							</table>
-
+		<c:if test="${GOOGLECAPTCHA == 'true'}">
 							<script>
 		
 				   
@@ -103,13 +103,14 @@
 grecaptcha.ready(function() 
 		{
 	
-grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'delete'})
+grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'delete'})
 .then(function(token) {
 	document.getElementById("tokenfield").value = token;
 });
 });
 
 </script>
+</c:if>
 						</div>
 					</form>
 					<jsp:include page="components/snackbar.jsp" />
