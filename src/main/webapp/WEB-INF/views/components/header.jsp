@@ -70,9 +70,9 @@
  <%-- End scripts --%>
 
  <%-- Start Widgets --%>
-<jsp:include page="common/GoogleAnalytics.jsp" />
-<jsp:include page="common/StatusPage.jsp" />
-<jsp:include page="common/Jira.jsp" />
+<jsp:include page="widgets/GoogleAnalytics.jsp" />
+<jsp:include page="widgets/StatusPage.jsp" />
+<jsp:include page="widgets/Jira.jsp" />
  <%-- End Widgets --%>
 
 

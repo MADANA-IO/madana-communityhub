@@ -48,11 +48,19 @@ import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
 public class BackendHandler implements ServletContextListener {
 	public static BackendHandler instance;
+	
+	private static String MEDIUM_FEEDURL = "";
+	
 	private static String GOOGLEANALYTICS_TRACKINGID = "";
+
+	private static String STATUSPAGE_PAGEID ="";
+	private static String STATUSPAGE_PAGELINK="";
+
 	private static String GOOGLECAPTCHA_WEBSITEKEY = "";
 	private static String GOOGLECAPTCHA_SECRETKEY = "";
 	private String GOOGLECAPTCHA_VERIFYURL = "https://www.google.com/recaptcha/api/siteverify";
 	private String GOOGLECAPTCHA_TRUSTSCORE = "0.2";
+
 
 	public BackendHandler() {
 
@@ -234,18 +242,54 @@ public class BackendHandler implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 
+		sce.getServletContext().setAttribute("MEDIUM_FEEDURL", initNewsFeed(sce));
 		sce.getServletContext().setAttribute("GOOGLEANALYTICS_TRACKINGID", initGoogleAnalytics(sce));
+		sce.getServletContext().setAttribute("STATUSPAGE_PAGEID", initAtlassianStatuspage(sce));
 		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce));
 		System.out.println("Succesfully initialized MADANA CommunityHub");
 
 	}
 
+	private Object initNewsFeed(ServletContextEvent sce) {
+		MEDIUM_FEEDURL = getProperty("MEDIUM_FEEDURL");
+		if (MEDIUM_FEEDURL.length() < 1)
+		{
+			System.err.println("MEDIUM_FEEDURL not provided. Disabling medium newsfeed");
+		}
+		else
+		{
+			System.out.println("Activated medium newsfeed for "+MEDIUM_FEEDURL);
+		}
+		return MEDIUM_FEEDURL;
+	}
+
+	private Object initAtlassianStatuspage(ServletContextEvent sce) 
+	{
+		STATUSPAGE_PAGEID = getProperty("STATUSPAGE_PAGEID");
+		STATUSPAGE_PAGELINK = getProperty("STATUSPAGE_PAGELINK");
+		if (STATUSPAGE_PAGEID.length() < 1)
+		{
+			System.err.println("STATUSPAGE_PAGEID not provided. Disabling atlassian statuspage widget");
+			return "";
+		}
+		else if (STATUSPAGE_PAGELINK.length() < 1)
+		{
+			System.err.println("STATUSPAGE_PAGELINK not provided. Disabling atlassian statuspage widget");
+			return "";
+		}
+		else
+		{
+			System.out.println("Activated atlassian StatusPage widget for "+STATUSPAGE_PAGEID);
+		}
+		return STATUSPAGE_PAGEID;
+	}
+
 	private Object initGoogleAnalytics(ServletContextEvent sce) {
 		GOOGLEANALYTICS_TRACKINGID = getProperty("GOOGLEANALYTICS_TRACKINGID");
 		if (GOOGLEANALYTICS_TRACKINGID.length() < 1)
-			{
+		{
 			System.err.println("GOOGLEANALYTICS_TRACKINGID not provided. Disabling google analytics tracking");
-			}
+		}
 		else
 		{
 			System.out.println("Activated google analytics tracking for "+GOOGLEANALYTICS_TRACKINGID);

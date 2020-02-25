@@ -421,7 +421,7 @@ top: calc(50% - 50px);
      });
 
      $(function () {
-       ep.fetchStatus("https://41zg7lf9yvrd.statuspage.io", "503");
+       ep.fetchStatus("https://<c:out value="${STATUSPAGE_PAGEID}"/>.statuspage.io", "503");
      });
     </script>
 			</div>
@@ -431,7 +431,15 @@ top: calc(50% - 50px);
 
 			</div>
 
-<jsp:include page="components/statuspage.jsp" />
+	<c:if test="${not empty STATUSPAGE_PAGEID}">
+		<div class="mobilehide" id="status">
+			<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank"
+				style="text-decoration: none;"> <span class="color-dot"></span>
+				<span class="color-description"></span>
+			</a>
+		</div>
+		<jsp:include page="components/widgets/StatusPage.jsp" />
+	</c:if>
 	<jsp:include page="components/footer.jsp" />
 
 

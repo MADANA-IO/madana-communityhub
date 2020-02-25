@@ -130,7 +130,15 @@ grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'resetpassword'})
 		</div>
 	</div>
 
-	<jsp:include page="components/statuspage.jsp" />
+		<c:if test="${not empty STATUSPAGE_PAGEID}">
+		<div class="mobilehide" id="status">
+			<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank"
+				style="text-decoration: none;"> <span class="color-dot"></span>
+				<span class="color-description"></span>
+			</a>
+		</div>
+		<jsp:include page="components/widgets/StatusPage.jsp" />
+	</c:if>
 	<jsp:include page="components/footer.jsp" />
 
 

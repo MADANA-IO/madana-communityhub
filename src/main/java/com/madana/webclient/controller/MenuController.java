@@ -154,7 +154,7 @@ public class MenuController
 		return "ranking";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(HttpSession session,Model model) throws Exception 
+	public String loadHomePage(HttpSession session,Model model) throws Exception 
 	{
 
 		MDN_RestClient oClient = SessionHandler.getClient(session);
@@ -211,13 +211,13 @@ public class MenuController
 
 
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
-	public String loadHomepage(HttpSession session,Model model) 
+	public String loadNewsPpage(HttpSession session,Model model) 
 	{
 		model.addAttribute("currentsite","news");
 		return "news";
 	}
 	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
-	public String bountyPage(HttpSession session,Model model) throws Exception 
+	public String loadBountyPage(HttpSession session,Model model) throws Exception 
 	{
 
 
@@ -249,7 +249,7 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(HttpSession session,Model model) throws Exception 
+	public String loadOwnProfilePage(HttpSession session,Model model) throws Exception 
 	{
 		String strUserName = SessionHandler.getCurrentUser(session);
 		MDN_RestClient oClient = SessionHandler.getClient(session);
@@ -285,7 +285,7 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
+	public String loadProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
@@ -336,7 +336,7 @@ public class MenuController
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/verifymail", method = RequestMethod.GET)
-	public String sendverifyMail(HttpSession session,Model model) throws ClientNotInitizializedException 
+	public String requestVerifyMail(HttpSession session,Model model) throws ClientNotInitizializedException 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		oClient.requestEmailVerification(SessionHandler.getCurrentUser(session));
@@ -344,7 +344,7 @@ public class MenuController
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/changemail/{email}", method = RequestMethod.GET)
-	public String setNewMail(HttpSession session,Model model,@PathVariable("email") String mail) throws Exception 
+	public String requestChangePassword(HttpSession session,Model model,@PathVariable("email") String mail) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		MDN_User oUser = new MDN_User();
@@ -366,7 +366,7 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(HttpSession session,Model model) throws Exception 
+	public String loadSettingsPage(HttpSession session,Model model) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
@@ -381,7 +381,7 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/faq", method = RequestMethod.GET)
-	public String faqPage(HttpSession session,Model model) 
+	public String loadFAQPage(HttpSession session,Model model) 
 	{
 
 		model.addAttribute("url", "https://intranet.madana.io/confluence/x/CQCeB");

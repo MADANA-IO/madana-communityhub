@@ -11,24 +11,37 @@ JDK 1.8<br/>
 
 
 ### Artifact
-The result is packaged as deployable war which can be found under `/target/madana-communityhub-{version}.war`
+The result is packaged as deployable war which can be found under 
 
+```
+/target/madana-communityhub-{version}.war
+```
 
 ## Configure
-The Application can be configured with environment variables that are read on startup. An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer.
-
-They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.
+The Application can be configured with environment variables that are read on startup. An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer. They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.
 
 ### Required
 
 
 
-`RESTURI=https://localhost:8080/madana-api/rest` <br/>
-Connection URL of API REST Context<br/><br/>
+|    Variable                          |    Defaultvalue           |    Description     |
+| -------------                   |:-------------:           | -----:       |
+|    RESTURI     |        https://localhost:8080/madana-api/rest      |     REST Connection endpoint URL |
+|    CERTIFICATE     |            |     |
 
+<br><br/>
 ### Optional
+#### Enabling medium newsfeed
+Medium is an online publishing platform owned by A Medium Corporation. The platform is an example of social journalism, having a hybrid collection of amateur and professional people and publications, or exclusive blogs or publishers on Medium. rsstojson is used to display the latest post on the front-page and show the feed on the newspage.
 
-#### Enabling reCAPTCHA protection
+
+|    Variable                          |    Defaultvalue           |    Description     |
+| -------------                   |:-------------:           | -----:       |
+|    MEDIUM_FEEDURL     |              |  For own publications the /feed url (  https://blog.madana.io/feed/  ) can be used. For personal accounts it would be https://medium.com/feed/#Medium# where #Medium# is your username. More info on this can be found here in the medium documentation.|
+
+<br><br/>
+
+#### Enabling google reCAPTCHA protection
 reCAPTCHA is a free service that protects your website from spam and abuse. reCAPTCHA uses an advanced risk analysis engine and adaptive challenges to keep automated software from engaging in abusive activities on your site. It does this while letting your valid users pass through with ease.)<br/>
 The Application is able to restrict login / singup  by defining the following environment variables:<br/>
 
@@ -42,6 +55,25 @@ The Application is able to restrict login / singup  by defining the following en
 
 
  For more information on recaptcha v3 please refer to the [google recaptcha documentation](https://developers.google.com/recaptcha/docs/v3) <br><br/>
+ 
+#### Enabling google analytics tracking 
+Google analytics is used to track website activity such as session duration, pages per session, bounce rate etc. of individuals using the site, along with the information on the source of the traffic. It can be integrated with Google Ads, with which users can create and review online campaigns by tracking landing page quality and conversions (goals).
+
+
+|    Variable                          |    Defaultvalue           |    Description     |
+| -------------                   |:-------------:           | -----:       |
+|    GOOGLEANALYTICS_TRACKINGID     |              |   The tracking ID is a string like UA-000000-2. It must be included in your tracking code to tell Analytics which account and property to send data to. |
+
+<br><br/>
+#### Enabling atlassian StatusPage widget
+With the atlassian Status API and widget, you can embed system status into your own app, website, help desk, or anywhere else your users visit for support. 
+
+
+|    Variable                          |    Defaultvalue           |    Description     |
+| -------------                   |:-------------:           | -----:       |
+|    STATUSPAGE_PAGEID     |              |   41zg6jaxxxx |
+
+<br><br/>
 
 ## Run with tomcat
 

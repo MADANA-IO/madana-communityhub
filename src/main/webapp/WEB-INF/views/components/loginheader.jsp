@@ -7,6 +7,19 @@
 <head>
 
 <style>
+ #status {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+.color-dot {
+  @include border-radius(99px);
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:5px;
+
+}
 .login {
 	position: absolute;
 	top: calc(40%);

@@ -133,25 +133,24 @@ a:active {
 
 
 		<nav class="mdl-navigation ">
-
+			<c:if test="${not empty MEDIUM_FEEDURL}">
+				<span class="mobilehide"> <a
+					class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+					href="/news" onclick="document.forceLoading();"><i
+						class=" material-icons" role="presentation">message</i> News</a>
+				</span>
+			</c:if>
 			<span class="mobilehide"> <a
-				class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="/news" onclick="document.forceLoading();"><i
-					class=" material-icons" role="presentation">message</i> News</a>
-			</span>
-			 <span class="mobilehide"> <a
 				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 				href="/bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
-			</span>
-			 <span class="mobilehide"> <a
+			</span> <span class="mobilehide"> <a
 				class="${currentsite eq 'users' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="#" onclick="document.forceLoading();" style="color:darkgrey;"><i
+				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
 					class=" material-icons" role="presentation">people</i> Users</a>
-			</span>
-			 <span class="mobilehide"> <a
+			</span> <span class="mobilehide"> <a
 				class="${currentsite eq 'organizations' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="#" onclick="document.forceLoading();" style="color:darkgrey;"><i
+				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
 					class=" material-icons" role="presentation" disabled>business</i>
 					Organizations</a>
 
@@ -167,12 +166,12 @@ a:active {
 			<c:choose>
 				<c:when test="${empty profile.userName}">
 					<div style="position: absolute; right: 20px;">
-					<a href="/start" class="mdl-navigation__link ">
-						<i class=" material-icons " style="padding-right: 10px;"
-						role="presentation">account_circle</i>Sign in
+						<a href="/start" class="mdl-navigation__link "> <i
+							class=" material-icons " style="padding-right: 10px;"
+							role="presentation">account_circle</i>Sign in
 
-					</a>
-						</div>
+						</a>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<div style="position: absolute; right: 20px;">
@@ -228,9 +227,8 @@ a:active {
 			</c:choose>
 		</nav>
 		<!-- Navigation -->
-
-
-	</div>
+		</di
+						v>
 </header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 	<header class="demo-drawer-header">
@@ -253,27 +251,23 @@ a:active {
 			href="/home"><i class=" material-icons" role="presentation">home</i>Home</a>
 
 
-
+		<c:if test="${not empty MEDIUM_FEEDURL}">
+			<a
+				class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
+		</c:if>
 		<a
-			class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-			href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
-				 <a
-				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="/bounty" onclick="document.forceLoading();"><i
-					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
-		
-
-
-
-		<a
+			class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+			href="/bounty"><i class=" material-icons" role="presentation">local_atm</i>
+			Bounty</a> <a
 			class="${currentsite eq 'ranking' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 			href="/ranking"><i class=" material-icons" role="presentation">people</i>Ranking</a>
-	
+
 
 
 		<div class="mdl-layout-spacer"></div>
-<hr style="margin: 25px;">
-	
+		<hr style="margin: 25px;">
+
 		<p style="text-align: center">More from MADANA</p>
 
 		<a class="mdl-navigation__link" target="_blank"
@@ -282,28 +276,28 @@ a:active {
 			class="mdl-navigation__link" target="_blank"
 			href="https://blog.madana.io"><img
 			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-medium@3x.png"
-			width="25" height="25"  style="margin-left: -0px;"><span
-			style="padding-left: 35px;">Blog</span></a> 
-			<a
+			width="25" height="25" style="margin-left: -0px;"><span
+			style="padding-left: 35px;">Blog</span></a> <a
 			class="mdl-navigation__link" target="_blank"
 			href="https://www.reddit.com/r/MADANA/"> <img
-			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-reddit@3x.png" width="25"
-			height="25"  style="margin-left: -0px;"><span
+			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-reddit@3x.png"
+			width="25" height="25" style="margin-left: -0px;"><span
 			style="padding-left: 35px;">Reddit</span></a> <a
 			class="mdl-navigation__link" target="_blank"
 			href="https://t.me/madanaofficial"><img
 			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-telegram@3x.png"
-			width="25" height="25"  style="margin-left: -0px;"><span
+			width="25" height="25" style="margin-left: -0px;"><span
 			style="padding-left: 35px;">Telegram</span></a>
 
 		<div class="mdl-layout-spacer"></div>
-		<div id="status" class="mdl-navigation__link"
-			style="font-size: 10px; position: relative">
-			<a href="http://status.madana.io" target="_blank"> <span
-				class="color-dot"></span> <span class="color-description"></span>
-			</a>
-		</div>
-
+		<c:if test="${not empty STATUSPAGE_PAGEID}">
+			<div id="status" class="mdl-navigation__link"
+				style="font-size: 10px; position: relative">
+				<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank">
+					<span class="color-dot"></span> <span class="color-description"></span>
+				</a>
+			</div>
+		</c:if>
 
 	</nav>
 </div>
