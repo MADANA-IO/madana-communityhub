@@ -46,65 +46,54 @@ import com.madana.common.restclient.MDN_RestClient;
 import com.madana.webclient.dto.ReferralSocialPlatform;
 import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
-public class BackendHandler implements ServletContextListener
-{
+public class BackendHandler implements ServletContextListener {
 	public static BackendHandler instance;
+	private static String GOOGLEANALYTICS_TRACKINGID = "";
 	private static String GOOGLECAPTCHA_WEBSITEKEY = "";
 	private static String GOOGLECAPTCHA_SECRETKEY = "";
 	private String GOOGLECAPTCHA_VERIFYURL = "https://www.google.com/recaptcha/api/siteverify";
 	private String GOOGLECAPTCHA_TRUSTSCORE = "0.2";
 
-	public BackendHandler()
-	{
+	public BackendHandler() {
 
 	}
-	public static BackendHandler getInstance()
-	{
-		if (instance == null) 
-		{
+
+	public static BackendHandler getInstance() {
+		if (instance == null) {
 			instance = new BackendHandler();
 		}
 		return instance;
 	}
-	public static String getProperty (String strKey)
-	{
-		try
-		{
-			if (System.getProperty(strKey).length() > 0 && System.getProperty(strKey)!=null)
-			{
+
+	public static String getProperty(String strKey) {
+		try {
+			if (System.getProperty(strKey).length() > 0 && System.getProperty(strKey) != null) {
 				return System.getProperty(strKey);
 			}
+		} catch (Exception ex) {
 		}
-		catch(Exception ex)
-		{
-		}
-		try
-		{
-			if(System.getenv(strKey).length()>0 && System.getenv(strKey)!= null)
-			{
+		try {
+			if (System.getenv(strKey).length() > 0 && System.getenv(strKey) != null) {
 				return System.getenv(strKey);
 			}
-		}
-		catch(Exception ex)
-		{
+		} catch (Exception ex) {
 
 		}
 
-//		System.err.println("############################################################");
-//		System.err.println("UNKNOWN PROPERTY: "+strKey);
-//		System.err.println("############################################################");
+		// System.err.println("############################################################");
+		// System.err.println("UNKNOWN PROPERTY: "+strKey);
+		// System.err.println("############################################################");
 		return "";
 
 	}
-	public List<ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms, MDN_RestClient oClient, String strUserName)
-	{
+
+	public List<ReferralSocialPlatform> getReferralPlatforms(List<MDN_SocialPlatform> oPlatforms,
+			MDN_RestClient oClient, String strUserName) {
 		Instant start = Instant.now();
 		List<ReferralSocialPlatform> oRefferalPlatforms = new ArrayList<ReferralSocialPlatform>();
-		if(oPlatforms!=null)
-			for(int i=0; i < oPlatforms.size(); i++)
-			{
-				if(oPlatforms.get(i).getIsReferralPlatform().equals("true"))
-				{
+		if (oPlatforms != null)
+			for (int i = 0; i < oPlatforms.size(); i++) {
+				if (oPlatforms.get(i).getIsReferralPlatform().equals("true")) {
 					ReferralSocialPlatform oMyPlatform = new ReferralSocialPlatform();
 					oMyPlatform.setName(oPlatforms.get(i).getName());
 					oMyPlatform.setFeed(oPlatforms.get(i).getFeed());
@@ -112,13 +101,11 @@ public class BackendHandler implements ServletContextListener
 					oMyPlatform.setIcon(oPlatforms.get(i).getIcon());
 					oMyPlatform.setIsDisabled(oPlatforms.get(i).getIsDisabled());
 					oMyPlatform.setIsReferralPlatform(oPlatforms.get(i).getIsReferralPlatform());
-					try
-					{
-						//					oMyPlatform.setReferrals(oClient.getReferredUsers(oPlatforms.get(i).getName(), strUserName));
-					}
-					catch(Exception e)
-					{
-						System.err.println("Error receiving referrals for " +oPlatforms.get(i).getName());
+					try {
+						// oMyPlatform.setReferrals(oClient.getReferredUsers(oPlatforms.get(i).getName(),
+						// strUserName));
+					} catch (Exception e) {
+						System.err.println("Error receiving referrals for " + oPlatforms.get(i).getName());
 					}
 					oRefferalPlatforms.add(oMyPlatform);
 
@@ -126,23 +113,20 @@ public class BackendHandler implements ServletContextListener
 			}
 		Instant end = Instant.now();
 		Duration timeElapsed = Duration.between(start, end);
-		System.out.println("ReferralPlatforms: "+ timeElapsed.toMillis() +" milliseconds");
+		System.out.println("ReferralPlatforms: " + timeElapsed.toMillis() + " milliseconds");
 		return oRefferalPlatforms;
 	}
-	public  boolean verifyGoogleCaptcha(String gRecaptchaResponse) 
-	{
-		if(GOOGLECAPTCHA_SECRETKEY.length()<1) //No captchatoken provided
+
+	public boolean verifyGoogleCaptcha(String gRecaptchaResponse) {
+		if (GOOGLECAPTCHA_SECRETKEY.length() < 1) // No captchatoken provided
 			return true;
-		
-		
+
 		if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {
 			return false;
 		}
 
-		try
-		{
+		try {
 
-	
 			String USER_AGENT = "Mozilla/5.0";
 			URL obj = new URL(GOOGLECAPTCHA_VERIFYURL);
 			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -152,8 +136,7 @@ public class BackendHandler implements ServletContextListener
 			con.setRequestProperty("User-Agent", USER_AGENT);
 			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-			String postParams = "secret=" + GOOGLECAPTCHA_SECRETKEY + "&response="
-					+ gRecaptchaResponse;
+			String postParams = "secret=" + GOOGLECAPTCHA_SECRETKEY + "&response=" + gRecaptchaResponse;
 
 			// Send post request
 			con.setDoOutput(true);
@@ -164,9 +147,7 @@ public class BackendHandler implements ServletContextListener
 
 			int responseCode = con.getResponseCode();
 
-
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
 
@@ -177,39 +158,35 @@ public class BackendHandler implements ServletContextListener
 
 			System.out.println("CAPTCHA:" + response.toString());
 
-			//parse JSON response and return 'success' value
+			// parse JSON response and return 'success' value
 			JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
 			JsonObject jsonObject = jsonReader.readObject();
 			jsonReader.close();
 			Double dScore = Double.valueOf(jsonObject.get("score").toString());
 			Double dThreshold = Double.valueOf(GOOGLECAPTCHA_TRUSTSCORE);
-			if(dScore < dThreshold)
+			if (dScore < dThreshold)
 				return false;
 			return jsonObject.getBoolean("success");
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms , MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile ) throws Exception
-	{
+
+	public List<UserSpecificSocialPlatform> getCustomSocialPlatforms(List<MDN_SocialPlatform> oPlatforms,
+			MDN_RestClient oClient, MDN_User oUser, MDN_UserProfile oProfile) throws Exception {
 
 		List<UserSpecificSocialPlatform> oSocialPlatforms = new ArrayList<UserSpecificSocialPlatform>();
 		List<MDN_SocialUserObject> oSocialAccounts = null;
-		try
-		{
-			if(oUser!=null)
+		try {
+			if (oUser != null)
 				oSocialAccounts = oUser.getSocialAccounts();
-		}
-		catch(Exception ex)
-		{
-			System.err.println("Error fetching social accounts for " +oUser.getUserName());
+		} catch (Exception ex) {
+			System.err.println("Error fetching social accounts for " + oUser.getUserName());
 		}
 
-		for(int i=0; i < oPlatforms.size(); i++)
-		{
-			if(!oPlatforms.get(i).getIsReferralPlatform().equals("true"))
-			{
+		for (int i = 0; i < oPlatforms.size(); i++) {
+			if (!oPlatforms.get(i).getIsReferralPlatform().equals("true")) {
 
 				UserSpecificSocialPlatform oMyPlatform = new UserSpecificSocialPlatform();
 				oMyPlatform.setName(oPlatforms.get(i).getName());
@@ -220,35 +197,27 @@ public class BackendHandler implements ServletContextListener
 				oMyPlatform.setIsDisabled(oPlatforms.get(i).getIsDisabled());
 				oSocialPlatforms.add(oMyPlatform);
 
-				if( oSocialAccounts !=null) // Fill with information if user is initialized
+				if (oSocialAccounts != null) // Fill with information if user is initialized
 				{
-					try
-					{
-						if(oSocialAccounts.toString().contains(oMyPlatform.getName()))
+					try {
+						if (oSocialAccounts.toString().contains(oMyPlatform.getName()))
 							oMyPlatform.setIsVerifiedByUser("true");
-					}
-					catch(Exception ex)
-					{
+					} catch (Exception ex) {
 						oMyPlatform.setIsVerifiedByUser("false");
 					}
 
-					if(oMyPlatform.getIsVerifiedByUser().equals("true"))
-					{
-						for(int j=0; j< oProfile.getHistory().size();j++)
-						{
-							if(oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName()))
-							{
-								MDN_SocialHistoryObject oHistoryObject =oProfile.getHistory().get(j);
-								String strActionIconName="share";
-								if(oHistoryObject.getAction().equalsIgnoreCase("like"))
-								{
-									strActionIconName="thumb_up";
+					if (oMyPlatform.getIsVerifiedByUser().equals("true")) {
+						for (int j = 0; j < oProfile.getHistory().size(); j++) {
+							if (oProfile.getHistory().get(j).getPlatform().equals(oPlatforms.get(i).getName())) {
+								MDN_SocialHistoryObject oHistoryObject = oProfile.getHistory().get(j);
+								String strActionIconName = "share";
+								if (oHistoryObject.getAction().equalsIgnoreCase("like")) {
+									strActionIconName = "thumb_up";
 								}
-								if (oMyPlatform.oActions.get(strActionIconName) == null )
+								if (oMyPlatform.oActions.get(strActionIconName) == null)
 									oMyPlatform.oActions.put(strActionIconName, "1");
-								else
-								{
-									int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName))+1;
+								else {
+									int iNewCount = Integer.parseInt(oMyPlatform.oActions.get(strActionIconName)) + 1;
 									oMyPlatform.oActions.put(strActionIconName, String.valueOf(iNewCount));
 								}
 							}
@@ -261,58 +230,64 @@ public class BackendHandler implements ServletContextListener
 
 		return oSocialPlatforms;
 	}
+
 	@Override
-	public void contextInitialized(ServletContextEvent sce)
-	{
-		
-		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce)); 
+	public void contextInitialized(ServletContextEvent sce) {
+
+		sce.getServletContext().setAttribute("GOOGLEANALYTICS_TRACKINGID", initGoogleAnalytics(sce));
+		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce));
 		System.out.println("Succesfully initialized MADANA CommunityHub");
-		
+
 	}
-	private boolean initGoogleCaptcha(ServletContextEvent sce) 
-	{
-		boolean initError=false;
-		GOOGLECAPTCHA_SECRETKEY= getProperty("GOOGLECAPTCHA_SECRETKEY");
-		if(GOOGLECAPTCHA_SECRETKEY.length()<1)
-		{
-			System.err.println("GOOGLECAPTCHA_SECRETKEY not provided. Disabling captchasecurity" );
-			initError=true;
-		}
-		
-		GOOGLECAPTCHA_WEBSITEKEY= getProperty("GOOGLECAPTCHA_WEBSITEKEY");
-		if(GOOGLECAPTCHA_WEBSITEKEY.length()<1)
-		{
-			System.err.println("GOOGLECAPTCHA_WEBSITEKEY not provided. Disabling captchasecurity" );
-			initError=true;
-		}
+
+	private Object initGoogleAnalytics(ServletContextEvent sce) {
+		GOOGLEANALYTICS_TRACKINGID = getProperty("GOOGLEANALYTICS_TRACKINGID");
+		if (GOOGLEANALYTICS_TRACKINGID.length() < 1)
+			{
+			System.err.println("GOOGLEANALYTICS_TRACKINGID not provided. Disabling google analytics tracking");
+			}
 		else
 		{
+			System.out.println("Activated google analytics tracking for "+GOOGLEANALYTICS_TRACKINGID);
+		}
+		return GOOGLEANALYTICS_TRACKINGID;
+	}
+
+	private boolean initGoogleCaptcha(ServletContextEvent sce) {
+		boolean initError = false;
+		GOOGLECAPTCHA_SECRETKEY = getProperty("GOOGLECAPTCHA_SECRETKEY");
+		if (GOOGLECAPTCHA_SECRETKEY.length() < 1) {
+			System.err.println("GOOGLECAPTCHA_SECRETKEY not provided. Disabling captchasecurity");
+			initError = true;
+		}
+
+		GOOGLECAPTCHA_WEBSITEKEY = getProperty("GOOGLECAPTCHA_WEBSITEKEY");
+		if (GOOGLECAPTCHA_WEBSITEKEY.length() < 1) {
+			System.err.println("GOOGLECAPTCHA_WEBSITEKEY not provided. Disabling captchasecurity");
+			initError = true;
+		} else {
 			sce.getServletContext().setAttribute("GOOGLECAPTCHA_WEBSITEKEY", GOOGLECAPTCHA_WEBSITEKEY);
 		}
 
-		if(getProperty("GOOGLECAPTCHA_VERIFYURL").length()<1)
-		{
-			System.out.println("GOOGLECAPTCHA_VERIFYURL not provided. Falling back to default "+GOOGLECAPTCHA_VERIFYURL );
+		if (getProperty("GOOGLECAPTCHA_VERIFYURL").length() < 1) {
+			System.out.println(
+					"GOOGLECAPTCHA_VERIFYURL not provided. Falling back to default " + GOOGLECAPTCHA_VERIFYURL);
+		} else {
+			GOOGLECAPTCHA_VERIFYURL = getProperty("GOOGLECAPTCHA_VERIFYURL");
 		}
-		else
-		{
-			GOOGLECAPTCHA_VERIFYURL= getProperty("GOOGLECAPTCHA_VERIFYURL");
-		}
-		if(getProperty("GOOGLECAPTCHA_TRUSTSCORE").length()<1)
-		{
-			System.out.println("GOOGLECAPTCHA_TRUSTSCORE not provided. Falling back to default "+GOOGLECAPTCHA_TRUSTSCORE );
-		}
-		else
-		{
+		if (getProperty("GOOGLECAPTCHA_TRUSTSCORE").length() < 1) {
+			System.out.println(
+					"GOOGLECAPTCHA_TRUSTSCORE not provided. Falling back to default " + GOOGLECAPTCHA_TRUSTSCORE);
+		} else {
 			GOOGLECAPTCHA_TRUSTSCORE = getProperty("GOOGLECAPTCHA_TRUSTSCORE");
 		}
-		
-		return initError==false;
+
+		return initError == false;
 	}
+
 	@Override
-	public void contextDestroyed(ServletContextEvent sce)
-	{
+	public void contextDestroyed(ServletContextEvent sce) {
 		System.out.println("Killed MADANA CommunityHub");
-		
+
 	}
 }

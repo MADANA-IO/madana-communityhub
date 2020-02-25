@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<script src="https://www.googletagmanager.com/gtag/js?id=UA-106498074-4"></script>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<c:if test="${not empty GOOGLEANALYTICS_TRACKINGID}">
+<script src="https://www.googletagmanager.com/gtag/js?id=<c:out value="${GOOGLEANALYTICS_TRACKINGID}"/>"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() {
@@ -9,5 +10,6 @@
 	}
 	gtag('js', new Date());
 
-	gtag('config', 'UA-106498074-4');
+	gtag('config', '<c:out value="${GOOGLEANALYTICS_TRACKINGID}"/>');
 </script>
+</c:if>
