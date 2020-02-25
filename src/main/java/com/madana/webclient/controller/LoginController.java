@@ -20,6 +20,8 @@
  ******************************************************************************/
 package com.madana.webclient.controller;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +42,7 @@ import com.madana.common.datastructures.MDN_MailAddress;
 import com.madana.common.datastructures.MDN_PasswordReset;
 import com.madana.common.datastructures.MDN_User;
 import com.madana.common.datastructures.MDN_UserCredentials;
+import com.madana.common.datastructures.MDN_UserProfile;
 import com.madana.common.datastructures.MDN_UserSetting;
 import com.madana.common.restclient.MDN_RestClient;
 import com.madana.webclient.bean.LoginBean;
@@ -294,7 +297,13 @@ public class LoginController
 				{
 
 					SessionHandler.setSuccessfulLogin(session, loginBean.getUserName());
-
+					String strUserName = SessionHandler.getCurrentUser(session);
+					
+				
+					MDN_User oUser = oClient.getUser(loginBean.getUserName());
+					MDN_UserProfile	oProfile= oClient.getProfile(strUserName);
+					session.setAttribute("user", oUser);
+					session.setAttribute("profile", oProfile);
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
 						return "redirect:"+requesturi;
