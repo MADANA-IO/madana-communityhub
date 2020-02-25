@@ -58,15 +58,12 @@ public class LoginController
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
+		return "redirect:/home/";
+	}
 
-		try 
-		{
-			if(SessionHandler.getClient(session).validateSession())
-				return "redirect:/home/";
-		} catch (ClientNotInitizializedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@RequestMapping(value = "/start", method = RequestMethod.GET)
+	public String loadStartPage(HttpSession session,Model model) 
+	{
 		return "index";
 	}
 
