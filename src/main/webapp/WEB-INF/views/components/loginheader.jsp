@@ -300,7 +300,7 @@ body, html {
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="<%=request.getContextPath()%>/resources/jquery.js" /></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js"></script>
 <c:if test="${GOOGLECAPTCHA == 'true'}">

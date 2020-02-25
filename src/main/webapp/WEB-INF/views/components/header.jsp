@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -33,12 +32,20 @@
 <link rel="shortcut icon"
 	href="https://cdn.madana.io/commonvisuals/favicons/favicon-32x32.png">
 
-<link href=€œhttps://fonts.googleapis.com/css?family=Montserrat€
-	rel=€œstylesheet€>
-	
+
+ <%-- Start fonts --%>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<link href=' https://fonts.googleapis.com/css?family=Raleway'
+	rel='stylesheet' type='text/css'>
+<link href=' https://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet' type='text/css'>
+	
+ <%-- End fonts --%>
+
+
+ <%-- Start css --%>
 <link rel="stylesheet" type='text/html'
 	href="https://www.madana.io/assets/css/main.css">
 
@@ -48,6 +55,26 @@
 
 <link rel="stylesheet" type='text/css'
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+ <%-- End css --%>
+
+
+ <%-- Start scripts --%>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/jquery.js" /></script>
+<script src="<%=request.getContextPath()%>/resources/material.js"></script>
+	<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/moment.js" /></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/livestamp.js" /></script>
+
+ <%-- End scripts --%>
+
+ <%-- Start Widgets --%>
+<jsp:include page="common/GoogleAnalytics.jsp" />
+<jsp:include page="common/StatusPage.jsp" />
+<jsp:include page="common/Jira.jsp" />
+ <%-- End Widgets --%>
+
 
 
 
@@ -61,101 +88,7 @@
 	margin-bottom: 40px;
 	z-index: 900;
 }
-</style>
-<link href=' https://fonts.googleapis.com/css?family=Raleway'
-	rel='stylesheet' type='text/css'>
-<link href=' https://fonts.googleapis.com/css?family=Montserrat'
-	rel='stylesheet' type='text/css'>
 
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-latest.js" /></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-106498074-4"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-106498074-4');
-</script>
-
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/2.2.4.6/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=310fbd12"></script>
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/57d9dd941d81787075f5df502cd5a087-T/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/3.0.7/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=310fbd12"></script>
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/2.2.4.6/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=8cb698c9"></script>
-<script type="text/javascript"
-	src="https://intranet.madana.io/jira/s/57d9dd941d81787075f5df502cd5a087-T/-9l2e2/802000/179d75d9d7ce5d6b662322e8424eb023/3.0.7/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=8cb698c9"></script>
-
-<script type="text/javascript">
-	// safely use jquery here since the issue collector will load it for you
-
-	window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
-
-		// ==== feedback collector ====
-		"8cb698c9" : {
-
-			// === custom trigger function ===
-			"triggerFunction" : function(showCollectorDialog) {
-				//Requries that jQuery is available! 
-				jQuery("#feedback-button").click(function(e) {
-					e.preventDefault();
-					showCollectorDialog();
-				});
-			}
-
-			// === default and hidden field values ===
-			,
-			fieldValues : {
-				versions : '0.1',
-
-				// hidden field value
-				priority : '2',
-				components : 'Community Hub'
-
-			}
-
-		}
-
-		// ==== bug collector ====
-		,
-		"310fbd12" : {
-			// === custom trigger function ===
-
-			"triggerFunction" : function(showCollectorDialog) {
-				//Requries that jQuery is available! 
-				jQuery("#bug-button").click(function(e) {
-					e.preventDefault();
-					showCollectorDialog();
-				});
-				jQuery("#mainbug-button").click(function(e) {
-					e.preventDefault();
-					showCollectorDialog();
-				});
-			}
-
-			// === default and hidden field values ===
-			,
-			fieldValues : {
-				versions : '0.1',
-
-				// hidden field value
-				priority : '2',
-				components : 'Community Hub'
-
-			}
-
-		}
-
-	});
-</script>
-<script async src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
-<style>
 @media ( max-width : 767px) {
 	.content h1 {
 		font-size: 15vw;

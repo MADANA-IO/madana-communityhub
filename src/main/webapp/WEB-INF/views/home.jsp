@@ -10,10 +10,7 @@
 	background-color: transparent;
 }
 </style>
-<script type="text/javascript"
-	src="https://explorer.madana.io/resources/moment.js"></script>
-<script type="text/javascript"
-	src="https://explorer.madana.io/resources/livestamp.js"></script>
+
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
