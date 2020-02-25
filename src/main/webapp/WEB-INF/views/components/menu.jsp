@@ -281,19 +281,20 @@ a:active {
 			role="presentation">http</i><span>Website</span></a> <a
 			class="mdl-navigation__link" target="_blank"
 			href="https://blog.madana.io"><img
-			src="https://cdn-images-1.medium.com/max/1600/1*emiGsBgJu2KHWyjluhKXQw.png"
-			width="25" height="25" class="circle " style="margin-left: -0px;"><span
-			style="padding-left: 20px;">Blog</span></a> <a
+			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-medium@3x.png"
+			width="25" height="25"  style="margin-left: -0px;"><span
+			style="padding-left: 35px;">Blog</span></a> 
+			<a
 			class="mdl-navigation__link" target="_blank"
 			href="https://www.reddit.com/r/MADANA/"> <img
-			src="https://www.redditstatic.com/new-icon.png" width="25"
-			height="25" class="circle " style="margin-left: -0px;"><span
-			style="padding-left: 20px;">Reddit</span></a> <a
+			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-reddit@3x.png" width="25"
+			height="25"  style="margin-left: -0px;"><span
+			style="padding-left: 35px;">Reddit</span></a> <a
 			class="mdl-navigation__link" target="_blank"
 			href="https://t.me/madanaofficial"><img
-			src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/240px-Telegram_logo.svg.png"
-			width="25" height="25" class="circle " style="margin-left: -0px;"><span
-			style="padding-left: 20px;">Telegram</span></a>
+			src="https://cdn.madana.io/commonvisuals/logos/logo-footer-telegram@3x.png"
+			width="25" height="25"  style="margin-left: -0px;"><span
+			style="padding-left: 35px;">Telegram</span></a>
 
 		<div class="mdl-layout-spacer"></div>
 		<div id="status" class="mdl-navigation__link"
