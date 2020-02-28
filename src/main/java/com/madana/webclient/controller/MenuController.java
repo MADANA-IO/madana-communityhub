@@ -364,6 +364,14 @@ public class MenuController
 		model.addAttribute("currentsite","settings");
 		return "redirect:/settings";
 	}
+	@RequestMapping(value = "/settings/{platform}/{ident}", method = RequestMethod.DELETE)
+	public String removeSocialAccount(HttpSession session,Model model,@PathVariable("platform") String platform, @PathVariable("ident") String ident) throws ClientNotInitizializedException 
+	{
+		MDN_RestClient oClient = SessionHandler.getClient(session);
+		oClient.removeLinkedAccount(SessionHandler.getCurrentUser(session), platform, ident);
+		return "redirect:/settings";
+	}
+
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public String loadSettingsPage(HttpSession session,Model model) throws Exception 

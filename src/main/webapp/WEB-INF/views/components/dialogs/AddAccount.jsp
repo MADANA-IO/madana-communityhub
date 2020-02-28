@@ -48,20 +48,22 @@
 				</div>
 				</dialog>
 					<script>
-    var dialog = document.querySelector('#addAccountDialog');
+				
+    var addAccountDialog = document.querySelector('#addAccountDialog');
     var showDialogButton = document.querySelector('#addAccount');
-    if (! dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-    }
+  
     showDialogButton.addEventListener('click', function() 
     		{
-      dialog.showModal();
+    	if (! addAccountDialog.showModal) {
+  	      dialogPolyfill.registerDialog(addAccountDialog);
+  	    }
+    	addAccountDialog.showModal();
     });
 
     
-    dialog.querySelector('.cancel').addEventListener('click', function() 
+    addAccountDialog.querySelector('.cancel').addEventListener('click', function() 
     		{
-        dialog.close();
+    	addAccountDialog.close();
     		});
 
   </script>

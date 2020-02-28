@@ -66,15 +66,14 @@
 							</tr>
 
 							<tr class="tddefault">
-								<td><br>
-								<br></td>
+								<td><br> <br></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 					<jsp:include page="components/dialogs/ChangeAvatar.jsp" />
-					
+
 					<button id="show-changepassword" type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
 						password</button>
@@ -86,7 +85,7 @@
 							window.location.href = "resetpassword";
 						});
 					</script>
-					
+
 					<jsp:include page="components/dialogs/ChangeMail.jsp" />
 
 
@@ -195,13 +194,69 @@
 										style="margin-bottom: -15px; padding-right: 10px; height: 40px; width: 40px;">
 										<span class="subheading" style="color: white;">
 											${socialuser.platform}</span> <span class="mdl-list__item-text-body"
-										style="align: center; color: #4d7da2; padding-left: 50px"">
+										style="align: center; color: #4d7da2; padding-left: 50px">
 											${socialuser.ident}</span>
 								</span> <span class="mdl-list__item-secondary-action">
-										<button
+										<button id="del${socialuser.platform}"
 											class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
 											<i class="material-icons">cancel</i>
-										</button>
+										</button> <dialog class="mdl-dialog"
+											id="del${socialuser.platform}Dialog" style="color: #274863; ">
+										<h4 class="mdl-dialog__title"
+											style="text-align: center; color: #274863;">Remove
+											Account</h4>
+											<hr>
+												<h5>Are you sure, you want to remove</h5>
+											<h5>${socialuser.platform}:${socialuser.ident}</h5>
+										
+										
+										<p>Removing this account will also remove the related actionhistory and therefore your related CP</p>
+										<p>Login via ${socialuser.platform} won't be possible anymore.</p>
+										<div class="mdl-dialog__content" style="height: 50%;"></div>
+										<div class="mdl-dialog__actions">
+											
+											<button type="button"
+												class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect cancel">cancel</button>
+												<button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect close"
+						style="width: 200px; background: #a0c3e8; color: white;">Remove this Account</button>
+
+
+										</div>
+										</dialog> <script>
+    var dialog${socialuser.platform} = document.querySelector('#del${socialuser.platform}Dialog');
+    var showDialogButton${socialuser.platform} = document.querySelector('#del${socialuser.platform}');
+    
+    showDialogButton${socialuser.platform}.addEventListener('click', function() 
+    		{
+    	if (! dialog${socialuser.platform}.showModal) {
+    	      dialogPolyfill.registerDialog(dialog${socialuser.platform});
+    	    }
+    	dialog${socialuser.platform}.showModal();
+    });
+
+    dialog${socialuser.platform}.querySelector('.close').addEventListener('click', function() 
+    		{
+    	
+    	<c:set var="context" value="${pageContext.request.contextPath}" />
+    		$.ajax({
+    		    url: '${context}/settings/${socialuser.platform}/${socialuser.ident}',
+    		    type: 'DELETE',
+    		    success: function(result) {
+    		        // Do something with the result
+    		    }
+    		});
+    		 dialog.close();
+   
+    });
+    
+    dialog${socialuser.platform}.querySelector('.cancel').addEventListener('click', function() 
+    		{
+    	dialog${socialuser.platform}.close();
+    		});
+
+  </script>
+
 								</span>
 								</li>
 							</c:forEach>
@@ -215,9 +270,7 @@
 												role="presentation">add</i> <span class="visuallyhidden">add</span>
 										</button> <span class="subheading"
 										style="color: white; padding-left: 10px;"> Link another
-											account</span>
-												<c:set var="platforms" value="${platforms}" scope="request"/>
-												<jsp:include page="components/dialogs/AddAccount.jsp" />
+											account</span> <jsp:include page="components/dialogs/AddAccount.jsp" />
 								</a>
 							</span> <span class="mdl-list__item-secondary-action"> <!--  <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
   <i class="material-icons">cancel</i>
@@ -234,8 +287,7 @@
 				style="background: rgba(0, 0, 0, 0.3)">
 				<div class="mdl-cell mdl-cell--12-col">
 					<h2>
-						<i class="material-icons material-heading">warning</i> Danger
-						Zone
+						<i class="material-icons material-heading">warning</i> Danger Zone
 					</h2>
 					<hr>
 				</div>
