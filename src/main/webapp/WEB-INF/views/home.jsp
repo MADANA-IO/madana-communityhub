@@ -110,7 +110,7 @@
 
 												</a>
 												<c:if test="${platform.name == 'Twitter'}">
-													<c:if test="${not empty profile.UserName}">
+													<c:if test="${not empty profile.userName}">
 														<br>
 
 														<div style="font-size: 12px; color: #274863">You can
