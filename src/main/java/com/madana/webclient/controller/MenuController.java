@@ -375,6 +375,7 @@ public class MenuController
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("avatars", oClient.getAvailableAvatars(strUserName));
+		model.addAttribute("platforms",oClient.getSocialPlatforms());
 		model.addAttribute("currentsite","settings");
 
 		return "settings";
