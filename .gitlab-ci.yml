@@ -85,7 +85,7 @@ build_docker:
     << : *default_cache
     policy: pull
   services:
-  - docker:dind
+  - docker:docker:19.03.5-dind 
   script:
   - export RELEASE_VERSION=$(cat .next-version)
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
