@@ -79,7 +79,7 @@ package:
     - tags
 
 build_docker:
-  image: docker:latest
+  image: docker:19.03.1
   stage: docker
   cache:
     << : *default_cache
