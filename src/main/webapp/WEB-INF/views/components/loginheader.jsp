@@ -1,10 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 
 <style>
+ #status {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+.color-dot {
+  @include border-radius(99px);
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:5px;
+
+}
 .login {
 	position: absolute;
 	top: calc(40%);
@@ -99,7 +114,6 @@
 #container {
 	height: 100%;
 	width: 100%;
-	
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
@@ -109,8 +123,7 @@
 	/* Preserve aspet ratio */
 	min-width: 100%;
 	min-height: 100%;
-	background-color:#162b40;
-	
+	background-color: #162b40;
 }
 
 }
@@ -300,9 +313,11 @@ body, html {
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="<%=request.getContextPath()%>/resources/jquery.js" /></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js"></script>
-<script
-	src='https://www.google.com/recaptcha/api.js?render=6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT'></script>
+<c:if test="${GOOGLECAPTCHA == 'true'}">
+	<script
+		src='https://www.google.com/recaptcha/api.js?render=<c:out value="${GOOGLECAPTCHA_WEBSITEKEY}"/>'></script>
+</c:if>
 </head>

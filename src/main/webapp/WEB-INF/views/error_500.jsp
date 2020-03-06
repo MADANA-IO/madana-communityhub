@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<meta http-equiv="refresh" content="10; URL='/" />
+<meta http-equiv="refresh" content="10; URL='https://explorer.madana.io'" />
 <jsp:include page="components/header.jsp" />
 <jsp:include page="components/loginheader.jsp" />
 
@@ -249,7 +250,7 @@ top: calc(50% - 50px);
     min-width: 100%;
     min-height: 100%;
     background-color: rgba(39,72,99,1.0);
-    background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg);
+    background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/animation_1_bg.jpg);
     background-size: cover;
     background-blend-mode: multiply;
     -webkit-filter: blur(5px);">
@@ -275,19 +276,19 @@ top: calc(50% - 50px);
     position: absolute;
     top: 120px;
     left: -30px;
-">Community </span>
+">Explorer</span>
 				</div>
 			</div>
 			<div class="content">
 				<div class="login plain error-page-wrapper">
 									    <div class="content-container">
 	<div class="head-line secondary-text-color">
-		404
+	Houston, We Have a
 	</div>
 	<div class="subheader primary-text-color">
-		Oops, the page you're <br>
-		looking for does not exist.
+		Okay, Houston, we've had a problem here
 	</div>
+	<div><% exception.printStackTrace(response.getWriter()); %></div>
     <hr>
     <div class="clearfix"></div>
     <div class="context primary-text-color">
@@ -301,7 +302,7 @@ top: calc(50% - 50px);
 
     </div>
 	<div class="buttons-container">
-		 <a class="border-button" href="/home" target="_blank">Go to homepage</a> 
+		 <a class="border-button" href="https://explorer.madana.io" target="_blank">Go to homepage</a> 
 		
 	</div>
 </div>
@@ -429,6 +430,7 @@ top: calc(50% - 50px);
 				</div>
 
 			</div>
+
 	<c:if test="${not empty STATUSPAGE_PAGEID}">
 		<div class="mobilehide" id="status">
 			<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank"

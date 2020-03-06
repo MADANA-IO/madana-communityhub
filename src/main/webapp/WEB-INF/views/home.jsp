@@ -10,10 +10,7 @@
 	background-color: transparent;
 }
 </style>
-<script type="text/javascript"
-	src="https://explorer.madana.io/resources/moment.js"></script>
-<script type="text/javascript"
-	src="https://explorer.madana.io//resources/livestamp.js"></script>
+
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -24,6 +21,7 @@
 
 			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
 				<h2 style="background-color: #4d7da2; height: 50px; width: 100%;">Home</h2>
+
 				<p>The Community Hub will be the future home of our community.
 					Here you will be able to get the newest information about the
 					progress and development of MADANA, engage actively in community
@@ -35,62 +33,16 @@
 					the reward from community campaigns for you will be. The higher
 					your rank, the better the reward will be.
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
-				<h3>
-					<i class="material-icons material-heading">announcement</i> Latest
-					News
-				</h3>
-				<div class="row" style="padding-left: 25px; padding-right: 25px;"
-					id="medium"></div>
-				<a href="/news" style="width: 90%; text-align: center;">
-					<button id="" type="button"
-						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-						style="width: 90%;">
-						<i class="material-icons">message</i> See latest News
-					</button>
-				</a>
-				<script src="https://momentjs.com/downloads/moment.min.js"></script>
-				<script type="text/javascript">
-    $(function() {
-        var $content = $('#medium');
-        var data = {
-            rss_url: 'https://blog.madana.io/feed/'
-        };
-$.get('https://api.rss2json.com/v1/api.json', data, function(response) {
-            if (response.status == 'ok') 
-            {
-                
-                var output = '';
-$.each(response.items, function(k, item) {
-                output += '<div class="col-sm-12" style="padding:10px;margin-bottom: 40px;color:#274863"">';
-				output += '<div style="color:white;" class=""><header style="position: relative">';
-			  	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">' + moment(item.pubDate).format("DD<br>MMM")+ "</h4>";
-				var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
-				var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
-				var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
-				var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
-				var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-				output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="' + src + '"  style="height:350px;width:100%; "></a></div></header>';
-				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
-				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
-  
-				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
-				var maxLength = 1500 ;// maximum number of characters to extract
-				//trim the string to the maximum length
-				var trimmedString = yourString.substr(0, maxLength);
-				//re-trim if we are in the middle of a word
-				trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
-				output += '<p style="line-height: 22px;color:#274863">' + trimmedString + '...</p>';
-				output += '</div></div><a target="_blank" style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
-    return k<0
-                });
-$content.html(output);
-}
-});
-});
-</script>
+			<c:if test="${not empty MEDIUM_FEEDURL}">
+				<div class=" mdl-cell mdl-cell--12-col mdl-grid" style="">
+					<h3>
+						<i class="material-icons material-heading">announcement</i> Latest
+						News
+					</h3>
+					<jsp:include page="medium/LatestPost.jsp" />
 
-			</div>
+				</div>
+			</c:if>
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
 				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
 					<div class="mdl-cell--12-col">
@@ -105,92 +57,87 @@ $content.html(output);
 							posts. Check the integrated feed for possible opportunities</p>
 					</div>
 					<c:forEach items="${social_platforms}" var="platform">
-			<c:if test="${platform.name != 'Ethereum'}">
-						<div
-							class="mdl-card something-else mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  transparent "
-							style="height: 250px">
-							<div class="mdl-card__title "
-								style="height:200px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ;">
-								<div
-									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
-									<c:forEach var="entry" items="${platform.oActions}">
-										<span class="mdl-cell--3-col"> <i
-											class="material-icons" style="color: #4d7da2;">
-												${entry.key} </i><span style="padding: 5px;">
-												${entry.value} </span>
-
-
-										</span>
-									</c:forEach>
-								</div>
-							</div>
-
+						<c:if test="${platform.name != 'Ethereum'}">
 							<div
-								class="mdl-card__actions mdl-card--border mdl-grid transparent"
-								style="height: 75px;">
+								class="mdl-card something-else mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  transparent "
+								style="height: 250px">
+								<div class="mdl-card__title "
+									style="height:200px;  background-image: url('${platform.icon}'), url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ;">
+									<div
+										style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
+										<c:forEach var="entry" items="${platform.oActions}">
+											<span class="mdl-cell--3-col"> <i
+												class="material-icons" style="color: #4d7da2;">
+													${entry.key} </i><span style="padding: 5px;">
+													${entry.value} </span>
 
 
-								<c:if test="${platform.isDisabled == true}">
-									<button type="button"
-										class="mdl-button mdl-js-button mdl-button--disabled"
-										style="width: 100%;">
-										<i class="material-icons">info</i> Currently Disabled
-									</button>
+											</span>
+										</c:forEach>
+									</div>
+								</div>
 
-								</c:if>
-								<c:if test="${platform.isDisabled == false}">
-									<c:choose>
+								<div
+									class="mdl-card__actions mdl-card--border mdl-grid transparent"
+									style="height: 75px;">
 
 
+									<c:if test="${platform.isDisabled == true}">
+										<button type="button"
+											class="mdl-button mdl-js-button mdl-button--disabled"
+											style="width: 100%;">
+											<i class="material-icons">info</i> Currently Disabled
+										</button>
+
+									</c:if>
+									<c:if test="${platform.isDisabled == false}">
+										<c:choose>
 
 
 
-										<c:when test="${platform.isVerifiedByUser == false}">
-
-											<a style="align: right; width: 100%;"
-												onclick="document.forceLoading();"
-												href="auth/${fn:toLowerCase(platform.name)}">
 
 
-												<button
-													class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-													style="width: 100%;">Verify ${platform.name}
-													account</button>
+											<c:when test="${platform.isVerifiedByUser == false}">
 
-											</a>
-											<c:if test="${platform.name == 'Twitter'}">
+												<a style="align: right; width: 100%;"
+													href="/auth/${fn:toLowerCase(platform.name)}">
 
-												<br>
 
-												<div style="font-size: 12px; color: #274863">You can
-													also verify your account by sending a private message with
-													"CH:${profile.userName}" to the official MADANA Twitter
-													Account.</div>
-											</c:if>
-										</c:when>
+													<button
+														class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+														style="width: 100%;">Verify ${platform.name}
+														account</button>
+
+												</a>
+												<c:if test="${platform.name == 'Twitter'}">
+													<c:if test="${not empty profile.userName}">
+														<br>
+
+														<div style="font-size: 12px; color: #274863">You can
+															also verify your account by sending a private message
+															with "CH:${profile.userName}" to the official MADANA
+															Twitter Account.</div>
+													</c:if>
+												</c:if>
+											</c:when>
 											<c:otherwise>
-									
 
-									
-								<c:choose>
-  <c:when test="${empty platform.oActions}">
- <a class=" mdl-cell--12-col "
- style="align: right; width: 100%;"
-												onclick="document.forceLoading();"
-												href="/bounty/${fn:toLowerCase(platform.name)}">
-  </c:when>
 
-  <c:otherwise>
-  <a class=" mdl-cell--6-col "
-  style="align: right; width: 100%;"
-												onclick="document.forceLoading();"
-												href="/bounty/${fn:toLowerCase(platform.name)}">
-  </c:otherwise>
-</c:choose>
-								
-								
-								
-												
+
+												<c:choose>
+													<c:when test="${empty platform.oActions}">
+														<a class=" mdl-cell--12-col "
+															style="align: right; width: 100%;"
+															href="/bounty/${fn:toLowerCase(platform.name)}">
+													</c:when>
+
+													<c:otherwise>
+														<a class=" mdl-cell--6-col "
+															style="align: right; width: 100%;"
+															href="/bounty/${fn:toLowerCase(platform.name)}">
+													</c:otherwise>
+												</c:choose>
+
 
 
 												<button
@@ -200,23 +147,23 @@ $content.html(output);
 													bounty
 												</button>
 
-									
-										</c:otherwise>
 
-									</c:choose>
-								</c:if>
+											</c:otherwise>
+
+										</c:choose>
+									</c:if>
+								</div>
+								<div class="mdl-card__menu" style="font-size: 10px;">
+									<a href="${platform.link}"><button
+											class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+											style="align: center">
+											<i class="material-icons">open_in_new</i>
+										</button> ${platform.name}</a>
+
+								</div>
+
 							</div>
-							<div class="mdl-card__menu" style="font-size: 10px;">
-								<a href="${platform.link}"><button
-										class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-										style="align: center">
-										<i class="material-icons">open_in_new</i>
-									</button> ${platform.name}</a>
-
-							</div>
-
-						</div>
-		</c:if>
+						</c:if>
 
 					</c:forEach>
 				</div>
@@ -236,7 +183,7 @@ $content.html(output);
 							class="mdl-card something-else mdl-cell mdl-cell--4-col transparent"
 							style="height: 250px">
 							<div class="mdl-card__title"
-								style="height:250px;  background-image: url('${platform.icon}'), url(https://www.madana.io/assets/img/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ">
+								style="height:250px;  background-image: url('${platform.icon}'), url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid@3x.jpg); background-position: center, 0;  background-repeat: no-repeat, no-repeat;  ">
 								<div
 									style="text-align: center; align: center; left: 50%; transform: translate(-50%, 0); bottom: 125px; z-index: 999999; position: absolute; color: #b2d1ef;">
 									<span class="mdl-cell--3-col"> <c:if
@@ -299,7 +246,8 @@ $content.html(output);
 				</div>
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
-				<div class="mdl-cell mdl-cell--12-col ">
+				<div class="mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -311,73 +259,65 @@ $content.html(output);
 
 						<div>
 
-							<table style="width: 100%">
-
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));">
-									<td class="" style="color: white;"><img
-										src="${user1.image}" width="60" height="60" class="circle "><a
-										href="/profile/<c:out value="${user1.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a> <c:out value="${user1.userName}" />
-										<c:if test="${user1.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user1.points}" /> CP</span></td>
+							<table id="rankingtable" style="width: 100%;">
 
 
+
+								<tr id="rankingtableloader">
+									<td><img
+										src="https://cdn.madana.io/commonvisuals/icons/loading.gif"></td>
 								</tr>
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #CCC2C2 50%, rgba(255, 255, 255, 0.1));">
-									<td style="color: white;"><img src="${user2.image}"
-										width="60" height="60" class="circle"> <a
-										href="/profile/<c:out value="${user2.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a>
-									<c:out value="${user2.userName}" />
-										<c:if test="${user2.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user2.points}" /> CP</span></td>
-
-
-
-								</tr>
-								<tr class="tddefault"
-									style="background-image: linear-gradient(to right, #965A38 50%, rgba(255, 255, 255, 0.1));">
-									<td style="color: white;"><img src="${user3.image}"
-										width="60" height="60" class="circle"><a
-										href="/profile/<c:out value="${user3.userName}" />">
-
-											<button
-												class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle">
-												<i class="material-icons">person</i>
-											</button>
-									</a>
-									<c:out value="${user3.userName}" />
-										<c:if test="${user3.activated eq 'true'}">
-											<i class="material-icons">verified_user</i>
-										</c:if> <span
-										style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;"><c:out
-												value="${user3.points}" /> CP</span></td>
-
-
-
-								</tr>
-
-
 							</table>
 						</div>
+
+
+						<script>
+							$
+									.ajax({
+										type : "GET",
+										url : '${pageContext.request.contextPath}/session/ranking/top',
+										dataType : "json",
+										complete : [ function(response) {
+
+											var obj = $
+													.parseJSON(response.responseText);
+											if (obj.length > 0) {
+
+												const myNode = document
+														.getElementById("rankingtableloader");
+												myNode.innerHTML = '';
+												var trHTML = '';
+												for (var i = 0; i < obj.length; i++) {
+
+													trHTML += '	<tr class="tddefault"	';
+													if (i == 0) {
+														trHTML += '  style="background-image: linear-gradient(to right, #D9A441, rgba(255, 255, 255, 0.1));" ';
+													} else if (i == 1) {
+														trHTML += '  style="background-image: linear-gradient(to right, #CCC2C2 50%, rgba(255, 255, 255, 0.1));" ';
+													} else if (i == 2) {
+														trHTML += '  style="background-image: linear-gradient(to right, #965A38 50%, rgba(255, 255, 255, 0.1));" ';
+													}
+													trHTML += '>';
+													trHTML += '<td style="color: white;"><img src="'+obj[i].image+'"	width="60" height="60" class="circle"><a href="/profile/'+obj[i].userName+'">';
+													trHTML += '<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect profilelinkcircle"> <i class="material-icons">person</i></button>';
+													trHTML += '</a> '
+															+ obj[i].userName
+															+ ' ';
+													if (obj[i].activated == "true") {
+														trHTML += '<i class="material-icons">verified_user</i>';
+													}
+
+													trHTML += ' <span style="display: block; font-size: 14px; position: relative; left: 120px; bottom: 20px; color: #274863;">'
+															+ obj[i].points
+															+ ' CP</span></td>	</tr>';
+
+												}
+												$("#rankingtable tbody")
+														.append(trHTML);
+											}
+										} ]
+									});
+						</script>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 						<br> <a href="/ranking"><button id="show-dialog"
@@ -389,7 +329,8 @@ $content.html(output);
 
 					</div>
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col ">
+				<div class="  mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -422,7 +363,8 @@ $content.html(output);
 					<div class="mdl-card__actions mdl-card--border"></div>
 
 				</div>
-				<div class="  mdl-cell mdl-cell--12-col ">
+				<div class="  mdl-cell mdl-cell--12-col "
+					style="background: rgba(0, 0, 0, 0.3)">
 					<div class="">
 						<h4
 							style="background-color: #4d7da2; height: 50px; padding: 10px;">
@@ -480,52 +422,80 @@ $content.html(output);
 				<div class="mdl-grid"
 					style="padding-left: 25px; padding-right: 25px;" id="reddit"></div>
 				<script type="text/javascript">
-    $(function() {
-        var $content = $('#reddit');
-        var data = {
-            rss_url: 'https://www.reddit.com/r/MADANA.rss'
-        };
-$.get('https://api.rss2json.com/v1/api.json', data, function(response) {
-            if (response.status == 'ok') 
-            {
-                
-                var output = '';
-$.each(response.items, function(k, item) {
-	var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
-	var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
-	var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
-	var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
-	var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-                output += '<div class="mdl-cell--12-col mdl-grid">';
-                output += '<div class="mdl-cell--2-col " style="">';
-				output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="padding:25px" class="img-responsive" src="' + src + '"  ></a></div>';
-                output += '</div>';
-                output += '<div class="mdl-cell--10-col " style="">';
-            
-				output += '<h5><a style="color:#4d7da2 font-size:14px;" target="_blank" href="'+ item.link + '">' + item.title + '</a></h5>';
-				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2"><span style="color:#b2d1ef"> Created <span  data-livestamp="'+ item.pubDate+'">'+ item.pubDate+'"</span> by ' + item.author + '</span></div>';
-  
-				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
-	
-                output += '</div>';
-                
-                output += '</div>';
-                
-    return k<10;
-                });
-$content.html(output);
-}
-});
-});
-</script>
+					$(function() {
+						var $content = $('#reddit');
+						var data = {
+							rss_url : 'https://www.reddit.com/r/MADANA.rss'
+						};
+						$
+								.get(
+										'https://api.rss2json.com/v1/api.json',
+										data,
+										function(response) {
+											if (response.status == 'ok') {
+
+												var output = '';
+												$
+														.each(
+																response.items,
+																function(k,
+																		item) {
+																	var tagIndex = item.description
+																			.indexOf('<img'); // Find where the img tag starts
+																	var srcIndex = item.description
+																			.substring(
+																					tagIndex)
+																			.indexOf(
+																					'src=')
+																			+ tagIndex; // Find where the src attribute starts
+																	var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
+																	var srcEnd = item.description
+																			.substring(
+																					srcStart)
+																			.indexOf(
+																					'"')
+																			+ srcStart; // Find where the URL ends
+																	var src = item.description
+																			.substring(
+																					srcStart,
+																					srcEnd); // Extract just the URL
+																	output += '<div class="mdl-cell--12-col mdl-grid">';
+																	output += '<div class="mdl-cell--2-col ">';
+																	output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="" class="img-responsive" src="' + src + '"  ></a></div>';
+																	output += '</div>';
+																	output += '<div class="mdl-cell--10-col " style="    height: 60px;">';
+
+																	output += '<h5><a style="color:#4d7da2 font-size:14px;" target="_blank" href="'+ item.link + '">'
+																			+ item.title
+																			+ '</a></h5>';
+																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #4d7da2;"><span style="color:white;"> Created <span  data-livestamp="'+ item.pubDate+'">'
+																			+ item.pubDate
+																			+ '"</span> by '
+																			+ item.author
+																			+ '</span></div>';
+
+																	var yourString = item.description
+																			.replace(
+																					/<img[^>]*>/g,
+																					""); //replace with your string.
+
+																	output += '</div>';
+
+																	output += '</div>';
+
+																	return k < 10;
+																});
+												$content.html(output);
+											}
+										});
+					});
+				</script>
 			</div>
 		</div>
-
-
 		<jsp:include page="components/snackbar.jsp" />
 	</div>
 	</main>
-	</div>
+
 	<jsp:include page="components/footer.jsp" />
 
 

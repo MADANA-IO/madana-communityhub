@@ -6,16 +6,7 @@
 <html lang="en">
 <jsp:include page="components/header.jsp" />
 <jsp:include page="components/loginheader.jsp" />
-<head>
-		<script language="javascript">
-				function authenticate(username,password){
-				
-					   document.getElementById("username").value = username;
-					   document.getElementById("password").value = password;
-					   document.getElementById("submitForm").submit();
-					}
-				</script>
-				</head>
+
 <style>
 .login {
 	position: absolute;
@@ -73,7 +64,7 @@ top: calc(50% - 50px);
 	</div>
 		<div class="header">
 				<div>
-				 <img src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
+				 <img id="logo" src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
 						alt="MADANA Logo" width="175" height="175"
 						style="text-align: center; display: block;"> 
 						<span style="   font-family: Montserrat;
@@ -95,40 +86,25 @@ top: calc(50% - 50px);
 			<div>
 
 				<table>
-					<tr>
-					
-						<td><input  style="border: 1px solid #4d7da2;"  type="text" placeholder="Username" name="username" /></td>
-					</tr>
+			
 					<tr>
 					
 				
-						<td><br><input  style="border: 1px solid #4d7da2;"  type="text"  placeholder="E-Mail"name="email" /></td>
+						<td><br>		<span><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style=" font-size: 12px;padding:10px;"
+				href="/register/basic">Signup with Password</a></span></td>
 					</tr>
-					<tr>
 				
-						<td><input  style="border: 1px solid #4d7da2;"  type="password" placeholder="Password" name="password" /></td>
-					</tr>
-					<tr>
-
-						<td><input  style="border: 1px solid #4d7da2;"  type="password" placeholder="Re-Enter Password" name="matchingPassword" /></td>
-					</tr>
-							<tr>
-						<td><br></td>
-						
-					</tr>
 						<tr>
 				
-						<td style="color:#f3f3f6;" class="subheading" ><input  type="checkbox" name="TOC" value="read" > I've read and accept the <a style="font-size:14px;"target="_blank" href="https://resources.madana.io/TERMSOFUSE_MADANA_CommunityHub.pdf">Terms of Use Agreement</a> and <a style="font-size:14px;" target="_blank" href="https://www.madana.io/privacy-policy">Privacy policy</a></td>
-						
-					</tr>
-
-						<tr>
-				
-						<td><input type="submit" id="registerbutton" value="Register" style="background: rgba(33,73,99, 0.7);
-    border: 1px solid #4d7da2;
-    cursor: pointer;
-    border-radius: 2px;
-    color: #a0c3e8;"/><input type="hidden" id="tokenfield" name="captchatoken" value="null">
+						<td>	<br>	<a style="text-decoration:none;width:100%;padding:5px;"href="/register/ethereum" ><span 
+								style="background: white;color:#274863; border: 1px solid #4d7da2; border-radius:14px;padding: 10px; ">
+							
+									<img
+										src="https://metamask.io/img/metamask.png"
+										style="position: relative;left:8px; height: 20px; width: 20px;">
+										<span style="padding-left:8px;">Signup with MetaMask </span>
+												
+							</span></a>
 						</td>
 						
 					</tr>
@@ -139,22 +115,8 @@ top: calc(50% - 50px);
 					</tr>
 					
 				</table>
-		<c:if test="${GOOGLECAPTCHA == 'true'}">
-			<script>
-		
-				   
-			
-grecaptcha.ready(function() 
-		{
-	
-grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'register'})
-.then(function(token) {
-	document.getElementById("tokenfield").value = token;
-});
-});
 
-</script>
-</c:if>
+
 			</div>
 		</form>
 	<jsp:include page="components/snackbar.jsp" />
@@ -177,7 +139,7 @@ grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'register'})
 <script type="text/javascript">
 $("#container").mousemove(function(e) {
   parallaxIt(e, ".slide", -100);
-  parallaxIt(e, "img", -30);
+  parallaxIt(e, ".logo", -30);
 });
 
 function parallaxIt(e, target, movement) {

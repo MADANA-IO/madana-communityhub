@@ -41,6 +41,7 @@ import com.madana.common.datastructures.MDN_PersonalSocialPost;
 import com.madana.common.datastructures.MDN_SimpleUserProfile;
 import com.madana.common.datastructures.MDN_SocialHistoryObject;
 import com.madana.common.datastructures.MDN_SocialPlatform;
+import com.madana.common.datastructures.MDN_SystemHealthObject;
 import com.madana.common.datastructures.MDN_User;
 import com.madana.common.datastructures.MDN_UserProfile;
 import com.madana.common.datastructures.MDN_UserProfileImage;
@@ -153,31 +154,80 @@ public class MenuController
 		return "ranking";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String homePage(HttpSession session,Model model) throws Exception 
+	public String loadHomePage(HttpSession session,Model model) throws Exception 
 	{
 
-		Instant start = Instant.now();
 		MDN_RestClient oClient = SessionHandler.getClient(session);
-		String strUserName = SessionHandler.getCurrentUser(session);
+
+		Instant start = Instant.now();
 		oPlatforms = oClient.getSocialPlatforms();
+		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, "");
 		Instant end = Instant.now();
 		Duration timeElapsed = Duration.between(start, end);
 		System.out.println("Get social platforms: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
-		oUser = oClient.getUser(strUserName);
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading user: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
-		oProfile= oClient.getProfile(strUserName);
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading Profile: "+ timeElapsed.toMillis() +" milliseconds");
-		start = Instant.now();
+
+		model.addAttribute("currentsite","home");
+		model.addAttribute("referral_platforms",oRefferalPlatforms);
+
+		try //getting user specific information to be displayed
+		{	
+			start = Instant.now();
+			String strUserName = SessionHandler.getCurrentUser(session);
+			oUser = oClient.getUser(strUserName);
+			end = Instant.now();
+			timeElapsed = Duration.between(start, end);
+			System.out.println("Loading user: "+ timeElapsed.toMillis() +" milliseconds");
+			start = Instant.now();
+			oProfile= oClient.getProfile(strUserName);
+			end = Instant.now();
+			timeElapsed = Duration.between(start, end);
+			System.out.println("Loading Profile: "+ timeElapsed.toMillis() +" milliseconds");
+			start = Instant.now();
+			List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+
+			model.addAttribute("social_platforms",oSocialPlatforms);
+			model.addAttribute("msg", strUserName);
+			model.addAttribute("user", oUser);
+			model.addAttribute("profile", oProfile);	
+			session.setAttribute("profile", oProfile);
+		}
+		catch(Exception ex) // Client not authenticated / information not availabe
+		{
+
+		}
+
+		//Adding Bounty sections relating to user / client
+		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
+		model.addAttribute("social_platforms",oSocialPlatforms);
+
+		MDN_SystemHealthObject system =  oClient.getSystemHealth();
+		int backendSessions= Integer.valueOf(system.getActiveusercount());
+		int totalSessions = backendSessions+SessionHandler.getSessionCount();
+		system.setActiveusercount(String.valueOf(totalSessions));
+		model.addAttribute("system",system );
+		return "home";
+
+	}
+
+
+	@RequestMapping(value = "/news", method = RequestMethod.GET)
+	public String loadNewsPpage(HttpSession session,Model model) 
+	{
+		model.addAttribute("currentsite","news");
+		return "news";
+	}
+	@RequestMapping(value = "/bounty", method = RequestMethod.GET)
+	public String loadBountyPage(HttpSession session,Model model) throws Exception 
+	{
+
+
+		MDN_RestClient oClient = SessionHandler.getClient(session);
+		String strUserName = SessionHandler.getCurrentUser(session);
+		oPlatforms = oClient.getSocialPlatforms();
 		List<UserSpecificSocialPlatform> oSocialPlatforms = BackendHandler.getInstance().getCustomSocialPlatforms(oPlatforms, oClient, oUser, oProfile);
 		List<ReferralSocialPlatform> oRefferalPlatforms = BackendHandler.getInstance().getReferralPlatforms(oPlatforms, oClient, strUserName);
 
-		start = Instant.now();
+
 
 		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
 		if(oUsers.size()>2)
@@ -187,31 +237,19 @@ public class MenuController
 			model.addAttribute("user2", oUsers.get(1));
 			model.addAttribute("user3", oUsers.get(2));
 		}
-		model.addAttribute("currentsite","home");
+		model.addAttribute("currentsite","bounty");
 		model.addAttribute("social_platforms",oSocialPlatforms);
 		model.addAttribute("referral_platforms",oRefferalPlatforms);
 		model.addAttribute("msg", strUserName);
 		model.addAttribute("user", oUser);
 		model.addAttribute("profile", oProfile);	
-		session.setAttribute("profile", oProfile);
-		model.addAttribute("msg", strUserName);
-		model.addAttribute("system",  oClient.getSystemHealth());
-		end = Instant.now();
-		timeElapsed = Duration.between(start, end);
-		System.out.println("Loading Home: "+ timeElapsed.toMillis() +" milliseconds");
-		return "home";
-
-	}
 
 
-	@RequestMapping(value = "/news", method = RequestMethod.GET)
-	public String loadHomepage(HttpSession session,Model model) 
-	{
-		model.addAttribute("currentsite","news");
-		return "news";
+		return "bounty";
+
 	}
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profilePage(HttpSession session,Model model) throws Exception 
+	public String loadOwnProfilePage(HttpSession session,Model model) throws Exception 
 	{
 		String strUserName = SessionHandler.getCurrentUser(session);
 		MDN_RestClient oClient = SessionHandler.getClient(session);
@@ -247,7 +285,7 @@ public class MenuController
 
 	}
 	@RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-	public String userProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
+	public String loadProfilePage(HttpSession session,Model model,@PathVariable("username") String strDestUsername) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
@@ -298,7 +336,7 @@ public class MenuController
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/verifymail", method = RequestMethod.GET)
-	public String sendverifyMail(HttpSession session,Model model) throws ClientNotInitizializedException 
+	public String requestVerifyMail(HttpSession session,Model model) throws ClientNotInitizializedException 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		oClient.requestEmailVerification(SessionHandler.getCurrentUser(session));
@@ -306,7 +344,7 @@ public class MenuController
 		return "redirect:/settings";
 	}
 	@RequestMapping(value = "/settings/changemail/{email}", method = RequestMethod.GET)
-	public String setNewMail(HttpSession session,Model model,@PathVariable("email") String mail) throws Exception 
+	public String requestChangePassword(HttpSession session,Model model,@PathVariable("email") String mail) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		MDN_User oUser = new MDN_User();
@@ -326,9 +364,17 @@ public class MenuController
 		model.addAttribute("currentsite","settings");
 		return "redirect:/settings";
 	}
+	@RequestMapping(value = "/settings/{platform}/{ident}", method = RequestMethod.DELETE)
+	public String removeSocialAccount(HttpSession session,Model model,@PathVariable("platform") String platform, @PathVariable("ident") String ident) throws ClientNotInitizializedException 
+	{
+		MDN_RestClient oClient = SessionHandler.getClient(session);
+		oClient.removeLinkedAccount(SessionHandler.getCurrentUser(session), platform, ident);
+		return "redirect:/settings";
+	}
+
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settingsPage(HttpSession session,Model model) throws Exception 
+	public String loadSettingsPage(HttpSession session,Model model) throws Exception 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 		String strUserName = SessionHandler.getCurrentUser(session);
@@ -337,16 +383,17 @@ public class MenuController
 		oProfile =  oClient.getProfile(strUserName);
 		model.addAttribute("profile", oProfile);
 		model.addAttribute("avatars", oClient.getAvailableAvatars(strUserName));
+		model.addAttribute("platforms",oClient.getSocialPlatforms());
 		model.addAttribute("currentsite","settings");
 
 		return "settings";
 
 	}
 	@RequestMapping(value = "/faq", method = RequestMethod.GET)
-	public String faqPage(HttpSession session,Model model) 
+	public String loadFAQPage(HttpSession session,Model model) 
 	{
 
-		model.addAttribute("url", "https://intranet.madana.io/confluence/display/MADANA/MADANA+FAQ");
+		model.addAttribute("url", "https://intranet.madana.io/confluence/x/CQCeB");
 		return "externalframe";
 
 	}

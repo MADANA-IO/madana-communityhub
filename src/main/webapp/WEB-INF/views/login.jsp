@@ -7,7 +7,7 @@
 <jsp:include page="components/header.jsp" />
 <jsp:include page="components/loginheader.jsp" />
 <head>
-		<script language="javascript">
+<script language="javascript">
 				function authenticate(username,password){
 				
 					   document.getElementById("username").value = username;
@@ -15,28 +15,27 @@
 					   document.getElementById("submitForm").submit();
 					}
 				</script>
-				</head>
+</head>
 <style>
 .login {
 	position: absolute;
-top: calc(50% - 50px);
+	top: calc(50% - 50px);
 	left: calc(50%);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
 }
-@media screen and (max-width: 767px)
- {
-.login {
-	position: absolute;
-	top: 250px;
-	    left: calc(22%);
-	height: 150px;
-	width: 250px;;
-	z-index: 2;
-}
-}
 
+@media screen and (max-width: 767px) {
+	.login {
+		position: absolute;
+		top: 250px;
+		left: calc(22%);
+		height: 150px;
+		width: 250px;;
+		z-index: 2;
+	}
+}
 </style>
 
 
@@ -47,113 +46,110 @@ top: calc(50% - 50px);
 
 	<div
 		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<div id="container" style="    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    background-color: rgba(39,72,99,0.3);
-    background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
-    background-size: cover;
-    background-blend-mode: multiply;
-    -webkit-filter: blur(5px);">
-		
+		<div id="container"
+			style="height: 100%; width: 100%; justify-content: center; align-items: center; overflow: hidden; position: fixed; top: 0; left: 0; min-width: 100%; min-height: 100%; background-color: rgba(39, 72, 99, 0.3); background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg); background-size: cover; background-blend-mode: multiply; -webkit-filter: blur(5px);">
 
-		
+
+
 			<br>
 
 		</div>
 
 
 	</div>
-		<div class="header">
-				<div>
-				 <img src="https://www.madana.io/assets/img/logo-madana@3x.png"
-						alt="MADANA Logo" width="175" height="175"
-						style="text-align: center; display: block;"> 
-						<span style="   font-family: Montserrat;
-    font-style: normal;
-    font-variant: normal;
-    font-size: 24px;
-    color: #a0c3e8 !important;
-    position: absolute;
-    top: 120px;
-    left: -60px;
-        margin-right: -50px;
-">Community Hub</span>
-				</div>
-			</div>
-			<div class="content">
-				<div class="login">
-					<form id="submitForm" name="submitForm" method="POST">
+	<div class="header">
+		<div>
+			<img id="logo"
+				src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
+				alt="MADANA Logo" width="175" height="175"
+				style="text-align: center; display: block;"> <span
+				style="font-family: Montserrat; font-style: normal; font-variant: normal; font-size: 24px; color: #a0c3e8 !important; position: absolute; top: 120px; left: -60px; margin-right: -50px;">Community
+				Hub</span>
+		</div>
+	</div>
+	<div class="content">
+		<div class="login">
+			<form id="submitForm" name="submitForm" method="POST">
 
-					<div>
+				<div>
 
 					<table>
-					<tr>
-					
-						
-						<td ><input style="border: 1px solid #4d7da2;" id="username" type="text" placeholder="Username" name="userName" /></td>
-					</tr>
-					
-					<tr>
-				
-						<td ><input style="border: 1px solid #4d7da2;" id="password" type="password" placeholder="Password" name="password" /></td>
-					</tr>
-					<tr>
-	
-						<td><div style="color: red">${error}</div>
-						<div style="color: green">${info}</div>
-						</td>
-						</tr>
-					<tr>
-	
-						<td><input  type="submit" value="Login" onclick="document.forceLoading();" style="background: rgba(33,73,99, 0.7);
-    border: 1px solid #4d7da2;
-    cursor: pointer;
-    border-radius: 2px;
-    color: #a0c3e8;" /><input type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
-					</tr>
-			 	<tr>
-	
-						<td><br><a  class=""  href="/register">Create Account</a>
-						 </td>
-					</tr>
 						<tr>
-				
-						<td><a  class="" href="/resetpassword">Reset Password</a></td>
-					</tr>
-					<tr>
-						<td><br><br></td>
+
+
+							<td><input style="border: 1px solid #4d7da2;" id="username"
+								type="text" placeholder="Username" name="userName" /></td>
 						</tr>
-						</table>
+
+						<tr>
+
+							<td><input style="border: 1px solid #4d7da2;" id="password"
+								type="password" placeholder="Password" name="password" /></td>
+						</tr>
+						<tr>
+
+							<td><div style="color: red">${error}</div>
+								<div style="color: green">${info}</div></td>
+						</tr>
+						<tr>
+
+							<td><input type="submit" clas="mdl-button" value="Login"
+								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 2px; color: white;" /><input
+								type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
+						</tr>
+						<tr>
+
+							<td><br> <span
+								style="background: white; color: #274863; border: 1px solid #4d7da2; border-radius: 14px; padding: 10px;">
+									<a style="color: #274863; text-decoration: none;"
+									href="/login/ethereum"><img
+										src="https://metamask.io/img/metamask.png"
+										style="position: relative; left: 8px; height: 20px; width: 20px;">
+										<span style="padding-left: 8px">Login with MetaMask </span> </a>
+							</span></td>
+						</tr>
+						<tr>
+
+							<td><br> <a class="" href="/register">Create
+									Account</a></td>
+						</tr>
+						<tr>
+
+							<td><a class="" href="/resetpassword">Reset Password</a></td>
+						</tr>
+						<tr>
+							<td><br> <br></td>
+						</tr>
+					</table>
+					<c:if test="${GOOGLECAPTCHA == 'true'}">
 						<script>
-		
-				   
-			
-grecaptcha.ready(function() 
+						
+	grecaptcha.ready(function() 
 		{
 	
-grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'login'})
+grecaptcha.execute('${GOOGLECAPTCHA_WEBSITEKEY}', {action: 'login'})
 .then(function(token) {
 	document.getElementById("tokenfield").value = token;
 });
 });
 
 </script>
+					</c:if>
 
-			</div>
-		</form>
-	<jsp:include page="components/snackbar.jsp" />
 				</div>
-			</div>
-
-<jsp:include page="components/statuspage.jsp" />
+			</form>
+			<jsp:include page="components/snackbar.jsp" />
+		</div>
+	</div>
+	<c:if test="${not empty STATUSPAGE_PAGEID}">
+		<div class="mobilehide" id="status">
+			<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank"
+				style="text-decoration: none;"> <span class="color-dot"></span>
+				<span class="color-description"></span>
+			</a>
+		</div>
+		<jsp:include page="components/widgets/StatusPage.jsp" />
+	</c:if>
 	<jsp:include page="components/footer.jsp" />
 
 
@@ -161,7 +157,7 @@ grecaptcha.execute('6LeSsnoUAAAAALEWywlCqP9kyV6IP5T6CD-g2pCT', {action: 'login'}
 <script type="text/javascript">
 $("#container").mousemove(function(e) {
   parallaxIt(e, ".slide", -100);
-  parallaxIt(e, "img", -30);
+  parallaxIt(e, ".logo", -30);
 });
 
 function parallaxIt(e, target, movement) {

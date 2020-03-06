@@ -11,70 +11,55 @@
 <style>
 .ethereum {
 	position: absolute;
-top: calc(50% - 50px);
+	top: calc(50% - 50px);
 	left: calc(50%);
 	height: 150px;
 	width: 600px;
 	z-index: 2;
 }
-@media screen and (max-width: 767px)
- {
-.ethereum {
-	position: absolute;
-	top: 250px;
-	    left: calc(22%);
-	height: 150px;
-	width: 250px;;
-	z-index: 2;
-}
+
+@media screen and (max-width: 767px) {
+	.ethereum {
+		position: absolute;
+		top: 250px;
+		left: calc(22%);
+		height: 150px;
+		width: 250px;;
+		z-index: 2;
+	}
 }
 </style>
 
 <body onload="checkWeb3()">
 	<div id="nonce" hidden>${nonce}</div>
 
-	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-		<div id="container" style="
-			height: 100%;
-			width: 100%;
-			justify-content: center;
-			align-items: center;
-			overflow: hidden;
-			position: fixed;
-			top: 0;
-			left: 0;
-			min-width: 100%;
-			min-height: 100%;
-			background-color: rgba(39,72,99,0.3);
-			background-image: url(https://www.madana.io/assets/img/hero-grid.jpg);
-			background-size: cover;
-			background-blend-mode: multiply;
-			-webkit-filter: blur(5px);">
-		
+	<div
+		class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		<div id="container"
+			style="height: 100%; width: 100%; justify-content: center; align-items: center; overflow: hidden; position: fixed; top: 0; left: 0; min-width: 100%; min-height: 100%; background-color: rgba(39, 72, 99, 0.3); background-image: url(https://cdn.madana.io/commonvisuals/backgrounds/hero-grid.jpg); background-size: cover; background-blend-mode: multiply; -webkit-filter: blur(5px);">
+
 			<br>
 		</div>
 	</div>
 	<div class="header">
 		<div>
-			<img src="https://www.madana.io/assets/img/logo-madana@3x.png"
-			alt="MADANA Logo" width="175" height="175"
-			style="text-align: center; display: block;"> 
-
-			<span style="font-family: Montserrat;
-			font-style: normal;
-			font-variant: normal;
-			font-size: 24px;
-			color: #a0c3e8 !important;
-			position: absolute;
-			top: 120px;
-			left: -60px;
-			margin-right: -50px;">
-				Community Hub
-			</span>
+			<img
+				src="https://cdn.madana.io/commonvisuals/logos/logo-madana@3x.png"
+				alt="MADANA Logo" width="175" height="175"
+				style="text-align: center; display: block;"> <span
+				style="font-family: Montserrat; font-style: normal; font-variant: normal; font-size: 24px; color: #a0c3e8 !important; position: absolute; top: 120px; left: -60px; margin-right: -50px;">
+				Community Hub </span>
 		</div>
 	</div>
 	<div class="content">
+	
 		<div class="ethereum">
+		<h2>Pending signature challenge</h2>
+		<p class="mobilehide">
+	We are verifying the ownership of your account by generating and random text and letting you sign that data using your private key provided by metamask. If the signature can be verified we will consider you user the owner of that public address. The backend checks which MADANA account was linked with this address and provides an authentication token.
+	</p>
+	<h5>Waiting for input from metamask...</h5>
+	<img src="https://cdn.madana.io/commonvisuals/icons/loading.gif" style="height:10px;width:150px;"> 
 			<div id="error" style="color: red">${error}</div>
 			<div id="info" style="color: green">${info}</div>
 
@@ -82,7 +67,15 @@ top: calc(50% - 50px);
 		</div>
 	</div>
 
-	<jsp:include page="components/statuspage.jsp" />
+		<c:if test="${not empty STATUSPAGE_PAGEID}">
+		<div class="mobilehide" id="status">
+			<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank"
+				style="text-decoration: none;"> <span class="color-dot"></span>
+				<span class="color-description"></span>
+			</a>
+		</div>
+		<jsp:include page="components/widgets/StatusPage.jsp" />
+	</c:if>
 	<jsp:include page="components/footer.jsp" />
 
 </body>

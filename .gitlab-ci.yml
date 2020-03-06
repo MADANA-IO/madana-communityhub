@@ -79,13 +79,13 @@ package:
     - tags
 
 build_docker:
-  image: docker:latest
+  image: docker:19.03.1
   stage: docker
   cache:
     << : *default_cache
     policy: pull
   services:
-  - docker:dind
+  - docker:19.03.5-dind 
   script:
   - export RELEASE_VERSION=$(cat .next-version)
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
@@ -140,7 +140,7 @@ deploy:
     - > 
       aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
   only:
-   - production
+   - master
 
 deploy_production:
   image: python:alpine

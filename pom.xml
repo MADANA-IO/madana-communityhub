@@ -6,7 +6,7 @@
 	<groupId>com.madana</groupId>
 	<name>MADANA Community Hub</name>
 	<packaging>war</packaging>
-	<version>0.2.3</version>
+	<version>0.3.0-master.6</version>
 	      <repositories>
 		<repository>
 		  <id>github</id>
@@ -149,7 +149,7 @@
 	<dependency>
 	  <groupId>com.madana.common</groupId>
 	  <artifactId>madana-common-restclient</artifactId>
-	  <version>0.1.27</version>
+	  <version>0.1.37</version>
 	</dependency>
 	<dependency>
 		<groupId>com.madana.common</groupId>

@@ -20,6 +20,11 @@
  ******************************************************************************/
 package com.madana.webclient.controller;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
@@ -35,6 +40,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.madana.common.datastructures.MDN_MailAddress;
 import com.madana.common.datastructures.MDN_PasswordReset;
+import com.madana.common.datastructures.MDN_User;
+import com.madana.common.datastructures.MDN_UserCredentials;
+import com.madana.common.datastructures.MDN_UserProfile;
+import com.madana.common.datastructures.MDN_UserSetting;
 import com.madana.common.restclient.MDN_RestClient;
 import com.madana.webclient.bean.LoginBean;
 import com.madana.webclient.bean.ResetPasswordBean;
@@ -52,15 +61,12 @@ public class LoginController
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadFrontPage(HttpSession session,Model model) 
 	{
+		return "redirect:/home/";
+	}
 
-		try 
-		{
-			if(SessionHandler.getClient(session).validateSession())
-				return "redirect:/home/";
-		} catch (ClientNotInitizializedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@RequestMapping(value = "/start", method = RequestMethod.GET)
+	public String loadStartPage(HttpSession session,Model model) 
+	{
 		return "index";
 	}
 
@@ -160,8 +166,21 @@ public class LoginController
 		}
 		else
 		{
-			model.setViewName("register");
+			model.setViewName("registerSelect");
 		}
+
+		return model;
+
+	}
+	@RequestMapping(value = "/register/basic", method = RequestMethod.GET)
+	public ModelAndView loadRegisterBasicPage(HttpSession session, @RequestParam(value = "referrer", required=false) String strToken) 
+	{
+		if(strToken!=null)
+			session.setAttribute("ref", strToken);
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("register");
+
 
 		return model;
 
@@ -184,7 +203,7 @@ public class LoginController
 	}
 
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register/basic", method = RequestMethod.POST)
 	public String submitRegisterPage(HttpSession session,@RequestParam(value = "TOC", required=false) String read, @RequestParam(value = "captchatoken", required=false) String captchatoken, @RequestParam(value = "referrer", required=false) String strToken, Model model, @ModelAttribute("RegisterUser") RegisterUser user,final RedirectAttributes redirectAttributes) 
 	{
 		if(read== null)
@@ -278,7 +297,13 @@ public class LoginController
 				{
 
 					SessionHandler.setSuccessfulLogin(session, loginBean.getUserName());
-
+					String strUserName = SessionHandler.getCurrentUser(session);
+					
+				
+					MDN_User oUser = oClient.getUser(loginBean.getUserName());
+					MDN_UserProfile	oProfile= oClient.getProfile(strUserName);
+					session.setAttribute("user", oUser);
+					session.setAttribute("profile", oProfile);
 					redirectAttributes.addFlashAttribute("msg", loginBean.getUserName());
 					if(requesturi!=null)
 						return "redirect:"+requesturi;
@@ -344,9 +369,118 @@ public class LoginController
 			model.addAttribute("error", e.toString());
 			return "deleteAccount";
 		}
-	
 
-		
+
+
+	}
+	@RequestMapping(value = "/login/ethereum" , method = RequestMethod.GET)
+	public String authEthereumWallet(HttpSession session, Model model)
+	{
+		return "ethereum";
+	}
+	@RequestMapping(value = "/login/ethereum", method = RequestMethod.POST, params = "wallet", produces = "application/json")
+	public String getEthereumVerificationNonce(HttpSession session, @RequestParam("wallet") String wallet, Model model) throws ClientNotInitizializedException 
+	{
+		try {
+			String nonce = SessionHandler.getClient(session).getEthereumVerificationNonce(wallet);
+			model.addAttribute("nonce", nonce );
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		}
+
+		return "ethereum";
+	}
+
+	@RequestMapping(value = "/login/ethereum", method = RequestMethod.POST, params = { "wallet", "nonce", "signature" }, produces = "application/json")
+	public String getEthereumVerificationNonce(HttpSession session, @RequestParam("wallet") String wallet, @RequestParam("nonce") String nonce, @RequestParam("signature") String signature, Model model) throws ClientNotInitizializedException 
+	{
+		try {
+			SessionHandler.getClient(session).loginWithWeb3(wallet, nonce, signature);
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "ethereum";
+		}
+		return "redirect:/home/";
+	}
+	@RequestMapping(value = "/register/ethereum" , method = RequestMethod.GET)
+	public String initWallet(HttpSession session, Model model)
+	{
+		return "registerEthereum";
+	}
+
+	@RequestMapping(value = "/register/ethereum", method = RequestMethod.POST, params = "wallet", produces = "application/json")
+	public String getEthereumVerificationNonceForRegistration(HttpSession session, @RequestParam("wallet") String wallet, Model model) throws ClientNotInitizializedException 
+	{
+		try {
+			String nonce = SessionHandler.getClient(session).getEthereumVerificationNonce(wallet);
+			model.addAttribute("nonce", nonce );
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		}
+
+		return "registerEthereum";
+	}
+
+	@RequestMapping(value = "/register/ethereum", method = RequestMethod.POST, params = { "wallet", "nonce", "signature" }, produces = "application/json")
+	public String registerWithEthereum(HttpSession session, @RequestParam("wallet") String wallet, @RequestParam("nonce") String nonce, @RequestParam("signature") String signature,@RequestParam(value = "captchatoken", required=false) String captchatoken, @RequestParam(value = "referrer", required=false) String strToken,@RequestParam("email") String email,@RequestParam("username") String username,@RequestParam("read") String read, Model model, final RedirectAttributes redirectAttributes) throws ClientNotInitizializedException 
+	{
+
+		if(read.equalsIgnoreCase("false") | read== null)
+		{
+
+			redirectAttributes.addFlashAttribute("error", "Please read, understand and accept the Privacy Policy and Terms of Use Agreement");
+			return "redirect:/register/ethereum";
+		}
+		if(!BackendHandler.getInstance().verifyGoogleCaptcha(captchatoken))
+		{
+
+			redirectAttributes.addFlashAttribute("error", "We couldn't verify that you are a human");
+			return "redirect:/register/ethereum";
+		}
+		if (username.length()>0 && username!= null && email.length()>0 && email!= null) 
+		{
+
+			try 
+			{
+
+				if(session.getAttribute("ref")!=null)
+					strToken =(String) session.getAttribute("ref");
+
+				MDN_User oUser = new MDN_User();
+				oUser.setMail(email);
+
+				MDN_UserCredentials oCredentials = new MDN_UserCredentials();
+				oCredentials.setPassword("");
+				oCredentials.setUsername(username);
+				oUser.setCredentials(oCredentials);
+
+				List<MDN_UserSetting> settings = new ArrayList<MDN_UserSetting>();
+				MDN_UserSetting ethSetup = new MDN_UserSetting();
+				ethSetup.setDescription("ethereum");
+				ethSetup.setName(wallet);
+				ethSetup.setId(nonce);
+				ethSetup.setValue(signature);
+				settings.add(ethSetup);
+				oUser.setSettings(settings);
+				if (SessionHandler.getClient(session).createUser(oUser, strToken)!=null) ;
+				{
+					redirectAttributes.addFlashAttribute("info", "Account created");
+					return "redirect:/login";
+				} 
+			} catch (Exception e) 
+			{
+
+				redirectAttributes.addFlashAttribute("error", e.toString());
+				return "redirect:/register/ethereum";
+			}
+
+		} 
+		else 
+		{
+			redirectAttributes.addFlashAttribute("error", "Please enter Details");
+			return "redirect:/register/ethereum";
+		}
+
 	}
 
 }
