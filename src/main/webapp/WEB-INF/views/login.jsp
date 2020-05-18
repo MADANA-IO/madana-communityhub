@@ -94,7 +94,7 @@
 						<tr>
 
 							<td><input type="submit" clas="mdl-button" value="Login"
-								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 2px; color: white;" /><input
+								style="background: rgba(33, 73, 99, 0.7); border: 1px solid #4d7da2; cursor: pointer; border-radius: 14px;width:100%; color: white;" /><input
 								type="hidden" id="tokenfield" name="captchatoken" value="null"></td>
 						</tr>
 						<tr>
@@ -103,7 +103,7 @@
 								style="background: white; color: #274863; border: 1px solid #4d7da2; border-radius: 14px; padding: 10px;">
 									<a style="color: #274863; text-decoration: none;"
 									href="/login/ethereum"><img
-										src="https://metamask.io/img/metamask.png"
+										src="<%=request.getContextPath()%>/resources/img/metamask.svg"
 										style="position: relative; left: 8px; height: 20px; width: 20px;">
 										<span style="padding-left: 8px">Login with MetaMask </span> </a>
 							</span></td>
