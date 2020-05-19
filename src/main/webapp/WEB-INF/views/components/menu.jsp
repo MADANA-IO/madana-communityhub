@@ -145,17 +145,17 @@ a:active {
 				href="/bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
 			</span> <span class="mobilehide"> <a
-				class="${currentsite eq 'users' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
-					class=" material-icons" role="presentation">people</i> Users</a>
-			</span> <span class="mobilehide"> <a
 				class="${currentsite eq 'organizations' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
 					class=" material-icons" role="presentation" disabled>business</i>
 					Organizations</a>
 
 			</span>
-
+ <span class="mobilehide"> <a
+				class="${currentsite eq 'stakeholders' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
+					class=" material-icons" role="presentation">people</i> Stakeholders</a>
+			</span>
 			<div class="mdl-layout-spacer"></div>
 
 			<div style="position: absolute; right: 180px;" class="mobilehide">
@@ -256,6 +256,9 @@ a:active {
 				class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 				href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
 		</c:if>
+			<a
+				class="${currentsite eq 'profile' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/profile"><i class=" material-icons" role="presentation">account_circle</i>Profile</a>
 		<a
 			class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 			href="/bounty"><i class=" material-icons" role="presentation">local_atm</i>
