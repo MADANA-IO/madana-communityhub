@@ -82,7 +82,15 @@ public class SessionHandler implements HttpSessionListener
 		{
 
 		}
-		MDN_RestClient oClient =  new MDN_RestClient();
+		MDN_RestClient oClient =  null;
+		if(BackendHandler.getInstance().getConnectionURL().length()>1)
+		{
+			 oClient =  new MDN_RestClient(BackendHandler.getInstance().getConnectionURL());
+		}
+		else
+		{
+			oClient =  new MDN_RestClient();
+		}
 
 		try
 		{

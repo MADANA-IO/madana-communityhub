@@ -35,12 +35,7 @@
 			</div>
 			<c:if test="${not empty MEDIUM_FEEDURL}">
 				<div class=" mdl-cell mdl-cell--12-col mdl-grid" style="">
-					<div class=" mdl-cell mdl-cell--12-col mdl-grid" style="">
-					<h3>
-						<i class="material-icons material-heading">announcement</i> Latest
-						News
-					</h3>
-					</div>
+				
 					<jsp:include page="medium/LatestPost.jsp" />
 
 				</div>

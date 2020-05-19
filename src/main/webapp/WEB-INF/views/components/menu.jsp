@@ -4,10 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page import="java.util.ResourceBundle"%>
-<%
-	ResourceBundle resource = ResourceBundle.getBundle("com.madana.webclient.system");
-	String version = resource.getString("version");
-%>
+
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>
 a:link {
@@ -128,6 +125,11 @@ a:active {
 			<a href="/home"><span style="color: #a0c3e8; font-size: 22px;"><i><img
 						src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 						alt="MADANA Logo" width="30" height="30"></i> Community Hub</span> </a>
+						<span
+					style="font-size: 8px; color: #d6e2ec;
+	/* padding-left: 75px; */ top: 20px; position: absolute; left: 70px;"> ${applicationScope['CONNECTION']}<c:out value="${STATUSPAGE_PAGELINK}"/>
+					
+				</span>
 		</div>
 
 
@@ -227,8 +229,7 @@ a:active {
 			</c:choose>
 		</nav>
 		<!-- Navigation -->
-		</di
-						v>
+		</div>
 </header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 	<header class="demo-drawer-header">
@@ -237,9 +238,9 @@ a:active {
 					src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 					alt="MADANA Logo" width="50" height="50"></i><span
 				style="padding-left: 25px; font-size: 14px;">Community Hub <span
-					style="font-size: 10px; color: #274863;
-	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Beta
-						<%=version%>
+					style="font-size: 12px; color: #d6e2ec;
+	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Version ${applicationScope['VERSION']}<c:out value="${STATUSPAGE_PAGELINK}"/>
+					
 				</span></span> </span>
 		</div>
 

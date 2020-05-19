@@ -52,7 +52,7 @@
 																					srcEnd); // Extract just the URL
 																		output += '<div style =" text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="'
 																			+ src
-																			+ '"  style="height:400px;width:100%; "></a></div></header>';
+																			+ '"  style="width:100%;object-fit: fill;max-height:500px; "></a></div></header>';
 																			output +='</div></div>';
 																			output += '<div class="mdl-cell mdl-cell--4-col">';
 														
@@ -119,9 +119,9 @@ $.each(response.items, function(k, item) {
 				var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
 				var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
 				var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-				output += '<div style ="text-transform: uppercase;text-align:center"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img class="img-responsive" src="' + src + '" height="250px" style="max-height:450px"></a></div></header>';
+				output += '<div style ="text-transform: uppercase;text-align:center"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img  src="' + src + '" width="100%" style="object-fit: fill;max-height:250px"></a></div></header>';
 				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
-				output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
+				output += '<div style=" text-transform: uppercase; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
   
 				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
 				var maxLength = 450 ;// maximum number of characters to extract
