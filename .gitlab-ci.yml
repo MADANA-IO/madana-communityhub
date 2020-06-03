@@ -71,6 +71,7 @@ package:
     << : *default_cache
     policy: pull-push
   script:
+    - cp .next-version src/main/webapp/WEB-INF/version.txt
     - mvn $MAVEN_CLI_OPTS package
   artifacts:
     paths:
