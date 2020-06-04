@@ -120,16 +120,12 @@ a:active {
 	<div class="mdl-layout__header-row mdnheader">
 		<!-- Title -->
 
-		<div class="mdl-layout-title" style="padding-right: 50px;">
+		<div class="mdl-layout-title">
 			<div class="mobilehide" style="padding-left: 25px;"></div>
 			<a href="/home"><span style="color: #a0c3e8; font-size: 22px;"><i><img
 						src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 						alt="MADANA Logo" width="30" height="30"></i> Community Hub</span> </a>
-						<span
-					style="font-size: 8px; color: #d6e2ec;
-	/* padding-left: 75px; */ top: 20px; position: absolute; left: 70px;"> ${applicationScope['CONNECTION']}<c:out value="${STATUSPAGE_PAGELINK}"/>
-					
-				</span>
+		
 		</div>
 
 
@@ -160,7 +156,7 @@ a:active {
 			</span>
 			<div class="mdl-layout-spacer"></div>
 
-			<div style="position: absolute; right: 180px;" class="mobilehide">
+			<div style="position: absolute; right: 140px;" class="mobilehide">
 				<a class="mdl-navigation__link" href="/faq"><i
 					class=" material-icons" role="presentation">help_outline</i><span
 					class=""> FAQ </span></a>
@@ -170,7 +166,7 @@ a:active {
 					<div style="position: absolute; right: 20px;">
 						<a href="/start" class="mdl-navigation__link "> <i
 							class=" material-icons " style="padding-right: 10px;"
-							role="presentation">account_circle</i>Sign in
+							role="presentation">account_circle</i><span class="mobilehide">Sign in</span>
 
 						</a>
 					</div>
@@ -239,7 +235,7 @@ a:active {
 					alt="MADANA Logo" width="50" height="50"></i><span
 				style="padding-left: 25px; font-size: 14px;">Community Hub <span
 					style="font-size: 12px; color: #d6e2ec;
-	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Version ${applicationScope['VERSION']}<c:out value="${STATUSPAGE_PAGELINK}"/>
+	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Version ${applicationScope['VERSION']}
 					
 				</span></span> </span>
 		</div>
@@ -297,7 +293,7 @@ a:active {
 		<c:if test="${not empty STATUSPAGE_PAGEID}">
 			<div id="status" class="mdl-navigation__link"
 				style="font-size: 10px; position: relative">
-				<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank">
+				<a href="${applicationScope['STATUSPAGE_PAGELINK']}" target="_blank">
 					<span class="color-dot"></span> <span class="color-description"></span>
 				</a>
 			</div>

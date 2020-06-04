@@ -56,7 +56,7 @@
 																			output +='</div></div>';
 																			output += '<div class="mdl-cell mdl-cell--4-col">';
 														
-																	output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">'
+																	output += '<div style=" border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">'
 																			+ item.title
 																			+ '</a></h4>';
 																	output += '<div style=" text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By '
@@ -85,7 +85,7 @@
 																	output += '<p style="line-height: 22px;color:#274863">'
 																			+ trimmedString
 																			+ '...</p>';
-																	output += '</div><a target="_blank" style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
+																	output += '</div><a target="_blank" style="font-size: 18px;" href="'+ item.link + '"> Read the full article...</a></div>';
 																	return k < 0
 																});
 												$content.html(output);
@@ -120,7 +120,7 @@ $.each(response.items, function(k, item) {
 				var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
 				var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
 				output += '<div style ="text-transform: uppercase;text-align:center"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img  src="' + src + '" width="100%" style="object-fit: fill;max-height:250px"></a></div></header>';
-				output += '<div style="padding: 15px 28px; border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
+				output += '<div style="border: 1px ;solid #f5f5f5"><h4><a style="color:#4d7da2" target="_blank" href="'+ item.link + '">' + item.title + '</a></h4>';
 				output += '<div style=" text-transform: uppercase; font-size: 12px; border-bottom: 1px solid #F5F5F5"><span style="color:#b2d1ef">By ' + item.author + '</span></div>';
   
 				var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
@@ -130,7 +130,7 @@ $.each(response.items, function(k, item) {
 				//re-trim if we are in the middle of a word
 				trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 				output += '<p style="line-height: 22px;color:white">' + trimmedString + '...</p>';
-				output += '</div></div><a target="_blank" style="padding-left:25px; font-size: 24px;" href="'+ item.link + '"> Read the full article...</a></div>';
+				output += '</div></div><a target="_blank" style=" font-size: 18px;"  href="'+ item.link + '"> Read the full article...</a></div>';
 
 		}
 	return k<3

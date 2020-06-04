@@ -34,14 +34,14 @@
 					your rank, the better the reward will be.
 			</div>
 			<c:if test="${not empty MEDIUM_FEEDURL}">
-				<div class=" mdl-cell mdl-cell--12-col mdl-grid" style="">
+			
 				
 					<jsp:include page="medium/LatestPost.jsp" />
 
-				</div>
+			
 			</c:if>
 			<div class="mdl-grid mdl-cell mdl-cell--8-col">
-				<div class="mdl-grid  mdl-cell mdl-cell--12-col ">
+			
 					<div class="mdl-cell--12-col">
 						<hr>
 						<h3>
@@ -163,8 +163,8 @@
 						</c:if>
 
 					</c:forEach>
-				</div>
-				<div class="mdl-grid  mdl-cell mdl-cell--12-col">
+				
+			
 					<div class="mdl-cell--12-col">
 						<hr>
 						<h3>
@@ -240,7 +240,7 @@
 
 
 					</c:forEach>
-				</div>
+			
 			</div>
 			<div class=" mdl-grid mdl-cell--4-col">
 				<div class="mdl-cell mdl-cell--12-col "
@@ -410,7 +410,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" mdl-cell mdl-cell--12-col mdl-grid">
+			<div class=" mdl-cell mdl-cell--12-col mdl-grid mobilehide">
 				<hr>
 				<h3>
 					<i class="material-icons material-heading">share</i> Check our
@@ -456,7 +456,7 @@
 																			.substring(
 																					srcStart,
 																					srcEnd); // Extract just the URL
-																	output += '<div class="mdl-cell--12-col mdl-grid">';
+																	output += '<div class="mdl-cell--12-col mdl-grid ">';
 																	output += '<div class="mdl-cell--2-col ">';
 																	output += '<div style ="text-transform: uppercase;height:"><a target="_blank" style="text-transform: uppercase;letter-spacing: 1px; color:#274863"href="'+ item.link + '"><img style="" class="img-responsive" src="' + src + '"  ></a></div>';
 																	output += '</div>';

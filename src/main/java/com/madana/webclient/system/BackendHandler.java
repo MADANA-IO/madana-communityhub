@@ -250,6 +250,7 @@ public class BackendHandler implements ServletContextListener {
 		sce.getServletContext().setAttribute("MEDIUM_FEEDURL", initNewsFeed(sce));
 		sce.getServletContext().setAttribute("GOOGLEANALYTICS_TRACKINGID", initGoogleAnalytics(sce));
 		sce.getServletContext().setAttribute("STATUSPAGE_PAGEID", initAtlassianStatuspage(sce));
+		sce.getServletContext().setAttribute("STATUSPAGE_PAGELINK", STATUSPAGE_PAGELINK);
 		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce));
 		sce.getServletContext().setAttribute("VERSION", initVersion(sce));
 		sce.getServletContext().setAttribute("CONNECTION", initConnection(sce));
