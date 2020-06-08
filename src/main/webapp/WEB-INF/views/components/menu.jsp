@@ -156,23 +156,24 @@ a:active {
 			</span>
 			<div class="mdl-layout-spacer"></div>
 
-			<div style="position: absolute; right: 140px;" class="mobilehide">
-				<a class="mdl-navigation__link" href="/faq"><i
-					class=" material-icons" role="presentation">help_outline</i><span
-					class=""> FAQ </span></a>
-			</div>
-			<c:choose>
+			<div style="position: absolute;right:5px; width:300px;top:10px;" class="mobilehide">
+				<span
+					style="float:left;margin-top:-10px;"><a class="mdl-navigation__link" href="/faq"><i
+					class=" material-icons" role="presentation">help_outline</i> FAQ</a> </span>
+					
+					<c:choose>
 				<c:when test="${empty profile.userName}">
-					<div style="position: absolute; right: 20px;">
-						<a href="/start" class="mdl-navigation__link "> <i
+					<div >
+						<span ><a href="/start" class="mdl-navigation__link "> <i
 							class=" material-icons " style="padding-right: 10px;"
 							role="presentation">account_circle</i><span class="mobilehide">Sign in</span>
 
 						</a>
+						</span>
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div style="position: absolute; right: 20px;">
+					<div  >
 
 						<span id="accbtn"> <img src="${profile.image}" width="35"
 							height="35" class="circle"> <span class="mobilehide"><strong>${profile.userName}</strong></span>
@@ -223,6 +224,8 @@ a:active {
 					</ul>
 				</c:otherwise>
 			</c:choose>
+			</div>
+			
 		</nav>
 		<!-- Navigation -->
 		</div>
