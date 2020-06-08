@@ -121,15 +121,15 @@ top: calc(50% - 50px);
 								style="background: white;color:#274863; border: 1px solid #4d7da2; padding: 10px; width: 250px;">
 								<c:if test="${not empty nonce}">
 									<img
-										src="https://metamask.io/img/metamask.png"
+													src="<%=request.getContextPath()%>/resources/img/metamask.svg"
 										style="position: relative;left:8px; height: 20px; width: 20px;">
 										<span style="padding-left:8px;">Signup with MetaMask </span>
 												</c:if>
 												<c:if test="${ empty nonce}">
 									<img
-										src="https://metamask.io/img/metamask.png"
+												src="<%=request.getContextPath()%>/resources/img/metamask.svg"
 										style="position: relative;left:8px; height: 20px; width: 20px;">
-										<span style="padding-left:8px;">Open Metamask </span>
+										<span style="padding-left:8px;width:100%;">Open Metamask </span>
 												</c:if>
 							</span><input type="hidden" id="tokenfield" name="captchatoken" value="null">
 						</td>

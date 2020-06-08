@@ -14,23 +14,22 @@
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="icon" sizes="196x196"
-	href="https://cdn.madana.io/commonvisuals/favicons/favicon-196x196.png">
+<link rel="icon" sizes="196x196" href="<%=request.getContextPath()%>/resources/img/communityhub.png">
 
 <!-- Add to homescreen for Safari on iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#b2d1ef">
 <meta name="apple-mobile-web-app-title" content="MADANA Community Hub">
 <link rel="apple-touch-icon-precomposed"
-	href="https://cdn.madana.io/commonvisuals/favicons/apple-touch-icon-152x152.png">
+	href="<%=request.getContextPath()%>/resources/img/communityhub.png">
 
 <!-- Tile icon for Win8 (144x144 + tile color) -->
 <meta name="msapplication-TileImage"
-	content="https://cdn.madana.io/commonvisuals/favicons/mstile-144x144.png">
+	content="<%=request.getContextPath()%>/resources/img/communityhub.png">
 <meta name="msapplication-TileColor" content="#b2d1ef">
 
 <link rel="shortcut icon"
-	href="https://cdn.madana.io/commonvisuals/favicons/favicon-32x32.png">
+	href="<%=request.getContextPath()%>/resources/img/communityhub.png">
 
 
  <%-- Start fonts --%>

@@ -4,10 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page import="java.util.ResourceBundle"%>
-<%
-	ResourceBundle resource = ResourceBundle.getBundle("com.madana.webclient.system");
-	String version = resource.getString("version");
-%>
+
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>
 a:link {
@@ -123,11 +120,12 @@ a:active {
 	<div class="mdl-layout__header-row mdnheader">
 		<!-- Title -->
 
-		<div class="mdl-layout-title" style="padding-right: 50px;">
+		<div class="mdl-layout-title">
 			<div class="mobilehide" style="padding-left: 25px;"></div>
 			<a href="/home"><span style="color: #a0c3e8; font-size: 22px;"><i><img
 						src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 						alt="MADANA Logo" width="30" height="30"></i> Community Hub</span> </a>
+		
 		</div>
 
 
@@ -145,36 +143,37 @@ a:active {
 				href="/bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
 			</span> <span class="mobilehide"> <a
-				class="${currentsite eq 'users' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
-					class=" material-icons" role="presentation">people</i> Users</a>
-			</span> <span class="mobilehide"> <a
 				class="${currentsite eq 'organizations' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
 					class=" material-icons" role="presentation" disabled>business</i>
 					Organizations</a>
 
 			</span>
-
+ <span class="mobilehide"> <a
+				class="${currentsite eq 'stakeholders' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="#" onclick="document.forceLoading();" style="color: darkgrey;"><i
+					class=" material-icons" role="presentation">people</i> Stakeholders</a>
+			</span>
 			<div class="mdl-layout-spacer"></div>
 
-			<div style="position: absolute; right: 180px;" class="mobilehide">
-				<a class="mdl-navigation__link" href="/faq"><i
-					class=" material-icons" role="presentation">help_outline</i><span
-					class=""> FAQ </span></a>
-			</div>
-			<c:choose>
+			<div style="position: absolute;right:5px; width:300px;top:10px;" class="mobilehide">
+				<span
+					style="float:left;margin-top:-10px;"><a class="mdl-navigation__link" href="/faq"><i
+					class=" material-icons" role="presentation">help_outline</i> FAQ</a> </span>
+					
+					<c:choose>
 				<c:when test="${empty profile.userName}">
-					<div style="position: absolute; right: 20px;">
-						<a href="/start" class="mdl-navigation__link "> <i
+					<div >
+						<span ><a href="/start" class="mdl-navigation__link "> <i
 							class=" material-icons " style="padding-right: 10px;"
-							role="presentation">account_circle</i>Sign in
+							role="presentation">account_circle</i><span class="mobilehide">Sign in</span>
 
 						</a>
+						</span>
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div style="position: absolute; right: 20px;">
+					<div  >
 
 						<span id="accbtn"> <img src="${profile.image}" width="35"
 							height="35" class="circle"> <span class="mobilehide"><strong>${profile.userName}</strong></span>
@@ -225,10 +224,11 @@ a:active {
 					</ul>
 				</c:otherwise>
 			</c:choose>
+			</div>
+			
 		</nav>
 		<!-- Navigation -->
-		</di
-						v>
+		</div>
 </header>
 <div class="demo-drawer mdl-layout__drawer mdnnav">
 	<header class="demo-drawer-header">
@@ -237,9 +237,9 @@ a:active {
 					src="https://cdn.madana.io/commonvisuals/logos/logo-madana.png"
 					alt="MADANA Logo" width="50" height="50"></i><span
 				style="padding-left: 25px; font-size: 14px;">Community Hub <span
-					style="font-size: 10px; color: #274863;
-	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Beta
-						<%=version%>
+					style="font-size: 12px; color: #d6e2ec;
+	/* padding-left: 75px; */ top: 70px; position: absolute; left: 92px;">Version ${applicationScope['VERSION']}
+					
 				</span></span> </span>
 		</div>
 
@@ -256,6 +256,9 @@ a:active {
 				class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 				href="/news"><i class=" material-icons" role="presentation">message</i>News</a>
 		</c:if>
+			<a
+				class="${currentsite eq 'profile' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
+				href="/profile"><i class=" material-icons" role="presentation">account_circle</i>Profile</a>
 		<a
 			class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
 			href="/bounty"><i class=" material-icons" role="presentation">local_atm</i>
@@ -293,7 +296,7 @@ a:active {
 		<c:if test="${not empty STATUSPAGE_PAGEID}">
 			<div id="status" class="mdl-navigation__link"
 				style="font-size: 10px; position: relative">
-				<a href="<c:out value="${STATUSPAGE_PAGELINK}"/>" target="_blank">
+				<a href="${applicationScope['STATUSPAGE_PAGELINK']}" target="_blank">
 					<span class="color-dot"></span> <span class="color-description"></span>
 				</a>
 			</div>

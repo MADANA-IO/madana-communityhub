@@ -22,13 +22,16 @@ package com.madana.webclient.system;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -48,9 +51,8 @@ import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
 public class BackendHandler implements ServletContextListener {
 	public static BackendHandler instance;
-	
 	private static String MEDIUM_FEEDURL = "";
-	
+	private static String CONNECTION = "";
 	private static String GOOGLEANALYTICS_TRACKINGID = "";
 
 	private static String STATUSPAGE_PAGEID ="";
@@ -72,7 +74,10 @@ public class BackendHandler implements ServletContextListener {
 		}
 		return instance;
 	}
-
+	public String getConnectionURL()
+	{
+		return CONNECTION;
+	}
 	public static String getProperty(String strKey) {
 		try {
 			if (System.getProperty(strKey).length() > 0 && System.getProperty(strKey) != null) {
@@ -245,9 +250,39 @@ public class BackendHandler implements ServletContextListener {
 		sce.getServletContext().setAttribute("MEDIUM_FEEDURL", initNewsFeed(sce));
 		sce.getServletContext().setAttribute("GOOGLEANALYTICS_TRACKINGID", initGoogleAnalytics(sce));
 		sce.getServletContext().setAttribute("STATUSPAGE_PAGEID", initAtlassianStatuspage(sce));
+		sce.getServletContext().setAttribute("STATUSPAGE_PAGELINK", STATUSPAGE_PAGELINK);
 		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce));
+		sce.getServletContext().setAttribute("VERSION", initVersion(sce));
+		sce.getServletContext().setAttribute("CONNECTION", initConnection(sce));
+
 		System.out.println("Succesfully initialized MADANA CommunityHub");
 
+	}
+
+	private String initConnection(ServletContextEvent sce) {
+		CONNECTION = getProperty("RESTURI");
+		if (CONNECTION.length() < 1)
+		{
+			System.err.println("CONNECTION not provided. Using default");
+		}
+		else
+		{
+			System.out.println("Using  "+CONNECTION+ " as connection URL");
+		}
+		return CONNECTION;
+	}
+
+	private String initVersion(ServletContextEvent sce) 
+	{
+		InputStream resource = sce.getServletContext().getResourceAsStream("/WEB-INF/version.txt");
+		if(resource!=null)
+		{
+			 String text = new BufferedReader(new InputStreamReader(resource, StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
+				System.out.println("Found version "+text);
+			 return text;
+		}
+		System.err.println("Version not provided. Setting to unknown");
+		return "unknown";
 	}
 
 	private Object initNewsFeed(ServletContextEvent sce) {
