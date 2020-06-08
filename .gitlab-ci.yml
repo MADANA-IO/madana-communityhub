@@ -11,11 +11,11 @@ variables:
   MAVEN_CLI_OPTS: "-Dbamboo.gituser=${GITREPOUSER} -Dbamboo.gittoken=${GITREPOTOKEN} -Ddeploymenttoken=${AWS_ACCESS_KEY_ID} -Ddeploymentsecret=${AWS_SECRET_KEY} -DAWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} -s src/main/resources/env.properties --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   GSG_RELEASE_BRANCHES: production
-  S3_BUCKET: elasticbeanstalk-eu-central-1-957799606666
-  AWS_REGION: eu-central-1
-  APPLICATION_NAME: "MADANA WebService"
-  ENVIRONMENT_STAGING: "MadanaWebservice-staging"
-  ENVIRONMENT_PRODUCTION: "madanawebservice-production"
+  S3_BUCKET: ${S3_BUCKET}
+  AWS_REGION: ${AWS_DEFAULT_REGION}
+  APPLICATION_NAME: ${EB_APPLICATIONNAME}
+  ENVIRONMENT_STAGING: ${EB_ENV_STAGING}
+  ENVIRONMENT_PRODUCTION: ${EB_ENV_PRODUCTION}
 
 .default_cache: &default_cache
   key: ${CI_COMMIT_REF_SLUG}
