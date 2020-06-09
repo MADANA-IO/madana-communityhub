@@ -159,6 +159,8 @@ deploy_production:
     - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
     - aws configure set region $AWS_REGION
+    - >
+      aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
     - > 
       aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_PRODUCTION" --version-label "$RELEASE_VERSION"
   only:
