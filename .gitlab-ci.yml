@@ -165,6 +165,8 @@ deploy_production:
     - >
       aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
     - > 
-      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
+      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_PRODUCTION" --version-label "$RELEASE_VERSION"
+
+
   only:
    - production
