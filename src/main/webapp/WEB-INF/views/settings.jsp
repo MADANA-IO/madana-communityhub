@@ -18,7 +18,8 @@
 }
 </style>
 <jsp:include page="components/header.jsp" />
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.1/dialog-polyfill.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.1/dialog-polyfill.min.js" />
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -72,7 +73,13 @@
 					</div>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
-					<jsp:include page="components/dialogs/ChangeAvatar.jsp" />
+				<button id="changeavatarbutton" type="button"
+	class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+	avatar</button>
+					
+						<button id="show-changemail" type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
+							E-Mail</button>
 
 					<button id="show-changepassword" type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
@@ -86,7 +93,7 @@
 						});
 					</script>
 
-					<jsp:include page="components/dialogs/ChangeMail.jsp" />
+				
 
 
 
@@ -307,5 +314,7 @@
 
 
 	<jsp:include page="components/footer.jsp" />
+	<jsp:include page="components/dialogs/ChangeAvatar.jsp" />
+		<jsp:include page="components/dialogs/ChangeMail.jsp" />
 </body>
 </html>

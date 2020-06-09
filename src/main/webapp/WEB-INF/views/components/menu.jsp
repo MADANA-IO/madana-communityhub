@@ -164,7 +164,7 @@ a:active {
 					<c:choose>
 				<c:when test="${empty profile.userName}">
 					<div >
-						<span ><a href="/start" class="mdl-navigation__link "> <i
+						<span style="float:left;margin-top:-10px;"><a href="/start" class="mdl-navigation__link "> <i
 							class=" material-icons " style="padding-right: 10px;"
 							role="presentation">account_circle</i><span class="mobilehide">Sign in</span>
 

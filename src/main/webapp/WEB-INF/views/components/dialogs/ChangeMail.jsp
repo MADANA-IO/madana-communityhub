@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<button id="show-changemail" type="button"
-							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
-							E-Mail</button>
+
 <dialog class="mdl-dialog" id="changemaildialog" >
 				<h4 class="mdl-dialog__title" style="text-align: center">Change
 					E-Mail</h4>

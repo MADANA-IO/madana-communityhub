@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<button id="changeavatarbutton" type="button"
-	class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">change
-	avatar</button>
+
 
 
 <dialog class="mdl-dialog" id="changeavatar">
