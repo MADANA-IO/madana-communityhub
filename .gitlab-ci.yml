@@ -6,6 +6,7 @@ stages:
   - package
   - docker
   - deploy
+  - mirror
 
 variables:
   MAVEN_CLI_OPTS: "-Dbamboo.gituser=${GITREPOUSER} -Dbamboo.gittoken=${GITREPOTOKEN} -Ddeploymenttoken=${AWS_ACCESS_KEY_ID} -Ddeploymentsecret=${AWS_SECRET_KEY} -DAWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} -s src/main/resources/env.properties --batch-mode"
@@ -170,3 +171,33 @@ deploy_production:
 
   only:
    - production
+
+mirror_dockerhub:
+  image: docker:latest
+  only:
+    - production
+  stage: mirror
+  services:
+   - docker:dind
+  script:
+  - export RELEASE_VERSION=$(cat .next-version)
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
+  - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD $DOCKERHUB_REGISTRY
+  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $DOCKERHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
+  - docker push $DOCKERHUB_REGISTRY_IMAGE:$RELEASE_VERSION
+
+mirror_github:
+  image: docker:latest
+  only:
+    - production
+  stage: mirror
+  services:
+  - docker:dind
+  script:
+  - export RELEASE_VERSION=$(cat .next-version)
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
+  - docker login -u $GITREPOUSER -p $GITREPOTOKEN $GITHUB_REGISTRY
+  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
+  - docker push $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION
