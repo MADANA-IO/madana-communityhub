@@ -4,7 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-   
+      <script 
+         src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
+      </script>
+      <link rel = "stylesheet" 
+         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
 <jsp:include page="components/header.jsp" />
 
 <style>
@@ -19,11 +23,7 @@ font-size:2.5vw;
 
 }
 </style>
-   <script 
-         src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
-      </script>
-      <link rel = "stylesheet" 
-         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
    	<jsp:include page="components/menu.jsp" />
