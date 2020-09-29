@@ -43,6 +43,8 @@
          <p>In this section, you can see which rank you hold compared to other community members. The more community points you have the higher your rank will be. The ranking is the basis on which MADANA decides how big the reward from community campaigns will be for you. The higher your rank, the better the reward will be.
 </p>
          </div>
+           <c:set var="rankIndex" value="${offset}" />
+           	<c:if test="${rankIndex==0}">
             <div class="mdl-cell--12-col mdl-grid" style="padding-top:50px;">
          	<div
 				class="mdl-card something-else mdl-cell mdl-cell--4-col mdl-cell--12-col-phone " style="    margin-top: 80px;background: linear-gradient(180deg, #CCC2C2, transparent);
@@ -130,14 +132,61 @@
   </div>
   	      </div>
 			</div>
+			</c:if>
         </div>
           <div class="mdl-cell mdl-cell--12-col " style="padding-top:50px;">
+          <div style="float:right;">
   
+   <span></span><a style="color:#d6e2ec;text-decoration:none;cursor:pointer" onclick="prevPage()"><i class="material-icons">chevron_left</i><span style="position: relative;top: -7px;padding-right:50px;">previous page</span></a> <span id="pagination" style="color:#d6e2ec;position: relative;padding-right:50px; top: -7px;"> </span><a style="color:#d6e2ec;text-decoration:none;cursor:pointer" onclick="nextPage()"><span style="position: relative;top: -7px;">next page</span><i class="material-icons">chevron_right</i></a>
+   </div>
+   <script>
+   var curIndex=1;
+   if(${offset}>0)
+	   {
+	   curIndex=${offset}/${limit};
+	   }
+   buildPagination(curIndex);
+   function buildPagination(index)
+   { 
+	   var paginationHTML="";
+	   if((index-2)>0)
+	   paginationHTML+='<a style="padding:5px;color:#d6e2ec;cursor:pointer" onclick="browsePage('+(index-2)+')"> '+(index-2)+"</a>"
+	   if((index-1)>0)
+	   paginationHTML+='<a style="padding:5px;color:#d6e2ec;cursor:pointer" onclick="browsePage('+(index-1)+')"> '+(index-1)+"</a>"
+	   paginationHTML+='<a style="padding:5px;cursor:pointer; font-size:20px;" onclick="browsePage('+(index)+')"> '+(index)+"</a>"
+	   paginationHTML+='<a style="padding:5px;color:#d6e2ec;cursor:pointer" onclick="browsePage('+(index+1)+')"> '+(index+1)+"</a>"
+	   paginationHTML+='<a style="padding:5px;color:#d6e2ec;cursor:pointer" onclick="browsePage('+(index+2)+')"> '+(index+2)+"</a>"
+	   document.getElementById("pagination").innerHTML=paginationHTML;
+   }
+   function browsePage(page)
+   {
+	   window.location.href = "ranking?offset="+${limit}*page+"&limit="+${limit};
+   }
+   function prevPage()
+   {
+	   let offset= ${offset}-${limit};
+	   if(offset<0)
+	   {
+		   offset=0;
+	   }
+	   window.location.href = "ranking?offset="+offset+"&limit="+${limit};
+   }
+   function nextPage()
+   {
+	   let offset= ${offset}+${limit};
+	   window.location.href = "ranking?offset="+offset+"&limit="+${limit};
+   }
+   function setLimit()
+   {
+	   let limit = document.getElementById("limit").value
+	   window.location.href = "ranking?offset="+${offset}+"&limit="+limit;
+   }
+   </script>
 				<table
 					class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-descending  "
 					style="width: 100%; color: #4d7da2;">
 					<thead>
-						<tr style="    background-color: white;">
+						<tr style="background-color: white;">
 							
 							<th>Rank & Username</th>
 							<th></th>
@@ -146,12 +195,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${users}" var="user" varStatus="myIndex">
-						<c:if test="${myIndex.index>2}">
+
+						
+						<c:forEach items="${users}" var="user" >
+					
+						<c:if test="${rankIndex>2}">
 							<tr style="height:0!important; padding-top:0!important; padding-bottom:0!important;">
 								<td class="tblrank"><p style="    font-size: 16px;
     letter-spacing: 0;
-    margin: 0px;">${myIndex.index +1}.</p></td>
+    margin: 0px;">${rankIndex +1}.</p></td>
 								<td style="text-align: left"><p style="    font-size: 16px;
     letter-spacing: 0;
     margin: 0px;">
@@ -172,10 +224,25 @@
 							</td>
 							</tr>
 							</c:if>
+								  <c:set var="rankIndex" value="${rankIndex+1}" />
 						</c:forEach>
 					</tbody>
 				</table>
-		
+				<div style="float:right">
+		        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder" style="position: relative;width:150px;" >
+  <input class="mdl-textfield__input" type="number" id="limit" placeholder="" value="${limit}" >
+  <label class="mdl-textfield__label" style="color:#f3f3f6" for="limit">Number of entries</label>
+  
+</div>
+
+<script>
+$(document).keyup(function (e) {
+    if ($(".input1:focus") && (e.keyCode === 13)) {
+       setLimit();
+    }
+ });
+</script>
+</div>
           </div>
    	<jsp:include page="components/snackbar.jsp" />
         </div>

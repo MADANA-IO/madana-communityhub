@@ -38,8 +38,8 @@
 
 <link href=' https://fonts.googleapis.com/css?family=Raleway'
 	rel='stylesheet' type='text/css'>
-<link href=' https://fonts.googleapis.com/css?family=Montserrat'
-	rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+	
 	
  <%-- End fonts --%>
 

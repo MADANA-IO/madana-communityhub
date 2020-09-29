@@ -3,29 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" import="java.util.*"%>
-<%@ page import="java.util.ResourceBundle"%>
+
 
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>
-a:link {
-	text-decoration: none;
-}
 
-a:visited {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-a:active {
-	text-decoration: none;
-}
-
-.activelink {
-	background-color: rgba(0, 0, 0, 0.2);
-}
 
 .mdh-expandable-search {
 	margin: 0 50px;

@@ -131,12 +131,12 @@ public class MenuController
 	}
 
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
-	public String loadRanking(HttpSession session, Model model) throws ClientNotInitizializedException 
+	public String loadRanking(HttpSession session, Model model, @RequestParam(value = "offset", required = false, defaultValue="0") String offset, @RequestParam(value = "limit", required = false, defaultValue="100") String limit) throws ClientNotInitizializedException 
 	{
 		MDN_RestClient oClient = SessionHandler.getClient(session);
 
 
-		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking(Integer.valueOf(offset),Integer.valueOf(limit));
 		if(oUsers.size()>2)
 		{
 			model.addAttribute("user1", oUsers.get(0));
@@ -146,6 +146,8 @@ public class MenuController
 		model.addAttribute("msg", SessionHandler.getCurrentUser(session));
 		model.addAttribute("users", oUsers);
 		model.addAttribute("profile", oProfile);
+		model.addAttribute("offset", offset);
+		model.addAttribute("limit", limit);
 		model.addAttribute("info", "Last updated "+oClient.getSystemHealth().getRankingupdate());
 		model.addAttribute("currentsite","ranking");
 
@@ -229,7 +231,7 @@ public class MenuController
 
 
 
-		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking();
+		List<MDN_SimpleUserProfile> oUsers = oClient.getRanking(0,100);
 		if(oUsers.size()>2)
 		{
 			Collections.sort(oUsers);
