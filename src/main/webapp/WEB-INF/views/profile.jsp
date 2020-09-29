@@ -19,6 +19,11 @@ font-size:2.5vw;
 
 }
 </style>
+   <script 
+         src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
+      </script>
+      <link rel = "stylesheet" 
+         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
    	<jsp:include page="components/menu.jsp" />

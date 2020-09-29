@@ -116,13 +116,13 @@
 			<c:if test="${not empty MEDIUM_FEEDURL}">
 				<span class="mobilehide"> <a
 					class="${currentsite eq 'news' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-					href="/<%=request.getContextPath()%>/news" onclick="document.forceLoading();"><i
+					href="/news" onclick="document.forceLoading();"><i
 						class=" material-icons" role="presentation">message</i> News</a>
 				</span>
 			</c:if>
 			<span class="mobilehide"> <a
 				class="${currentsite eq 'bounty' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
-				href="/<%=request.getContextPath()%>/bounty" onclick="document.forceLoading();"><i
+				href="/bounty" onclick="document.forceLoading();"><i
 					class=" material-icons" role="presentation">local_atm</i> Bounty</a>
 			</span> <span class="mobilehide"> <a
 				class="${currentsite eq 'organizations' ?  'mdl-navigation__link activelink': 'mdl-navigation__link'}"
@@ -170,7 +170,7 @@
 						class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 						for="accbtn">
 						<li class="mdl-menu__item"><a
-							href="/<%=request.getContextPath()%>/profile/${profile.userName}" style="text-decoration: none">
+							href="/profile/${profile.userName}" style="text-decoration: none">
 								<img
 								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_account-circle_32_0_274863_none.png"
 								width="18" height="18"><span style="margin-left: 25px;">Community
