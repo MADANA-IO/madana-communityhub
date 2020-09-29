@@ -27,7 +27,7 @@ public class SessionController {
 	@ResponseBody
 	public List<MDN_SimpleUserProfile> getSystemlog(HttpSession session) throws ClientNotInitizializedException {
 		MDN_RestClient client = SessionHandler.getClient(session);
-		List<MDN_SimpleUserProfile> oUsers = client.getRanking();
+		List<MDN_SimpleUserProfile> oUsers = client.getRanking(0,5);
 		List<MDN_SimpleUserProfile> topUsers = new ArrayList<MDN_SimpleUserProfile>();
 		if(oUsers.size()>2)
 		{

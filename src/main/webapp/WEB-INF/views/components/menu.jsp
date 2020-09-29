@@ -3,29 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" import="java.util.*"%>
-<%@ page import="java.util.ResourceBundle"%>
+
 
 <header class="mdl-layout__header mdl-layout__header--transparent ">
 	<style>
-a:link {
-	text-decoration: none;
-}
 
-a:visited {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-a:active {
-	text-decoration: none;
-}
-
-.activelink {
-	background-color: rgba(0, 0, 0, 0.2);
-}
 
 .mdh-expandable-search {
 	margin: 0 50px;
@@ -207,18 +189,21 @@ a:active {
 								width="18" height="18"><span style="margin-left: 25px;">Logout</span></a></li>
 
 						<li>
-							<hr>
+						<li> <hr><li>
+			</li>
+					
+						
 						<li>
 						<li id="feedback-button" class="mdl-menu__item"><a
 							href="/logout" style="text-decoration: none"> <img
 								src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_feedback_32_0_274863_none.png"
 								width="18" height="18"><span
-								style="margin-left: 25px; color: #a0c3e8;">Give feedback</span></a></li>
+								style="margin-left: 25px; color: #274863;">Give feedback</span></a></li>
 
 						<li id="bug-button" class="mdl-menu__item"><img
 							src="https://cdn.madana.io/commonvisuals/icons/material-icons_3-0-1_bug-report_32_0_274863_none.png"
 							width="18" height="18"><span
-							style="margin-left: 25px; color: #a0c3e8;">Report a bug</span></li>
+							style="margin-left: 25px; color: #274863;">Report a bug</span></li>
 
 
 					</ul>

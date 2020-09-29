@@ -13,44 +13,121 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+  .mdnpanel
+ {
+ padding:20px;
+ border-radius:25px;
+ }
+ .ajax-loader {
+  visibility: hidden;
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  z-index: +99999 !important;
+  width: 100%;
+  height:100%;
+}
 
+.ajax-loader img {
+  position: relative;
+  top:50%;
+  left:50%;
+}
 .mdl-layout__header-row .mdl-navigation__link 
 {
 	color:#274863;
 	}
+	.mdl-layout__header-row .mdl-navigation__link:hover
+{
+	color:#a0c3e8;
+	font-weight:bold;
+	}
+	.mdl-menu__item
+	{
+	color:#274863;
+	}
+	.mdl-menu__item a
+	{
+	color:#274863;
+	}
+	a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+.activelink {
+		font-weight:bold;
+background: linear-gradient(0deg, rgba(178,209,239,1) 6%, rgba(255,255,255,0) 8%);
+}
+.mdnnav .activelink {
+		font-weight:bold;
+background: rgba(0,0,0,0.3)
+}
+.mdnnav .activelink:hover{
+color:white;
+}
+	.mdl-menu__item:hover {
+    background-color: #4d7da2;
+
+}
+.versiontext
+{
+	 font-size: 10px;
+    position: absolute;
+    top: 20px;
+    left: 63px;
+    color: rgba(0,0,0,0.3)
+}
+ .mdl-button
+ {
+  margin:5px;
+ }
+ .mdnpanel .mdl-button {
+    background-color: #f3f3f6;
+    color: #4d7da2;
+   
+}
+.mdnpanel .mdl-button--colored {
+    color: #f3f3f6;
+    background-color: #4d7da2;
+}
 	.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
     display: block;
     -webkit-flex-shrink: 0;
     -ms-flex-negative: 0;
     flex-shrink: 0;
-    padding: 12px 40px;
+   padding: 8px 16px 8px 40px;
     margin: 0;
     color: white;
-        font-family: Montserrat;
+        font-family: Raleway;
 }
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link .hr{
 margin:25px;
 }
+
 .content
 {
 
-background: #000;
-background-image:linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2);
-color:#f3f3f6;
 font-family:Montserrat;
 
-/*
-background: #f3f3f6;
-color:#274863;
-  font-family:Montserrat;
-  */
+
 }
 .mdnheader
 {
 background-color:white;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
   color:#4d7da2	;
-font-family:Montserrat;
+font-family:Raleway;
 
 }
 .mdl-data-table {
@@ -63,7 +140,9 @@ color:#f3f3f6;	}
 
 .mdl-data-table th 
 {
-	color:#4d7da2;
+background: rgb(39,72,99);
+background: linear-gradient(180deg, rgba(39,72,99,1) 35%, rgba(243,243,246,1) 100%);
+color:white;
 	}
 
 .mdnnav
@@ -108,7 +187,7 @@ font-family: 'Montserrat', Regular;
   margin-bottom: 16px;
 }
 .demo-drawer {
-  border: none;
+  border-right: 1px solid #4d7da2;
      background: #000; 
    background-image: linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2); 
 }
@@ -227,9 +306,9 @@ margin-right:10px;
 }
 .demo-navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
-  color: #a0c3e8;
   margin-right: 32px;
 }
+
 
 .demo-content {
   max-width: 1080px;

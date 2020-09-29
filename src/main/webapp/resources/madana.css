@@ -1,0 +1,49 @@
+.content
+{
+
+background: #000;
+background-image:linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2);
+color:#f3f3f6;
+font-family:Raleway;
+
+}
+ .mdnpanel
+ {
+ background:white;
+ padding:20px;
+ border-radius:25px;
+ color:#274863
+ }
+ .mdl-list__item--three-line .mdl-list__item-text-body {
+   color:#4d7da2;
+}
+ .mdl-data-table {
+    color: black;
+}
+ .mdnpanel	tr:hover {
+	background-color: #b2d1ef !important;
+}
+
+
+.ui-dialog  {
+background: #000;
+    background-image: none;
+background-image: linear-gradient(rgba(39, 72, 99, 0.6), rgba(39, 72, 99, 0.6)), linear-gradient(to bottom, rgba(77, 125, 162, 0), #4d7da2);
+
+}
+.ui-dialog .ui-dialog-content {
+color:white;
+}
+.ui-dialog-titlebar {
+    cursor: move;
+    background: transparent;
+    border: none;
+    color: white;
+  
+
+}
+.ui-dialog  .mdl-button{
+background:linear-gradient(270deg,#B57E17 0,#DFAD30 14.65%,#F9E253 62.37%,#E7BD37 83.43%,#D59F25 100%);
+color:#274863;
+width:100%;
+}

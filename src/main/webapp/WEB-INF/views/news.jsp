@@ -21,9 +21,9 @@
     ">News</h2>
 </div>
 
-			<div class="mdl-grid mdl-cell mdl-cell--12-col ">
+		
 				<jsp:include page="medium/Feed.jsp" />
-			</div>
+	
 
 		</div>
 	</div>

@@ -38,8 +38,8 @@
 
 <link href=' https://fonts.googleapis.com/css?family=Raleway'
 	rel='stylesheet' type='text/css'>
-<link href=' https://fonts.googleapis.com/css?family=Montserrat'
-	rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+	
 	
  <%-- End fonts --%>
 
@@ -54,6 +54,16 @@
 
 <link rel="stylesheet" type='text/css'
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+	     <script language="javascript"> 
+               if('${cookie['style'].getValue()}' =='')
+        	   {
+               	   document.write('<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/madana.css?v='+ new Date()+'"/>');
+        	   }
+               else
+            	   {
+            	   document.write('<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/${cookie['style'].getValue()}.css?v='+ new Date()+'"/>');
+            	   }
+               </script>
  <%-- End css --%>
 
 
