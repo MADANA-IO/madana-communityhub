@@ -1,0 +1,77 @@
+.content
+{
+background:black;
+color: white;
+
+}
+.subheading {
+    color: #4d7da2;
+}
+.versiontext
+{
+    color: #274863;
+}
+
+.mdnheader {
+    /* background-color: white; */
+    /* box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2); */
+    color: white;
+    font-family: Montserrat;
+    background: linear-gradient(to bottom, #141313 0%, #0a0a0a 40%, #1b1b1b 150%), linear-gradient(to top, rgb(255 255 255 / 47%) 0%, rgb(0 0 0 / 45%) 200%);
+    background-blend-mode: multiply;
+}
+ .mdl-list__item--three-line .mdl-list__item-text-body {
+   color:white;
+}
+.mdl-layout__header-row .mdl-navigation__link {
+    color: white;
+}
+  .mdnpanel
+ {
+
+    background: linear-gradient(to bottom, #141313 0%, #0a0a0a 40%, #1b1b1b 150%), linear-gradient(to top, rgb(255 255 255 / 47%) 0%, rgb(0 0 0 / 45%) 200%);
+    background-blend-mode: multiply;
+ }
+ 
+ .mdl-tabs__tab {
+ color:white;
+ }
+ 
+ .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+    color: #4d7da2;
+}
+.mdl-textfield__input {
+    border-bottom: 1px solid white;
+    color: white;
+}
+.ui-dialog  {
+  background: linear-gradient(to bottom, #141313 0%, #0a0a0a 40%, #1b1b1b 150%), linear-gradient(to top, rgb(255 255 255 / 47%) 0%, rgb(0 0 0 / 45%) 200%);
+    background-blend-mode: multiply;
+
+}
+.ui-dialog .ui-dialog-content {
+color:white;
+}
+.ui-dialog-titlebar {
+    cursor: move;
+    background: transparent;
+    border: none;
+    color: white;
+  
+
+}
+.mdl-menu {
+  background: linear-gradient(to bottom, #141313 0%, #0a0a0a 40%, #1b1b1b 150%), linear-gradient(to top, rgb(255 255 255 / 47%) 0%, rgb(0 0 0 / 45%) 200%);
+    background-blend-mode: multiply;
+}
+
+.mdl-menu__item {
+	background:transparent;
+	color:white;
+	}
+	.mdl-menu__item a {
+    color: white;
+}
+.mdl-list__item {
+    color: #4d7da2;
+}

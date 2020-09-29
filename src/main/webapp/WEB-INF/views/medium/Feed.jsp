@@ -2,7 +2,11 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<c:if test="${not empty MEDIUM_FEEDURL}">
-		<div  class ="mdl-grid mdl-cell--12-col" id="medium"></div>
+		<div  class ="mdl-grid mdl-cell mdl-cell--12-col" id="medium"></div>
+		<div  class ="mdl-grid mdl-cell mdl-cell--12-col" style=" text-align: center;" >
+		<a target="_blank"  href="blog.madana.io"><button class="mdl-button  mdl-js-button mdl-js-ripple-effect"   style="position:absolute;margin-left:-20px;width: 100%;display:block;margin-top:20px;margin-bottom:20px;">  <i class="material-icons">forward</i> Read more on our blog</button> </a>
+		</div>
+		<div></div>
     <script type="text/javascript">
     $(function() {
         var $content = $('#medium');
@@ -15,7 +19,7 @@ $.get('https://api.rss2json.com/v1/api.json', data, function(response) {
                 
                 var output = '';
 $.each(response.items, function(k, item) {
-                output += '<div class="mdl-cell mdl-cell--12-col" style="padding:20px;margin-bottom: 40px;width:100%;color:#274863;background:white">';
+                output += '<div class="mdl-grid mdl-cell mdl-cell--4-col" style="overflow:hidden; color:#274863;background:white">';
 				output += '<div style="color:#274863;" class=""><header style="position: relative">';
 			  	output += '<h4 style=" background-color: #f3f3f6;font-family: Raleway;  position: absolute; margin-top:-10px; padding: 10px; text-align: center; font-weight: 500;  z-index: 9; color: #274863">' + moment(item.pubDate).format("DD<br>MMM")+ "</h4>";
 				var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts

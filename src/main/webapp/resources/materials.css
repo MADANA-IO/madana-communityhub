@@ -2940,8 +2940,7 @@ auto
 	text-decoration: none;
 	text-align: center;
 	line-height: 36px;
-	vertical-align: middle;
-	
+	vertical-align: middle
 }
 
 .mdl-button::-moz-focus-inner {
@@ -2973,15 +2972,14 @@ rgba
 
 
 }
-.mdl-button {
-    background: #274863;
-    border: 1px solid #4d7da2;
-    cursor: pointer;
-       border-radius: 14px;
-    color: white;
+.mdl-button 
+{
+	background-color: #6e9cc6;
+	 color:#f3f3f6;
+
 }
 .mdl-button .material-icons {
-	color:#a0c3e8;
+	color:#274863;
 }
 .mdl-button .material-icons:hover {
 
@@ -3005,7 +3003,7 @@ rgba
 	{
 	color: #274863;
 	cursor: default;
-	background-color: transparent;
+	background-color: #f3f3f6;
 }
 
 @media (min-width: 767px) {
@@ -3756,7 +3754,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 .mdl-data-table tbody tr:hover {
-	background-color: #eee
+	background:rgba(0,0,0,0.3);
 }
 
 .mdl-data-table td {
@@ -4628,7 +4626,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 	font-size: 14px;
 	font-weight: 400;
 	letter-spacing: 0;
-
+	text-decoration:none;
 	cursor: pointer;
 	height: 48px;
 	line-height: 48px;
@@ -4675,7 +4673,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 .mdl-menu__item:hover {
-	background-color: #a0c3e8;
+	background-color: #f3f3f6;
 }
 
 .mdl-menu__item:focus {
@@ -5094,7 +5092,7 @@ font-family: Raleway; font-size: 28px; font-style: normal; font-variant: normal;
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
 	background-color: #a0c3e8;
-	color:274863;
+	color:#274863;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link--current {
@@ -8513,4 +8511,7 @@ iframe.heightSet {
 .demo-wrapper iframe {
 	border: 1px solid rgba(0, 0, 0, .5)
 }
+}
+.mdl-data-table tbody tr:hover {
+	background:rgba(0,0,0,0.3);
 }

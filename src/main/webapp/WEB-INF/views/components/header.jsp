@@ -54,6 +54,16 @@
 
 <link rel="stylesheet" type='text/css'
 	href="<%=request.getContextPath()%>/resources/styles.css" />
+	     <script language="javascript"> 
+               if('${cookie['style'].getValue()}' =='')
+        	   {
+               	   document.write('<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/madana.css?v='+ new Date()+'"/>');
+        	   }
+               else
+            	   {
+            	   document.write('<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/${cookie['style'].getValue()}.css?v='+ new Date()+'"/>');
+            	   }
+               </script>
  <%-- End css --%>
 
 
