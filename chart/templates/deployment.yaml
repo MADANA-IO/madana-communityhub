@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "madana-communityhub.fullname" . }}
+  labels:
+    {{- include "madana-communityhub.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "madana-communityhub.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "madana-communityhub.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "madana-communityhub.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.containerport }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          env:
+           - name: INSTANCENAME
+             value: {{ include "madana-communityhub.fullname" . }}
+           - name: CERTIFICATE
+             value: {{ .Values.environment.certificate | quote }}
+           - name: RESTURI
+             value: {{ .Values.environment.resturi | quote }}
+           - name: GOOGLECAPTCHA_SECRETKEY
+             value: {{ .Values.environment.googlecaptcha_secretkey | quote }}
+           - name: GOOGLECAPTCHA_WEBSITEKEY
+             value: {{ .Values.environment.googlecaptcha_websitekey | quote }}
+           - name: GOOGLEANALYTICS_TRACKINGID
+             value: {{ .Values.environment.googleanalytics_trackingid | quote }}
+           - name: STATUSPAGE_PAGEID
+             value: {{ .Values.environment.statuspage_pageid | quote }}
+           - name: STATUSPAGE_PAGELINK
+             value: {{ .Values.environment.statuspage_pagelink | quote }}
+           - name: MEDIUM_FEEDURL
+             value: {{ .Values.environment.medium_feedurl | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

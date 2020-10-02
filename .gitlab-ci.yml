@@ -5,6 +5,7 @@ stages:
   - test
   - package
   - docker
+  - versioning
   - deploy
   - mirror
 
@@ -108,16 +109,107 @@ build_docker:
   - tags
 
 version_tag:
-  stage: deploy
+  stage: versioning
   image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
   before_script:
   - apt update
-  - apt install --no-install-recommends -y git
+  - apt install --no-install-recommends -y git curl ca-certificates
+  - curl -LO https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+  - chmod +x yq_linux_amd64 && mv yq_linux_amd64 /bin/yq
+
   - git fetch --tags
   script:
-    - release --bump-patch commit-and-tag pom.xml
+    - echo "RELEASE_URL=https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/$CI_JOB_ID/artifacts/release" > build_info
+    - echo "RELEASE_DESC=\"$(uname -mo) binary\"" >> build_info
+    - echo "RELEASE_SHA=$CI_COMMIT_SHA" >> build_info
+    - echo "RELEASE_VERSION=$(<.next-version)" >> build_info
+    - export RELEASE_VERSION=$(cat .next-version)
+    - rm -f release_info
+    - mv build_info release_info
+    - . release_info
+    - yq w -i chart/Chart.yaml appVersion $RELEASE_VERSION
+    - echo -n "Updating version information v$RELEASE_VERSION ..."
+    - release changelog
+    - release commit-and-tag chart/Chart.yaml pom.xml CHANGELOG.md release_info
+    - release --ci-commit-tag v$RELEASE_VERSION add-download-link --name release --url $RELEASE_URL --description "$RELEASE_DESC"
+
   except:
     - tags
+
+.default_deploy: &default_deploy
+  stage: deploy
+  image: alpine
+  before_script:
+  - apk --no-cache add curl openssl bash
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+  - chmod +x kubectl && mv kubectl /bin/kubectl
+  - kubectl delete secret regcred  || true
+  - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username=MaddyTheBot --docker-password=$GL_TOKEN
+  dependencies:
+  - version
+
+deploy_kubernetes_staging:
+  << : *default_deploy
+  environment:
+    name: Intranet/Staging
+    on_stop: stop_deploy_kubernetes_staging
+  script:
+  - >
+    helm upgrade -i --set image.tag=$(cat .next-version) 
+    --set environment.certificate=$CERTIFICATE
+    --set environment.resturi=$RESTURI
+    --set environment.googlecaptcha_secretkey=$GOOGLECAPTCHA_SECRETKEY
+    --set environment.googlecaptcha_websitekey=$GOOGLECAPTCHA_WEBSITEKEY
+    --set environment.googleanalytics_trackingid=$GOOGLEANALYTICS_TRACKINGID
+    --set environment.statuspage_pageid=$STATUSPAGE_PAGEID
+    --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
+    --set environment.medium_feedurl=$MEDIUM_FEEDURL
+    --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    $CI_PROJECT_NAME ./chart
+  only:
+    - master
+
+stop_deploy_kubernetes_staging:
+  << : *default_deploy
+  when: manual
+  environment:
+    name: Intranet/Staging
+    action: stop
+  script:
+  - helm delete $CI_PROJECT_NAME
+
+deploy_kubernetes_production:
+  << : *default_deploy
+  when: manual
+  environment:
+    name: Intranet/Production
+    on_stop: stop_deploy_kubernetes_production
+  script:
+  - >
+    helm upgrade -i --set image.tag=$(cat .next-version) 
+    --set environment.certificate=$CERTIFICATE
+    --set environment.resturi=$RESTURI
+    --set environment.googlecaptcha_secretkey=$GOOGLECAPTCHA_SECRETKEY
+    --set environment.googlecaptcha_websitekey=$GOOGLECAPTCHA_WEBSITEKEY
+    --set environment.googleanalytics_trackingid=$GOOGLEANALYTICS_TRACKINGID
+    --set environment.statuspage_pageid=$STATUSPAGE_PAGEID
+    --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
+    --set environment.medium_feedurl=$MEDIUM_FEEDURL
+    --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    $CI_PROJECT_NAME ./chart
+  only:
+    - production
+
+stop_deploy_kubernetes_production:
+  << : *default_deploy
+  when: manual
+  environment:
+    name: Intranet/Production
+    action: stop
+  script:
+  - helm delete $CI_PROJECT_NAME
+
  
 deploy:
   image: python:alpine
