@@ -5,8 +5,8 @@
 replicaCount: 2
 
 image:
-  repository: registry.gitlab.com/madana-io/madana-communityhub
-  pullPolicy: IfNotPresent
+  repository: ghcr.io/madana-io/madana-communityhub
+  pullPolicy: Always
 
 imagePullSecrets:
 - name: regcred
