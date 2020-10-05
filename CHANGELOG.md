@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.4
+2020-10-05
+
+### Fixes
+
+- github mirroring (348408a52ed149e71d995bed7c47b7180c005707)
+
 ## 0.3.9-master.3
 2020-10-05
 
