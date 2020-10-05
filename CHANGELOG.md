@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.5
+2020-10-05
+
+### Fixes
+
+-  (7832aee01ef74845ea6bec4c74a99b66a4490811)
+
 ## 0.3.9-master.4
 2020-10-05
 
