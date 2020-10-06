@@ -34,11 +34,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.service.containerport }}
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.service.containerport }}
           env:
            - name: INSTANCENAME
              value: {{ include "madana-communityhub.fullname" . }}
