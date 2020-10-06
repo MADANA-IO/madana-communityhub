@@ -64,6 +64,8 @@ spec:
              value: {{ .Values.Sentry.RELEASE }}
            - name: SENTRY_ENVIRONMENT
              value: {{ .Values.Sentry.ENVIRONMENT }}
+           - name: JAVA_OPTS
+             value: "-DINSTANCENAME={{ include "madana-communityhub.fullname" . }} -DCERTIFICATE={{ .Values.environment.certificate}} -DRESTURI={{ .Values.environment.resturi}} -DGOOGLECAPTCHA_SECRETKEY={{ .Values.environment.googlecaptcha_secretkey }} -DGOOGLECAPTCHA_WEBSITEKEY={{ .Values.environment.googlecaptcha_websitekey  }} -DGOOGLEANALYTICS_TRACKINGID={{ .Values.environment.googleanalytics_trackingid }} -DSENTRY_DSN={{ .Values.Sentry.DSN }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
