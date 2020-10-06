@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.12
+2020-10-06
+
+### Fixes
+
+- DEV-1380 env variables set are added to JAVA_OPTS (2522f807cc07e6fb313c615344646fac35f0b129)
+
 ## 0.3.9-master.11
 2020-10-06
 
