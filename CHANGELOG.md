@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.10
+2020-10-06
+
+### Fixes
+
+- DEV-1349 initial commit sentry error tracking (8088d11c18cba017226c436167b997656473fd20)
+
 ## 0.3.9-master.9
 2020-10-06
 
