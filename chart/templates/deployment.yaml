@@ -58,6 +58,12 @@ spec:
              value: {{ .Values.environment.statuspage_pagelink | quote }}
            - name: MEDIUM_FEEDURL
              value: {{ .Values.environment.medium_feedurl | quote }}
+           - name: SENTRY_DSN
+             value: {{ .Values.Sentry.DSN }}
+           - name: SENTRY_RELEASE
+             value: {{ .Values.Sentry.RELEASE }}
+           - name: SENTRY_ENVIRONMENT
+             value: {{ .Values.Sentry.ENVIRONMENT }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

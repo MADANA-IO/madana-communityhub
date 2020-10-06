@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.madana.common.datastructures.MDN_PersonalSocialPost;
 import com.madana.common.datastructures.MDN_SimpleUserProfile;
@@ -395,7 +394,7 @@ public class MenuController
 	public String loadFAQPage(HttpSession session,Model model) 
 	{
 
-		model.addAttribute("url", "https://intranet.madana.io/confluence/x/CQCeB");
+		model.addAttribute("url", "https://docs.madana.io/display/FAQ");
 		return "externalframe";
 
 	}

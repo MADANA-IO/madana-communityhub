@@ -167,6 +167,9 @@ deploy_kubernetes_staging:
     --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
     --set environment.medium_feedurl=$MEDIUM_FEEDURL
     --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    --set Sentry.DSN=$SENTRY_DSN
+    --set Sentry.RELEASE=$(cat .next-version)
+    --set Sentry.ENVIRONMENT=Staging
     $CI_PROJECT_NAME ./chart
   only:
     - master
@@ -198,6 +201,9 @@ deploy_kubernetes_production:
     --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
     --set environment.medium_feedurl=$MEDIUM_FEEDURL
     --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    --set Sentry.DSN=$SENTRY_DSN
+    --set Sentry.RELEASE=$(cat .next-version)
+    --set Sentry.ENVIRONMENT=Staging
     $CI_PROJECT_NAME ./chart
   only:
     - production
