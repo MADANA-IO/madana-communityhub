@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.9
+2020-10-06
+
+### Fixes
+
+- path liveness (3f093ad6d1477293bd764166d420ba1d26a733ba)
+
 ## 0.3.9-master.8
 2020-10-06
 
