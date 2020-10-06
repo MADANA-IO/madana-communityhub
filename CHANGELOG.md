@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.11
+2020-10-06
+
+### Fixes
+
+- DEV-1380 Test env variables as JAVA_OPTS (38240f985f9d94181be810c442279ed35cab8edc)
+
 ## 0.3.9-master.10
 2020-10-06
 
