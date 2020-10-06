@@ -33,12 +33,12 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
-              port: {{ .Values.service.containerport }}
+              path: /login
+              port: http
           readinessProbe:
             httpGet:
-              path: /
-              port: {{ .Values.service.containerport }}
+              path: /login
+              port: http
           env:
            - name: INSTANCENAME
              value: {{ include "madana-communityhub.fullname" . }}
