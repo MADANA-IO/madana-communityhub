@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.8
+2020-10-06
+
+### Fixes
+
+- DEV-1370 livenessprobe & readinessprobe are using {{ .Values.service.containerport }} (f98a579b9cf896f87c177a86731027af1ff9fa84)
+
 ## 0.3.9-master.7
 2020-10-06
 
