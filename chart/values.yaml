@@ -61,6 +61,8 @@ ingress:
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
     nginx.ingress.kubernetes.io/affinity-mode: persistent
     nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+    nginx.ingress.kubernetes.io/session-cookie-samesite: Strict
+    nginx.ingress.kubernetes.io/session-cookie-change-on-failure: true
   subdomain:
   host: madana.io
   tls: true
