@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.15
+2020-10-07
+
+### Fixes
+
+- session-cookie-change-on-failure as string (6337fd66aed97dd8a1ff339a96a9f1894ff21ee4)
+
 ## 0.3.9-master.14
 2020-10-07
 
