@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.16
+2020-10-07
+
+### Fixes
+
+- Requesting /faq is redirecting to external page (docs.madana.io) instead of embedding the page as iframe (781101edd052474ff4059c375cd5f0c3164f77a2)
+
 ## 0.3.9-master.15
 2020-10-07
 
