@@ -394,8 +394,7 @@ public class MenuController
 	public String loadFAQPage(HttpSession session,Model model) 
 	{
 
-		model.addAttribute("url", "https://docs.madana.io/display/FAQ");
-		return "externalframe";
+		return "redirect:https://docs.madana.io/display/FAQ";
 
 	}
 

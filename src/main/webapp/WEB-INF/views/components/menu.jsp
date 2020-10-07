@@ -140,7 +140,7 @@
 
 			<div style="position: absolute;right:5px; width:300px;top:10px;" class="mobilehide">
 				<span
-					style="float:left;margin-top:-10px;"><a class="mdl-navigation__link" href="/faq"><i
+					style="float:left;margin-top:-10px;"><a class="mdl-navigation__link" target="_blank" href="https://docs.madana.io/display/FAQ"><i
 					class=" material-icons" role="presentation">help_outline</i> FAQ</a> </span>
 					
 					<c:choose>
