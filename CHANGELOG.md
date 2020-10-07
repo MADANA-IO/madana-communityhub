@@ -2,6 +2,14 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.13
+2020-10-07
+
+### Fixes
+
+- session affinity for CH ingress (fa9611437bb25e07d452028d240a6095736f3ceb)
+-  (6f0a383fee483ebb871bd1180e30e7715aa2f2a6)
+
 ## 0.3.9-master.12
 2020-10-06
 
