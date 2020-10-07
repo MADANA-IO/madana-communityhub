@@ -2,6 +2,14 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.14
+2020-10-07
+
+### Fixes
+
+- session affinity for CH ingress (fa9611437bb25e07d452028d240a6095736f3ceb)
+- DEV-1382 Added session cookie attribute samesite to strict. Added session cookie-change-on-failure annotation so users get redirected to other pod on failure (5d21f10115c1d56fcfbd1639acabe7311910fc76)
+
 ## 0.3.9-master.13
 2020-10-07
 
