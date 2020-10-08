@@ -2,3 +2,4 @@
 /.metadata/
 /src/main/java/com/madana/webclient/system/app.crt
 /src/main/webapp/WEB-INF/version.txt
+.settings

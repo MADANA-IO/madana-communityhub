@@ -83,28 +83,26 @@ package:
     - tags
 
 build_docker:
-  image: docker:19.03.1
+  image: quay.io/containers/buildah:latest
   stage: docker
   cache:
     << : *default_cache
     policy: pull
-  services:
-  - docker:19.03.5-dind 
   script:
   - export RELEASE_VERSION=$(cat .next-version)
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  - docker pull $CI_REGISTRY_IMAGE:latest || true
+  - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - buildah pull $CI_REGISTRY_IMAGE:latest || true
   - >
-    docker build --pull
+    buildah  build --pull
     --tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION
     --cache-from $CI_REGISTRY_IMAGE:latest .
-  - docker push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
-  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
+  - buildah tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   - >
     if [ "$CI_COMMIT_REF_SLUG" == "master" ]; then
-      docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:latest
-      docker push $CI_REGISTRY_IMAGE:latest
+      buildah tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:latest
+      buildah push $CI_REGISTRY_IMAGE:latest
     fi
   except:
   - tags
