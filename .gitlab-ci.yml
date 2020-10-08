@@ -5,8 +5,10 @@ stages:
   - test
   - package
   - docker
-  - deploy
+  - versioning
   - mirror
+  - deploy
+
 
 variables:
   MAVEN_CLI_OPTS: "-Dbamboo.gituser=${GITREPOUSER} -Dbamboo.gittoken=${GITREPOTOKEN} -Ddeploymenttoken=${AWS_ACCESS_KEY_ID} -Ddeploymentsecret=${AWS_SECRET_KEY} -DAWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} -s src/main/resources/env.properties --batch-mode"
@@ -81,123 +83,204 @@ package:
     - tags
 
 build_docker:
-  image: docker:19.03.1
+  image: quay.io/containers/buildah:latest
   stage: docker
   cache:
     << : *default_cache
     policy: pull
-  services:
-  - docker:19.03.5-dind 
   script:
   - export RELEASE_VERSION=$(cat .next-version)
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  - docker pull $CI_REGISTRY_IMAGE:latest || true
+  - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - buildah pull $CI_REGISTRY_IMAGE:latest || true
   - >
-    docker build --pull
+    buildah bud --pull
     --tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION
     --cache-from $CI_REGISTRY_IMAGE:latest .
-  - docker push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
-  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
+  - buildah tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   - >
     if [ "$CI_COMMIT_REF_SLUG" == "master" ]; then
-      docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:latest
-      docker push $CI_REGISTRY_IMAGE:latest
+      buildah tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $CI_REGISTRY_IMAGE:latest
+      buildah push $CI_REGISTRY_IMAGE:latest
     fi
   except:
   - tags
 
 version_tag:
-  stage: deploy
+  stage: versioning
   image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
   before_script:
   - apt update
-  - apt install --no-install-recommends -y git
+  - apt install --no-install-recommends -y git curl ca-certificates
+  - curl -LO https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+  - chmod +x yq_linux_amd64 && mv yq_linux_amd64 /bin/yq
+
   - git fetch --tags
   script:
-    - release --bump-patch commit-and-tag pom.xml
+    - echo "RELEASE_URL=https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/$CI_JOB_ID/artifacts/release" > build_info
+    - echo "RELEASE_DESC=\"$(uname -mo) binary\"" >> build_info
+    - echo "RELEASE_SHA=$CI_COMMIT_SHA" >> build_info
+    - echo "RELEASE_VERSION=$(<.next-version)" >> build_info
+    - export RELEASE_VERSION=$(cat .next-version)
+    - rm -f release_info
+    - mv build_info release_info
+    - . release_info
+    - yq w -i chart/Chart.yaml appVersion $RELEASE_VERSION
+    - echo -n "Updating version information v$RELEASE_VERSION ..."
+    - release changelog
+    - release commit-and-tag chart/Chart.yaml pom.xml CHANGELOG.md release_info
+    - release --ci-commit-tag v$RELEASE_VERSION add-download-link --name release --url $RELEASE_URL --description "$RELEASE_DESC"
+
   except:
     - tags
- 
-deploy:
-  image: python:alpine
-  stage: deploy
-  variables:
-    GIT_STRATEGY: none
-  environment:
-    name: $ENVIRONMENT_STAGING
-  script:
-    - export RELEASE_VERSION=$(cat .next-version)
-    - export WAR_FILE=$(cd target && ls madana-*-*.war)
-    - export S3_KEY=$CI_PROJECT_NAME-$RELEASE_VERSION/$WAR_FILE
-    - export AWS_ACCESS_KEY_ID=$AWS_EB_ACCESS_KEY_ID
-    - export AWS_SECRET_ACCESS_KEY=$AWS_EB_SECRET_KEY
-    - pip install awscli
-    - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
-    - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
-    - aws configure set region $AWS_REGION
-    - aws s3 cp target/$WAR_FILE s3://$S3_BUCKET/$S3_KEY
-    - >
-      aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
-    - > 
-      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
-  only:
-   - master
 
-deploy_production:
-  image: python:alpine
+.default_deploy: &default_deploy
   stage: deploy
+  image: alpine
+  before_script:
+  - apk --no-cache add curl openssl bash
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+  - chmod +x kubectl && mv kubectl /bin/kubectl
+  - kubectl delete secret regcred  || true
+  - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username=MaddyTheBot --docker-password=$GL_TOKEN
+  dependencies:
+  - version
+
+deploy_kubernetes_staging:
+  << : *default_deploy
+  environment:
+    name: Intranet/Staging
+    on_stop: stop_deploy_kubernetes_staging
+  script:
+  - >
+    helm upgrade -i --set image.tag=$(cat .next-version) 
+    --set environment.certificate=$CERTIFICATE
+    --set environment.resturi=$RESTURI
+    --set environment.googlecaptcha_secretkey=$GOOGLECAPTCHA_SECRETKEY
+    --set environment.googlecaptcha_websitekey=$GOOGLECAPTCHA_WEBSITEKEY
+    --set environment.googleanalytics_trackingid=$GOOGLEANALYTICS_TRACKINGID
+    --set environment.statuspage_pageid=$STATUSPAGE_PAGEID
+    --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
+    --set environment.medium_feedurl=$MEDIUM_FEEDURL
+    --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    --set Sentry.DSN=$SENTRY_DSN
+    --set Sentry.RELEASE=$(cat .next-version)
+    --set Sentry.ENVIRONMENT=Staging
+    $CI_PROJECT_NAME ./chart
+  only:
+    - master
+
+stop_deploy_kubernetes_staging:
+  << : *default_deploy
   when: manual
-  variables:
-    GIT_STRATEGY: none
   environment:
-    name: $ENVIRONMENT_PRODUCTION
+    name: Intranet/Staging
+    action: stop
   script:
-    - export RELEASE_VERSION=$(cat .next-version)
-    - export WAR_FILE=$(cd target && ls madana-*-*.war)
-    - export S3_KEY=$CI_PROJECT_NAME-$RELEASE_VERSION/$WAR_FILE
-    - export AWS_ACCESS_KEY_ID=$AWS_EB_ACCESS_KEY_ID
-    - export AWS_SECRET_ACCESS_KEY=$AWS_EB_SECRET_KEY
-    - pip install awscli
-    - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
-    - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
-    - aws configure set region $AWS_REGION
-    - aws s3 cp target/$WAR_FILE s3://$S3_BUCKET/$S3_KEY
-    - >
-      aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
-    - > 
-      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_PRODUCTION" --version-label "$RELEASE_VERSION"
+  - helm delete $CI_PROJECT_NAME
 
-
-  only:
-   - production
-
-mirror_dockerhub:
-  image: docker:latest
+deploy_kubernetes_production:
+  << : *default_deploy
+  when: manual
+  environment:
+    name: Intranet/Production
+    on_stop: stop_deploy_kubernetes_production
+  script:
+  - >
+    helm upgrade -i --set image.tag=$(cat .next-version) 
+    --set environment.certificate=$CERTIFICATE
+    --set environment.resturi=$RESTURI
+    --set environment.googlecaptcha_secretkey=$GOOGLECAPTCHA_SECRETKEY
+    --set environment.googlecaptcha_websitekey=$GOOGLECAPTCHA_WEBSITEKEY
+    --set environment.googleanalytics_trackingid=$GOOGLEANALYTICS_TRACKINGID
+    --set environment.statuspage_pageid=$STATUSPAGE_PAGEID
+    --set environment.statuspage_pagelink=$STATUSPAGE_PAGELINK
+    --set environment.medium_feedurl=$MEDIUM_FEEDURL
+    --set ingress.subdomain=$INSTANCE_SUBDOMAIN
+    --set Sentry.DSN=$SENTRY_DSN
+    --set Sentry.RELEASE=$(cat .next-version)
+    --set Sentry.ENVIRONMENT=Staging
+    $CI_PROJECT_NAME ./chart
   only:
     - production
-  stage: mirror
-  services:
-   - docker:dind
+
+stop_deploy_kubernetes_production:
+  << : *default_deploy
+  when: manual
+  environment:
+    name: Intranet/Production
+    action: stop
   script:
-  - export RELEASE_VERSION=$(cat .next-version)
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  - docker pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
-  - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD $DOCKERHUB_REGISTRY
-  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $DOCKERHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
-  - docker push $DOCKERHUB_REGISTRY_IMAGE:$RELEASE_VERSION
+  - helm delete $CI_PROJECT_NAME
+
+ 
+#deploy:
+#  image: python:alpine
+#  stage: deploy
+#  variables:
+#    GIT_STRATEGY: none
+#  environment:
+#    name: $ENVIRONMENT_STAGING
+#  script:
+#    - export RELEASE_VERSION=$(cat .next-version)
+#    - export WAR_FILE=$(cd target && ls madana-*-*.war)
+#    - export S3_KEY=$CI_PROJECT_NAME-$RELEASE_VERSION/$WAR_FILE
+#    - export AWS_ACCESS_KEY_ID=$AWS_EB_ACCESS_KEY_ID
+#    - export AWS_SECRET_ACCESS_KEY=$AWS_EB_SECRET_KEY
+#    - pip install awscli
+#    - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
+#    - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
+#    - aws configure set region $AWS_REGION
+#    - aws s3 cp target/$WAR_FILE s3://$S3_BUCKET/$S3_KEY
+#    - >
+#      aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
+#    - > 
+#      aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_STAGING" --version-label "$RELEASE_VERSION"
+#  only:
+#   - master
+
+#deploy_production:
+  #image: python:alpine
+  #stage: deploy
+  #when: manual
+  #variables:
+  #  GIT_STRATEGY: none
+  #environment:
+  #  name: $ENVIRONMENT_PRODUCTION
+  #script:
+   # - export RELEASE_VERSION=$(cat .next-version)
+   # - export WAR_FILE=$(cd target && ls madana-*-*.war)
+   # - export S3_KEY=$CI_PROJECT_NAME-$RELEASE_VERSION/$WAR_FILE
+   # - export AWS_ACCESS_KEY_ID=$AWS_EB_ACCESS_KEY_ID
+   # - export AWS_SECRET_ACCESS_KEY=$AWS_EB_SECRET_KEY
+   # - pip install awscli
+   # - aws configure set aws_access_key_id $AWS_EB_ACCESS_KEY_ID
+   # - aws configure set aws_secret_access_key $AWS_EB_SECRET_KEY
+   # - aws configure set region $AWS_REGION
+   # - aws s3 cp target/$WAR_FILE s3://$S3_BUCKET/$S3_KEY
+   # - >
+   #   aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$RELEASE_VERSION" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$S3_KEY"
+   # - > 
+   #   aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --environment-name "$ENVIRONMENT_PRODUCTION" --version-label "$RELEASE_VERSION"
+  #only:
+  # - production
 
 mirror_github:
   image: docker:latest
-  only:
-    - production
   stage: mirror
   services:
   - docker:dind
   script:
   - export RELEASE_VERSION=$(cat .next-version)
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY 
   - docker pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
   - docker login -u $GITREPOUSER -p $GITREPOTOKEN $GITHUB_REGISTRY
   - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
   - docker push $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION
+  - docker tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - docker push $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - docker tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:latest
+  - docker push $GITHUB_REGISTRY_IMAGE:latest
+

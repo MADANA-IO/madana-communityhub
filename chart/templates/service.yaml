@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "madana-communityhub.fullname" . }}
+  labels:
+    {{- include "madana-communityhub.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.containerport }}
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "madana-communityhub.selectorLabels" . | nindent 4 }}

@@ -49,6 +49,8 @@ import com.madana.common.restclient.MDN_RestClient;
 import com.madana.webclient.dto.ReferralSocialPlatform;
 import com.madana.webclient.dto.UserSpecificSocialPlatform;
 
+import io.sentry.Sentry;
+
 public class BackendHandler implements ServletContextListener {
 	public static BackendHandler instance;
 	private static String MEDIUM_FEEDURL = "";
@@ -62,7 +64,7 @@ public class BackendHandler implements ServletContextListener {
 	private static String GOOGLECAPTCHA_SECRETKEY = "";
 	private String GOOGLECAPTCHA_VERIFYURL = "https://www.google.com/recaptcha/api/siteverify";
 	private String GOOGLECAPTCHA_TRUSTSCORE = "0.2";
-
+	public static boolean doSentryErrorTracking=false;
 
 	public BackendHandler() {
 
@@ -254,11 +256,23 @@ public class BackendHandler implements ServletContextListener {
 		sce.getServletContext().setAttribute("GOOGLECAPTCHA", initGoogleCaptcha(sce));
 		sce.getServletContext().setAttribute("VERSION", initVersion(sce));
 		sce.getServletContext().setAttribute("CONNECTION", initConnection(sce));
-
+		if(getProperty("SENTRY_DSN").length()>0)
+		{
+			System.out.println("Using sentry error tracking");
+			doSentryErrorTracking=true;
+			Sentry.init();
+		}
 		System.out.println("Succesfully initialized MADANA CommunityHub");
 
 	}
+	public static void handleError(String className, Throwable arg1)
+	{
 
+		System.err.println("["+className+"] " + arg1.toString());
+		arg1.printStackTrace();
+		if(doSentryErrorTracking)
+			Sentry.capture(arg1);
+	}
 	private String initConnection(ServletContextEvent sce) {
 		CONNECTION = getProperty("RESTURI");
 		if (CONNECTION.length() < 1)

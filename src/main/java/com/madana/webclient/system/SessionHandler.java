@@ -91,7 +91,7 @@ public class SessionHandler implements HttpSessionListener
 		{
 			oClient =  new MDN_RestClient();
 		}
-
+		X509Certificate clientCert =null;
 		try
 		{
 			String certStr = BackendHandler.getProperty("CERTIFICATE"); //Try to get certificate from env
@@ -109,16 +109,26 @@ public class SessionHandler implements HttpSessionListener
 								.replaceAll("\n", ""))
 						);
 			}
-			X509Certificate clientCert = CertificateHandler.getCertificateFromInputStream(inputStream);
-			oClient.authApplication(clientCert);
-			session.setAttribute("oClient", oClient);
-			return;
+			 clientCert = CertificateHandler.getCertificateFromInputStream(inputStream);
 		}
 		catch(Exception e)
 		{
 			System.err.println("Couldn't read certificate from ENV or file");
+			throw new  ClientNotInitizializedException("Application certificate could not be read");
 		}
-		throw new  ClientNotInitizializedException("Application certificate could not be read");
+		try
+		{
+			oClient.authApplication(clientCert);
+			session.setAttribute("oClient", oClient);
+			return;
+		}
+		catch(Exception ex)
+		{
+			BackendHandler.handleError(SessionHandler.class.getClass().getSimpleName(), ex);
+			throw new  ClientNotInitizializedException(ex.toString());
+		}
+			
+		
 
 	}
 
