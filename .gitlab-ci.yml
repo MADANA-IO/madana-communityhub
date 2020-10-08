@@ -90,6 +90,7 @@ build_docker:
     policy: pull
   script:
   - export RELEASE_VERSION=$(cat .next-version)
+  - mv target/madana-*-*.war target/madana-communityhub.war
   - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   - buildah pull $CI_REGISTRY_IMAGE:latest || true
   - >
@@ -268,19 +269,17 @@ stop_deploy_kubernetes_production:
   # - production
 
 mirror_github:
-  image: docker:latest
+  image: quay.io/containers/buildah:latest
   stage: mirror
-  services:
-  - docker:dind
   script:
   - export RELEASE_VERSION=$(cat .next-version)
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY 
-  - docker pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
-  - docker login -u $GITREPOUSER -p $GITREPOTOKEN $GITHUB_REGISTRY
-  - docker tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
-  - docker push $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION
-  - docker tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  - docker push $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  - docker tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:latest
-  - docker push $GITHUB_REGISTRY_IMAGE:latest
+  - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY 
+  - buildah pull $CI_REGISTRY_IMAGE:$RELEASE_VERSION || true
+  - buildah login -u $GITREPOUSER -p $GITREPOTOKEN $GITHUB_REGISTRY
+  - buildah tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION 
+  - buildah push $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION
+  - buildah tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah push $GITHUB_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  - buildah tag $GITHUB_REGISTRY_IMAGE:$RELEASE_VERSION $GITHUB_REGISTRY_IMAGE:latest
+  - buildah push $GITHUB_REGISTRY_IMAGE:latest
 
