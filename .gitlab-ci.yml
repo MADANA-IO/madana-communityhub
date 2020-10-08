@@ -93,7 +93,7 @@ build_docker:
   - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   - buildah pull $CI_REGISTRY_IMAGE:latest || true
   - >
-    buildah  build --pull
+    buildah bud --pull
     --tag $CI_REGISTRY_IMAGE:$RELEASE_VERSION
     --cache-from $CI_REGISTRY_IMAGE:latest .
   - buildah push $CI_REGISTRY_IMAGE:$RELEASE_VERSION
