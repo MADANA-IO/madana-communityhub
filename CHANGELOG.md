@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.18
+2020-10-08
+
+### Fixes
+
+- switch to buildah for mirroring (bfa72b0cc76bf59359cffbf644c7600c1486a5ac)
+
 ## 0.3.9-master.17
 2020-10-08
 
