@@ -2,6 +2,16 @@
 
 <!--- next entry here -->
 
+## 0.3.9-master.17
+2020-10-08
+
+### Fixes
+
+- switch from dind to buildah (6eaccc86b495443c2daa61b398c331c256f7fa75)
+- git ignore (31894a9638fdb18332ae35128d7e13cef7374be9)
+- build instruction (7f21831bf04f11808230d9416fde941b380c71fd)
+- copy war to docker (610da94e17be29bbdf419308fcabe8eb8a4d27ac)
+
 ## 0.3.9-master.16
 2020-10-07
 
