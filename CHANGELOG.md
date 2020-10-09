@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.12
+2020-10-09
+
+### Fixes
+
+- war deployment path (794f2cc6aba164019dd5cc87fb60bc41b983c368)
+
 ## 0.3.11
 2020-10-09
 
