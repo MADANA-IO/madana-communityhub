@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.10
+2020-10-09
+
+### Fixes
+
+- bump version (4504ae297beb15442a5623ddd99f9669f6d0544c)
+
 ## 0.3.10-master.1
 2020-10-08
 
