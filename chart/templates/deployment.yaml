@@ -35,10 +35,14 @@ spec:
             httpGet:
               path: /login
               port: http
+            initialDelaySeconds: 180
+            periodSeconds: 30
           readinessProbe:
             httpGet:
               path: /login
               port: http
+            initialDelaySeconds: 180
+            periodSeconds: 30
           env:
            - name: INSTANCENAME
              value: {{ include "madana-communityhub.fullname" . }}
