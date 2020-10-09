@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.11
+2020-10-09
+
+### Fixes
+
+- extract war to ROOT folder (f83263f868259f80af224316e0122aaa3dab8464)
+
 ## 0.3.10
 2020-10-09
 
