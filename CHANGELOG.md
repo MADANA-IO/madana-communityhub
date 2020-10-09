@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.3.15-master.1
+2020-10-09
+
+### Fixes
+
+- Merge production (c9a391d01f6b9a5c58d1dce01163804dc680b464)
+
 ## 0.3.14
 2020-10-09
 
