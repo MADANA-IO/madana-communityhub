@@ -2,6 +2,14 @@
 
 <!--- next entry here -->
 
+## 0.3.15-master.2
+2020-11-18
+
+### Fixes
+
+- upload chart (0571a3f420a2930d11e3b238656e346a1cc8c797)
+- updated helm package name (870d330fd2697628640a837ca5a3a81a9b70befb)
+
 ## 0.3.15-master.1
 2020-10-09
 
