@@ -136,6 +136,31 @@ version_tag:
   except:
     - tags
 
+upload_chart_ftp:
+  stage: deploy
+  image: alpine
+  variables:
+    HELM_EXPERIMENTAL_OCI: 1  
+  before_script:
+  - apk --no-cache add curl openssl bash git
+  - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+  script:
+    - helm package ./chart
+    - git clone "https://$GITREPOUSER:$GL_TOKEN@gitlab.com/madana-io/charts.git" /madana-charts
+    - git config --global user.name "$GITREPOUSER"
+    - git config --global user.email "$GITREPOMAIL"
+    - mv madana-node-$RELEASE_VERSION.tgz /madana-charts/madana-node-$RELEASE_VERSION.tgz
+    - cd /madana-charts
+    - git add --all
+    - git commit -m "Adding madana-node $RELEASE_VERSION" madana-node-$RELEASE_VERSION.tgz
+    - git push origin master
+  only:
+    - production
+    - master
+  dependencies:
+  - version
+  - version_tag
+  
 .default_deploy: &default_deploy
   stage: deploy
   image: alpine
